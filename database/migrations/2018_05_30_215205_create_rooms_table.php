@@ -23,7 +23,7 @@ class CreateRoomsTable extends Migration
             $table->string('access_password', 50)->nullable()->comment('房间访问密码');
             $table->string('access_group_ids')->nullable()->comment('允许访问组');
             $table->text('pc_code')->nullable()->comment('PC 端 直播代码');
-            $table->text('mobile_code')->nullalbe()->comment('移动端直播代码');
+            $table->text('mobile_code')->nullable()->comment('移动端直播代码');
             $table->unsignedInteger('online_service_id')->comment('在线客服');
             $table->unsignedInteger('user_id')->comment('房间讲师');
             $table->boolean('robot_open')->default(0)->comment('机器人 1:开启 0:关闭');

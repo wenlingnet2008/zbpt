@@ -28,4 +28,6 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::get('/firewall', 'FirewallController@index')->name('firewall.index');
     Route::post('/firewall', 'FirewallController@store')->name('firewall.store');
     Route::delete('/firewall', 'FirewallController@delete')->name('firewall.delete');
+
+    Route::resource('rooms', 'RoomController');
 });

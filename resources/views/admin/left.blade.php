@@ -124,17 +124,14 @@
                     <dd onclick="c(this);"><a href="{{route('admin.ordertypes.index')}}">喊单品种</a></dd>
 
                 </dl>
-                <!--
+
                 <dl id="dl_5">
-                    <dt onclick="m(5);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">供应管理</dt>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=5&action=add">添加供应</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=5">供应列表</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=5&file=order">订单列表</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=5&action=check">审核供应</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?file=category&mid=5">行业分类</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=5&file=html">更新数据</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=5&file=setting">模块设置</a></dd>
+                    <dt onclick="m(5);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">房间管理</dt>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.rooms.create')}}">添加房间</a></dd>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.rooms.index')}}">房间列表</a></dd>
+
                 </dl>
+                <!--
                 <dl id="dl_6">
                     <dt onclick="m(6);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">品牌管理</dt>
                     <dd onclick="c(this);" style="display:none;"><a href="?">品牌列表</a></dd>
