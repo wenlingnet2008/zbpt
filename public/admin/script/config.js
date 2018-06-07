@@ -1,0 +1,1 @@
+var DTPath = "";var DTMob = "";var SKPath = "/admin/";var MEPath = "";var DTEditor = "fckeditor";var CKDomain = "";var CKPath = "/";var CKPrex = "cb9_";

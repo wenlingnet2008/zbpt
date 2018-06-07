@@ -1,0 +1,46 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+class CreateRoomsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('rooms', function (Blueprint $table) {
+            $table->increments('id');
+            $table->integer('room_number')->unsigned()->unqiue()->comment('房间号');
+            $table->string('name', 50)->comment('房间名称');
+            $table->text('content')->nullable()->comment('房间介绍');
+            $table->string('logo', 255)->nullable()->comment('Logo');
+            $table->boolean('open')->defalut(1)->comment('房间状态 1:开启 0:关闭');
+            $table->string('access_password', 50)->nullable()->comment('房间访问密码');
+            $table->string('access_group_ids')->nullable()->comment('允许访问组');
+            $table->text('pc_code')->nullable()->comment('PC 端 直播代码');
+            $table->text('mobile_code')->nullalbe()->comment('移动端直播代码');
+            $table->unsignedInteger('online_service_id')->comment('在线客服');
+            $table->unsignedInteger('user_id')->comment('房间讲师');
+            $table->boolean('robot_open')->default(0)->comment('机器人 1:开启 0:关闭');
+
+            //$table->foreign('online_service_id')->references('id')->on('online_services');
+
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('rooms');
+    }
+}
