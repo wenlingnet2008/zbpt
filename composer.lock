@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9b4fb4dbb24a7ec325714ed5b43aa5d1",
+    "content-hash": "e59bd595a20955f19e112e5db1fee42f",
     "packages": [
         {
             "name": "barryvdh/laravel-debugbar",
@@ -3063,6 +3063,79 @@
                 "environment"
             ],
             "time": "2016-09-01T10:05:43+00:00"
+        },
+        {
+            "name": "workerman/gatewayclient",
+            "version": "v3.0.10",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/GatewayClient.git",
+                "reference": "85ffc1ee84ca303d9c4c5efc2f5235d5d7031601"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/walkor/GatewayClient/85ffc1ee84ca303d9c4c5efc2f5235d5d7031601.zip",
+                "reference": "85ffc1ee84ca303d9c4c5efc2f5235d5d7031601",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "GatewayClient\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "homepage": "http://www.workerman.net",
+            "time": "2018-06-08T03:57:05+00:00"
+        },
+        {
+            "name": "workerman/workerman",
+            "version": "v3.5.11",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/walkor/Workerman.git",
+                "reference": "c83e189b5855d91f99a7d01ac58f5bbc7161b5e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/walkor/Workerman/c83e189b5855d91f99a7d01ac58f5bbc7161b5e5.zip",
+                "reference": "c83e189b5855d91f99a7d01ac58f5bbc7161b5e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3"
+            },
+            "suggest": {
+                "ext-event": "For better performance. "
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Workerman\\": "./"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "walkor",
+                    "email": "walkor@workerman.net",
+                    "homepage": "http://www.workerman.net",
+                    "role": "Developer"
+                }
+            ],
+            "description": "An asynchronous event driven PHP framework for easily building fast, scalable network applications.",
+            "homepage": "http://www.workerman.net",
+            "keywords": [
+                "asynchronous",
+                "event-loop"
+            ],
+            "time": "2018-06-07T09:36:14+00:00"
         }
     ],
     "packages-dev": [
@@ -4703,6 +4776,45 @@
             ],
             "description": "Give thanks (in the form of a GitHub ⭐) to your fellow PHP package maintainers (not limited to Symfony components)!",
             "time": "2018-03-14T21:51:39+00:00"
+        },
+        {
+            "name": "textalk/websocket",
+            "version": "1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Textalk/websocket-php.git",
+                "reference": "bfa18bb6bf523680c7803f6b04694fbbf2f67bbf"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://files.phpcomposer.com/files/Textalk/websocket-php/bfa18bb6bf523680c7803f6b04694fbbf2f67bbf.zip",
+                "reference": "bfa18bb6bf523680c7803f6b04694fbbf2f67bbf",
+                "shasum": ""
+            },
+            "require-dev": {
+                "cboden/ratchet": "0.3.*",
+                "phpunit/phpunit": "4.1.*",
+                "phpunit/phpunit-selenium": "1.3.3",
+                "satooshi/php-coveralls": "dev-master"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "WebSocket\\": "lib"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fredrik Liljegren",
+                    "email": "fredrik.liljegren@textalk.se"
+                }
+            ],
+            "description": "WebSocket client and server",
+            "time": "2015-10-09T07:32:42+00:00"
         },
         {
             "name": "theseer/tokenizer",

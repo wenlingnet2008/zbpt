@@ -14,7 +14,9 @@
         "laravel/framework": "5.5.*",
         "laravel/tinker": "~1.0",
         "pragmarx/firewall": "^2.2",
-        "spatie/laravel-permission": "^2.12"
+        "spatie/laravel-permission": "^2.12",
+        "workerman/gatewayclient": "^3.0",
+        "workerman/workerman": "^3.5"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

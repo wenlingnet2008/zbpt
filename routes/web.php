@@ -22,3 +22,12 @@ Route::get('/firewall', function(){
 require_once base_path('routes/admin.php');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/room/{id}', 'RoomController@index')->name('room.index');
+Route::post('/room/login', 'RoomController@login')->name('room.login');
+Route::post('/room/say', 'RoomController@say')->name('room.say');
+Route::post('/room/flush', 'RoomController@flush')->name('room.flush');
