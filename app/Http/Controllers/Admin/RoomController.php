@@ -105,7 +105,7 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
 
-        $room->name = $request->input('room.content');
+        $room->name = $request->input('room.name');
         $room->content = $request->input('room.content');
         if($request->file('room.logo')){
             $room->logo = $request->file('room.logo')->store(date('Ymd'), 'uploads');

@@ -3,7 +3,9 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Traits\HasRoles;
+use GatewayClient\Gateway;
 
 class Room extends Model
 {
@@ -16,4 +18,89 @@ class Room extends Model
     {
         return $this->belongsTo('App\User', 'user_id');
     }
+
+
+    //加入房间
+    public function join($user){
+        if(self::userIsOnline($user['user_id'])){
+            $this->closeUser($user['user_id']);
+        }
+
+        //绑定用户
+        Gateway::bindUid($user['client_id'], $user['user_id']);
+        //设置用户session Gateworker的服务器session
+        Gateway::setSession($user['client_id'], [
+            'user_id' => $user['user_id'],
+            'client_name'  => $user['name'],
+            'room_id' => $this->id,
+        ]);
+        //用户加入房间
+        Gateway::joinGroup($user['client_id'], $this->id);
+    }
+
+    //获取房间所有在线用户
+    public function getUserList()
+    {
+        $user_list = [];
+        $clients = Gateway::getClientSessionsByGroup($this->id);
+        foreach ($clients as $user){
+            if(!empty($user['user_id'])){
+                $user_list[$user['user_id']] = $user['client_name'];
+            }
+        }
+        return $user_list;
+    }
+
+    //踢掉用户
+    public function closeUser($user_id)
+    {
+        $client_ids = Gateway::getClientIdByUid($user_id);
+        foreach ($client_ids as $client_id){
+            Gateway::closeClient($client_id);
+        }
+    }
+
+    //用户是否在线
+    public static function userIsOnline($user_id)
+    {
+        return Gateway::isUidOnline($user_id);
+    }
+
+    //公聊
+    public function sayAll(User $user, $content)
+    {
+        $content = nl2br(htmlspecialchars($content));
+        $message = [
+            'type'=>'say',
+            'from_client_id'=>$user->id,
+            'from_client_name' =>$user->name,
+            'to_client_id'=>'all',
+            'content'=>$content,
+            'time'=>date('Y-m-d H:i:s'),
+        ];
+        Gateway::sendToGroup($this->id ,json_encode($message));
+    }
+
+    //私聊
+    public function sayPrivate(User $user, User $to_user, $content)
+    {
+        $content = nl2br(htmlspecialchars($content));
+        $message = [
+            'type'=>'say',
+            'from_client_id'=>$user->id,
+            'from_client_name' =>$user->name,
+            'to_client_id'=>$to_user->id,
+            'content'=>$content,
+            'time'=>date('Y-m-d H:i:s'),
+        ];
+
+        $message['content'] = '<a href="javascript:;" style="color: inherit;">@me</a> '.$content;
+        Gateway::sendToUid($to_user->id, json_encode($message));
+        $message['content'] = '<a href="javascript:;" style="color: inherit;">@'.$to_user->name.'</a> '.$content;
+        Gateway::sendToUid($user->id, json_encode($message));
+
+    }
+
+
+
 }

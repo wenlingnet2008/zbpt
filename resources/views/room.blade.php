@@ -1,7 +1,7 @@
 
 <html><head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-    <title>Room 1</title>
+    <title>{{ $room->name }}</title>
     <link href="/css/bootstrap.min.css" rel="stylesheet">
     <link href="/css/jquery-sinaEmotion-2.1.0.min.css" rel="stylesheet">
     <link href="/css/style.css" rel="stylesheet">
@@ -26,9 +26,24 @@
 
             // 当有消息时根据消息类型显示不同信息
             ws.onmessage = onmessage;
-            ws.onclose = function() {
+            ws.onclose = function(e) {
+                console.log(e);
                 console.log("连接关闭，定时重连");
-                connect();
+                $.get('{{route('room.checkonline')}}', {}, function(data) {
+                    //如果已经在线，则不重新连接，解决一个用户多个客户端同时连接问题
+                    console.log(data.online);
+                   if(data.online == 1){
+                       location.href = '{{route('online.error')}}';
+                       return;
+                   }else if(data.online == 2){
+                        location.href = '/firewall';
+                        return;
+                    }else{
+                       connect();
+                   }
+                }, 'json');
+
+
             };
             ws.onerror = function() {
                 console.log("出现错误");
@@ -46,45 +61,41 @@
                     ws.send('{"type":"pong"}');
                     break;;
                 case 'init':
-                    $.post('/room/login', {
+                    $.post('{{route('room.login')}}', {
                         client_id: data.client_id,
                         room_id: '{{$room->id}}',
                         _token: '{{csrf_token()}}',
                     }, function(data) {
                         console.log(data);
-                        alert(data.message);
+
                     }, 'json');
                     break;
                 // 登录 更新用户列表
                 case 'login':
-                    say(data['client_id'], data['client_name'],  data['client_name']+' 加入了聊天室', data['time']);
+                    say(data['user_id'], data['name'],  data['name']+' 加入了聊天室', data['time']);
                     if(data['client_list'])
                     {
                         client_list = data['client_list'];
                     }
                     else
                     {
-                        client_list[data['client_id']] = data['client_name'];
+                        if($.inArray(data['name'], client_list) == -1){
+                            client_list[data['user_id']] = data['name'];
+                        }
+
                     }
                     flush_client_list();
-                    console.log(data['client_name']+"登录成功");
+                    console.log(data['name']+"登录成功");
                     break;
                 // 发言
                 case 'say':
                     say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
                     break;
-                //刷新房间列表
-                case 'flush':
-                    client_list = data['client_list'];
-                    console.log(client_list);
-                    flush_client_list();
-                    break;
                 // 用户退出 更新用户列表
                 case 'logout':
-                    say(data['from_client_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
-                    delete client_list[data['from_client_id']];
+                    say(data['user_id'], data['from_client_name'], data['from_client_name']+' 退出了', data['time']);
+                    delete client_list[data['user_id']];
                     flush_client_list();
-
             }
 
 
@@ -94,12 +105,12 @@
         // 提交对话
         function onSubmit() {
             var input = document.getElementById("textarea");
-            var to_client_id = $("#client_list option:selected").attr("value");
+            var to_user_id = $("#client_list option:selected").attr("value");
             var to_client_name = $("#client_list option:selected").text();
 
-            $.post('/room/say', {
-                to_client_id: to_client_id,
-                to_client_name: to_client_name,
+            $.post('{{route('room.say')}}', {
+                to_user_id: to_user_id,
+                room_id: '{{$room->id}}',
                 content: input.value,
                 _token: '{{csrf_token()}}',
             }, function(data) {
@@ -143,7 +154,7 @@
                 }
             );
 
-            $("#dialog").append('<div class="speech_item"><img src="http://lorempixel.com/38/38/?'+from_client_id+'" class="user_icon" /> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
+            $("#dialog").append('<div class="speech_item"> '+from_client_name+' <br> '+time+'<div style="clear:both;"></div><p class="triangle-isosceles top">'+content+'</p> </div>').parseEmotion();
         }
 
         $(function(){
@@ -155,10 +166,17 @@
                 $(this).sinaEmotion();
                 event.stopPropagation();
             });
-            $('#flush').click(function (event) {
-                $.post('/room/flush',{
+
+            $('#kick').click(function (event) {
+                var user_id = $("#client_list option:selected").attr("value");
+                $.post('{{route('room.kick')}}',{
+                    room_id: '{{$room->id}}',
+                    user_id: user_id,
                     _token: '{{csrf_token()}}',
-                });
+                },function(data) {
+                    console.log(data);
+                    alert(data.message);
+                }, 'json');
             });
         });
 
@@ -180,7 +198,7 @@
                 </select>
                 <textarea class="textarea thumbnail" id="textarea"></textarea>
                 <div class="say-btn">
-                    <input type="button" class="btn btn-default face pull-left" value="表情" />
+                    <!--<input type="button" class="btn btn-default face pull-left" value="表情" />-->
                     <!--<input type="button" id="flush" value="刷新用户列表" />-->
                     <input type="submit" class="btn btn-default" value="发表" />
                 </div>
@@ -191,6 +209,9 @@
             <div class="thumbnail">
                 <div class="caption" id="userlist"></div>
             </div>
+            <input type="button" class="btn btn-default" value="踢出房间,限制ip" id="kick"/>
+            <input type="button" class="btn btn-default" value="禁言" />
+            <input type="button" class="btn btn-default" value="锁定用户" />
         </div>
     </div>
 </div>
