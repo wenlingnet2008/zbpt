@@ -16,7 +16,7 @@ Route::get('/', function () {
 });
 
 Route::get('/firewall', function(){
-   return view('admin.error_notice', ['permission'=>'禁止访问']);
+   return view('admin.error_notice', ['permission'=>'IP禁止访问']);
 });
 
 Route::get('/online_error', function(){
@@ -37,3 +37,5 @@ Route::post('/room/say', 'RoomController@say')->name('room.say');
 Route::post('/room/flush', 'RoomController@flush')->name('room.flush');
 Route::get('/room_check_online', 'RoomController@checkClientOnline')->name('room.checkonline');
 Route::post('/room/kick', 'RoomController@kick')->name('room.kick');
+Route::post('/room/mute', 'RoomController@mute')->name('room.mute');
+Route::post('/room/unmute', 'RoomController@unmute')->name('room.unmute');

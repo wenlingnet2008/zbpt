@@ -11,6 +11,11 @@ use Spatie\Permission\Models\Role;
 
 class RoomController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:room');
+    }
     /**
      * Display a listing of the resource.
      *

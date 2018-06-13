@@ -4,6 +4,7 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
 class Handler extends ExceptionHandler
@@ -50,7 +51,9 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
-            return response()->view('admin.error_notice', ['permission'=>'没有权限访问']);
+            return $request->expectsJson()
+                ? response()->json(['message' => '没有权限访问'], 200)
+                : response()->view('admin.error_notice', ['permission'=>'没有权限访问']);
         }
 
         if ($exception instanceof AuthorizationException) {
@@ -58,5 +61,12 @@ class Handler extends ExceptionHandler
         }
 
         return parent::render($request, $exception);
+    }
+
+    protected function unauthenticated($request, AuthenticationException $exception)
+    {
+        return $request->expectsJson()
+            ? response()->json(['message' => '请先登录访问'], 200)
+            : redirect()->guest(route('login'));
     }
 }

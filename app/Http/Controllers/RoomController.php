@@ -15,6 +15,8 @@ class RoomController extends Controller
     {
         Gateway::$registerAddress = '127.0.0.1:1236';
         $this->middleware('fw-block-blacklisted')->except('checkClientOnline');
+        $this->middleware('auth')->only(['mute', 'kick', 'unmute']);
+        $this->middleware('permission:kick|mute|unmute')->only(['mute', 'kick', 'unmute']);
     }
 
     public function index($id)
@@ -97,10 +99,10 @@ class RoomController extends Controller
         $new_message['client_list'] = $clients_list;
         Gateway::sendToClient($client_id, json_encode($new_message));
 
-        return response()->json(['message'=>'登陆成功'])->cookie('access_token', json_encode($login_user));
+        return response()->json(['message'=>'登陆成功'])->cookie('access_token', json_encode($login_user), 60*6);
     }
 
-
+    //发言
     public function say(Request $request)
     {
         $this->validate($request, [
@@ -109,14 +111,19 @@ class RoomController extends Controller
             'content' => ['required'],
         ]);
 
+
         $room = Room::findOrFail($request->input('room_id'));
         $login_user = json_decode(\request()->cookie('access_token'), true);
         $user = User::find($login_user['user_id']);
 
         if($user){
+            if($user->isMute()){
+                return response()->json(['message'=>'你已经被禁止发言']);
+            }
+
             $to_user_id = $request->input('to_user_id');
             $content = $request->input('content');
-            $content = nl2br(htmlspecialchars($content));
+            $content = nl2br(e($content));
 
             if($to_user_id == $user->id){
                 return response()->json(['message'=>'自己不能更自己聊天']);
@@ -143,7 +150,7 @@ class RoomController extends Controller
     public function kick(Request $request)
     {
         $this->validate($request, [
-            'user_id' => ['required'],
+            'user_id' => ['required', 'not_in:all'],
             'room_id' => ['required', 'integer'],
         ]);
         $room_id = $request->input('room_id');
@@ -151,7 +158,32 @@ class RoomController extends Controller
         $room = Room::findOrFail($room_id);
         $room->closeUser($user_id);
         Firewall::blacklist($request->getClientIp());
-        return response()->json(['message'=>'操作成功']);
+        return response()->json(['message'=>'踢出房间操作成功']);
+    }
+
+    //禁止发言
+    public function mute(Request $request)
+    {
+        $this->validate($request, [
+            'user_id' => ['required', 'not_in:all'],
+        ]);
+        $user_id = $request->input('user_id');
+        $user = User::findOrFail($user_id);
+        $user->mute();
+
+        return response()->json(['message'=>'禁言操作成功']);
+    }
+
+    public function unmute(Request $request)
+    {
+        $this->validate($request, [
+            'user_id' => ['required', 'not_in:all'],
+        ]);
+        $user_id = $request->input('user_id');
+        $user = User::findOrFail($user_id);
+        $user->unmute();
+
+        return response()->json(['message'=>'解除禁言操作成功']);
     }
 
 }

@@ -52,4 +52,23 @@ class User extends Authenticatable
         }
         return false;
     }
+
+    public function isMute()
+    {
+        return $this->forbid_talk;
+    }
+
+    //禁止发言
+    public function mute()
+    {
+        $this->forbid_talk = 1;
+        $this->save();
+    }
+
+    //解除禁言
+    public function unmute()
+    {
+        $this->forbid_talk = 0;
+        $this->save();
+    }
 }

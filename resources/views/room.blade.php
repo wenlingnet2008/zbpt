@@ -178,6 +178,28 @@
                     alert(data.message);
                 }, 'json');
             });
+
+            $('#mute').click(function (event) {
+                var user_id = $("#client_list option:selected").attr("value");
+                $.post('{{route('room.mute')}}',{
+                    user_id: user_id,
+                    _token: '{{csrf_token()}}',
+                },function(data) {
+                    console.log(data);
+                    alert(data.message);
+                }, 'json');
+            });
+
+            $('#unmute').click(function (event) {
+                var user_id = $("#client_list option:selected").attr("value");
+                $.post('{{route('room.unmute')}}',{
+                    user_id: user_id,
+                    _token: '{{csrf_token()}}',
+                },function(data) {
+                    console.log(data);
+                    alert(data.message);
+                }, 'json');
+            });
         });
 
 
@@ -210,8 +232,8 @@
                 <div class="caption" id="userlist"></div>
             </div>
             <input type="button" class="btn btn-default" value="踢出房间,限制ip" id="kick"/>
-            <input type="button" class="btn btn-default" value="禁言" />
-            <input type="button" class="btn btn-default" value="锁定用户" />
+            <input type="button" class="btn btn-default" value="禁止发言" id="mute"/>
+            <input type="button" class="btn btn-default" value="解除禁言" id="unmute"/>
         </div>
     </div>
 </div>
