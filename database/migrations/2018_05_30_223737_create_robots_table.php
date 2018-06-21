@@ -15,7 +15,12 @@ class CreateRobotsTable extends Migration
     {
         Schema::create('robots', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('message', 255)->comment('发言信息');
+            $table->uuid('user_id');
+            $table->string('user_name', 30);
+            $table->unsignedInteger('room_id');
+            $table->string('image')->nullable()->comment('用户头像');
+            $table->time('up_time');
+            $table->time('end_time');
         });
     }
 
