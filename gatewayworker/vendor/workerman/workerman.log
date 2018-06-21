@@ -1,0 +1,878 @@
+2018-05-23 06:56:10 pid:25783 Workerman[start.php] start in DEBUG mode
+2018-05-23 07:07:47 pid:25783 Workerman[start.php] stopping ...
+2018-05-23 07:07:47 pid:25783 Workerman[start.php] has been stopped
+2018-05-23 07:11:15 pid:25940 Workerman[start.php] start in DEBUG mode
+2018-05-23 08:20:42 pid:25940 Workerman[start.php] stopping ...
+2018-05-23 08:20:42 pid:25940 Workerman[start.php] has been stopped
+2018-05-23 08:41:38 pid:26584 Workerman[start.php] start in DEBUG mode
+2018-06-08 01:46:41 pid:6740 Workerman[start.php] start in DEBUG mode
+2018-06-08 05:29:32 pid:6740 Workerman[start.php] stopping ...
+2018-06-08 05:29:33 pid:6740 Workerman[start.php] has been stopped
+2018-06-08 05:29:38 pid:8368 Workerman[start.php] start in DEBUG mode
+2018-06-08 06:11:40 pid:8369 Exception: $_SESSION['room_id'] not set. client_ip:192.168.10.10 in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:98
+Stack trace:
+#0 [internal function]: Events::onMessage('7f00000108fd000...', '{"type":"say","...')
+#1 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(395): call_user_func('Events::onMessa...', '7f00000108fd000...', '{"type":"say","...')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Connection/TcpConnection.php(645): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #51)
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2226): Workerman\Events\Select->loop()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-08 06:11:40 pid:8369 Worker[8369] process terminated
+2018-06-08 06:11:41 pid:8368 worker[ChatBusinessWorker:8369] exit with status 64000
+2018-06-08 06:11:50 pid:8372 Exception: $_SESSION['room_id'] not set. client_ip:192.168.10.10 in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:98
+Stack trace:
+#0 [internal function]: Events::onMessage('7f00000108fc000...', '{"type":"say","...')
+#1 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(395): call_user_func('Events::onMessa...', '7f00000108fc000...', '{"type":"say","...')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Connection/TcpConnection.php(645): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #49)
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2226): Workerman\Events\Select->loop()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-08 06:11:50 pid:8372 Worker[8372] process terminated
+2018-06-08 06:11:50 pid:8368 worker[ChatBusinessWorker:8372] exit with status 64000
+2018-06-08 06:13:38 pid:8370 Exception: $_SESSION['room_id'] not set. client_ip:192.168.10.10 in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:98
+Stack trace:
+#0 [internal function]: Events::onMessage('7f00000108fe000...', '{"type":"say","...')
+#1 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(395): call_user_func('Events::onMessa...', '7f00000108fe000...', '{"type":"say","...')
+#2 [internal function]: GatewayWorker\BusinessWorker->onGatewayMessage(Object(Workerman\Connection\AsyncTcpConnection), Array)
+#3 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Connection/TcpConnection.php(645): call_user_func(Array, Object(Workerman\Connection\AsyncTcpConnection), Array)
+#4 [internal function]: Workerman\Connection\TcpConnection->baseRead(Resource id #48)
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Events/Select.php(289): call_user_func_array(Array, Array)
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2226): Workerman\Events\Select->loop()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-08 06:13:38 pid:8370 Worker[8370] process terminated
+2018-06-08 06:13:38 pid:8368 worker[ChatBusinessWorker:8370] exit with status 64000
+2018-06-08 06:36:45 pid:8368 Workerman[start.php] stopping ...
+2018-06-08 06:36:45 pid:8368 Workerman[start.php] has been stopped
+2018-06-08 06:36:48 pid:8979 Workerman[start.php] start in DEBUG mode
+2018-06-08 06:40:13 pid:8979 Workerman[start.php] stopping ...
+2018-06-08 06:40:13 pid:8979 Workerman[start.php] has been stopped
+2018-06-08 06:40:15 pid:9104 Workerman[start.php] start in DEBUG mode
+2018-06-08 06:44:43 pid:9104 Workerman[start.php] stopping ...
+2018-06-08 06:44:43 pid:9104 Workerman[start.php] has been stopped
+2018-06-08 06:44:44 pid:9131 Workerman[start.php] start in DEBUG mode
+2018-06-08 08:51:51 pid:9140 Bad request for Register service. Request info(IP:192.168.10.1, Request Buffer:GET / HTTP/1.1). See http://wiki.workerman.net/Error4 for detail
+2018-06-08 08:53:15 pid:9140 Bad request for Register service. Request info(IP:192.168.10.1, Request Buffer:GET / HTTP/1.1). See http://wiki.workerman.net/Error4 for detail
+2018-06-08 08:57:02 pid:9140 Bad request for Register service. Request info(IP:192.168.10.1, Request Buffer:GET / HTTP/1.1). See http://wiki.workerman.net/Error4 for detail
+2018-06-08 08:59:28 pid:9140 Bad request for Register service. Request info(IP:192.168.10.1, Request Buffer:GET / HTTP/1.1). See http://wiki.workerman.net/Error4 for detail
+2018-06-08 09:00:12 pid:9140 Bad request for Register service. Request info(IP:192.168.10.1, Request Buffer:GET / HTTP/1.1). See http://wiki.workerman.net/Error4 for detail
+2018-06-09 09:25:27 pid:9131 Workerman[start.php] stopping ...
+2018-06-09 09:25:27 pid:9131 Workerman[start.php] has been stopped
+2018-06-09 09:25:35 pid:21504 Workerman[start.php] start in DEBUG mode
+2018-06-10 03:09:23 pid:21504 Workerman[start.php] stopping ...
+2018-06-10 03:09:23 pid:21504 Workerman[start.php] has been stopped
+2018-06-10 03:09:25 pid:29714 Workerman[start.php] start in DEBUG mode
+2018-06-10 03:10:23 pid:29714 Workerman[start.php] stopping ...
+2018-06-10 03:10:23 pid:29714 Workerman[start.php] has been stopped
+2018-06-10 03:10:24 pid:29734 Workerman[start.php] start in DEBUG mode
+2018-06-10 03:13:24 pid:29734 Workerman[start.php] stopping ...
+2018-06-10 03:13:24 pid:29734 Workerman[start.php] has been stopped
+2018-06-10 03:13:25 pid:29755 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:16:04 pid:29755 Workerman[start.php] stopping ...
+2018-06-11 05:16:05 pid:29755 Workerman[start.php] has been stopped
+2018-06-11 05:16:06 pid:8762 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:16:06 pid:8764 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#11 {main}
+2018-06-11 05:16:06 pid:8763 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#11 {main}
+2018-06-11 05:16:06 pid:8765 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#11 {main}
+2018-06-11 05:16:06 pid:8766 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(478): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#11 {main}
+2018-06-11 05:16:07 pid:8764 Worker[8764] process terminated
+2018-06-11 05:16:07 pid:8762 worker[ChatBusinessWorker:8764] exit with status 64000
+2018-06-11 05:16:07 pid:8765 Worker[8765] process terminated
+2018-06-11 05:16:07 pid:8763 Worker[8763] process terminated
+2018-06-11 05:16:07 pid:8766 Worker[8766] process terminated
+2018-06-11 05:16:07 pid:8762 worker[ChatBusinessWorker:8766] exit with status 64000
+2018-06-11 05:16:07 pid:8774 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1486): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1435): Workerman\Worker::monitorWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-11 05:16:07 pid:8762 worker[ChatBusinessWorker:8763] exit with status 64000
+2018-06-11 05:16:07 pid:8762 worker[ChatBusinessWorker:8765] exit with status 64000
+2018-06-11 05:16:07 pid:8775 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1486): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1435): Workerman\Worker::monitorWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-11 05:16:07 pid:8776 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1486): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1435): Workerman\Worker::monitorWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-11 05:16:07 pid:8777 ParseError: syntax error, unexpected ''time'' (T_CONSTANT_ENCAPSED_STRING), expecting ')' in /home/vagrant/Code/Laravel/workerman-chat/Applications/Chat/Events.php:64
+Stack trace:
+#0 [internal function]: Workerman\Autoloader::loadByNamespace('Events')
+#1 [internal function]: spl_autoload_call('Events')
+#2 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(217): is_callable('Events::onWorke...')
+#3 [internal function]: GatewayWorker\BusinessWorker->onWorkerStart(Object(GatewayWorker\BusinessWorker))
+#4 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(2210): call_user_func(Array, Object(GatewayWorker\BusinessWorker))
+#5 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/gateway-worker/src/BusinessWorker.php(197): Workerman\Worker->run()
+#6 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1352): GatewayWorker\BusinessWorker->run()
+#7 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1184): Workerman\Worker::forkOneWorkerForLinux(Object(GatewayWorker\BusinessWorker))
+#8 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1158): Workerman\Worker::forkWorkersForLinux()
+#9 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1486): Workerman\Worker::forkWorkers()
+#10 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(1435): Workerman\Worker::monitorWorkersForLinux()
+#11 /home/vagrant/Code/Laravel/workerman-chat/vendor/workerman/workerman/Worker.php(480): Workerman\Worker::monitorWorkers()
+#12 /home/vagrant/Code/Laravel/workerman-chat/start.php(37): Workerman\Worker::runAll()
+#13 {main}
+2018-06-11 05:16:08 pid:8774 Worker[8774] process terminated
+2018-06-11 05:16:08 pid:8776 Worker[8776] process terminated
+2018-06-11 05:16:08 pid:8762 Workerman[start.php] stopping ...
+2018-06-11 05:16:08 pid:8775 Worker[8775] process terminated
+2018-06-11 05:16:08 pid:8777 Worker[8777] process terminated
+2018-06-11 05:16:08 pid:8762 worker[ChatBusinessWorker:8775] exit with status 64000
+2018-06-11 05:16:08 pid:8762 worker[ChatBusinessWorker:8774] exit with status 64000
+2018-06-11 05:16:08 pid:8762 worker[ChatBusinessWorker:8776] exit with status 64000
+2018-06-11 05:16:08 pid:8762 worker[ChatBusinessWorker:8777] exit with status 64000
+2018-06-11 05:16:08 pid:8762 Workerman[start.php] has been stopped
+2018-06-11 05:16:25 pid:8778 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:39:08 pid:8778 Workerman[start.php] stopping ...
+2018-06-11 05:39:08 pid:8778 Workerman[start.php] has been stopped
+2018-06-11 05:44:18 pid:8996 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:44:29 pid:8996 Workerman[start.php] stopping ...
+2018-06-11 05:44:29 pid:8996 Workerman[start.php] has been stopped
+2018-06-11 05:44:57 pid:9009 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:45:04 pid:9009 Workerman[start.php] stopping ...
+2018-06-11 05:45:04 pid:9009 Workerman[start.php] has been stopped
+2018-06-11 05:45:13 pid:9024 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:45:37 pid:9024 Workerman[start.php] stopping ...
+2018-06-11 05:45:37 pid:9024 Workerman[start.php] has been stopped
+2018-06-11 05:46:08 pid:9042 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:46:44 pid:9042 Workerman[start.php] stopping ...
+2018-06-11 05:46:44 pid:9042 Workerman[start.php] has been stopped
+2018-06-11 05:47:01 pid:9057 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:47:15 pid:9057 Workerman[start.php] stopping ...
+2018-06-11 05:47:15 pid:9057 Workerman[start.php] has been stopped
+2018-06-11 05:48:42 pid:9073 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:49:05 pid:9073 Workerman[start.php] stopping ...
+2018-06-11 05:49:05 pid:9073 Workerman[start.php] has been stopped
+2018-06-11 05:49:12 pid:9087 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:49:23 pid:9087 Workerman[start.php] stopping ...
+2018-06-11 05:49:24 pid:9087 Workerman[start.php] has been stopped
+2018-06-11 05:49:32 pid:9099 Workerman[start.php] start in DEBUG mode
+2018-06-11 05:50:04 pid:9099 Workerman[start.php] stopping ...
+2018-06-11 05:50:04 pid:9099 Workerman[start.php] has been stopped
+2018-06-11 05:50:10 pid:9117 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:01:43 pid:9117 Workerman[start.php] stopping ...
+2018-06-11 06:01:43 pid:9117 Workerman[start.php] has been stopped
+2018-06-11 06:07:15 pid:9192 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:07:58 pid:9192 Workerman[start.php] stopping ...
+2018-06-11 06:07:58 pid:9192 Workerman[start.php] has been stopped
+2018-06-11 06:08:09 pid:9205 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:27:32 pid:9205 Workerman[start.php] stopping ...
+2018-06-11 06:27:33 pid:9205 Workerman[start.php] has been stopped
+2018-06-11 06:27:58 pid:9512 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:31:53 pid:9512 Workerman[start.php] stopping ...
+2018-06-11 06:31:53 pid:9512 Workerman[start.php] has been stopped
+2018-06-11 06:32:18 pid:9533 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:32:29 pid:9533 Workerman[start.php] stopping ...
+2018-06-11 06:32:29 pid:9533 Workerman[start.php] has been stopped
+2018-06-11 06:32:34 pid:9546 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:44:06 pid:9546 Workerman[start.php] stopping ...
+2018-06-11 06:44:06 pid:9546 Workerman[start.php] has been stopped
+2018-06-11 06:44:08 pid:9716 Workerman[start.php] start in DEBUG mode
+2018-06-11 06:44:33 pid:9716 Workerman[start.php] stopping ...
+2018-06-11 06:44:33 pid:9716 Workerman[start.php] has been stopped
+2018-06-11 06:45:00 pid:9729 Workerman[start.php] start in DEBUG mode
+2018-06-11 07:16:39 pid:9729 Workerman[start.php] stopping ...
+2018-06-11 07:16:39 pid:9729 Workerman[start.php] has been stopped
+2018-06-11 07:16:46 pid:9969 Workerman[start.php] start in DEBUG mode
+2018-06-11 07:20:21 pid:9969 Workerman[start.php] stopping ...
+2018-06-11 07:20:21 pid:9969 Workerman[start.php] has been stopped
+2018-06-11 07:20:25 pid:9992 Workerman[start.php] start in DEBUG mode
+2018-06-12 01:43:00 pid:2519 Workerman[start.php] start in DEBUG mode
+2018-06-13 03:06:34 pid:2563 Workerman[start.php] start in DEBUG mode
+2018-06-20 01:18:40 pid:2530 Workerman[start.php] start in DEBUG mode
+2018-06-20 02:16:52 pid:2530 Workerman[start.php] stopping ...
+2018-06-20 02:16:52 pid:2530 Workerman[start.php] has been stopped
+2018-06-20 02:18:09 pid:4155 Workerman[start.php] start in DEBUG mode
+2018-06-21 04:52:15 pid:4155 Workerman[start.php] stopping ...
+2018-06-21 04:52:15 pid:4155 Workerman[start.php] has been stopped
+2018-06-21 04:52:20 pid:11533 Workerman[start.php] start in DAEMON mode
+2018-06-21 10:10:59 pid:13980 Workerman[start.php] stop 
+2018-06-21 10:10:59 pid:13980 Workerman[start.php] is stopping ...
+2018-06-21 10:10:59 pid:11535 Workerman[start.php] stopping ...
+2018-06-21 10:10:59 pid:11535 Workerman[start.php] has been stopped
+2018-06-21 10:10:59 pid:13980 Workerman[start.php] stop success
+2018-06-21 10:18:18 pid:14010 Workerman[start.php] start in DEBUG mode
+2018-06-21 10:19:33 pid:14010 Workerman[start.php] stopping ...
+2018-06-21 10:19:33 pid:14010 Workerman[start.php] has been stopped
+2018-06-21 10:26:08 pid:14056 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 10:26:32 pid:14070 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop 
+2018-06-21 10:26:32 pid:14070 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 10:26:32 pid:14058 Workerman[start.php] stopping ...
+2018-06-21 10:26:32 pid:14058 Workerman[start.php] has been stopped
+2018-06-21 10:26:33 pid:14070 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 11:10:36 pid:14417 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 11:17:09 pid:14467 Workerman[start.php] status 
+2018-06-21 11:17:43 pid:14470 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop 
+2018-06-21 11:17:43 pid:14470 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 11:17:43 pid:14419 Workerman[start.php] stopping ...
+2018-06-21 11:17:43 pid:14419 Workerman[start.php] has been stopped
+2018-06-21 11:17:43 pid:14470 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 11:17:51 pid:14472 Workerman[start.php] status 
+2018-06-21 11:17:51 pid:14472 Workerman[start.php] not run
+2018-06-21 11:39:01 pid:14552 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:39:01 pid:14552 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:39:20 pid:14672 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:39:20 pid:14672 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:39:35 pid:14684 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:39:35 pid:14684 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:45:24 pid:14708 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:45:24 pid:14708 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:53:52 pid:14753 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:53:52 pid:14753 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:53:57 pid:14763 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:53:57 pid:14763 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:53:57 pid:14765 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 11:53:58 pid:14778 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:55:13 pid:14793 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:55:27 pid:14803 Workerman[start.php] status 
+2018-06-21 11:55:31 pid:14804 Workerman[start.php] stop 
+2018-06-21 11:55:31 pid:14804 Workerman[start.php] is stopping ...
+2018-06-21 11:55:31 pid:14767 Workerman[start.php] stopping ...
+2018-06-21 11:55:31 pid:14767 Workerman[start.php] has been stopped
+2018-06-21 11:55:32 pid:14804 Workerman[start.php] stop success
+2018-06-21 11:55:33 pid:14806 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:55:33 pid:14806 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:55:38 pid:14816 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:55:38 pid:14816 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:55:38 pid:14818 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 11:55:39 pid:14831 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:56:10 pid:14846 Workerman[start.php] stop 
+2018-06-21 11:56:10 pid:14846 Workerman[start.php] is stopping ...
+2018-06-21 11:56:10 pid:14820 Workerman[start.php] stopping ...
+2018-06-21 11:56:11 pid:14820 Workerman[start.php] has been stopped
+2018-06-21 11:56:11 pid:14846 Workerman[start.php] stop success
+2018-06-21 11:56:14 pid:14848 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:56:14 pid:14848 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:56:18 pid:14859 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:56:18 pid:14859 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:56:18 pid:14861 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 11:56:20 pid:14874 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:57:01 pid:14884 Workerman[start.php] stop 
+2018-06-21 11:57:01 pid:14884 Workerman[start.php] is stopping ...
+2018-06-21 11:57:01 pid:14863 Workerman[start.php] stopping ...
+2018-06-21 11:57:02 pid:14863 Workerman[start.php] has been stopped
+2018-06-21 11:57:02 pid:14884 Workerman[start.php] stop success
+2018-06-21 11:57:04 pid:14886 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:57:04 pid:14886 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:57:08 pid:14897 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:57:08 pid:14897 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:57:08 pid:14899 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 11:57:09 pid:14913 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:59:35 pid:14926 Workerman[start.php] stop 
+2018-06-21 11:59:35 pid:14926 Workerman[start.php] is stopping ...
+2018-06-21 11:59:35 pid:14901 Workerman[start.php] stopping ...
+2018-06-21 11:59:35 pid:14901 Workerman[start.php] has been stopped
+2018-06-21 11:59:35 pid:14926 Workerman[start.php] stop success
+2018-06-21 11:59:42 pid:14928 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:59:42 pid:14928 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:59:47 pid:14938 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 11:59:47 pid:14938 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 11:59:47 pid:14940 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 11:59:48 pid:14954 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:05:16 pid:14981 Workerman[start.php] stop 
+2018-06-21 12:05:16 pid:14981 Workerman[start.php] is stopping ...
+2018-06-21 12:05:16 pid:14942 Workerman[start.php] stopping ...
+2018-06-21 12:05:16 pid:14942 Workerman[start.php] has been stopped
+2018-06-21 12:05:16 pid:14981 Workerman[start.php] stop success
+2018-06-21 12:05:19 pid:14982 Workerman[start.php] stop 
+2018-06-21 12:05:19 pid:14982 Workerman[start.php] not run
+2018-06-21 12:05:25 pid:14984 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:05:25 pid:14984 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 12:05:37 pid:14996 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:05:37 pid:14996 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 12:05:37 pid:14998 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:05:38 pid:15011 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:06:53 pid:15026 Workerman[start.php] stop 
+2018-06-21 12:06:53 pid:15026 Workerman[start.php] is stopping ...
+2018-06-21 12:06:53 pid:15000 Workerman[start.php] stopping ...
+2018-06-21 12:06:53 pid:15000 Workerman[start.php] has been stopped
+2018-06-21 12:06:53 pid:15026 Workerman[start.php] stop success
+2018-06-21 12:06:56 pid:15028 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:06:56 pid:15028 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 12:07:03 pid:15038 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:07:03 pid:15038 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 12:07:03 pid:15040 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:07:23 pid:15053 Workerman[start.php] stop 
+2018-06-21 12:07:24 pid:15053 Workerman[start.php] is stopping ...
+2018-06-21 12:07:24 pid:15042 Workerman[start.php] stopping ...
+2018-06-21 12:07:24 pid:15042 Workerman[start.php] has been stopped
+2018-06-21 12:07:24 pid:15053 Workerman[start.php] stop success
+2018-06-21 12:07:28 pid:15055 Workerman[start.php] start in DAEMON mode
+2018-06-21 12:07:35 pid:15068 Workerman[start.php] stop 
+2018-06-21 12:07:35 pid:15068 Workerman[start.php] is stopping ...
+2018-06-21 12:07:35 pid:15057 Workerman[start.php] stopping ...
+2018-06-21 12:07:36 pid:15057 Workerman[start.php] has been stopped
+2018-06-21 12:07:36 pid:15068 Workerman[start.php] stop success
+2018-06-21 12:08:11 pid:15070 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:08:11 pid:15070 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 12:08:11 pid:15072 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:08:20 pid:15084 Workerman[start.php] status 
+2018-06-21 12:11:31 pid:15210 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:11:37 pid:15220 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:11:41 pid:15230 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:11:42 pid:15232 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:11:42 pid:15232 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:11:42 pid:15074 Workerman[start.php] stopping ...
+2018-06-21 12:11:42 pid:15074 Workerman[start.php] has been stopped
+2018-06-21 12:11:42 pid:15232 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:12:19 pid:15243 Workerman[start.php] status 
+2018-06-21 12:12:33 pid:15246 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:12:34 pid:15248 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:12:34 pid:15248 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:12:34 pid:15232 Workerman[start.php] stopping ...
+2018-06-21 12:12:34 pid:15232 Workerman[start.php] has been stopped
+2018-06-21 12:12:34 pid:15248 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:13:10 pid:15260 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop 
+2018-06-21 12:13:10 pid:15260 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:13:10 pid:15248 Workerman[start.php] stopping ...
+2018-06-21 12:13:11 pid:15248 Workerman[start.php] has been stopped
+2018-06-21 12:13:11 pid:15260 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:13:22 pid:15262 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:13:22 pid:15262 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] not run
+2018-06-21 12:13:22 pid:15264 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:13:35 pid:15278 Workerman[start.php] status 
+2018-06-21 12:13:39 pid:15279 Workerman[start.php] restart 
+2018-06-21 12:13:39 pid:15279 Workerman[start.php] is stopping ...
+2018-06-21 12:13:39 pid:15266 Workerman[start.php] stopping ...
+2018-06-21 12:13:39 pid:15266 Workerman[start.php] has been stopped
+2018-06-21 12:13:39 pid:15279 Workerman[start.php] stop success
+2018-06-21 12:13:41 pid:15279 Workerman[start.php] stopping ...
+2018-06-21 12:13:41 pid:15279 Workerman[start.php] has been stopped
+2018-06-21 12:13:55 pid:15290 Workerman[start.php] status 
+2018-06-21 12:13:55 pid:15290 Workerman[start.php] not run
+2018-06-21 12:14:04 pid:15294 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:14:04 pid:15294 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:14:04 pid:15294 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:14:16 pid:15304 Workerman[start.php] status 
+2018-06-21 12:14:33 pid:15307 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:14:33 pid:15307 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:14:33 pid:15294 Workerman[start.php] stopping ...
+2018-06-21 12:14:33 pid:15294 Workerman[start.php] has been stopped
+2018-06-21 12:14:33 pid:15307 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:15:14 pid:15321 Workerman[start.php] stop 
+2018-06-21 12:15:14 pid:15321 Workerman[start.php] is stopping ...
+2018-06-21 12:15:14 pid:15307 Workerman[start.php] stopping ...
+2018-06-21 12:15:14 pid:15307 Workerman[start.php] has been stopped
+2018-06-21 12:15:14 pid:15321 Workerman[start.php] stop success
+2018-06-21 12:15:34 pid:15325 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:15:58 pid:15341 Workerman[start.php] status 
+2018-06-21 12:16:04 pid:15343 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:16:04 pid:15343 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:16:29 pid:15346 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:16:29 pid:15346 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:16:32 pid:15348 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:16:33 pid:15350 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:16:33 pid:15350 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:16:33 pid:15325 Workerman[start.php] stopping ...
+2018-06-21 12:16:33 pid:15325 Workerman[start.php] has been stopped
+2018-06-21 12:16:33 pid:15350 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:17:00 pid:15361 Workerman[start.php] status 
+2018-06-21 12:17:13 pid:15366 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] status 
+2018-06-21 12:17:15 pid:15368 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:17:15 pid:15368 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:17:15 pid:15350 Workerman[start.php] stopping ...
+2018-06-21 12:17:15 pid:15350 Workerman[start.php] has been stopped
+2018-06-21 12:17:15 pid:15368 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:20:24 pid:15382 Workerman[start.php] status 
+2018-06-21 12:20:28 pid:15384 Workerman[start.php] restart 
+2018-06-21 12:20:28 pid:15384 Workerman[start.php] is stopping ...
+2018-06-21 12:20:28 pid:15368 Workerman[start.php] stopping ...
+2018-06-21 12:20:28 pid:15368 Workerman[start.php] has been stopped
+2018-06-21 12:20:28 pid:15384 Workerman[start.php] stop success
+2018-06-21 12:20:33 pid:15384 Workerman[start.php] stopping ...
+2018-06-21 12:20:33 pid:15384 Workerman[start.php] has been stopped
+2018-06-21 12:20:53 pid:15401 Workerman[start.php] restart 
+2018-06-21 12:20:53 pid:15401 Workerman[start.php] is stopping ...
+2018-06-21 12:20:53 pid:15401 Workerman[start.php] stop success
+2018-06-21 12:21:01 pid:15413 Workerman[start.php] status 
+2018-06-21 12:21:09 pid:15415 Workerman[start.php] stop 
+2018-06-21 12:21:09 pid:15415 Workerman[start.php] is stopping ...
+2018-06-21 12:21:09 pid:15403 Workerman[start.php] stopping ...
+2018-06-21 12:21:09 pid:15403 Workerman[start.php] has been stopped
+2018-06-21 12:21:09 pid:15415 Workerman[start.php] stop success
+2018-06-21 12:22:27 pid:15423 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:23:01 pid:15442 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:23:01 pid:15442 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:23:18 pid:15443 Workerman[start.php] status 
+2018-06-21 12:23:21 pid:15444 Workerman[start.php] stop 
+2018-06-21 12:23:21 pid:15444 Workerman[start.php] is stopping ...
+2018-06-21 12:23:21 pid:15425 Workerman[start.php] stopping ...
+2018-06-21 12:23:21 pid:15425 Workerman[start.php] has been stopped
+2018-06-21 12:23:21 pid:15444 Workerman[start.php] stop success
+2018-06-21 12:23:23 pid:15445 Workerman[start.php] status 
+2018-06-21 12:23:23 pid:15445 Workerman[start.php] not run
+2018-06-21 12:23:24 pid:15446 Workerman[start.php] status 
+2018-06-21 12:23:24 pid:15446 Workerman[start.php] not run
+2018-06-21 12:23:25 pid:15447 Workerman[start.php] status 
+2018-06-21 12:23:25 pid:15447 Workerman[start.php] not run
+2018-06-21 12:23:28 pid:15450 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:23:37 pid:15463 Workerman[start.php] status 
+2018-06-21 12:23:41 pid:15464 Workerman[start.php] stop 
+2018-06-21 12:23:41 pid:15464 Workerman[start.php] is stopping ...
+2018-06-21 12:23:41 pid:15452 Workerman[start.php] stopping ...
+2018-06-21 12:23:41 pid:15452 Workerman[start.php] has been stopped
+2018-06-21 12:23:41 pid:15464 Workerman[start.php] stop success
+2018-06-21 12:24:05 pid:15465 Workerman[start.php] stop 
+2018-06-21 12:24:05 pid:15465 Workerman[start.php] not run
+2018-06-21 12:24:07 pid:15468 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:24:13 pid:15481 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:24:13 pid:15481 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:24:39 pid:15484 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:24:39 pid:15484 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:24:46 pid:15485 Workerman[start.php] stop 
+2018-06-21 12:24:46 pid:15485 Workerman[start.php] is stopping ...
+2018-06-21 12:24:46 pid:15470 Workerman[start.php] stopping ...
+2018-06-21 12:24:46 pid:15470 Workerman[start.php] has been stopped
+2018-06-21 12:24:46 pid:15485 Workerman[start.php] stop success
+2018-06-21 12:24:51 pid:15487 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:25:21 pid:15504 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:25:21 pid:15504 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:25:29 pid:15507 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:25:29 pid:15507 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:25:34 pid:15509 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:25:35 pid:15509 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:25:37 pid:15511 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:25:37 pid:15511 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:25:40 pid:15513 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:25:40 pid:15513 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:25:43 pid:15520 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DEBUG mode
+2018-06-21 12:25:43 pid:15520 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:26:00 pid:15522 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:26:00 pid:15522 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:26:07 pid:15524 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:26:07 pid:15524 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:26:35 pid:15527 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:26:35 pid:15527 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:26:38 pid:15529 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:26:38 pid:15529 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:26:45 pid:15531 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:26:45 pid:15531 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:27:06 pid:15537 Workerman[start.php] stop 
+2018-06-21 12:27:06 pid:15537 Workerman[start.php] is stopping ...
+2018-06-21 12:27:06 pid:15489 Workerman[start.php] stopping ...
+2018-06-21 12:27:06 pid:15489 Workerman[start.php] has been stopped
+2018-06-21 12:27:06 pid:15537 Workerman[start.php] stop success
+2018-06-21 12:27:13 pid:15539 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:27:57 pid:15559 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:27:57 pid:15559 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:27:59 pid:15561 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:27:59 pid:15561 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:28:15 pid:15563 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:28:15 pid:15563 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:28:22 pid:15565 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 12:28:22 pid:15565 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 12:28:24 pid:15567 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:28:24 pid:15567 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:28:24 pid:15541 Workerman[start.php] stopping ...
+2018-06-21 12:28:24 pid:15541 Workerman[start.php] has been stopped
+2018-06-21 12:28:24 pid:15567 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:35:52 pid:15602 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:35:52 pid:15602 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:35:52 pid:15569 Workerman[start.php] stopping ...
+2018-06-21 12:35:52 pid:15569 Workerman[start.php] has been stopped
+2018-06-21 12:35:52 pid:15602 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:36:57 pid:15617 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:36:57 pid:15617 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:36:57 pid:15604 Workerman[start.php] stopping ...
+2018-06-21 12:36:58 pid:15604 Workerman[start.php] has been stopped
+2018-06-21 12:36:58 pid:15617 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:37:03 pid:15631 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:37:03 pid:15631 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:37:03 pid:15619 Workerman[start.php] stopping ...
+2018-06-21 12:37:03 pid:15619 Workerman[start.php] has been stopped
+2018-06-21 12:37:03 pid:15631 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:37:23 pid:15645 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:37:23 pid:15645 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:37:23 pid:15633 Workerman[start.php] stopping ...
+2018-06-21 12:37:24 pid:15633 Workerman[start.php] has been stopped
+2018-06-21 12:37:24 pid:15645 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:37:47 pid:15661 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:37:47 pid:15661 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:37:47 pid:15647 Workerman[start.php] stopping ...
+2018-06-21 12:37:47 pid:15647 Workerman[start.php] has been stopped
+2018-06-21 12:37:47 pid:15661 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:38:04 pid:15674 Workerman[start.php] status 
+2018-06-21 12:38:08 pid:15676 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:38:08 pid:15676 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:38:08 pid:15664 Workerman[start.php] stopping ...
+2018-06-21 12:38:08 pid:15664 Workerman[start.php] has been stopped
+2018-06-21 12:38:08 pid:15676 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:38:13 pid:15690 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:38:13 pid:15690 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:38:13 pid:15679 Workerman[start.php] stopping ...
+2018-06-21 12:38:14 pid:15679 Workerman[start.php] has been stopped
+2018-06-21 12:38:14 pid:15690 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:38:21 pid:15704 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:38:21 pid:15704 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:38:21 pid:15692 Workerman[start.php] stopping ...
+2018-06-21 12:38:21 pid:15692 Workerman[start.php] has been stopped
+2018-06-21 12:38:21 pid:15704 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:38:30 pid:15724 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:38:30 pid:15724 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:38:30 pid:15706 Workerman[start.php] stopping ...
+2018-06-21 12:38:30 pid:15706 Workerman[start.php] has been stopped
+2018-06-21 12:38:30 pid:15724 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:39:30 pid:15858 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:39:30 pid:15858 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:39:30 pid:15727 Workerman[start.php] stopping ...
+2018-06-21 12:39:30 pid:15727 Workerman[start.php] has been stopped
+2018-06-21 12:39:30 pid:15858 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:39:45 pid:15873 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:39:45 pid:15873 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:39:45 pid:15861 Workerman[start.php] stopping ...
+2018-06-21 12:39:45 pid:15861 Workerman[start.php] has been stopped
+2018-06-21 12:39:45 pid:15873 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:39:57 pid:15887 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:39:57 pid:15887 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:39:57 pid:15876 Workerman[start.php] stopping ...
+2018-06-21 12:39:58 pid:15876 Workerman[start.php] has been stopped
+2018-06-21 12:39:58 pid:15887 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:40:07 pid:15900 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:40:07 pid:15900 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:40:07 pid:15889 Workerman[start.php] stopping ...
+2018-06-21 12:40:08 pid:15889 Workerman[start.php] has been stopped
+2018-06-21 12:40:08 pid:15900 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:40:50 pid:15919 Workerman[start.php] status 
+2018-06-21 12:40:58 pid:15926 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:40:58 pid:15926 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:40:58 pid:15902 Workerman[start.php] stopping ...
+2018-06-21 12:40:59 pid:15902 Workerman[start.php] has been stopped
+2018-06-21 12:40:59 pid:15926 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:41:11 pid:15939 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:41:11 pid:15939 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:41:11 pid:15928 Workerman[start.php] stopping ...
+2018-06-21 12:41:11 pid:15928 Workerman[start.php] has been stopped
+2018-06-21 12:41:11 pid:15939 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:41:19 pid:15953 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:41:19 pid:15953 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:41:19 pid:15941 Workerman[start.php] stopping ...
+2018-06-21 12:41:19 pid:15941 Workerman[start.php] has been stopped
+2018-06-21 12:41:19 pid:15953 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:41:39 pid:15989 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:41:39 pid:15989 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:41:39 pid:15955 Workerman[start.php] stopping ...
+2018-06-21 12:41:39 pid:15955 Workerman[start.php] has been stopped
+2018-06-21 12:41:39 pid:15989 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:41:51 pid:16003 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:41:51 pid:16003 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:41:51 pid:15991 Workerman[start.php] stopping ...
+2018-06-21 12:41:51 pid:15991 Workerman[start.php] has been stopped
+2018-06-21 12:41:51 pid:16003 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:41:56 pid:16017 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:41:56 pid:16017 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:41:56 pid:16005 Workerman[start.php] stopping ...
+2018-06-21 12:41:56 pid:16005 Workerman[start.php] has been stopped
+2018-06-21 12:41:56 pid:16017 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:42:19 pid:16031 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:42:19 pid:16031 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:42:19 pid:16019 Workerman[start.php] stopping ...
+2018-06-21 12:42:19 pid:16019 Workerman[start.php] has been stopped
+2018-06-21 12:42:19 pid:16031 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:42:30 pid:16046 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:42:30 pid:16046 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:42:30 pid:16033 Workerman[start.php] stopping ...
+2018-06-21 12:42:30 pid:16033 Workerman[start.php] has been stopped
+2018-06-21 12:42:30 pid:16046 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:43:05 pid:16060 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:43:05 pid:16060 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:43:05 pid:16048 Workerman[start.php] stopping ...
+2018-06-21 12:43:06 pid:16048 Workerman[start.php] has been stopped
+2018-06-21 12:43:06 pid:16060 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:43:16 pid:16074 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:43:16 pid:16074 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:43:17 pid:16062 Workerman[start.php] stopping ...
+2018-06-21 12:43:17 pid:16062 Workerman[start.php] has been stopped
+2018-06-21 12:43:17 pid:16074 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:43:31 pid:16088 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:43:31 pid:16088 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:43:31 pid:16076 Workerman[start.php] stopping ...
+2018-06-21 12:43:31 pid:16076 Workerman[start.php] has been stopped
+2018-06-21 12:43:31 pid:16088 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:43:38 pid:16101 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:43:39 pid:16101 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:43:39 pid:16090 Workerman[start.php] stopping ...
+2018-06-21 12:43:39 pid:16090 Workerman[start.php] has been stopped
+2018-06-21 12:43:39 pid:16101 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:43:47 pid:16115 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:43:48 pid:16115 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:43:48 pid:16103 Workerman[start.php] stopping ...
+2018-06-21 12:43:48 pid:16103 Workerman[start.php] has been stopped
+2018-06-21 12:43:48 pid:16115 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:43:59 pid:16128 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:43:59 pid:16128 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:43:59 pid:16117 Workerman[start.php] stopping ...
+2018-06-21 12:43:59 pid:16117 Workerman[start.php] has been stopped
+2018-06-21 12:43:59 pid:16128 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:44:06 pid:16141 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:44:06 pid:16141 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:44:06 pid:16130 Workerman[start.php] stopping ...
+2018-06-21 12:44:06 pid:16130 Workerman[start.php] has been stopped
+2018-06-21 12:44:06 pid:16141 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:44:15 pid:16154 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:44:15 pid:16154 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:44:15 pid:16143 Workerman[start.php] stopping ...
+2018-06-21 12:44:15 pid:16143 Workerman[start.php] has been stopped
+2018-06-21 12:44:15 pid:16154 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:45:29 pid:16174 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:45:29 pid:16174 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:45:29 pid:16157 Workerman[start.php] stopping ...
+2018-06-21 12:45:29 pid:16157 Workerman[start.php] has been stopped
+2018-06-21 12:45:29 pid:16174 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:45:34 pid:16188 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:45:34 pid:16188 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:45:34 pid:16176 Workerman[start.php] stopping ...
+2018-06-21 12:45:34 pid:16176 Workerman[start.php] has been stopped
+2018-06-21 12:45:34 pid:16188 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:45:54 pid:16207 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:45:54 pid:16207 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:45:54 pid:16190 Workerman[start.php] stopping ...
+2018-06-21 12:45:54 pid:16190 Workerman[start.php] has been stopped
+2018-06-21 12:45:55 pid:16207 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:45:59 pid:16221 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:45:59 pid:16221 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:45:59 pid:16209 Workerman[start.php] stopping ...
+2018-06-21 12:45:59 pid:16209 Workerman[start.php] has been stopped
+2018-06-21 12:45:59 pid:16221 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:46:19 pid:16235 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:46:19 pid:16235 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:46:19 pid:16223 Workerman[start.php] stopping ...
+2018-06-21 12:46:19 pid:16223 Workerman[start.php] has been stopped
+2018-06-21 12:46:19 pid:16235 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:46:44 pid:16250 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:46:44 pid:16250 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:46:44 pid:16238 Workerman[start.php] stopping ...
+2018-06-21 12:46:45 pid:16238 Workerman[start.php] has been stopped
+2018-06-21 12:46:45 pid:16250 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:47:24 pid:16264 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:47:24 pid:16264 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:47:24 pid:16252 Workerman[start.php] stopping ...
+2018-06-21 12:47:24 pid:16252 Workerman[start.php] has been stopped
+2018-06-21 12:47:24 pid:16264 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:48:43 pid:16281 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:48:43 pid:16281 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:48:43 pid:16267 Workerman[start.php] stopping ...
+2018-06-21 12:48:43 pid:16267 Workerman[start.php] has been stopped
+2018-06-21 12:48:43 pid:16281 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:49:10 pid:16296 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:49:10 pid:16296 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:49:10 pid:16283 Workerman[start.php] stopping ...
+2018-06-21 12:49:10 pid:16283 Workerman[start.php] has been stopped
+2018-06-21 12:49:11 pid:16296 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:49:15 pid:16310 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:49:15 pid:16310 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:49:16 pid:16298 Workerman[start.php] stopping ...
+2018-06-21 12:49:16 pid:16298 Workerman[start.php] has been stopped
+2018-06-21 12:49:16 pid:16310 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:49:56 pid:16325 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:49:56 pid:16325 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:49:56 pid:16312 Workerman[start.php] stopping ...
+2018-06-21 12:49:57 pid:16312 Workerman[start.php] has been stopped
+2018-06-21 12:49:57 pid:16325 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:50:22 pid:16340 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:50:22 pid:16340 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:50:22 pid:16327 Workerman[start.php] stopping ...
+2018-06-21 12:50:22 pid:16327 Workerman[start.php] has been stopped
+2018-06-21 12:50:22 pid:16340 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:50:32 pid:16355 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:50:32 pid:16355 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:50:32 pid:16342 Workerman[start.php] stopping ...
+2018-06-21 12:50:33 pid:16342 Workerman[start.php] has been stopped
+2018-06-21 12:50:33 pid:16355 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:54:52 pid:16463 Workerman[start.php] status 
+2018-06-21 12:55:38 pid:16487 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:55:38 pid:16487 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:55:38 pid:16357 Workerman[start.php] stopping ...
+2018-06-21 12:55:38 pid:16357 Workerman[start.php] has been stopped
+2018-06-21 12:55:38 pid:16487 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 12:55:44 pid:16508 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 12:55:44 pid:16508 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 12:55:44 pid:16489 Workerman[start.php] stopping ...
+2018-06-21 12:55:45 pid:16489 Workerman[start.php] has been stopped
+2018-06-21 12:55:45 pid:16508 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:10:27 pid:16776 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:10:27 pid:16776 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:10:27 pid:16512 Workerman[start.php] stopping ...
+2018-06-21 13:10:28 pid:16512 Workerman[start.php] has been stopped
+2018-06-21 13:10:28 pid:16776 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:10:32 pid:16791 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:10:32 pid:16791 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:10:32 pid:16778 Workerman[start.php] stopping ...
+2018-06-21 13:10:32 pid:16778 Workerman[start.php] has been stopped
+2018-06-21 13:10:32 pid:16791 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:11:00 pid:16810 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:11:00 pid:16810 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:11:00 pid:16793 Workerman[start.php] stopping ...
+2018-06-21 13:11:00 pid:16793 Workerman[start.php] has been stopped
+2018-06-21 13:11:00 pid:16810 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:11:40 pid:16825 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:11:40 pid:16825 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:11:40 pid:16812 Workerman[start.php] stopping ...
+2018-06-21 13:11:41 pid:16812 Workerman[start.php] has been stopped
+2018-06-21 13:11:41 pid:16825 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:12:00 pid:16838 Workerman[start.php] status 
+2018-06-21 13:12:06 pid:16840 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:12:06 pid:16840 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:12:06 pid:16827 Workerman[start.php] stopping ...
+2018-06-21 13:12:06 pid:16827 Workerman[start.php] has been stopped
+2018-06-21 13:12:06 pid:16840 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:12:44 pid:16855 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:12:44 pid:16855 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:12:44 pid:16842 Workerman[start.php] stopping ...
+2018-06-21 13:12:44 pid:16842 Workerman[start.php] has been stopped
+2018-06-21 13:12:44 pid:16855 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:13:06 pid:16869 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:13:06 pid:16869 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:13:06 pid:16857 Workerman[start.php] stopping ...
+2018-06-21 13:13:06 pid:16857 Workerman[start.php] has been stopped
+2018-06-21 13:13:06 pid:16869 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:13:22 pid:16884 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:13:22 pid:16884 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:13:22 pid:16872 Workerman[start.php] stopping ...
+2018-06-21 13:13:23 pid:16872 Workerman[start.php] has been stopped
+2018-06-21 13:13:23 pid:16884 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:24:06 pid:17125 Workerman[start.php] status 
+2018-06-21 13:24:13 pid:17126 Workerman[start.php] stop 
+2018-06-21 13:24:13 pid:17126 Workerman[start.php] is stopping ...
+2018-06-21 13:24:13 pid:16886 Workerman[start.php] stopping ...
+2018-06-21 13:24:13 pid:16886 Workerman[start.php] has been stopped
+2018-06-21 13:24:13 pid:17126 Workerman[start.php] stop success
+2018-06-21 13:25:00 pid:17142 Workerman[start.php] stop 
+2018-06-21 13:25:00 pid:17142 Workerman[start.php] not run
+2018-06-21 13:25:02 pid:17146 Workerman[start.php] start in DEBUG mode
+2018-06-21 13:32:53 pid:2280 Workerman[gatewayworker/start.php] start in DEBUG mode
+2018-06-21 13:36:25 pid:2280 Workerman[start.php] stopping ...
+2018-06-21 13:36:25 pid:2280 Workerman[start.php] has been stopped
+2018-06-21 13:37:03 pid:2563 Workerman[gatewayworker/start.php] start in DEBUG mode
+2018-06-21 13:39:26 pid:2728 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:39:26 pid:2728 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:39:26 pid:2563 Workerman[start.php] stopping ...
+2018-06-21 13:39:26 pid:2563 Workerman[start.php] has been stopped
+2018-06-21 13:39:26 pid:2728 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:39:43 pid:2740 Workerman[gatewayworker/start.php] stop 
+2018-06-21 13:39:43 pid:2740 Workerman[gatewayworker/start.php] is stopping ...
+2018-06-21 13:39:43 pid:2730 Workerman[start.php] stopping ...
+2018-06-21 13:39:43 pid:2730 Workerman[start.php] has been stopped
+2018-06-21 13:39:43 pid:2740 Workerman[gatewayworker/start.php] stop success
+2018-06-21 13:40:50 pid:2760 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 13:40:50 pid:2760 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 13:40:50 pid:2760 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 13:47:33 pid:2927 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] start in DAEMON mode
+2018-06-21 13:47:33 pid:2927 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] already running
+2018-06-21 14:08:25 pid:3221 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 14:08:25 pid:3221 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 14:08:25 pid:2762 Workerman[start.php] stopping ...
+2018-06-21 14:08:26 pid:2762 Workerman[start.php] has been stopped
+2018-06-21 14:08:26 pid:3221 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-21 14:42:17 pid:3745 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-21 14:42:17 pid:3745 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-21 14:42:17 pid:3223 Workerman[start.php] stopping ...
+2018-06-21 14:42:17 pid:3223 Workerman[start.php] has been stopped
+2018-06-21 14:42:17 pid:3745 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
