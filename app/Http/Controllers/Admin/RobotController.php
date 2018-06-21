@@ -12,6 +12,12 @@ use Intervention\Image\Facades\Image;
 
 class RobotController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('permission:manage_robots');
+    }
+
     /**
      * Display a listing of the resource.
      *

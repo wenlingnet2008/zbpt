@@ -114,6 +114,7 @@
                     <dt onclick="s(this)" onmouseover="this.className='dt_on';" onmouseout="this.className='';">系统工具
                     </dt>
                     <dd onclick="c(this);"><a href="{{route('admin.firewall.index')}}">Ip屏蔽管理</a></dd>
+                    <dd onclick="c(this);"><a href="{{route('admin.server')}}">服务重启管理</a></dd>
 
                 </dl>
             </div>
