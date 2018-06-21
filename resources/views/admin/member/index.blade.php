@@ -38,6 +38,7 @@
                 <th>Email</th>
                 <th>手机</th>
                 <th>所属组</th>
+                <th>所属房间</th>
                 <th>注册时间</th>
                 <th width="100">操作</th>
             </tr>
@@ -48,10 +49,11 @@
                 <td class="px12">{{$user->email}}</td>
                 <td>{{$user->mobile}}</td>
                 <td>{{$user->roles->first()->name}}</td>
+                <td>@if($user->room){{$user->room->name}} @endif</td>
                 <td class="px12">{{$user->created_at}}</td>
 
                 <td>
-                    <a href="{{route('admin.users.edit', ['userid'=>$user->id])}}">
+                    <a href="{{route('admin.users.edit', ['user'=>$user->id])}}">
                         <img src="/admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;
                     <a href="?moduleid=2&file=index&action=delete&userid=2"
                        onclick="if(!confirm('确定危险！！要删除此会员吗？系统将删除选中用户所有信息，此操作将不可撤销')) return false;"><img

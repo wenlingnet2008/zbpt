@@ -83,6 +83,16 @@
                     </select></td>
             </tr>
 
+            <tr>
+                <td class="tl"><span class="f_red">*</span> 所有者/代理商</td>
+                <td><select name="room[owner_id]" >
+                        <option value="0">选择代理</option>
+                        @foreach($owners as $owner)
+                            <option value="{{$owner->id}}" @if($room->owner && ($owner->id == $room->owner->id)) selected @endif>{{$owner->name}}</option>
+                        @endforeach
+                    </select></td>
+            </tr>
+
 
             <tr>
                 <td class="tl"><span class="f_hid">*</span> 介绍</td>

@@ -212,7 +212,12 @@
         </div>
         <div class="col-md-6 column">
             <div class="thumbnail">
-                <div class="caption" id="dialog"></div>
+                <div class="caption" id="dialog">
+                    @foreach($messages as $message)
+                        <div class="speech_item">{{ $message->user_name }} <br> {{$message->created_at}}<div style="clear:both;"></div><p class="triangle-isosceles top">{{$message->content}}</p> </div>
+
+                    @endforeach
+                </div>
             </div>
             <form onsubmit="onSubmit(); return false;">
                 <select style="margin-bottom:8px" id="client_list">

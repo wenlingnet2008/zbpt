@@ -30,4 +30,9 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::delete('/firewall', 'FirewallController@delete')->name('firewall.delete');
 
     Route::resource('rooms', 'RoomController');
+
+    Route::get('message', 'MessageController@index')->name('message.index');
+
+    Route::resource('robots', 'RobotController');
+    Route::resource('robotmessages', 'RobotMessageController');
 });

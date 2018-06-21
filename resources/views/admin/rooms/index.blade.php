@@ -27,6 +27,8 @@
                 <th>房间名</th>
                 <th>状态</th>
                 <th>Logo</th>
+                <th>所有者/代理商</th>
+                <th>讲师</th>
                 <th width="100">操作</th>
             </tr>
             @foreach($rooms as $room)
@@ -35,6 +37,8 @@
                     <td>{{$room->name}}</td>
                     <td>@if($room->open) 开启 @else 关闭 @endif</td>
                     <td><img src="/storage/{{$room->logo}}" width="100" height="100"> </td>
+                    <td>@if($room->owner){{ $room->owner->name }}@endif </td>
+                    <td>{{ $room->teacher->name }} </td>
                     <td>
                         <a href="{{ route('admin.rooms.show', ['order'=>$room->id]) }}">查看</a>&nbsp;
                         <a href="{{ route('admin.rooms.edit', ['order'=>$room->id]) }}"><img src="/admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;

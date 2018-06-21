@@ -11,12 +11,18 @@ class Room extends Model
 {
     use HasRoles;
     protected $guard_name = 'web';
-    protected $fillable = ['name', 'content', 'logo', 'open', 'access_password', 'pc_code', 'mobile_code', 'user_id'];
+    protected $fillable = ['name', 'content', 'logo', 'open', 'access_password', 'pc_code', 'mobile_code', 'user_id', 'owner_id'];
     public $timestamps = false;
 
     public function teacher()
     {
         return $this->belongsTo('App\User', 'user_id');
+    }
+
+    //代理商
+    public function owner()
+    {
+        return $this->belongsTo('App\User', 'owner_id');
     }
 
 
@@ -31,7 +37,7 @@ class Room extends Model
         //设置用户session Gateworker的服务器session
         Gateway::setSession($user['client_id'], [
             'user_id' => $user['user_id'],
-            'client_name'  => $user['name'],
+            'client_name'  => e($user['name']),
             'room_id' => $this->id,
         ]);
         //用户加入房间
@@ -73,12 +79,23 @@ class Room extends Model
         $message = [
             'type'=>'say',
             'from_client_id'=>$user->id,
-            'from_client_name' =>$user->name,
+            'from_client_name' => e($user->name),
             'to_client_id'=>'all',
             'content'=>$content,
             'time'=>date('Y-m-d H:i:s'),
         ];
         Gateway::sendToGroup($this->id ,json_encode($message));
+
+        Message::create([
+            'user_id' => $user->id,
+            'user_name' => $user->name,
+            'to_user_id' => 0,
+            'to_user_name' => 'All',
+            'room_id' => $this->id,
+            'content' => $content,
+            'ip_address' => request()->ip(),
+        ]);
+
     }
 
     //私聊
@@ -88,7 +105,7 @@ class Room extends Model
         $message = [
             'type'=>'say',
             'from_client_id'=>$user->id,
-            'from_client_name' =>$user->name,
+            'from_client_name' => e($user->name),
             'to_client_id'=>$to_user->id,
             'content'=>$content,
             'time'=>date('Y-m-d H:i:s'),
@@ -96,8 +113,19 @@ class Room extends Model
 
         $message['content'] = '<a href="javascript:;" style="color: inherit;">@me</a> '.$content;
         Gateway::sendToUid($to_user->id, json_encode($message));
-        $message['content'] = '<a href="javascript:;" style="color: inherit;">@'.$to_user->name.'</a> '.$content;
+        $message['content'] = '<a href="javascript:;" style="color: inherit;">@'.e($to_user->name).'</a> '.$content;
         Gateway::sendToUid($user->id, json_encode($message));
+
+
+        Message::create([
+            'user_id' => $user->id,
+            'user_name' => $user->name,
+            'to_user_id' => $to_user->id,
+            'to_user_name' => $to_user->name,
+            'room_id' => $this->id,
+            'content' => $content,
+            'ip_address' => request()->ip(),
+        ]);
 
     }
 

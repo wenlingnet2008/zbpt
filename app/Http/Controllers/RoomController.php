@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use App\Room;
 use App\User;
+use Carbon\Carbon;
 use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -21,9 +23,15 @@ class RoomController extends Controller
 
     public function index($id)
     {
-
         $room = Room::findOrFail($id);
         $data['room'] = $room;
+
+        $messages = Message::where([
+            ['room_id', $id],
+            ['to_user_id', 0],
+            ['created_at', '>' , Carbon::now()->format('Y-m-d')],
+        ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
+        $data['messages'] = $messages;
         return view('room', $data);
     }
 
@@ -85,7 +93,7 @@ class RoomController extends Controller
         ];
 
         //发送给房间内的所有用户
-        $new_message = array('type'=>'login', 'user_id'=>$user_id, 'name'=>$client_name, 'time'=>date('Y-m-d H:i:s'));
+        $new_message = array('type'=>'login', 'user_id'=>$user_id, 'name'=>e($client_name), 'time'=>date('Y-m-d H:i:s'));
         Gateway::sendToGroup($room_id, json_encode($new_message));
 
 

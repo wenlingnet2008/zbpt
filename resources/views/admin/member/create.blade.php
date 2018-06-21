@@ -34,6 +34,7 @@
                            autocomplete="off"/>&nbsp;<span id="dcpassword" class="f_red"></span></td>
             </tr>
 
+            @if(request()->user()->isAdmin())
             <tr>
                 <td class="tl"><span class="f_red">*</span> 所属组</td>
                 <td><select name="role" >
@@ -43,6 +44,17 @@
                         @endforeach
                     </select></td>
             </tr>
+
+            <tr>
+                <td class="tl"><span class="f_red">*</span> 所属房间</td>
+                <td><select name="user[room_id]" >
+                        <option value="0">选择房间</option>
+                        @foreach($rooms as $room)
+                            <option value="{{$room->id}}">{{$room->name}}</option>
+                        @endforeach
+                    </select></td>
+            </tr>
+            @endif
 
             <tr>
                 <td class="tl"><span class="f_red">*</span> 昵称</td>

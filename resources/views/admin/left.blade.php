@@ -76,6 +76,7 @@
                     <dd onclick="c(this);"><a href="{{route('admin.permissions.index')}}">权限管理</a></dd>
 
                     <dd onclick="c(this);"><a href="{{route('admin.firewall.index')}}">Ip屏蔽管理</a></dd>
+                    <dd onclick="c(this);"><a href="{{route('admin.message.index')}}">聊天信息管理</a></dd>
                 </dl>
                 <!--
                 <dl>
@@ -280,22 +281,16 @@
                     <dd onclick="c(this);"><a href="{{route('admin.roles.index')}}">会员组管理</a></dd>
 
                 </dl>
-                <!--
+
                 <dl id="dl_4">
                     <dt id="dt_4" onclick="s(this);" onmouseover="this.className='dt_on';"
-                        onmouseout="this.className='';">公司管理
+                        onmouseout="this.className='';">机器人管理
                     </dt>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=4">公司列表</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=4&file=vip">VIP管理</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?file=category&mid=4">行业分类</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=2&file=honor">荣誉资质</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=2&file=news">公司新闻</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=2&file=page">公司单页</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=2&file=link">友情链接</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=2&file=style">公司模板</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=4&file=html">更新数据</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=4&file=setting">模块设置</a></dd>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.robots.index')}}">机器人列表</a></dd>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.robotmessages.index')}}">机器人发言管理</a></dd>
+
                 </dl>
+                <!--
                 <dl id="dl_pay">
                     <dt id="dt_pay" onclick="s(this);" onmouseover="this.className='dt_on';"
                         onmouseout="this.className='';">财务管理

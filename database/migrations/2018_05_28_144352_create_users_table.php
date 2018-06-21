@@ -30,11 +30,13 @@ class CreateUsersTable extends Migration
             $table->string('area_name', 20)->nullable()->comment('地区');
             $table->boolean('forbid_talk')->default(0)->comment('禁止发言');
             $table->boolean('is_admin')->default(0)->comment('1:超级管理员 0:非超级管理员');
+            $table->unsignedInteger('room_id')->default(0)->index()->comment('所属房间');
             $table->text('introduce')->nullable();
 
             $table->rememberToken();
             $table->timestamps();
 
+            //$table->foreign('room_id')->references('id')->on('users');
         });
     }
 

@@ -26,11 +26,12 @@ class CreateRoomsTable extends Migration
             $table->text('mobile_code')->nullable()->comment('移动端直播代码');
             $table->unsignedInteger('online_service_id')->comment('在线客服');
             $table->unsignedInteger('user_id')->comment('房间讲师');
+            $table->unsignedInteger('owner_id')->default(0)->comment('房间的所有者, 代理商');
             $table->boolean('robot_open')->default(0)->comment('机器人 1:开启 0:关闭');
 
             //$table->foreign('online_service_id')->references('id')->on('online_services');
 
-            $table->foreign('user_id')->references('id')->on('users');
+            //$table->foreign('user_id')->references('id')->on('users');
         });
     }
 

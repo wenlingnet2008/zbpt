@@ -23,7 +23,7 @@ class RoomController extends Controller
      */
     public function index()
     {
-        $rooms = Room::paginate(20);
+        $rooms = Room::with(['owner', 'teacher'])->paginate(20);
         $data['rooms'] = $rooms;
         return view('admin.rooms.index', $data);
     }
@@ -35,13 +35,18 @@ class RoomController extends Controller
      */
     public function create()
     {
+
         $roles = Role::where('id', '>', 1)->get();
         $data['roles'] = $roles;
-
-        $teachers = User::whereHas('roles',function ($query) {
-            $query->where('id', 6);
-        })->get();
+        //获取所有讲师
+        $teachers = User::getAllTeacher();
         $data['teachers'] = $teachers;
+
+        //获取所有代理商
+        $owners = User::getAllOwner();
+        $data['owners'] = $owners;
+
+
 
         return view('admin.rooms.create', $data);
     }
@@ -84,14 +89,18 @@ class RoomController extends Controller
      */
     public function edit($id)
     {
-
-        $teachers = User::whereHas('roles',function ($query) {
-            $query->where('id', 6);
-        })->get();
+        //获取所有讲师
+        $teachers = User::getAllTeacher();
         $data['teachers'] = $teachers;
+
+        $owners = User::getAllOwner();
+        $data['owners'] = $owners;
+
+
         $roles = Role::where('id', '>', 1)->get();
         $data['roles'] = $roles;
-        $room = Room::with(['roles', 'teacher'])->findOrFail($id);
+        $room = Room::with(['roles', 'teacher', 'owner'])->findOrFail($id);
+
         $data['room'] = $room;
         $data['room_roles'] = $room->roles->pluck('name')->toArray();
 
@@ -120,6 +129,7 @@ class RoomController extends Controller
         $room->pc_code = $request->input('room.pc_code');
         $room->mobile_code = $request->input('room.mobile_code');
         $room->user_id = $request->input('room.user_id');
+        $room->owner_id = $request->input('room.owner_id');
         $room->save();
 
         $room->syncRoles($request->input('roles'));

@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'image', 'mobile', 'introduce'
+        'name', 'email', 'password', 'image', 'mobile', 'introduce', 'room_id'
     ];
 
     /**
@@ -35,10 +35,36 @@ class User extends Authenticatable
         return $this->hasMany('App\Order', 'user_id');
     }
 
+    public function room()
+    {
+        return $this->belongsTo('App\Room', 'room_id');
+    }
+
+
+    //获取所有讲师
+    public static function getAllTeacher()
+    {
+        $teachers = self::whereHas('roles', function ($query) {
+            $query->where('id', 6);
+        })->get();
+
+        return $teachers;
+    }
+
+    //获取所有代理商
+    public static function getAllOwner()
+    {
+        $owners = self::whereHas('roles', function ($query) {
+            $query->where('id', 7);
+        })->get();
+
+        return $owners;
+    }
+
     public function isAdmin()
     {
         $admin = Role::findById(1);
-        if($this->hasRole($admin) and $this->is_admin === 1){
+        if ($this->hasRole($admin) and $this->is_admin === 1) {
             return true;
         }
         return false;
@@ -47,7 +73,17 @@ class User extends Authenticatable
     public function isTeacher()
     {
         $teacher = Role::findById(6);
-        if($this->hasRole($teacher)){
+        if ($this->hasRole($teacher)) {
+            return true;
+        }
+        return false;
+    }
+
+    //是否是代理商
+    public function isOwner()
+    {
+        $owner = Role::findById(7);
+        if($this->hasRole($owner)){
             return true;
         }
         return false;

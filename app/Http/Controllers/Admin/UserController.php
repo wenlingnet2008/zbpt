@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Requests\UserRequest;
+use App\Room;
 use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,7 +29,9 @@ class UserController extends Controller
     public function index()
     {
 
-        $users = User::with('roles')->paginate(20);
+        $users = User::with('roles', 'room')->when(\request()->user()->isOwner(), function($query){
+                        return $query->where('room_id', \request()->user()->room_id);
+                    })->paginate(20);
 
         $data['users'] = $users;
         return view('admin.member.index', $data);
@@ -43,6 +46,10 @@ class UserController extends Controller
     {
         $roles = Role::get();
         $data['roles'] = $roles;
+
+        $rooms = Room::get();
+        $data['rooms'] = $rooms;
+
         return view('admin.member.create', $data);
     }
 
@@ -54,6 +61,7 @@ class UserController extends Controller
      */
     public function store(UserRequest $request)
     {
+        
         $user_arr = $request->input('user');
         $user_arr['password'] = bcrypt($request->input('password'));
 
@@ -63,9 +71,18 @@ class UserController extends Controller
             Image::make(public_path('storage/'.$user_arr['image']))->resize(100, 100)->save();
         }
 
+        if(!$request->user()->isAdmin()){
+            $user_arr['room_id'] = $request->user()->room_id;
+        }
+
         $user = User::create($user_arr);
 
-        $user->syncRoles($request->input('role'));
+        if(!$request->user()->isAdmin()){
+            $user->syncRoles('普通会员');
+        }else{
+            $user->syncRoles($request->input('role'));
+        }
+
 
         $role = Role::findByName($request->input('role'));
         if($role->id == 1){
@@ -102,6 +119,9 @@ class UserController extends Controller
         $roles = Role::get();
         $data['roles'] = $roles;
 
+        $rooms = Room::get();
+        $data['rooms'] = $rooms;
+
         return view('admin.member.edit', $data);
     }
 
@@ -122,6 +142,7 @@ class UserController extends Controller
         $user->name = $request->input('user.name');
         $user->mobile = $request->input('user.mobile');
         $user->introduce = $request->input('user.introduce');
+        $user->room_id = $request->input('user.room_id');
 
         if($request->file('user.image')){
             $image = $request->file('user.image')->store(date('Ymd'), 'uploads');
