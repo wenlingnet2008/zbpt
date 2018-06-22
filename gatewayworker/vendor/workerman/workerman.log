@@ -876,3 +876,28 @@ Stack trace:
 2018-06-21 14:42:17 pid:3223 Workerman[start.php] stopping ...
 2018-06-21 14:42:17 pid:3223 Workerman[start.php] has been stopped
 2018-06-21 14:42:17 pid:3745 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-22 08:07:35 pid:5817 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] restart 
+2018-06-22 08:07:36 pid:5817 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] is stopping ...
+2018-06-22 08:07:36 pid:5817 Workerman[/home/vagrant/Code/zbpt/gatewayworker/start.php] stop success
+2018-06-22 10:06:24 pid:6666 Workerman[gatewayworker/start.php] restart 
+2018-06-22 10:06:24 pid:6666 Workerman[gatewayworker/start.php] is stopping ...
+2018-06-22 10:06:25 pid:6666 Workerman[gatewayworker/start.php] stop success
+2018-06-22 10:06:45 pid:6667 Workerman[gatewayworker/start.php] stop 
+2018-06-22 10:06:45 pid:6667 Workerman[gatewayworker/start.php] not run
+2018-06-22 10:07:47 pid:6682 Workerman[gatewayworker/start.php] restart 
+2018-06-22 10:07:47 pid:6682 Workerman[gatewayworker/start.php] is stopping ...
+2018-06-22 10:07:47 pid:6682 Workerman[gatewayworker/start.php] stop success
+2018-06-22 10:07:51 pid:6683 Workerman[gatewayworker/start.php] stop 
+2018-06-22 10:07:51 pid:6683 Workerman[gatewayworker/start.php] not run
+2018-06-22 10:07:55 pid:6684 Workerman[gatewayworker/start.php] status 
+2018-06-22 10:07:55 pid:6684 Workerman[gatewayworker/start.php] not run
+2018-06-22 10:08:59 pid:6692 Workerman[gatewayworker/start.php] stop 
+2018-06-22 10:08:59 pid:6692 Workerman[gatewayworker/start.php] not run
+2018-06-22 10:09:44 pid:6803 Workerman[gatewayworker/start.php] restart 
+2018-06-22 10:09:44 pid:6803 Workerman[gatewayworker/start.php] is stopping ...
+2018-06-22 10:09:44 pid:6803 Workerman[gatewayworker/start.php] stop success
+2018-06-22 10:14:40 pid:6851 Workerman[gatewayworker/start.php] stop 
+2018-06-22 10:14:40 pid:6851 Workerman[gatewayworker/start.php] not run
+2018-06-22 10:14:42 pid:6852 Workerman[gatewayworker/start.php] start in DEBUG mode
+2018-06-22 13:37:15 pid:6852 Workerman[start.php] stopping ...
+2018-06-22 13:37:15 pid:6852 Workerman[start.php] has been stopped
