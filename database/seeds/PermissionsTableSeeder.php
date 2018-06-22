@@ -12,9 +12,78 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-        Permission::create([
-            'name' => 'admin_login',
-            'desc' => '后台登录',
+        Permission::insert([
+            [
+                'name' => 'admin_login',
+                'desc' => '后台登录',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'permission',
+                'desc' => '权限管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'role',
+                'desc' => '会员组管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'site_config',
+                'desc' => '网站基本设置',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'order',
+                'desc' => '喊单管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'manage_user',
+                'desc' => '会员管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'manage_firewall',
+                'desc' => 'IP屏蔽管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'kick',
+                'desc' => '前台房间踢人,屏蔽IP',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'mute',
+                'desc' => '前台房间禁止发言',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'unmute',
+                'desc' => '前台房间解除禁言',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'room',
+                'desc' => '房间管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'manage_message',
+                'desc' => '聊天信息管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'manage_robots',
+                'desc' => '机器人管理',
+                'guard_name' => 'web',
+            ],
+            [
+                'name' => 'manage_server',
+                'desc' => '服务重启管理',
+                'guard_name' => 'web',
+            ]
+
         ]);
     }
 }

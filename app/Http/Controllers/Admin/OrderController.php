@@ -131,6 +131,7 @@ class OrderController extends Controller
         $order->stop_price = $request->input('order.stop_price');
         $order->earn_price = $request->input('order.earn_price');
         $order->position = $request->input('order.position');
+        $order->profit_loss = $request->input('order.profit_loss');
         $order->save();
 
         if($request->filled('roles')){

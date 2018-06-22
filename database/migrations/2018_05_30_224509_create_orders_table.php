@@ -21,6 +21,7 @@ class CreateOrdersTable extends Migration
             $table->decimal('stop_price', 10, 4)->comment('止损价格');
             $table->decimal('earn_price', 10, 4)->comment('止盈价格');
             $table->integer('position')->comment('仓位');
+            $table->decimal('profit_loss', 10, 4)->default(0)->comment('盈亏');
             $table->unsignedInteger('user_id');
             $table->timestamps();
 

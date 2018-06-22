@@ -15,7 +15,7 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('room_number')->unsigned()->unqiue()->comment('房间号');
+            $table->integer('room_number')->nullable()->unqiue()->comment('房间号, 现在还未用到，留作拓展');
             $table->string('name', 50)->comment('房间名称');
             $table->text('content')->nullable()->comment('房间介绍');
             $table->string('logo', 255)->nullable()->comment('Logo');
@@ -24,7 +24,7 @@ class CreateRoomsTable extends Migration
             $table->string('access_group_ids')->nullable()->comment('允许访问组');
             $table->text('pc_code')->nullable()->comment('PC 端 直播代码');
             $table->text('mobile_code')->nullable()->comment('移动端直播代码');
-            $table->unsignedInteger('online_service_id')->comment('在线客服');
+            $table->unsignedInteger('online_service_id')->default(0)->comment('在线客服');
             $table->unsignedInteger('user_id')->comment('房间讲师');
             $table->unsignedInteger('owner_id')->default(0)->comment('房间的所有者, 代理商');
             $table->boolean('robot_open')->default(0)->comment('机器人 1:开启 0:关闭');

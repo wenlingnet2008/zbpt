@@ -30,7 +30,8 @@ class UserController extends Controller
     {
 
         $users = User::with('roles', 'room')->when(\request()->user()->isOwner(), function($query){
-                        return $query->where('room_id', \request()->user()->room_id);
+                        $room = Room::where('owner_id', \request()->user()->id)->first();
+                        return $query->where('room_id', $room->id);
                     })->paginate(20);
 
         $data['users'] = $users;
@@ -72,7 +73,8 @@ class UserController extends Controller
         }
 
         if(!$request->user()->isAdmin()){
-            $user_arr['room_id'] = $request->user()->room_id;
+            $room = Room::where('owner_id', $request->user()->id)->first();
+            $user_arr['room_id'] = $room->id;
         }
 
         $user = User::create($user_arr);

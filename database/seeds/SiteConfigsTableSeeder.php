@@ -19,9 +19,9 @@ class SiteConfigsTableSeeder extends Seeder
             ['name' => 'copyright', 'value' => '版权信息'],
             ['name' => 'about_us', 'value'=>'关于我们'],
             ['name' => 'contact_us', 'value'=>'联系我们'],
-            ['name' => 'close', 'value'=>'站点关闭 0:开启｜1:关闭'],
+            ['name' => 'close', 'value'=>'0'],
             ['name' => 'close_reason', 'value'=>'关闭原因'],
-            ['name' => 'close_register', 'value'=>'注册关闭 0:开启| 1:关闭'],
+            ['name' => 'close_register', 'value'=>'0'],
 
         ]);
     }

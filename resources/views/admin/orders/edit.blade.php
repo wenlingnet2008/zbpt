@@ -51,6 +51,11 @@
             </tr>
 
             <tr>
+                <td class="tl"><span class="f_red">*</span> 盈亏</td>
+                <td><input name="order[profit_loss]" type="text" size="10" value="{{$order->profit_loss}}" id="profit_loss"/> <span id="dprofit_loss" class="f_red"></span></td>
+            </tr>
+
+            <tr>
                 <td class="tl"> 可查看的用户组</td>
                 <td>
                     <span id="roles_list">

@@ -29,6 +29,7 @@
                 <th>止损价</th>
                 <th>止盈价</th>
                 <th>仓位</th>
+                <th>盈亏</th>
                 <th>喊单人</th>
                 <th width="100">操作</th>
             </tr>
@@ -40,6 +41,7 @@
                     <td>{{$order->stop_price}}</td>
                     <td>{{$order->earn_price}}</td>
                     <td>{{$order->position}} %</td>
+                    <td>{{$order->profit_loss}}</td>
                     <td>{{$order->user->name}}</td>
                     <td>
                         <a href="{{ route('admin.orders.show', ['order'=>$order->id]) }}">查看</a>&nbsp;

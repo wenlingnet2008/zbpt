@@ -54,6 +54,14 @@
                         @endforeach
                     </select></td>
             </tr>
+            @else
+                <tr>
+                    <td class="tl"><span class="f_red">*</span> 所属组</td>
+                    <td><select name="role" >
+                            <option value="">选择组</option>
+                                <option value="普通会员" selected>普通会员</option>
+                        </select></td>
+                </tr>
             @endif
 
             <tr>

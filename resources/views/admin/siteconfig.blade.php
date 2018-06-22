@@ -75,8 +75,8 @@
                 <tr>
                     <td class="tl">新用户注册</td>
                     <td>
-                        <input type="radio" name="setting[colse_register]" value="0"  @if(!$site_configs['colse_register']) checked @endif /> 开启&nbsp;&nbsp;
-                        <input type="radio" name="setting[colse_register]" value="1"  @if($site_configs['colse_register']) checked @endif /> 关闭
+                        <input type="radio" name="setting[close_register]" value="0"  @if(!$site_configs['close_register']) checked @endif /> 开启&nbsp;&nbsp;
+                        <input type="radio" name="setting[close_register]" value="1"  @if($site_configs['close_register']) checked @endif /> 关闭
                     </td>
                 </tr>
 
