@@ -11,20 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
-Route::get('/firewall', function(){
-   return view('admin.error_notice', ['permission'=>'IP禁止访问']);
-});
+Route::get('/firewall', 'ErrorNoticeController@firewall')->name('notice.firewall');
 
-Route::get('/online_error', function(){
-    return view('admin.error_notice', ['permission'=>'在其他客户端登陆']);
-})->name('online.error');
+Route::get('/online_error','ErrorNoticeController@online')->name('notice.online_error');
 
-require_once base_path('routes/admin.php');
-
+require base_path('routes/admin.php');
 
 
 Auth::routes();

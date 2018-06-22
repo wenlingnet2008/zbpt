@@ -21,6 +21,11 @@ class DashboardController extends Controller
         return view('admin.index');
     }
 
+    public function left()
+    {
+        return view('admin.left');
+    }
+
 
     public function password(){
         return view('admin.password');

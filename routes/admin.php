@@ -10,7 +10,7 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::get('password', 'DashboardController@password')->name('dash.password');
     Route::post('change_password', 'DashboardController@changePassword')->name('dash.changepassword');
     Route::get('logout', 'LoginController@logout')->name('logout');
-    Route::get('left', function(){ return view('admin.left');})->name('left');
+    Route::get('left', 'DashboardController@left')->name('left');
 
     Route::get('siteconfig', 'SiteconfigController@index')->name('siteconfig');
     Route::post('siteconfig/update', 'SiteconfigController@update')->name('siteconfig.update');

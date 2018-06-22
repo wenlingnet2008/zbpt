@@ -33,10 +33,10 @@
                     //如果已经在线，则不重新连接，解决一个用户多个客户端同时连接问题
                     console.log(data.online);
                    if(data.online == 1){
-                       location.href = '{{route('online.error')}}';
+                       location.href = '{{route('notice.online_error')}}';
                        return;
                    }else if(data.online == 2){
-                        location.href = '/firewall';
+                        location.href = '{{route('notice.firewall')}}';
                         return;
                     }else{
                        connect();
