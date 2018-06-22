@@ -19,6 +19,8 @@ Route::get('/firewall', 'ErrorNoticeController@firewall')->name('notice.firewall
 
 Route::get('/online_error','ErrorNoticeController@online')->name('notice.online_error');
 
+Route::get('/online_time', 'ErrorNoticeController@onlineTime')->name('notice.onlinetime');
+
 require base_path('routes/admin.php');
 
 
@@ -34,3 +36,5 @@ Route::get('/room_check_online', 'RoomController@checkClientOnline')->name('room
 Route::post('/room/kick', 'RoomController@kick')->name('room.kick');
 Route::post('/room/mute', 'RoomController@mute')->name('room.mute');
 Route::post('/room/unmute', 'RoomController@unmute')->name('room.unmute');
+Route::get('/room_access/{id}', 'RoomController@access')->name('room.access');
+

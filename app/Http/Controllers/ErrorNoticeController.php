@@ -15,4 +15,10 @@ class ErrorNoticeController extends Controller
     {
         return view('admin.error_notice', ['permission'=>'在其他客户端登陆']);
     }
+
+    public function onlineTime()
+    {
+        return view('admin.error_notice', ['permission'=>'在线时间已经超过']);
+    }
+
 }

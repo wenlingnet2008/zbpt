@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Message;
+use App\Online;
 use App\Room;
 use App\User;
 use Carbon\Carbon;
@@ -21,55 +22,33 @@ class RoomController extends Controller
         $this->middleware('permission:kick|mute|unmute')->only(['mute', 'kick', 'unmute']);
     }
 
-    public function index($id)
+    public function index(Request $request, $id)
     {
         $room = Room::findOrFail($id);
         $data['room'] = $room;
 
-        $messages = Message::where([
-            ['room_id', $id],
-            ['to_user_id', 0],
-            ['created_at', '>' , Carbon::now()->format('Y-m-d')],
-        ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
-        $data['messages'] = $messages;
-        return view('room', $data);
-    }
-
-
-    //查看用户是否在登陆状态
-    public function checkClientOnline()
-    {
-
-        if(Firewall::isBlacklisted(\request()->ip())){
-            return response()->json(['online'=>2]);
+        if(!$room->hasRole('游客')){
+            $this->authorize('view', $room);
         }
 
-        $login_user = json_decode(\request()->cookie('access_token'), true);
-        if($login_user){
-            $user_id = $login_user['user_id'];
-            try{
-                if(!Room::userIsOnline($user_id)){
-                    return response()->json(['online'=>false]);
-                }else{
-                    return response()->json(['online'=>true]);
-                }
-            }catch (\Exception $e){
-                return response()->json(['online'=>false]);
+        //访问密码验证
+        if($request->filled('access_password')){
+            $access_password = $request->input('access_password');
+            if($room->access_password == $access_password){
+                session(['access_password'=>$access_password]);
+                return redirect()->route('room.index', ['id'=>$id]);
+            }else{
+                return view('admin.error_notice')->with(['status'=>'访问密码错误']);
             }
-
         }
-        return response()->json(['online'=>false]);
-    }
 
-    public function login(Request $request){
-        $this->validate($request, [
-            'client_id' => ['required'],
-            'room_id' => ['required', 'integer'],
-        ]);
-        $client_id = $request->input('client_id');
-        $room_id = $request->input('room_id');
+         //需要访问密码
+        if($room->access_password){
+            if(!session('access_password')){
+                return redirect()->route('room.access', ['id'=>$id]);
+            }
+        }
 
-        $room = Room::findOrFail($room_id);
 
         if(Auth::check()){
             $user = $request->user();
@@ -85,6 +64,83 @@ class RoomController extends Controller
                 $client_name = '游客'.$user_id;
             }
         }
+
+        $login_user = [
+            'user_id' => $user_id,
+            'name' => $client_name,
+        ];
+
+        //加入统计在线时间表
+        $online = Online::where('user_id', $user_id)->first();
+        if($online){
+            //不是当天的，则把 online_time = 0
+            if(!Carbon::now()->isSameDay(Carbon::parse($online->updated_at))){
+                $online->online_time = 0;
+                $online->save();
+            }
+            //在线时间超时
+            //  * 需要前端js做个在线时间统计，如停留时间超过，也一样跳转
+            //  这样做就无须一直请求后端来检测是否超时
+            if($online->online_time > 30){
+                //return redirect()->route('notice.onlinetime');
+            }
+        }else{
+            Online::create(['user_id'=>$user_id, 'online_time'=>0, 'total_time'=>0]);
+        }
+
+
+        $messages = Message::where([
+            ['room_id', $id],
+            ['to_user_id', 0],
+            ['created_at', '>' , Carbon::now()->format('Y-m-d')],
+        ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
+        $data['messages'] = $messages;
+
+        return response()->view('room', $data)->cookie('access_token', json_encode($login_user), 60*6);
+    }
+
+    public function access($id)
+    {
+        return view('room_access',['id'=>$id]);
+    }
+
+
+    //查看用户是否在登陆状态
+    public function checkClientOnline(Request $request)
+    {
+        if(Firewall::isBlacklisted(\request()->ip())){
+            return response()->json(['online'=>2]);
+        }
+        $login_user = json_decode(\request()->cookie('access_token'), true);
+        if($login_user){
+            $user_id = $login_user['user_id'];
+            try{
+                if(!Room::userIsOnline($user_id)){
+                    return response()->json(['online'=>false]);
+                }else{
+                    return response()->json(['online'=>true]);
+                }
+            }catch (\Exception $e){
+                return response()->json(['online'=>false]);
+            }
+        }
+        return response()->json(['online'=>false]);
+    }
+
+    public function login(Request $request){
+        $this->validate($request, [
+            'client_id' => ['required'],
+            'room_id' => ['required', 'integer'],
+        ]);
+        $client_id = $request->input('client_id');
+        $room_id = $request->input('room_id');
+        $room = Room::findOrFail($room_id);
+
+
+        $user = json_decode($request->cookie('access_token'), true);
+        $user_id = $user['user_id'];
+        $client_name = $user['name'];
+
 
         $login_user = [
             'user_id' => $user_id,
@@ -107,7 +163,8 @@ class RoomController extends Controller
         $new_message['client_list'] = $clients_list;
         Gateway::sendToClient($client_id, json_encode($new_message));
 
-        return response()->json(['message'=>'登陆成功'])->cookie('access_token', json_encode($login_user), 60*6);
+
+        return response()->json(['message'=>'登陆成功']);
     }
 
     //发言

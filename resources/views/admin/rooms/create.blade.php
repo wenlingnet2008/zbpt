@@ -36,15 +36,14 @@
             <tr>
                 <td class="tl"><span class="f_hid">*</span> 房间状态</td>
                 <td>
-                    <input type="radio" name="room[open]" value="1" checked  onclick="Dh('dclose');"><label for="status_1"> 开启</label>
+                    <input type="radio" name="room[open]" value="1" checked  onclick="Ds('dclose');"><label for="status_1"> 开启</label>
                     <input type="radio" name="room[open]" value="0"  onclick="Dh('dclose');"><label for="status_0">  关闭</label>
-                    <input type="radio" name="room[open]" value="2"  onclick="Ds('dclose');"><label for="status_2">  密码访问</label>
                 </td>
             </tr>
 
-            <tr id="dclose" style="display:none">
+            <tr id="dclose">
                 <td class="tl">访问密码</td>
-                <td><input type="input" name="room[access_password]" value=""><br/>
+                <td><input type="input" name="room[access_password]" value=""><img src="/admin/image/tips.png" width="16" height="16" title="留空表示无须密码访问" alt="tips" class="c_p" onclick="Dconfirm(this.title, '', 450);"><br/>
                 </td>
             </tr>
 
@@ -84,7 +83,7 @@
 
 
             <tr>
-                <td class="tl"><span class="f_red">*</span> 所有者/代理商</td>
+                <td class="tl"><span class="f_hid">*</span> 所有者/代理商</td>
                 <td><select name="room[owner_id]" >
                         <option value="0">选择代理</option>
                         @foreach($owners as $owner)

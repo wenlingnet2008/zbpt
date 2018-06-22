@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use LaraMall\Admin\Sysinfo\Facades\Sysinfo;
 
@@ -60,7 +61,7 @@ class DashboardController extends Controller
             'laraver' => Sysinfo::laraver(),
             'timezone' => Sysinfo::timezone(),
             'upload_max_filesize' => Sysinfo::upload_max_filesize(),
-            'mysql' => Sysinfo::mysql(),
+            'mysql' => last(DB::select('select version() as mysql_version'))->mysql_version,
             'php'   => Sysinfo::php(),
             'ip'    => Sysinfo::ip(),
             'webserver' => Sysinfo::webserver(),

@@ -50,25 +50,17 @@ class RobotConnection
             {
                 $this->say($id, $client_id, $client_name, $this->getMessage());
             });
-            echo "添加{$_SESSION[$this->robot['user_id']]}定时发言\n";
+            //echo "添加{$_SESSION[$this->robot['user_id']]}定时发言\n";
 
         }elseif($data['type'] == 'ping'){
             $connection->send('{"type":"pong"}');
             if(Carbon::now()->gte(Carbon::parse()->setTimeFromTimeString($this->robot['end_time']))){
-                echo "机器人{$this->robot['user_name']}下线\n";
+                //echo "机器人{$this->robot['user_name']}下线\n";
                 $connection->close();
-                echo "删除{$_SESSION[$this->robot['user_id']]}定时发言\n";
+                //echo "删除{$_SESSION[$this->robot['user_id']]}定时发言\n";
                 Timer::del($_SESSION[$this->robot['user_id']]);
             }
 
-//            if(!Gateway::isUidOnline($user_id)){
-//                if(Carbon::now()->gte(Carbon::parse()->setTimeFromTimeString($this->robot['up_time']))
-//                    and Carbon::now()->lt(Carbon::parse()->setTimeFromTimeString($this->robot['end_time']))
-//                ){
-//                    echo "机器人{$this->robot['user_name']}上线\n";
-//                    $this->connect();
-//                }
-//            }
 
         }
     }
