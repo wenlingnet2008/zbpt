@@ -21,6 +21,7 @@ class CreateMessagesTable extends Migration
             $table->string('to_user_name')->nullalbe()->comment('私聊的用户名称');
             $table->integer('room_id')->comment('所属房间');
             $table->text('content')->comment('发言的内容');
+            $table->string('ip_address');
             $table->timestamps();
         });
     }
