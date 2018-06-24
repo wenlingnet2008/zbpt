@@ -63,6 +63,10 @@ class RoomController extends Controller
         if($request->file('room.logo')){
             $room_arr['logo'] = $request->file('room.logo')->store(date('Ymd'), 'uploads');
         }
+        if($request->filled('room.limit_groups')){
+            $room_arr['limit_groups'] = implode("|", $request->input('room.limit_groups'));
+        }
+
         $room = Room::create($room_arr);
 
         $room->syncRoles($request->input('roles'));
@@ -130,6 +134,11 @@ class RoomController extends Controller
         $room->mobile_code = $request->input('room.mobile_code');
         $room->user_id = $request->input('room.user_id');
         $room->owner_id = $request->input('room.owner_id');
+        $room->time_limit = $request->input('room.time_limit');
+        $room->robot_open = $request->input('room.robot_open');
+        if($request->filled('room.limit_groups')){
+            $room->limit_groups = implode("|", $request->input('room.limit_groups'));
+        }
         $room->save();
 
         $room->syncRoles($request->input('roles'));

@@ -11,7 +11,8 @@ class Room extends Model
 {
     use HasRoles;
     protected $guard_name = 'web';
-    protected $fillable = ['name', 'content', 'logo', 'open', 'access_password', 'pc_code', 'mobile_code', 'user_id', 'owner_id'];
+    protected $fillable = ['name', 'content', 'logo', 'open', 'access_password',
+        'pc_code', 'mobile_code', 'user_id', 'owner_id', 'time_limit', 'limit_groups', 'robot_open'];
     public $timestamps = false;
 
     public function teacher()

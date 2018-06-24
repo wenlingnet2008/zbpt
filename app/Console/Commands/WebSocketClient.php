@@ -56,20 +56,25 @@ class WebSocketClient extends Command
         $worker->count = 1;
         $worker->onWorkerStart = function($worker){
             Timer::add(10, function(){
-                $robots = Robot::get();
+                $robots = Robot::with(['room'])->get();
                foreach ($robots as $robot){
-                   if(!Gateway::isUidOnline($robot['user_id'])){
-                       if(Carbon::now()->gte(Carbon::parse()->setTimeFromTimeString($robot['up_time']))
-                           and Carbon::now()->lt(Carbon::parse()->setTimeFromTimeString($robot['end_time']))
-                       ){
-                           //echo "机器人{$robot['user_name']}在线\n";
-                           $con = new RobotConnection($robot);
-                           $con->connect();
-                       }else{
-                           //echo "机器人{$robot['user_name']}没有到上线时间\n";
+                   if($robot->room->robot_open) {
+                       if (!Gateway::isUidOnline($robot['user_id'])) {
+                           if (Carbon::now()->gte(Carbon::parse()->setTimeFromTimeString($robot['up_time']))
+                               and Carbon::now()->lt(Carbon::parse()->setTimeFromTimeString($robot['end_time']))
+                           ) {
+                               //echo "机器人{$robot['user_name']}在线\n";
+                               $con = new RobotConnection($robot);
+                               $con->connect();
+                           } else {
+                               //echo "机器人{$robot['user_name']}没有到上线时间\n";
+                           }
+                       } else {
+                           //echo "机器人{$robot['user_name']}已经上线\n";
                        }
+
                    }else{
-                       //echo "机器人{$robot['user_name']}已经上线\n";
+                       //echo $robot->room->name."房间没有开启机器人\n";
                    }
                }
             });

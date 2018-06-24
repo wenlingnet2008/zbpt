@@ -21,7 +21,8 @@ class CreateRoomsTable extends Migration
             $table->string('logo', 255)->nullable()->comment('Logo');
             $table->boolean('open')->defalut(1)->comment('房间状态 1:开启 0:关闭');
             $table->string('access_password', 50)->nullable()->comment('房间访问密码');
-            $table->string('access_group_ids')->nullable()->comment('允许访问组');
+            $table->string('time_limit')->nullable()->comment('限时时间');
+            $table->string('limit_groups')->nullable()->comment('限时访问组');
             $table->text('pc_code')->nullable()->comment('PC 端 直播代码');
             $table->text('mobile_code')->nullable()->comment('移动端直播代码');
             $table->unsignedInteger('online_service_id')->default(0)->comment('在线客服');

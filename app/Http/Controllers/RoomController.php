@@ -60,7 +60,7 @@ class RoomController extends Controller
                 $user_id = $user['user_id'];
                 $client_name = $user['name'];
             }else{
-                $user_id = uniqid();
+                $user_id = uniqid('guest_');;
                 $client_name = '游客'.$user_id;
             }
         }
@@ -81,9 +81,12 @@ class RoomController extends Controller
             //在线时间超时
             //  * 需要前端js做个在线时间统计，如停留时间超过，也一样跳转
             //  这样做就无须一直请求后端来检测是否超时
-            if($online->online_time > 30){
-                //return redirect()->route('notice.onlinetime');
+            if($room->time_limit){
+                if($online->online_time > $room->time_limit){
+                    return redirect()->route('notice.onlinetime');
+                }
             }
+
         }else{
             Online::create(['user_id'=>$user_id, 'online_time'=>0, 'total_time'=>0]);
         }

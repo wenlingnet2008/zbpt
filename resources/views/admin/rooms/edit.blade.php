@@ -92,6 +92,32 @@
                     </select></td>
             </tr>
 
+            <tr id="dclose">
+                <td class="tl">限时时间</td>
+                <td><input type="input" name="room[time_limit]" value="{{$room->time_limit}}"><img src="/admin/image/tips.png" width="16" height="16" title="限制用户停留房间的时间，留空或者0表示不限制" alt="tips" class="c_p" onclick="Dconfirm(this.title, '', 450);"><br/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tl"> 限时用户组</td>
+                <td>
+                    <span id="limit_groups">
+                    @foreach($roles as $k => $role)
+                            <input type="checkbox" name="room[limit_groups][]" value="{{$role->name}}" @if(in_array($role->name, explode('|', $room->limit_groups))) checked @endif id="limit_c_{{$k}}"><label for="limit_c_{{$k}}"> {{ $role->name }}</label>
+                        @endforeach
+                    </span>
+                    <a href="javascript:check_box('limit_groups', true);" class="t">全选</a> / <a href="javascript:check_box('limit_groups', false);" class="t">全不选</a><br/>
+                    <img src="/admin/image/tips.png" width="16" height="16" title="限时用户组：如果 可访问用户组 无此 用户组， 则限时用户组不起作用" alt="tips" class="c_p" onclick="Dconfirm(this.title, '', 450);">
+                </td>
+            </tr>
+
+            <tr>
+                <td class="tl"><span class="f_hid">*</span> 机器人</td>
+                <td>
+                    <input type="radio" name="room[robot_open]" value="1" @if($room->robot_open == 1) checked @endif  onclick="Ds('dclose');"><label for="status_1"> 开启</label>
+                    <input type="radio" name="room[robot_open]" value="0" @if($room->robot_open == 0) checked @endif onclick="Dh('dclose');"><label for="status_0">  关闭</label>
+                </td>
+            </tr>
 
             <tr>
                 <td class="tl"><span class="f_hid">*</span> 介绍</td>
