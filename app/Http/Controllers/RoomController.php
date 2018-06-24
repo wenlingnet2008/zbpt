@@ -55,15 +55,19 @@ class RoomController extends Controller
             $user_id = $user->id;
             $client_name = $user->name;
         }else{
-            $user = json_decode($request->cookie('access_token'), true);
-            if($user){
-                $user_id = $user['user_id'];
-                $client_name = $user['name'];
+            //游客
+            $user = new User();
+
+            $cookie_user = json_decode($request->cookie('access_token'), true);
+            if($cookie_user){
+                $user_id = $cookie_user['user_id'];
+                $client_name = $cookie_user['name'];
             }else{
                 $user_id = uniqid('guest_');;
                 $client_name = '游客'.$user_id;
             }
         }
+
 
         $login_user = [
             'user_id' => $user_id,
@@ -81,9 +85,13 @@ class RoomController extends Controller
             //在线时间超时
             //  * 需要前端js做个在线时间统计，如停留时间超过，也一样跳转
             //  这样做就无须一直请求后端来检测是否超时
+
             if($room->time_limit){
                 if($online->online_time > $room->time_limit){
-                    return redirect()->route('notice.onlinetime');
+                    //游客一定在限时范围中，可做修改
+                    if($user->roles->isEmpty() or $user->hasAnyRole($room->limit_groups)){
+                        return redirect()->route('notice.onlinetime');
+                    }
                 }
             }
 
