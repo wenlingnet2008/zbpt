@@ -32,13 +32,13 @@
                 $.get('{{route('room.checkonline')}}', {}, function(data) {
                     //如果已经在线，则不重新连接，解决一个用户多个客户端同时连接问题
                     console.log(data.online);
-                   if(data.online == 1){
+                   if(data.online == 1){ // 一个用户多客户端不允许同时在线
                        location.href = '{{route('notice.online_error')}}';
                        return;
-                   }else if(data.online == 2){
+                   }else if(data.online == 2){ //ip被限制访问
                         location.href = '{{route('notice.firewall')}}';
                         return;
-                    }else{
+                    }else{  //网络问题引起的断开，重新连接
                        connect();
                    }
                 }, 'json');

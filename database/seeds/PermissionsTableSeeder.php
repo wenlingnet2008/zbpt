@@ -82,7 +82,12 @@ class PermissionsTableSeeder extends Seeder
                 'name' => 'manage_server',
                 'desc' => '服务重启管理',
                 'guard_name' => 'web',
-            ]
+            ],
+            [
+                'name' => 'manage_course',
+                'desc' => '课程管理',
+                'guard_name' => 'web',
+            ],
 
         ]);
     }

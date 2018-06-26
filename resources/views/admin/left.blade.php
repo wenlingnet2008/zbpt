@@ -133,15 +133,13 @@
                     <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.rooms.index')}}">房间列表</a></dd>
 
                 </dl>
-                <!--
+
                 <dl id="dl_6">
-                    <dt onclick="m(6);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">品牌管理</dt>
-                    <dd onclick="c(this);" style="display:none;"><a href="?">品牌列表</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=6&action=check">审核求购</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?file=category&mid=6">行业分类</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=6&file=html">更新数据</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=6&file=setting">模块设置</a></dd>
+                    <dt onclick="m(6);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">课程管理</dt>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.courses.index')}}">课程列表</a></dd>
+
                 </dl>
+                <!--
                 <dl id="dl_17">
                     <dt onclick="m(17);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">团购管理</dt>
                     <dd onclick="c(this);" style="display:none;"><a href="?moduleid=17&action=add">添加团购</a></dd>

@@ -31,6 +31,10 @@ class RoomController extends Controller
             $this->authorize('view', $room);
         }
 
+        if(!$room->open){
+            return response('房间关闭');
+        }
+
         //访问密码验证
         if($request->filled('access_password')){
             $access_password = $request->input('access_password');
