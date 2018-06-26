@@ -139,6 +139,18 @@
                     <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.courses.index')}}">课程列表</a></dd>
 
                 </dl>
+
+                <dl id="dl_7">
+                    <dt onclick="m(7);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">聊天消息管理</dt>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.message.index')}}">消息列表</a></dd>
+
+                </dl>
+
+                <dl id="dl_8">
+                    <dt onclick="m(8);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">权限管理</dt>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.permissions.index')}}">权限列表</a></dd>
+
+                </dl>
                 <!--
                 <dl id="dl_17">
                     <dt onclick="m(17);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">团购管理</dt>

@@ -40,6 +40,9 @@
                 <th>发言时间</th>
 
             </tr>
+            <tbody id="new_list">
+
+            </tbody>
             @foreach($messages as $message)
                 <tr align="center">
                     <td align="left">&nbsp;{{$message->user_name}}</td>
@@ -47,10 +50,10 @@
                     <td>{{$message->content}}</td>
                     <td>{{$message->room->name}}</td>
                     <td class="px12">{{$message->created_at}}</td>
-
-
                 </tr>
             @endforeach
+
+            <input type="hidden" value="{{$messages->first()->id}}" id="new">
 
         </table>
 
@@ -60,5 +63,32 @@
         {{$messages->links()}}
     </div>
     <script type="text/javascript">Menuon(1);</script>
+
+    <script type="text/javascript">
+        window.setInterval(function(){
+            var new_id = $("#new").val();
+            $.ajax({
+            url: '{{route('admin.message.new')}}',
+            data: {id:new_id},
+            dataType: 'json',
+            success: function(res) {
+
+                for(var r in res.data){
+                    $("#new_list").prepend(
+                        '<tr align="center"> ' +
+                        '<td align="left">&nbsp;' + res.data[r].user_name + '</td>' +
+                        ' <td class="px12">' + res.data[r].to_user_name + '</td> ' +
+                        '<td>' + res.data[r].content + '</td> ' +
+                        '<td>' + res.data[r].room.name + '</td> ' +
+                        '<td class="px12">' + res.data[r].created_at + '</td>' +
+                        ' </tr>'
+                    );
+                    $("#new").val(res.data[r].id);
+                }
+            }
+        })},5000);
+
+    </script>
+
 
 @stop

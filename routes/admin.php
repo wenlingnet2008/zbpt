@@ -32,6 +32,7 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::resource('rooms', 'RoomController');
 
     Route::get('message', 'MessageController@index')->name('message.index');
+    Route::get('message/newmessages', 'MessageController@getNewMessages')->name('message.new');
 
     Route::resource('robots', 'RobotController');
     Route::resource('robotmessages', 'RobotMessageController');
@@ -39,4 +40,5 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::get('server/{service?}/{action?}', 'ServerController@index')->name('server');
 
     Route::resource('courses', 'CourseController');
+    Route::resource('announcements', 'AnnouncementController');
 });

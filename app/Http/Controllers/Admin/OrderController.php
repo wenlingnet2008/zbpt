@@ -78,9 +78,6 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-
-
-
         $order = Order::find($id);
         $this->authorize('view', $order);
         dd($order->toArray());

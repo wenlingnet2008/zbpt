@@ -53,6 +53,8 @@
                 1.0</td></tr>
         <tr><td>服务器</td><td>
                 {{ $sysinfo['server'] }}</td></tr>
+        <tr><td>web服务</td><td>
+                {{ $sysinfo['webserver'] }}</td></tr>
         <tr><td>内存</td><td>
                 {{ $sysinfo['memory'] }}</td></tr>
         <tr><td>Laravel 版本</td><td>
