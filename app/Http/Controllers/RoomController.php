@@ -98,6 +98,7 @@ class RoomController extends Controller
             //不是当天的，则把 online_time = 0
             if(!Carbon::now()->isSameDay(Carbon::parse($online->updated_at))){
                 $online->online_time = 0;
+                $online->updated_at = Carbon::now();
                 $online->save();
             }
             //在线时间超时

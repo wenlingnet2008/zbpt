@@ -87,7 +87,7 @@ class WebSocketClient extends Command
         $admin = new Worker();
         $admin->count = 1;
         $admin->onWorkerStart = function($admin){
-            $con = new AsyncTcpConnection('ws://192.168.10.10:7272');
+            $con = new AsyncTcpConnection('ws://127.0.0.1:7272');
             $con->onMessage = function($connection, $data){
                 $data = json_decode($data, true);
                 if($data['type'] == 'init'){
@@ -110,6 +110,7 @@ class WebSocketClient extends Command
                             //不是当天的，则把 online_time = 0, 对于长时间在线超过1天的暂时不计入总的在线时间
                             if (!Carbon::now()->isSameDay(Carbon::parse($online->updated_at))) {
                                 $online->online_time = 0;
+                                $online->updated_at = Carbon::now();
                                 $online->save();
                             } else {
                                 //计算当天在线时间

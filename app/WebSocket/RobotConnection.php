@@ -19,7 +19,7 @@ class RobotConnection
     public function connect()
     {
 
-        $con = new AsyncTcpConnection('ws://192.168.10.10:7272');
+        $con = new AsyncTcpConnection('ws://127.0.0.1:7272');
         $con->onMessage = array($this, 'message');
         $con->connect();
     }
