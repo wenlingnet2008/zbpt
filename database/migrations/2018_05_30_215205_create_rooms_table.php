@@ -29,6 +29,7 @@ class CreateRoomsTable extends Migration
             $table->unsignedInteger('user_id')->comment('房间讲师');
             $table->unsignedInteger('owner_id')->default(0)->comment('房间的所有者, 代理商');
             $table->boolean('robot_open')->default(0)->comment('机器人 1:开启 0:关闭');
+            $table->integer('say_limit')->default(60)->comment('每分钟发言的次数');
 
             //$table->foreign('online_service_id')->references('id')->on('online_services');
 

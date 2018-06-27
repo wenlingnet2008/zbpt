@@ -20,7 +20,13 @@ class RoomController extends Controller
         $this->middleware('fw-block-blacklisted')->except('checkClientOnline');
         $this->middleware('auth')->only(['mute', 'kick', 'unmute']);
         $this->middleware('permission:kick|mute|unmute')->only(['mute', 'kick', 'unmute']);
-        $this->middleware('throttle:60,1')->only(['say']); //设定每分钟发言的次数 1分钟60次
+        if(\request()->filled('room_id')){
+            $room = Room::findOrFail(\request()->input('room_id'));
+            $say_limit = $room->say_limit;
+        }else{
+            $say_limit = 60;
+        }
+        $this->middleware('throttle:'.$say_limit)->only(['say']); //设定每分钟发言的次数 1分钟60次
     }
 
     public function index(Request $request, $id)

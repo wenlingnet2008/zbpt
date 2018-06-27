@@ -120,6 +120,12 @@
             </tr>
 
             <tr>
+                <td class="tl"><span class="f_hid">*</span> 发言次数限制(每分钟)</td>
+                <td><input type="input" name="room[say_limit]" value="{{$room->say_limit}}">次<img src="/admin/image/tips.png" width="16" height="16" title="限制用户每分钟的发言次数" alt="tips" class="c_p" onclick="Dconfirm(this.title, '', 450);"><br/>
+                </td>
+            </tr>
+
+            <tr>
                 <td class="tl"><span class="f_hid">*</span> 介绍</td>
                 <td><textarea name="room[content]" id="content" class="dsn">{{ $room->content }}</textarea>
                     <script type="text/javascript">

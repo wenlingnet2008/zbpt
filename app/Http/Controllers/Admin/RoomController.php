@@ -136,6 +136,7 @@ class RoomController extends Controller
         $room->owner_id = $request->input('room.owner_id');
         $room->time_limit = $request->input('room.time_limit');
         $room->robot_open = $request->input('room.robot_open');
+        $room->say_limit = $request->input('room.say_limit');
         if($request->filled('room.limit_groups')){
             $room->limit_groups = implode("|", $request->input('room.limit_groups'));
         }
