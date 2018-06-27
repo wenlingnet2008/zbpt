@@ -6,6 +6,7 @@ use Exception;
 use Illuminate\Auth\Access\AuthorizationException;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Symfony\Component\HttpKernel\Exception\HttpException;
 
 class Handler extends ExceptionHandler
 {
@@ -56,9 +57,20 @@ class Handler extends ExceptionHandler
                 : response()->view('admin.error_notice', ['permission'=>'没有权限访问']);
         }
 
+        if ($exception instanceof HttpException) {
+            if(str_contains($exception->getMessage(), 'Too Many Attempts')){
+                return $request->expectsJson()
+                    ? response()->json(['message' => '你的请求太频繁'], 200)
+                    : response()->view('admin.error_notice', ['permission'=>'你的请求太频繁']);
+            }
+
+        }
+
         if ($exception instanceof AuthorizationException) {
             return response()->view('admin.error_notice', ['permission'=>'没有授权访问']);
         }
+
+
 
         return parent::render($request, $exception);
     }

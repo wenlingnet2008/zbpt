@@ -29,7 +29,7 @@ class MessageController extends Controller
 
     public function getNewMessages(Request $request){
         $id = $request->input('id');
-        $messages = Message::with('room')->when(\request()->user()->isTeacher(), function($query) use($id){
+        $messages = Message::with('room')->when(\request()->user()->isTeacher(), function($query){
             $rooms = Room::where('user_id', \request()->user()->id)->pluck('id')->toArray();
             return $query->where([
                 ['to_user_id' , '=', 0],
