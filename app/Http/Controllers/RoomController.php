@@ -11,6 +11,7 @@ use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
+use Spatie\Permission\Models\Role;
 
 class RoomController extends Controller
 {
@@ -65,18 +66,24 @@ class RoomController extends Controller
             $user = $request->user();
             $user_id = $user->id;
             $client_name = $user->name;
+            if(!$user->isAdmin() and $room->user_id != $user->id and $room->owner_id != $user->id and $user->room_id != $room->id){
+                return view('admin.error_notice')->with(['permission'=>'不是该房间的用户，无法访问 ']);
+            }
         }else{
             //游客
             $user = new User();
 
-            $cookie_user = json_decode($request->cookie('access_token'), true);
-            if($cookie_user){
-                $user_id = $cookie_user['user_id'];
-                $client_name = $cookie_user['name'];
-            }else{
-                $user_id = uniqid('guest_');;
-                $client_name = '游客'.$user_id;
-            }
+//            $cookie_user = json_decode($request->cookie('access_token'), true);
+//            if($cookie_user){
+//                $user_id = $cookie_user['user_id'];
+//                $client_name = $cookie_user['name'];
+//            }else{
+//                $user_id = uniqid('guest_');;
+//                $client_name = '游客'.$user_id;
+//            }
+
+            $user_id = uniqid('guest_');;
+            $client_name = '游客'.$user_id;
         }
 
 
