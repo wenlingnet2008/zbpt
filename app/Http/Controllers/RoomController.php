@@ -204,6 +204,10 @@ class RoomController extends Controller
             'to_user_id' => ['required'],
             'room_id' => ['required', 'integer'],
             'content' => ['required'],
+        ],[
+            'to_user_id.required' => '聊天用户不能为空',
+            'room_id.required' => '房间不能为空',
+            'content.required' => '发言内容不能为空',
         ]);
 
 

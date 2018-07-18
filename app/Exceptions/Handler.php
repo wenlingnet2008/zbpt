@@ -53,21 +53,23 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             return $request->expectsJson()
-                ? response()->json(['message' => '没有权限访问'], 200)
+                ? response()->json(['message' => '没有权限访问'], 422)
                 : response()->view('admin.error_notice', ['permission'=>'没有权限访问']);
         }
 
         if ($exception instanceof HttpException) {
             if(str_contains($exception->getMessage(), 'Too Many Attempts')){
                 return $request->expectsJson()
-                    ? response()->json(['message' => '你的请求太频繁'], 200)
+                    ? response()->json(['message' => '你的请求太频繁'], 429)
                     : response()->view('admin.error_notice', ['permission'=>'你的请求太频繁']);
             }
 
         }
 
         if ($exception instanceof AuthorizationException) {
-            return response()->view('admin.error_notice', ['permission'=>'没有授权访问']);
+            return $request->expectsJson()
+                ? response()->json(['message' => '没有授权访问'], 422)
+                : response()->view('admin.error_notice', ['permission'=>'没有授权访问']);
         }
 
 
@@ -78,7 +80,7 @@ class Handler extends ExceptionHandler
     protected function unauthenticated($request, AuthenticationException $exception)
     {
         return $request->expectsJson()
-            ? response()->json(['message' => '请先登录访问'], 200)
+            ? response()->json(['message' => '请先登录访问'], 401)
             : redirect()->guest(route('login'));
     }
 }

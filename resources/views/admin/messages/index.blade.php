@@ -53,7 +53,7 @@
                 </tr>
             @endforeach
 
-            <input type="hidden" value="{{$messages->first()->id}}" id="new">
+            <input type="hidden" value="{{$messages->first()->id ?? ''}}" id="new">
 
         </table>
 
