@@ -217,7 +217,7 @@ class RoomController extends Controller
 
         if($user){
             if($user->isMute()){
-                return response()->json(['message'=>'你已经被禁止发言']);
+                return response()->json(['message'=>'你已经被禁止发言'], 422);
             }
 
             $to_user_id = $request->input('to_user_id');
@@ -225,7 +225,7 @@ class RoomController extends Controller
             $content = nl2br(e($content));
 
             if($to_user_id == $user->id){
-                return response()->json(['message'=>'自己不能更自己聊天']);
+                return response()->json(['message'=>'自己不能更自己聊天'], 422);
             }
 
             if($to_user_id == 'all'){
@@ -233,14 +233,14 @@ class RoomController extends Controller
             }else{
                 $to_user = User::find($to_user_id);
                 if(!$to_user){
-                    return response()->json(['message'=>'不能和游客聊天']);
+                    return response()->json(['message'=>'不能和游客聊天'], 422);
                 }
                 $room->sayPrivate($user, $to_user, $content);
             }
 
-
+            return response()->json(['message'=>'发言成功']);
         }else{
-            return response()->json(['message'=>'请先登录后才能发言']);
+            return response()->json(['message'=>'请先登录后才能发言'], 401);
         }
     }
 
