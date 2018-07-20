@@ -62,6 +62,16 @@
                         </div>
 
                         <div class="form-group">
+                            <label class="col-md-4 control-label">Mobile</label>
+
+                            <div class="col-md-6">
+                                <input id="mobile" type="text" class="form-control" name="mobile" required>
+                            </div>
+                        </div>
+
+                        <input  type="hidden" class="form-control" name="room_id" value="1">
+
+                        <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register

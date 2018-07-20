@@ -34,7 +34,6 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
         $data['room'] = $room;
-
         if(!$room->hasRole('游客')){
             $this->authorize('view', $room);
         }
@@ -73,17 +72,17 @@ class RoomController extends Controller
             //游客
             $user = new User();
 
-//            $cookie_user = json_decode($request->cookie('access_token'), true);
-//            if($cookie_user){
-//                $user_id = $cookie_user['user_id'];
-//                $client_name = $cookie_user['name'];
-//            }else{
-//                $user_id = uniqid('guest_');;
-//                $client_name = '游客'.$user_id;
-//            }
+            $cookie_user = json_decode($request->cookie('access_token'), true);
+            if($cookie_user){
+                $user_id = $cookie_user['user_id'];
+                $client_name = $cookie_user['name'];
+            }else{
+                $user_id = uniqid('guest_');;
+                $client_name = '游客'.$user_id;
+            }
 
-            $user_id = uniqid('guest_');;
-            $client_name = '游客'.$user_id;
+//            $user_id = uniqid('guest_');;
+//            $client_name = '游客'.$user_id;
         }
 
 
@@ -217,7 +216,7 @@ class RoomController extends Controller
 
         if($user){
             if($user->isMute()){
-                return response()->json(['message'=>'你已经被禁止发言'], 422);
+                return response()->json(['message'=>'你已经被禁止发言'], 400);
             }
 
             $to_user_id = $request->input('to_user_id');
@@ -225,7 +224,7 @@ class RoomController extends Controller
             $content = nl2br(e($content));
 
             if($to_user_id == $user->id){
-                return response()->json(['message'=>'自己不能更自己聊天'], 422);
+                return response()->json(['message'=>'自己不能更自己聊天'], 400);
             }
 
             if($to_user_id == 'all'){
@@ -233,7 +232,7 @@ class RoomController extends Controller
             }else{
                 $to_user = User::find($to_user_id);
                 if(!$to_user){
-                    return response()->json(['message'=>'不能和游客聊天'], 422);
+                    return response()->json(['message'=>'不能和游客聊天'], 400);
                 }
                 $room->sayPrivate($user, $to_user, $content);
             }

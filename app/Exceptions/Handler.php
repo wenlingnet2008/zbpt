@@ -53,7 +53,7 @@ class Handler extends ExceptionHandler
     {
         if ($exception instanceof \Spatie\Permission\Exceptions\UnauthorizedException) {
             return $request->expectsJson()
-                ? response()->json(['message' => '没有权限访问'], 422)
+                ? response()->json(['message' => '没有权限访问'], 400)
                 : response()->view('admin.error_notice', ['permission'=>'没有权限访问']);
         }
 
@@ -68,7 +68,7 @@ class Handler extends ExceptionHandler
 
         if ($exception instanceof AuthorizationException) {
             return $request->expectsJson()
-                ? response()->json(['message' => '没有授权访问'], 422)
+                ? response()->json(['message' => '没有授权访问'], 400)
                 : response()->view('admin.error_notice', ['permission'=>'没有授权访问']);
         }
 
