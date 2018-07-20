@@ -15,6 +15,10 @@
 //    return view('welcome');
 //});
 
+Route::get('/get_token', function(){
+   return response()->json(['_token'=>csrf_token()]);
+});
+
 Route::get('/firewall', 'ErrorNoticeController@firewall')->name('notice.firewall');
 
 Route::get('/online_error','ErrorNoticeController@online')->name('notice.online_error');
@@ -38,3 +42,5 @@ Route::post('/room/mute', 'RoomController@mute')->name('room.mute');
 Route::post('/room/unmute', 'RoomController@unmute')->name('room.unmute');
 Route::get('/room_access/{id}', 'RoomController@access')->name('room.access');
 
+
+//Route::any('/wechat', 'WeChatController@serve');
