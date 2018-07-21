@@ -35,6 +35,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/room/{id}', 'RoomController@index')->name('room.index');
 Route::post('/room/login', 'RoomController@login')->name('room.login');
 Route::post('/room/say', 'RoomController@say')->name('room.say');
+Route::post('/room/sayprivate', 'RoomController@sayPrivate')->name('room.sayprivate');
 Route::post('/room/flush', 'RoomController@flush')->name('room.flush');
 Route::get('/room_check_online', 'RoomController@checkClientOnline')->name('room.checkonline');
 Route::post('/room/kick', 'RoomController@kick')->name('room.kick');

@@ -99,6 +99,33 @@ class Room extends Model
 
     }
 
+    //@用户 公聊
+    public function sayToUser(User $user, User $to_user, $content)
+    {
+        $content = nl2br(htmlspecialchars($content));
+        $message = [
+            'type'=>'say',
+            'from_client_id'=>$user->id,
+            'from_client_name' => e($user->name),
+            'to_client_id'=>$to_user->id,
+            'to_client_name'=>$to_user->name,
+            'content'=>$content,
+            'time'=>date('Y-m-d H:i:s'),
+        ];
+
+        Gateway::sendToGroup($this->id ,json_encode($message));
+
+        Message::create([
+            'user_id' => $user->id,
+            'user_name' => $user->name,
+            'to_user_id' => $to_user->id,
+            'to_user_name' => $to_user->name,
+            'room_id' => $this->id,
+            'content' => $content,
+            'ip_address' => request()->ip(),
+        ]);
+    }
+
     //私聊
     public function sayPrivate(User $user, User $to_user, $content)
     {
@@ -108,13 +135,12 @@ class Room extends Model
             'from_client_id'=>$user->id,
             'from_client_name' => e($user->name),
             'to_client_id'=>$to_user->id,
+            'to_client_name'=>$to_user->name,
             'content'=>$content,
             'time'=>date('Y-m-d H:i:s'),
         ];
 
-        $message['content'] = '<a href="javascript:;" style="color: inherit;">@me</a> '.$content;
         Gateway::sendToUid($to_user->id, json_encode($message));
-        $message['content'] = '<a href="javascript:;" style="color: inherit;">@'.e($to_user->name).'</a> '.$content;
         Gateway::sendToUid($user->id, json_encode($message));
 
 

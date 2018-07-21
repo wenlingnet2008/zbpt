@@ -197,7 +197,7 @@ class RoomController extends Controller
     }
 
     //发言
-    public function say(Request $request)
+    public function say(Request $request, $type = 'public')
     {
         $this->validate($request, [
             'to_user_id' => ['required'],
@@ -220,27 +220,39 @@ class RoomController extends Controller
             }
 
             $to_user_id = $request->input('to_user_id');
+            $to_user = User::find($to_user_id);
             $content = $request->input('content');
             $content = nl2br(e($content));
 
             if($to_user_id == $user->id){
                 return response()->json(['message'=>'自己不能更自己聊天'], 400);
             }
+            if($type == 'public') {
+                if ($to_user_id == 'all') {
+                    $room->sayAll($user, $content);
+                } else {
 
-            if($to_user_id == 'all'){
-               $room->sayAll($user, $content);
-            }else{
-                $to_user = User::find($to_user_id);
-                if(!$to_user){
-                    return response()->json(['message'=>'不能和游客聊天'], 400);
+                    if (!$to_user) {
+                        return response()->json(['message' => '不能和游客聊天'], 400);
+                    }
+                    $room->sayToUser($user, $to_user, $content);
                 }
+            }else{
                 $room->sayPrivate($user, $to_user, $content);
+
             }
 
             return response()->json(['message'=>'发言成功']);
         }else{
             return response()->json(['message'=>'请先登录后才能发言'], 401);
         }
+    }
+
+
+    public function sayPrivate(Request $request)
+    {
+        return $this->say($request, 'private');
+
     }
 
 
