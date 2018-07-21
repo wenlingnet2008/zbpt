@@ -64,7 +64,7 @@ class User extends Authenticatable
     public function isAdmin()
     {
         $admin = Role::findById(1);
-        if ($this->hasRole($admin) and $this->is_admin === 1) {
+        if ($this->hasRole($admin) and $this->is_admin == 1) {
             return true;
         }
         return false;
