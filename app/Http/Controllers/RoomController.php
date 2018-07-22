@@ -7,7 +7,6 @@ use App\Online;
 use App\Room;
 use App\User;
 use Carbon\Carbon;
-use function foo\func;
 use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
