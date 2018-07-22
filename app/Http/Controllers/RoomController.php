@@ -283,15 +283,17 @@ class RoomController extends Controller
         $orders = Order::with(['order_type', 'user'=>function($query){
             $query->select('name', 'id');
         }])
-            ->whereHas('roles', function ($query) use($user){
-                $query->where('id', $user ? $user->roles->first()->id : 5);
+            ->when($user ? !$user->isAdmin() : true, function ($query) use($user){
+                $query->whereHas('roles', function ($query) use($user){
+                    $query->where('id', $user ? $user->roles->first()->id : 5);
+                });
             })
             ->when($request->type == 'history', function ($query){
                 $query->whereDate('created_at', '<', date('Y-m-d'));
-            })
-            ->when($request->type == 'now', function ($query){
+            }, function ($query){
                 $query->whereDate('created_at', date('Y-m-d'));
             })
+
             ->where('user_id', $teacher->id)
             ->paginate(20);
 
