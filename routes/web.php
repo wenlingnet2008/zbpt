@@ -42,6 +42,7 @@ Route::post('/room/kick', 'RoomController@kick')->name('room.kick');
 Route::post('/room/mute', 'RoomController@mute')->name('room.mute');
 Route::post('/room/unmute', 'RoomController@unmute')->name('room.unmute');
 Route::get('/room_access/{id}', 'RoomController@access')->name('room.access');
-
+Route::get('/room_teacher/{id}', 'RoomController@teacher')->name('room.teacher');
+Route::get('/room_orders/{id}', 'RoomController@orders')->name('room.orders');
 
 //Route::any('/wechat', 'WeChatController@serve');

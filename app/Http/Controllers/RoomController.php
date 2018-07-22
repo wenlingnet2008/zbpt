@@ -7,11 +7,14 @@ use App\Online;
 use App\Room;
 use App\User;
 use Carbon\Carbon;
+use function foo\func;
 use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
 use Spatie\Permission\Models\Role;
+use App\Order;
 
 class RoomController extends Controller
 {
@@ -21,64 +24,64 @@ class RoomController extends Controller
         $this->middleware('fw-block-blacklisted')->except('checkClientOnline');
         $this->middleware('auth')->only(['mute', 'kick', 'unmute']);
         $this->middleware('permission:kick|mute|unmute')->only(['mute', 'kick', 'unmute']);
-        if(\request()->filled('room_id')){
+        if (\request()->filled('room_id')) {
             $room = Room::findOrFail(\request()->input('room_id'));
             $say_limit = $room->say_limit;
-        }else{
+        } else {
             $say_limit = 60;
         }
-        $this->middleware('throttle:'.$say_limit)->only(['say']); //设定每分钟发言的次数 1分钟60次
+        $this->middleware('throttle:' . $say_limit)->only(['say']); //设定每分钟发言的次数 1分钟60次
     }
 
     public function index(Request $request, $id)
     {
         $room = Room::findOrFail($id);
         $data['room'] = $room;
-        if(!$room->hasRole('游客')){
+        if (!$room->hasRole('游客')) {
             $this->authorize('view', $room);
         }
 
-        if(!$room->open){
+        if (!$room->open) {
             return response('房间关闭');
         }
 
         //访问密码验证
-        if($request->filled('access_password')){
+        if ($request->filled('access_password')) {
             $access_password = $request->input('access_password');
-            if($room->access_password == $access_password){
-                session(['access_password'=>$access_password]);
-                return redirect()->route('room.index', ['id'=>$id]);
-            }else{
-                return view('admin.error_notice')->with(['status'=>'访问密码错误']);
+            if ($room->access_password == $access_password) {
+                session(['access_password' => $access_password]);
+                return redirect()->route('room.index', ['id' => $id]);
+            } else {
+                return view('admin.error_notice')->with(['status' => '访问密码错误']);
             }
         }
 
-         //需要访问密码
-        if($room->access_password){
-            if(!session('access_password')){
-                return redirect()->route('room.access', ['id'=>$id]);
+        //需要访问密码
+        if ($room->access_password) {
+            if (!session('access_password')) {
+                return redirect()->route('room.access', ['id' => $id]);
             }
         }
 
 
-        if(Auth::check()){
+        if (Auth::check()) {
             $user = $request->user();
             $user_id = $user->id;
             $client_name = $user->name;
-            if(!$user->isAdmin() and $room->user_id != $user->id and $room->owner_id != $user->id and $user->room_id != $room->id){
-                return view('admin.error_notice')->with(['permission'=>'不是该房间的用户，无法访问 ']);
+            if (!$user->isAdmin() and $room->user_id != $user->id and $room->owner_id != $user->id and $user->room_id != $room->id) {
+                return view('admin.error_notice')->with(['permission' => '不是该房间的用户，无法访问 ']);
             }
-        }else{
+        } else {
             //游客
             $user = new User();
 
             $cookie_user = json_decode($request->cookie('access_token'), true);
-            if($cookie_user){
+            if ($cookie_user) {
                 $user_id = $cookie_user['user_id'];
                 $client_name = $cookie_user['name'];
-            }else{
+            } else {
                 $user_id = uniqid('guest_');;
-                $client_name = '游客'.$user_id;
+                $client_name = '游客' . $user_id;
             }
 
 //            $user_id = uniqid('guest_');;
@@ -93,9 +96,9 @@ class RoomController extends Controller
 
         //加入统计在线时间表
         $online = Online::where('user_id', $user_id)->first();
-        if($online){
+        if ($online) {
             //不是当天的，则把 online_time = 0
-            if(!Carbon::now()->isSameDay(Carbon::parse($online->updated_at))){
+            if (!Carbon::now()->isSameDay(Carbon::parse($online->updated_at))) {
                 $online->online_time = 0;
                 $online->updated_at = Carbon::now();
                 $online->save();
@@ -104,59 +107,60 @@ class RoomController extends Controller
             //  * 需要前端js做个在线时间统计，如停留时间超过，也一样跳转
             //  这样做就无须一直请求后端来检测是否超时
 
-            if($room->time_limit){
-                if($online->online_time > $room->time_limit){
+            if ($room->time_limit) {
+                if ($online->online_time > $room->time_limit) {
                     //游客一定在限时范围中，可做修改
-                    if($user->roles->isEmpty() or $user->hasAnyRole($room->limit_groups)){
+                    if ($user->roles->isEmpty() or $user->hasAnyRole($room->limit_groups)) {
                         return redirect()->route('notice.onlinetime');
                     }
                 }
             }
 
-        }else{
-            Online::create(['user_id'=>$user_id, 'online_time'=>0, 'total_time'=>0]);
+        } else {
+            Online::create(['user_id' => $user_id, 'online_time' => 0, 'total_time' => 0]);
         }
 
 
         $messages = Message::where([
             ['room_id', $id],
             ['to_user_id', 0],
-            ['created_at', '>' , Carbon::now()->format('Y-m-d')],
+            ['created_at', '>', Carbon::now()->format('Y-m-d')],
         ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
         $data['messages'] = $messages;
 
-        return response()->view('room', $data)->cookie('access_token', json_encode($login_user), 60*6);
+        return response()->view('room', $data)->cookie('access_token', json_encode($login_user), 60 * 6);
     }
 
     public function access($id)
     {
-        return view('room_access',['id'=>$id]);
+        return view('room_access', ['id' => $id]);
     }
 
 
     //查看用户是否在登陆状态
     public function checkClientOnline(Request $request)
     {
-        if(Firewall::isBlacklisted(\request()->ip())){
-            return response()->json(['online'=>2]);
+        if (Firewall::isBlacklisted(\request()->ip())) {
+            return response()->json(['online' => 2]);
         }
         $login_user = json_decode(\request()->cookie('access_token'), true);
-        if($login_user){
+        if ($login_user) {
             $user_id = $login_user['user_id'];
-            try{
-                if(!Room::userIsOnline($user_id)){
-                    return response()->json(['online'=>false]);
-                }else{
-                    return response()->json(['online'=>true]);
+            try {
+                if (!Room::userIsOnline($user_id)) {
+                    return response()->json(['online' => false]);
+                } else {
+                    return response()->json(['online' => true]);
                 }
-            }catch (\Exception $e){
-                return response()->json(['online'=>false]);
+            } catch (\Exception $e) {
+                return response()->json(['online' => false]);
             }
         }
-        return response()->json(['online'=>false]);
+        return response()->json(['online' => false]);
     }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
         $this->validate($request, [
             'client_id' => ['required'],
             'room_id' => ['required', 'integer'],
@@ -178,7 +182,7 @@ class RoomController extends Controller
         ];
 
         //发送给房间内的所有用户
-        $new_message = array('type'=>'login', 'user_id'=>$user_id, 'name'=>e($client_name), 'time'=>date('Y-m-d H:i:s'));
+        $new_message = array('type' => 'login', 'user_id' => $user_id, 'name' => e($client_name), 'time' => date('Y-m-d H:i:s'));
         Gateway::sendToGroup($room_id, json_encode($new_message));
 
 
@@ -193,7 +197,7 @@ class RoomController extends Controller
         Gateway::sendToClient($client_id, json_encode($new_message));
 
 
-        return response()->json(['message'=>'登陆成功']);
+        return response()->json(['message' => '登陆成功']);
     }
 
     //发言
@@ -203,7 +207,7 @@ class RoomController extends Controller
             'to_user_id' => ['required'],
             'room_id' => ['required', 'integer'],
             'content' => ['required'],
-        ],[
+        ], [
             'to_user_id.required' => '聊天用户不能为空',
             'room_id.required' => '房间不能为空',
             'content.required' => '发言内容不能为空',
@@ -214,9 +218,9 @@ class RoomController extends Controller
         $login_user = json_decode(\request()->cookie('access_token'), true);
         $user = User::find($login_user['user_id']);
 
-        if($user){
-            if($user->isMute()){
-                return response()->json(['message'=>'你已经被禁止发言'], 400);
+        if ($user) {
+            if ($user->isMute()) {
+                return response()->json(['message' => '你已经被禁止发言'], 400);
             }
 
             $to_user_id = $request->input('to_user_id');
@@ -224,10 +228,10 @@ class RoomController extends Controller
             $content = $request->input('content');
             $content = nl2br(e($content));
 
-            if($to_user_id == $user->id){
-                return response()->json(['message'=>'自己不能更自己聊天'], 400);
+            if ($to_user_id == $user->id) {
+                return response()->json(['message' => '自己不能更自己聊天'], 400);
             }
-            if($type == 'public') {
+            if ($type == 'public') {
                 if ($to_user_id == 'all') {
                     $room->sayAll($user, $content);
                 } else {
@@ -237,14 +241,14 @@ class RoomController extends Controller
                     }
                     $room->sayToUser($user, $to_user, $content);
                 }
-            }else{
+            } else {
                 $room->sayPrivate($user, $to_user, $content);
 
             }
 
-            return response()->json(['message'=>'发言成功']);
-        }else{
-            return response()->json(['message'=>'请先登录后才能发言'], 401);
+            return response()->json(['message' => '发言成功']);
+        } else {
+            return response()->json(['message' => '请先登录后才能发言'], 401);
         }
     }
 
@@ -252,6 +256,49 @@ class RoomController extends Controller
     public function sayPrivate(Request $request)
     {
         return $this->say($request, 'private');
+
+    }
+
+    public function teacher($id)
+    {
+        $room = Room::findOrFail($id);
+
+        return response()->json($room->teacher->only(['id', 'name', 'image', 'introduce']));
+    }
+
+    public function orders(Request $request, $id)
+    {
+        $this->validate($request, [
+            'type' => ['required', Rule::in(['now', 'history'])]
+        ],[
+            'type.in' => 'type的值必须是now或者history'
+        ]);
+
+        $room = Room::findOrFail($id);
+        $teacher = $room->teacher;
+
+        $login_user = json_decode(\request()->cookie('access_token'), true);
+        $user = User::find($login_user['user_id']);
+
+
+        $orders = Order::with(['order_type', 'user'=>function($query){
+            $query->select('name', 'id');
+        }])
+            ->whereHas('roles', function ($query) use($user){
+                $query->where('id', $user ? $user->roles->first()->id : 5);
+            })
+            ->when($request->type == 'history', function ($query){
+                $query->whereDate('created_at', '<', date('Y-m-d'));
+            })
+            ->when($request->type == 'now', function ($query){
+                $query->whereDate('created_at', date('Y-m-d'));
+            })
+            ->where('user_id', $teacher->id)
+            ->paginate(20);
+
+        $orders->appends(['type'=>$request->type]);
+
+        return response()->json($orders);
 
     }
 
