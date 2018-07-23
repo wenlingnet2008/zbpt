@@ -294,7 +294,7 @@ class RoomController extends Controller
                 $query->whereDate('created_at', date('Y-m-d'));
             })
 
-            ->where('user_id', $teacher->id)
+            ->where('room_id', $room->id)
             ->paginate(20);
 
         $orders->appends(['type'=>$request->type]);

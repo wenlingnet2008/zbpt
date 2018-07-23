@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Requests\OrderRequest;
 use App\Order;
 use App\OrderType;
+use App\Room;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Role;
@@ -46,6 +47,11 @@ class OrderController extends Controller
 
         $roles = Role::where('id', '>', 1)->get();
         $data['roles'] = $roles;
+
+        $rooms = Room::when(!\request()->user()->isAdmin(), function ($query){
+            $query->where('user_id', \request()->user()->id);
+        })->get();
+        $data['rooms'] = $rooms;
 
         return view('admin.orders.create', $data);
     }

@@ -16,6 +16,14 @@
 
         <table cellspacing="0" class="tb">
             <tr>
+                <td class="tl"><span class="f_red">*</span> 所属房间</td>
+                <td><select name="order[room_id]"  id="room_id">
+                        @foreach($rooms as $room)
+                            <option value="{{$room->id}}">{{$room->name}}</option>
+                        @endforeach
+                    </select><span id="dcatid" class="f_red"></span></td>
+            </tr>
+            <tr>
                 <td class="tl"><span class="f_red">*</span> 喊单品种</td>
                 <td><select name="order[type_id]"  id="catid_1">
                         <option value="0">选择品种</option>
