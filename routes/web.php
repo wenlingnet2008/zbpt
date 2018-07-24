@@ -44,5 +44,6 @@ Route::post('/room/unmute', 'RoomController@unmute')->name('room.unmute');
 Route::get('/room_access/{id}', 'RoomController@access')->name('room.access');
 Route::get('/room_teacher/{id}', 'RoomController@teacher')->name('room.teacher');
 Route::get('/room_orders/{id}', 'RoomController@orders')->name('room.orders');
+Route::get('/room_user/{user_id}', 'RoomController@user')->name('room.user');
 
 //Route::any('/wechat', 'WeChatController@serve');

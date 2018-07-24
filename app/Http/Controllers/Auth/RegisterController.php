@@ -77,7 +77,7 @@ class RegisterController extends Controller
 
         return $this->registered($request, $user)
             ?: $request->expectsJson()
-                ? response()->json(['message' => '会员注册成功'], 200)
+                ? response()->json(['message' => '会员注册成功', 'data' => User::findOrFail($user->id)], 200)
                 :redirect($this->redirectPath());
     }
 

@@ -23,6 +23,7 @@ class RoomController extends Controller
         $this->middleware('fw-block-blacklisted')->except('checkClientOnline');
         $this->middleware('auth')->only(['mute', 'kick', 'unmute']);
         $this->middleware('permission:kick|mute|unmute')->only(['mute', 'kick', 'unmute']);
+        $this->middleware('permission:front_view_user')->only(['user']);
         if (\request()->filled('room_id')) {
             $room = Room::findOrFail(\request()->input('room_id'));
             $say_limit = $room->say_limit;
@@ -241,7 +242,12 @@ class RoomController extends Controller
                     $room->sayToUser($user, $to_user, $content);
                 }
             } else {
-                $room->sayPrivate($user, $to_user, $content);
+                if(Room::userIsOnline($to_user_id)){
+                    $room->sayPrivate($user, $to_user, $content);
+                }else{
+                    return response()->json(['message' => '用户不在线'], 400);
+                }
+
 
             }
 
@@ -263,6 +269,19 @@ class RoomController extends Controller
         $room = Room::findOrFail($id);
 
         return response()->json($room->teacher->only(['id', 'name', 'image', 'introduce']));
+    }
+
+
+    public function user($user_id)
+    {
+        $user = User::with(['roles'=>function($query){
+            $query->select('id', 'name');
+        }])->findOrFail($user_id);
+
+        $online = Online::where('user_id', $user_id)->firstOrFail();
+        $user->online_total_time = $online->total_time;
+
+        return collect($user)->except(['is_admin']);
     }
 
     public function orders(Request $request, $id)

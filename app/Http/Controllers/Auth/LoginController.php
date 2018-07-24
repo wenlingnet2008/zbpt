@@ -63,7 +63,7 @@ class LoginController extends Controller
 
         return $this->authenticated($request, $this->guard()->user())
             ?: $request->expectsJson()
-                ? response()->json(['message' => '会员登录成功'], 200)
+                ? response()->json(['message' => '会员登录成功', 'data' => $this->guard()->user()], 200)
                 : redirect()->intended($this->redirectPath());
     }
 
