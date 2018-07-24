@@ -88,6 +88,11 @@ class PermissionsTableSeeder extends Seeder
                 'desc' => '课程管理',
                 'guard_name' => 'web',
             ],
+            [
+                'name' => 'front_view_user',
+                'desc' => '前台查看用户',
+                'guard_name' => 'web',
+            ],
 
         ]);
     }
