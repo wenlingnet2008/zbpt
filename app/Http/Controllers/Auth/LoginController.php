@@ -46,7 +46,9 @@ class LoginController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/')->withCookie(Cookie::make('access_token', ''));
+        return $request->expectsJson()
+            ? response()->json(['message'=>'退出成功'], 200)->withCookie(Cookie::make('access_token', ''))
+            : redirect('/')->withCookie(Cookie::make('access_token', ''));
     }
 
     /**
