@@ -131,7 +131,7 @@ class Room extends Model
     {
         $content = nl2br(htmlspecialchars($content));
         $message = [
-            'type'=>'say',
+            'type'=>'say_private',
             'from_client_id'=>$user->id,
             'from_client_name' => e($user->name),
             'to_client_id'=>$to_user->id,

@@ -137,6 +137,37 @@ class RoomController extends Controller
     }
 
 
+
+    private function getLoginUser(Request $request)
+    {
+        if (Auth::check()) {
+            $user = $request->user();
+            $user_id = $user->id;
+            $client_name = $user->name;
+
+        } else {
+
+            $cookie_user = json_decode($request->cookie('access_token'), true);
+            if ($cookie_user) {
+                $user_id = $cookie_user['user_id'];
+                $client_name = $cookie_user['name'];
+            } else {
+                $user_id = uniqid('guest_');;
+                $client_name = '游客' . $user_id;
+            }
+
+        }
+
+        $login_user = [
+            'user_id' => $user_id,
+            'name' => $client_name,
+        ];
+
+
+        return $login_user;
+
+    }
+
     //查看用户是否在登陆状态
     public function checkClientOnline(Request $request)
     {
@@ -171,6 +202,9 @@ class RoomController extends Controller
 
 
         $user = json_decode($request->cookie('access_token'), true);
+        if(!$user){
+            $user = $this->getLoginUser($request);
+        }
         $user_id = $user['user_id'];
         $client_name = $user['name'];
 
@@ -197,7 +231,7 @@ class RoomController extends Controller
         Gateway::sendToClient($client_id, json_encode($new_message));
 
 
-        return response()->json(['message' => '登陆成功']);
+        return response()->json(['message' => '登陆成功'])->cookie('access_token', json_encode($login_user), 60 * 6);
     }
 
     //发言
