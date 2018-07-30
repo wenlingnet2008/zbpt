@@ -150,6 +150,7 @@ class Room extends Model
             'to_user_id' => $to_user->id,
             'to_user_name' => $to_user->name,
             'room_id' => $this->id,
+            'is_private' => 1,
             'content' => $content,
             'ip_address' => request()->ip(),
         ]);

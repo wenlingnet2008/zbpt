@@ -200,11 +200,8 @@ class RoomController extends Controller
         $room_id = $request->input('room_id');
         $room = Room::findOrFail($room_id);
 
+        $user = $this->getLoginUser($request);
 
-        $user = json_decode($request->cookie('access_token'), true);
-        if(!$user){
-            $user = $this->getLoginUser($request);
-        }
         $user_id = $user['user_id'];
         $client_name = $user['name'];
 
@@ -297,6 +294,90 @@ class RoomController extends Controller
         return $this->say($request, 'private');
 
     }
+
+
+    //私聊用户列表
+    public function privateUserList(Request $request)
+    {
+        $this->validate($request, [
+            'room_id' => ['required', 'integer'],
+        ]);
+
+        $login_user = json_decode($request->cookie('access_token'), true);
+
+        $user = User::findOrFail($login_user['user_id']);
+
+        $room_id = $request->room_id;
+
+        $user_ids = Message::where('user_id', $user->id)->where('is_private', 1)->groupBy('to_user_id')->pluck('to_user_id');
+        $to_user_ids = Message::where('to_user_id', $user->id)->where('is_private', 1)->groupBy('user_id')->pluck('user_id');
+
+        $private_user_ids = array_unique($user_ids->merge($to_user_ids)->toArray());
+
+
+        $users = User::select('id', 'name')->whereIn('id', $private_user_ids)->get();
+
+
+        return response()->json($users);
+
+    }
+
+
+    //获取私聊的聊天列表
+    public function privateSayList(Request $request)
+    {
+        $this->validate($request, [
+            'to_user_id' => ['required'],
+        ]);
+
+        $login_user = json_decode($request->cookie('access_token'), true);
+
+        $user = User::findOrFail($login_user['user_id']);
+
+        $messages = Message::where([
+            ['user_id', $user->id],
+            ['to_user_id', $request->to_user_id],
+            ['is_private', 1],
+
+        ])->orWhere(function ($query) use($user){
+            $query->where([
+                ['user_id', \request()->to_user_id],
+                ['to_user_id', $user->id],
+                ['is_private', 1],
+            ]);
+        })->orderBy('created_at', 'asc')->get();
+
+        return response()->json($messages);
+
+    }
+
+
+
+
+
+    //显示右键操作权限菜单
+    public function getDoPermissionMenu(Request $request)
+    {
+        $login_user = json_decode($request->cookie('access_token'), true);
+
+        $user = User::find($login_user['user_id']);
+
+
+        if($user){
+            $permission = ['say_private' => '私聊'];
+            if($user->can('front_view_user')){
+                $permission['view_user'] = '查看用户资料';
+            }
+            if($user->can('kick')){
+                $permission['manage_user'] = '踢人｜禁言功能';
+            }
+
+            return response()->json(['message'=>'获取操作权限成功', 'permission'=>$permission]);
+        }
+
+        return response()->json(['message'=>'没有权限操作'], 400);
+    }
+
 
     public function teacher($id)
     {
