@@ -358,13 +358,19 @@ class RoomController extends Controller
     //显示右键操作权限菜单
     public function getDoPermissionMenu(Request $request)
     {
+        $this->validate($request, [
+            'to_user_id' => ['required'],
+        ]);
         $login_user = json_decode($request->cookie('access_token'), true);
 
         $user = User::find($login_user['user_id']);
 
 
         if($user){
-            $permission = ['say_private' => '私聊'];
+            if($user->id != $request->to_user_id){
+                $permission = ['say_private' => '私聊'];
+            }
+
             if($user->can('front_view_user')){
                 $permission['view_user'] = '查看用户资料';
             }
