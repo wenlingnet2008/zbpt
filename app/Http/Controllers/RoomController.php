@@ -200,20 +200,24 @@ class RoomController extends Controller
         $room_id = $request->input('room_id');
         $room = Room::findOrFail($room_id);
 
-        $user = $this->getLoginUser($request);
+        $login_user = $this->getLoginUser($request);
+        $login_user['client_id'] = $client_id;
 
-        $user_id = $user['user_id'];
-        $client_name = $user['name'];
+        $user_id = $login_user['user_id'];
+        $client_name = $login_user['name'];
 
+        $user = User::find($user_id);
+        if($user){
+            $roles = $user->roles()->select('id', 'name')->get();
+        }else{
+            $roles = [
+                ['id' => 5, 'name' => '游客'],
+            ];
+        }
 
-        $login_user = [
-            'user_id' => $user_id,
-            'name' => $client_name,
-            'client_id' => $client_id,
-        ];
 
         //发送给房间内的所有用户
-        $new_message = array('type' => 'login', 'user_id' => $user_id, 'name' => e($client_name), 'time' => date('Y-m-d H:i:s'));
+        $new_message = array('type' => 'login', 'user_id' => $user_id, 'name' => e($client_name), 'roles' => $roles,'time' => date('Y-m-d H:i:s'));
         Gateway::sendToGroup($room_id, json_encode($new_message));
 
 
@@ -288,11 +292,27 @@ class RoomController extends Controller
         }
     }
 
-
+    //私聊
     public function sayPrivate(Request $request)
     {
         return $this->say($request, 'private');
 
+    }
+
+    //用户是否已经登录
+    public function isLogin()
+    {
+        $login_user = json_decode(\request()->cookie('access_token'), true);
+        if (Auth::check() or $login_user) {
+            $user = \request()->user();
+            if(!$user){
+                $user = User::find($login_user['user_id']);
+            }
+
+            return response()->json(['message'=>'已经登录', 'is_login' => true , 'data' => $user]);
+        }
+
+        return response()->json(['message'=>'没有登录', 'is_login' => false]);
     }
 
 

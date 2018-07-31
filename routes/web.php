@@ -32,6 +32,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/is_login', 'RoomController@isLogin')->name('room.islogin');
+
 Route::get('/room/{id}', 'RoomController@index')->name('room.index');
 Route::post('/room/login', 'RoomController@login')->name('room.login');
 Route::post('/room/say', 'RoomController@say')->name('room.say');
