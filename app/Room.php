@@ -83,6 +83,7 @@ class Room extends Model
             'from_client_name' => e($user->name),
             'to_client_id'=>'all',
             'content'=>$content,
+            'roles' => $user->roles()->select('id', 'name')->get(),
             'time'=>date('Y-m-d H:i:s'),
         ];
         Gateway::sendToGroup($this->id ,json_encode($message));
@@ -110,6 +111,7 @@ class Room extends Model
             'to_client_id'=>$to_user->id,
             'to_client_name'=>$to_user->name,
             'content'=>$content,
+            'roles' => $user->roles()->select('id', 'name')->get(),
             'time'=>date('Y-m-d H:i:s'),
         ];
 

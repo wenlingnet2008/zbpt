@@ -367,11 +367,11 @@ class RoomController extends Controller
 
 
         if($user){
-            if($user->id != $request->to_user_id){
+            if($user->id != $request->to_user_id and !str_contains($request->to_user_id, 'guest_')){
                 $permission = ['say_private' => '私聊'];
             }
 
-            if($user->can('front_view_user')){
+            if($user->can('front_view_user') and !str_contains($request->to_user_id, 'guest_')){
                 $permission['view_user'] = '查看用户资料';
             }
             if($user->can('kick')){
