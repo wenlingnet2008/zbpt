@@ -429,6 +429,25 @@ class RoomController extends Controller
             $teacher['image'] = Storage::disk('uploads')->url($teacher['image']);
         }
 
+        $teacher['order_num'] = Order::where([
+            ['room_id', $id],
+            ['user_id', $teacher['id']],
+        ])->count();
+
+        $teacher['avg_profit'] = number_format(Order::where([
+            ['room_id', $id],
+            ['user_id', $teacher['id']],
+        ])->avg('profit_loss'), 2);
+
+        $profit_num = Order::where([
+            ['room_id', $id],
+            ['user_id', $teacher['id']],
+            ['profit_loss', '>', 0],
+        ])->count();
+
+
+        $teacher['success_rate'] =  $profit_num ?  number_format(($profit_num / $teacher['order_num'] * 100), 2) : 0;
+
 
         return response()->json($teacher);
     }
