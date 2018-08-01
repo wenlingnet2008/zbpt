@@ -305,9 +305,20 @@ class RoomController extends Controller
         $login_user = json_decode(\request()->cookie('access_token'), true);
         if (Auth::check() or $login_user) {
             $user = \request()->user();
+
             if(!$user){
-                $user = User::find($login_user['user_id']);
+                $user = User::with(['roles'=>function($query){
+                    $query->select('id', 'name');
+                }])->find($login_user['user_id']);
+            }else{
+                $user->roles = $user->roles()->select('id', 'name')->get();
             }
+
+            if($user){
+                $online = Online::where('user_id', $user->id)->firstOrFail();
+                $user->online_total_time = $online->total_time;
+            }
+
 
             return $user
                     ? response()->json(['message'=>'已经登录', 'is_login' => true , 'data' => $user])
@@ -389,6 +400,7 @@ class RoomController extends Controller
 
 
         if($user){
+            $permission = [];
             if($user->id != $request->to_user_id and !str_contains($request->to_user_id, 'guest_')){
                 $permission = ['say_private' => '私聊'];
             }
