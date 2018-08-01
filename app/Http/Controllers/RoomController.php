@@ -10,6 +10,7 @@ use Carbon\Carbon;
 use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
 use Spatie\Permission\Models\Role;
