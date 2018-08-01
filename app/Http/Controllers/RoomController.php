@@ -315,8 +315,8 @@ class RoomController extends Controller
             }
 
             if($user){
-                $online = Online::where('user_id', $user->id)->firstOrFail();
-                $user->online_total_time = $online->total_time;
+                $online = Online::where('user_id', $user->id)->first();
+                $user->online_total_time = $online ? $online->total_time : 0 ;
             }
 
 
@@ -433,8 +433,8 @@ class RoomController extends Controller
             $query->select('id', 'name');
         }])->findOrFail($user_id);
 
-        $online = Online::where('user_id', $user_id)->firstOrFail();
-        $user->online_total_time = $online->total_time;
+        $online = Online::where('user_id', $user_id)->first();
+        $user->online_total_time = $online ? $online->total_time : 0;
 
         return collect($user)->except(['is_admin']);
     }
