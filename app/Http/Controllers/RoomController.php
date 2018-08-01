@@ -423,7 +423,13 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
 
-        return response()->json($room->teacher->only(['id', 'name', 'image', 'introduce']));
+        $teacher = $room->teacher->only(['id', 'name', 'image', 'introduce']);
+        if($teacher->image){
+            $teacher->image = Storage::disk('uploads')->url($teacher->image);
+        }
+
+
+        return response()->json($teacher);
     }
 
 
@@ -435,6 +441,10 @@ class RoomController extends Controller
 
         $online = Online::where('user_id', $user_id)->first();
         $user->online_total_time = $online ? $online->total_time : 0;
+        if($user->image){
+            $user->image = Storage::disk('uploads')->url($user->image);
+        }
+
 
         return collect($user)->except(['is_admin']);
     }
