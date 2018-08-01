@@ -309,7 +309,9 @@ class RoomController extends Controller
                 $user = User::find($login_user['user_id']);
             }
 
-            return response()->json(['message'=>'已经登录', 'is_login' => true , 'data' => $user]);
+            return $user
+                    ? response()->json(['message'=>'已经登录', 'is_login' => true , 'data' => $user])
+                    : response()->json(['message'=>'没有登录', 'is_login' => false]);
         }
 
         return response()->json(['message'=>'没有登录', 'is_login' => false]);

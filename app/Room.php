@@ -36,10 +36,16 @@ class Room extends Model
         //绑定用户
         Gateway::bindUid($user['client_id'], $user['user_id']);
         //设置用户session Gateworker的服务器session
+        $roles_user = User::find($user['user_id']);
         Gateway::setSession($user['client_id'], [
             'user_id' => $user['user_id'],
             'client_name'  => e($user['name']),
             'room_id' => $this->id,
+            'roles' => $roles_user
+                ? $roles_user->roles()->select('id', 'name')->get()->toArray()
+                : [
+                    ['id' => 5, 'name' => '游客'],
+                  ],
         ]);
         //用户加入房间
         Gateway::joinGroup($user['client_id'], $this->id);
@@ -52,7 +58,7 @@ class Room extends Model
         $clients = Gateway::getClientSessionsByGroup($this->id);
         foreach ($clients as $user){
             if(!empty($user['user_id'])){
-                $user_list[$user['user_id']] = $user['client_name'];
+                $user_list[$user['user_id']] = $user['client_name'] . '||' . $user['roles'][0]['name'];
             }
         }
         return $user_list;
