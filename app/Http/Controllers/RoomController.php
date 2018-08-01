@@ -424,8 +424,8 @@ class RoomController extends Controller
         $room = Room::findOrFail($id);
 
         $teacher = $room->teacher->only(['id', 'name', 'image', 'introduce']);
-        if($teacher->image){
-            $teacher->image = Storage::disk('uploads')->url($teacher->image);
+        if($teacher['image']){
+            $teacher['image'] = Storage::disk('uploads')->url($teacher['image']);
         }
 
 
