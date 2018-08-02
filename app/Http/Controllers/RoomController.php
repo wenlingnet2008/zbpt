@@ -548,4 +548,48 @@ class RoomController extends Controller
         return response()->json(['message'=>'解除禁言操作成功']);
     }
 
+
+    // 搜索房间内用户
+    public function searchOnlineUser(Request $request)
+    {
+        $this->validate($request, [
+            'room_id' => ['required'],
+            'name'  => ['required'],
+        ]);
+
+        $name = $request->name;
+
+        $room = Room::findOrFail($request->room_id);
+
+        $user_lists = $room->getUserList();
+
+        $like_users = collect($user_lists)->filter(function ($value) use($name){
+                return str_contains($value, $name);
+        });
+
+        return response()->json($like_users);
+    }
+
+    //获取房间内的客服
+    public function customerService($id)
+    {
+        $room = Room::findOrFail($id);
+
+        $users = User::whereHas('roles', function ($query){
+            $query->where('id', 8);
+        })->where('room_id', $room->id)->get();
+
+        $c_services = $users->map(function ($user){
+            if(Room::userIsOnline($user->id)){
+                $user->is_online = true;
+            }else{
+                $user->is_online = false;
+            }
+            return $user;
+        });
+
+
+        return response()->json($c_services);
+    }
+
 }

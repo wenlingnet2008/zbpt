@@ -50,5 +50,7 @@ Route::get('/room_user/{user_id}', 'RoomController@user')->name('room.user');
 Route::post('/room/permission_menu', 'RoomController@getDoPermissionMenu')->name('room.getdopermissionmenu');
 Route::post('/room/private_user_list', 'RoomController@privateUserList')->name('room.privateuserlist');
 Route::post('/room/private_say_list', 'RoomController@privateSayList')->name('room.privatesaylist');
+Route::post('/room/search_online_user', 'RoomController@searchOnlineUser')->name('room.searchonlineuser');
+Route::get('/room_customer_service/{id}', 'RoomController@customerService')->name('room.customerservice');
 
 //Route::any('/wechat', 'WeChatController@serve');

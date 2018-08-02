@@ -21,6 +21,7 @@ class RolesTableSeeder extends Seeder
         Role::insert( ['id'=>5, 'name' => '游客', 'type'=>'系统', 'guard_name'=>'web']);
         Role::insert( ['id'=>6, 'name' => '讲师', 'type'=>'系统', 'guard_name'=>'web']);
         Role::insert( ['id'=>7, 'name' => '代理商', 'type'=>'系统', 'guard_name'=>'web']);
+        Role::insert( ['id'=>8, 'name' => '客服', 'type'=>'系统', 'guard_name'=>'web']);
 
 
     }
