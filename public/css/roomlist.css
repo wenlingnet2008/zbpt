@@ -1,0 +1,178 @@
+.searchBox {
+  width: 200px;
+  height: 30px;
+  background: #dddedf;
+  border-radius: 30px;
+  margin: 10px 45px 0 0;
+}
+
+.searchBox .input {
+  width: 160px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border: none;
+  font-size: 14px;
+  color: #333;
+  background: #dddedf;
+  border-radius: 30px 0 0 30px;
+}
+
+.searchBox .btnsearch {
+  width: 40px;
+  height: 30px;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+
+.mains {
+  width: 100%;
+  overflow: hidden;
+  margin: 9px auto 0;
+}
+
+.mains .leftBox {
+  height: 100%;
+  position: relative;
+}
+
+.mains .leftBox .leftContent {
+  width: 70px;
+  height: 100%;
+  background: #292a33;
+}
+
+.mains .leftBox .navBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mains .leftBox .navBox .navs {
+  width: 70px;
+  height: 53px;
+  margin: 20px 0 0;
+  cursor: pointer;
+}
+
+.mains .leftBox .navBox .navs .bgsbox {
+  width: 100%;
+  overflow: hidden;
+  height: 23px;
+}
+
+.mains .leftBox .navBox .navs .bgsbox .nacsbg {
+  max-width: 100%;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.mains .leftBox .navBox .navs .navstxt {
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
+}
+
+.mains .livelists {
+  height: 100%;
+  overflow-y: auto;
+  margin: 0 0 0 26px;
+}
+
+.mains .livelists .liveBt {
+  height: 24px;
+  border-left: 4px solid #2093ff;
+  font-size: 24px;
+  padding: 0 0 0 13px;
+  color: #333333;
+}
+
+.mains .livelists .liveul {
+  overflow: hidden;
+  clear: both;
+}
+
+.mains .livelists .liveul .liveli {
+  width: 286px;
+  height: 220px;
+  background: #fff;
+  border-radius: 4px;
+  margin: 14px 14px 6px 0;
+}
+
+.mains .livelists .liveul .liveli .livelist {
+  display: block;
+  width: 100%;
+  height: 100%;
+  color: #333;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveimgBox {
+  width: 100%;
+  height: 166px;
+  position: relative;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveimgBox .livebg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 4px 4px 0 0;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveimgBox .livestate {
+  width: 70px;
+  height: 22px;
+  line-height: 22px;
+  color: #fff;
+  font-size: 12px;
+  padding: 0 0 0 26px;
+  background: #2093ff url(../imgs/rliveing.png) no-repeat 5px center;
+  background-size: 14px 14px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  border-radius: 4px 0 4px 0;
+  z-index: 1;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveInfors {
+  width: 100%;
+  padding: 7px;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveInfors .livename {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #414141;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveInfors .liveabout {
+  width: 100%;
+  overflow: hidden;
+  margin: 15px 0 0;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveInfors .liveabout div {
+  color: #828282;
+  font-size: 12px;
+}
+
+.mains .livelists .liveul .liveli .livelist .liveInfors .liveabout .livenums {
+  background: url(../imgs/rperoples.png) no-repeat left center;
+  background-size: 14px 12px;
+  padding: 0 0 0 20px;
+}

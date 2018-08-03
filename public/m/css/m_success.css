@@ -1,0 +1,98 @@
+header, footer, main, nav {
+  display: block; }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+
+body, button, input, select, textarea {
+  font: 12px/1 'arial'; }
+
+button, input, select, textarea {
+  outline: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+address, cite, dfn, em, i {
+  font-style: normal; }
+
+code, kbd, pre, samp {
+  font-family: couriernew, courier, monospace; }
+
+small {
+  font-size: 12px; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+body {
+  background: #f9f9f9; }
+
+header {
+  background: #2093ff;
+  padding: 4vw 3.2vw;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  color: #FFFFFF;
+  font-size: 4.5333333333vw;
+  line-height: 4vw; }
+  header > div {
+    flex: 2; }
+  header .backoff {
+    height: 100%;
+    width: 6.6666666667vw;
+    text-align: left; }
+    header .backoff span {
+      display: inline-block;
+      width: 4vw;
+      height: 4vw;
+      background-size: 4vw;
+      background-image: url("../imgs/m_backoff@3x.png");
+      background: -webkit-image-set(url("../imgs/m_backoff@3x.png") 1x, url("../imgs/m_backoff@3x.png") 2x) no-repeat center; }
+  header .center {
+    text-align: center; }
+  header .register {
+    text-align: right; }
+    header .register a {
+      color: #FFFFFF;
+      font-size: 3.2vw; }
+
+main {
+  margin-top: 10.6666666667vw;
+  text-align: center; }
+  main .icon_box {
+    width: 14.4vw;
+    height: 14.4vw;
+    background-image: url("../imgs/m_isok@2x.png");
+    background: -webkit-image-set(url("../imgs/m_isok@2x.png") 1x, url("../imgs/m_isok@3x.png") 2x) no-repeat center;
+    overflow: hidden;
+    border-radius: 50%;
+    margin: 0 auto; }
+  main .text {
+    margin-top: 2.6666666667vw;
+    font-size: 3.2vw;
+    color: #333333; }
+  main .btn_box {
+    margin-top: 10.6666666667vw; }
+    main .btn_box input {
+      border: none;
+      outline-style: none;
+      width: 80vw;
+      height: 10.6666666667vw;
+      color: #FFFFFF;
+      font-size: 3.7333333333vw;
+      line-height: 10.6666666667vw;
+      border-radius: 4px;
+      background: #2093ff; }
+
+/*# sourceMappingURL=m_success.css.map */

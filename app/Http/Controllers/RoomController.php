@@ -12,6 +12,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
+use Jenssegers\Agent\Facades\Agent;
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
 use Spatie\Permission\Models\Role;
 use App\Order;
@@ -36,11 +37,14 @@ class RoomController extends Controller
 
     public function index(Request $request, $id)
     {
+
         $room = Room::findOrFail($id);
         $data['room'] = $room;
         if (!$room->hasRole('游客')) {
             $this->authorize('view', $room);
         }
+
+
 
         if (!$room->open) {
             return response('房间关闭');
@@ -124,11 +128,15 @@ class RoomController extends Controller
 
         $messages = Message::where([
             ['room_id', $id],
-            ['to_user_id', 0],
+            ['is_private', 0],
             ['created_at', '>', Carbon::now()->format('Y-m-d')],
         ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
         $data['messages'] = $messages;
 
+        if(Agent::isMobile()){
+            return response()->view('m_room', $data)->cookie('access_token', json_encode($login_user), 60 * 6);
+
+        }
         return response()->view('room', $data)->cookie('access_token', json_encode($login_user), 60 * 6);
     }
 

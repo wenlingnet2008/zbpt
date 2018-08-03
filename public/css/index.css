@@ -1,0 +1,1783 @@
+@charset "UTF-8";
+/* ==vw== */
+.mains {
+  width: 100%;
+  overflow: hidden;
+  margin: 9px auto 0;
+}
+
+.mains .leftBox {
+  height: 100%;
+  position: relative;
+}
+
+.mains .leftBox .leftContent {
+  width: 254px;
+  height: 100%;
+  background: #292a33;
+}
+
+.mains .leftBox .navBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mains .leftBox .navBox .navs {
+  width: 70px;
+  height: 53px;
+  margin: 20px 0 0;
+  cursor: pointer;
+}
+
+.mains .leftBox .navBox .navs .bgsbox {
+  width: 100%;
+  overflow: hidden;
+  height: 23px;
+}
+
+.mains .leftBox .navBox .navs .bgsbox .nacsbg {
+  max-width: 100%;
+  display: block;
+  width: auto;
+  height: auto;
+  margin: 0 auto;
+}
+
+.mains .leftBox .navBox .navs .navstxt {
+  display: block;
+  width: 100%;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #fff;
+  height: 30px;
+  line-height: 30px;
+}
+
+.mains .leftBox .navBox .navs:nth-child(3n-1) {
+  margin: 20px 22px 0;
+}
+
+.mains .leftBox .alluserBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mains .leftBox .alluserBox .userTap {
+  width: 100%;
+  height: 28px;
+  line-height: 28px;
+  display: flex;
+  border-bottom: 2px solid #2093ff;
+  margin: 20px 0 0;
+}
+
+.mains .leftBox .alluserBox .userTap .taptxt {
+  flex: 1;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.mains .leftBox .alluserBox .userTap .taptxta {
+  background: #2093ff;
+  line-height: 30px;
+  border-radius: 5px 5px 0 0;
+}
+
+.mains .leftBox .alluserBox .usersBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mains .leftBox .alluserBox .usersBox .searchBox {
+  width: 200px;
+  height: 30px;
+  background: #fff;
+  border-radius: 30px;
+  margin: 20px auto;
+}
+
+.mains .leftBox .alluserBox .usersBox .searchBox .input {
+  width: 160px;
+  height: 30px;
+  line-height: 30px;
+  padding: 0 10px;
+  border: none;
+  font-size: 14px;
+  color: #333;
+  border-radius: 30px 0 0 30px;
+}
+
+.mains .leftBox .alluserBox .usersBox .searchBox .btnsearch {
+  width: 40px;
+  height: 30px;
+  padding: 6px 11px;
+  cursor: pointer;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples {
+  width: 200px;
+  margin: 0 auto;
+  height: 370px;
+  overflow-y: auto;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people {
+  width: 100%;
+  height: 30px;
+  clear: both;
+  margin: 0 0 10px 0;
+  position: relative;
+  cursor: pointer;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .peoplepic {
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  border-radius: 100%;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .peoplename {
+  max-width: 130px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  line-height: 30px;
+  color: #fff;
+  margin: 0 7px;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .peoplevip {
+  width: 16px;
+  height: 14px;
+  margin: 8px 4px 8px 0;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .right_options {
+  position: absolute;
+  width: 110px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #2093ff;
+  left: 50px;
+  top: 20px;
+  z-index: 1;
+  display: none;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .right_options .roptionslist {
+  overflow: hidden;
+  clear: both;
+  margin: 18px 0 0;
+  cursor: pointer;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .right_options .roptionslist .roptionbg {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin: 0 9px;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .right_options .roptionslist .roptiontxt {
+  font-size: 14px;
+  color: #333;
+  line-height: 16px;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples .people .right_options .roptionslist:last-child {
+  margin: 18px 0;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 2px;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mains .leftBox .alluserBox .usersBox .peoples::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.mains .leftBox .alluserBox .usersBox .myservice {
+  display: none;
+}
+
+.mains .leftBox .alluserBox .left_recordBox {
+  width: 100%;
+  height: 160px;
+  border-top: 2px solid #fff;
+  box-sizing: border-box;
+  position: absolute;
+  bottom: 0;
+}
+
+.mains .leftBox .alluserBox .left_recordBox .recordlist {
+  width: 206px;
+  height: 30px;
+  border-radius: 30px;
+  margin: 10px auto 0;
+  overflow: hidden;
+  background: #fff url(../imgs/bgrecords.png) no-repeat 10px center;
+  padding: 0 10px 0 0;
+}
+
+.mains .leftBox .alluserBox .left_recordBox .recordlist .recordtxt {
+  display: block;
+  width: 204px;
+  text-overflow: ellipsis;
+  padding: 0 0 0 34px;
+  overflow: hidden;
+  line-height: 30px;
+  color: #333;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.mains .leftBox .leftBtn {
+  width: 14px;
+  height: 143px;
+  position: absolute;
+  right: -14px;
+  top: 50%;
+  margin-top: -71.5px;
+  background: url(../imgs/btnclose.png) no-repeat center;
+  background-size: 100%;
+  z-index: 1;
+  cursor: pointer;
+}
+
+.mains .leftBox .leftBtnopen {
+  background: url(../imgs/btnopen.png) no-repeat center;
+  background-size: 100%;
+}
+
+.mains .centerBox {
+  height: 100%;
+  margin: 0 20px;
+  position: relative;
+  background: white;
+}
+
+.mains .centerBox .curentTeachers {
+  padding: 12px;
+  overflow: hidden;
+}
+
+.mains .centerBox .curentTeachers .bgteacher {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  margin: 0 18px 0 0;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teacher_Name {
+  padding: 8px 0 5px 0;
+  font-size: 24px;
+  color: #333;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teacherSign {
+  font-size: 14px;
+  color: #7b7b7b;
+  max-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums {
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div {
+  height: 26px;
+  line-height: 26px;
+  margin: 0;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div span {
+  font-size: 12px;
+  color: #666;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div .numcontent {
+  color: #666;
+  padding: 0 0 0 3px;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div:nth-child(1) .numbt {
+  background: url(../imgs/torderfoc.png) no-repeat left center;
+  background-size: 17px 15px;
+  padding: 0 0 0 20px;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div:nth-child(2) .numbt {
+  background: url(../imgs/torderavg.png) no-repeat left center;
+  background-size: 12px 14px;
+  padding: 0 0 0 15px;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div:nth-child(3) .numbt {
+  background: url(../imgs/torderrate.png) no-repeat left center;
+  background-size: 14px 14px;
+  padding: 0 0 0 17px;
+}
+
+.mains .centerBox .curentTeachers .teacherInfor .teachersNums div:nth-child(2) {
+  margin: 0 8px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions {
+  overflow: hidden;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns {
+  overflow: hidden;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .abouts {
+  width: 60px;
+  height: 26px;
+  font-size: 14px;
+  text-align: center;
+  line-height: 26px;
+  color: #fff;
+  border-radius: 4px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .aboutvideo {
+  margin: 2px 20px;
+  background: #ff5700;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .aboutteacher {
+  margin: 2px 0;
+  background: #2093ff;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .scalebox {
+  width: 80px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #787878;
+  border-radius: 4px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .scalebox .scales {
+  width: 38px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .scalebox .scalesmall {
+  background: url(../imgs/opsaclesmall.png) no-repeat center;
+  background-size: 18px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .scalebox .scalesmallno {
+  background: url(../imgs/opsaclesmallno.png) no-repeat center;
+  background-size: 18px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .scalebox .scalebig {
+  background: url(../imgs/opsaclebig.png) no-repeat center;
+  background-size: 18px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .aboutBtns .scalebox .scalebigno {
+  background: url(../imgs/opsaclebigno.png) no-repeat center;
+  background-size: 18px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .scaleBoxs {
+  margin: 20px 0 0 0;
+  overflow: hidden;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .likesBox {
+  margin: 0 0 0 20px;
+  width: 150px;
+  height: 30px;
+  box-sizing: border-box;
+  border: 1px solid #787878;
+  border-radius: 4px;
+  font-size: 14px;
+  line-height: 30px;
+  color: #414141;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .likesBox .liketxt {
+  width: 75px;
+  background: #2093ff url(../imgs/givelike.png) no-repeat 8px center;
+  background-size: 15px;
+  color: #fff;
+  padding: 0 0 0 30px;
+  height: 28px;
+}
+
+.mains .centerBox .curentTeachers .aboutOptions .likesBox .likenum {
+  width: 73px;
+  text-align: center;
+}
+
+.mains .centerBox .currentVideo {
+  width: 100%;
+  height: 640px;
+  background: #000;
+  position: relative;
+  overflow: hidden;
+}
+
+.mains .centerBox .currentVideo .video {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.mains .centerBox .currentVideo .barrageBox {
+  display: inline-block;
+}
+
+.mains .centerBox .platTipsBox {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px 0 0;
+}
+
+.mains .centerBox .platTipsBox .bgplattip {
+  width: 27px;
+  height: 24px;
+  margin: 0 12px 10px 8px;
+  background: url(../imgs/bgrecordb.png) no-repeat center;
+  background-size: 100%;
+}
+
+.mains .centerBox .platTipsBox .plattips {
+  overflow: hidden;
+}
+
+.mains .centerBox .platTipsBox .plattips .tiptxt {
+  font-size: 14px;
+  color: #333333;
+  padding: 0 0 16px 0;
+}
+
+.mains .rightBox {
+  width: 340px;
+  height: 100%;
+  overflow: hidden;
+  background: white;
+}
+
+.mains .rightBox .main-content-menu {
+  width: 100%;
+  display: flex;
+  background: #ececec;
+  height: 30px;
+  line-height: 30px;
+}
+
+.mains .rightBox .main-content-menu li {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  color: #333333;
+  cursor: pointer;
+}
+
+.mains .rightBox .main-content-menu .active {
+  background: #fff;
+  border-top: 3px solid #2093ff;
+}
+
+.mains .rightBox .rightmainBox, .mains .rightBox .rmainBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mains .rightBox .rightmainBox .marqueeBox, .mains .rightBox .rmainBox .marqueeBox {
+  width: 100%;
+  height: 34px;
+  margin: 4px 0;
+  background: url(../imgs/bgrecords.png) no-repeat 10px center;
+  background-size: 12px 14px;
+  position: relative;
+  border-bottom: 1px solid #ececec;
+  overflow: hidden;
+}
+
+.mains .rightBox .rightmainBox .marqueeBox .marquees, .mains .rightBox .rmainBox .marqueeBox .marquees {
+  left: 40px;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+}
+
+.mains .rightBox .rightmainBox .marqueeBox .marquees .marquee, .mains .rightBox .rmainBox .marqueeBox .marquees .marquee {
+  font-size: 12px;
+  width: 100%;
+  height: 34px;
+  line-height: 34px;
+}
+
+.mains .rightBox .rightmainBox .talksBox, .mains .rightBox .rmainBox .talksBox {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid #ececec;
+  position: relative;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksBtns, .mains .rightBox .rmainBox .talksBox .talksBtns {
+  width: 100%;
+  height: 40px;
+  padding: 6px 0 10px 0;
+  z-index: 1;
+  position: absolute;
+  bottom: 0;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksBtns .tools, .mains .rightBox .rmainBox .talksBox .talksBtns .tools {
+  width: 60px;
+  height: 24px;
+  line-height: 24px;
+  font-size: 12px;
+  color: #333333;
+  padding: 0 0 0 25px;
+  border: 1px solid #a3a3a3;
+  border-radius: 4px;
+  box-sizing: border-box;
+  margin: 0 0 0 10px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksBtns .bgclear, .mains .rightBox .rmainBox .talksBox .talksBtns .bgclear {
+  background: white url(../imgs/bgclear.png) no-repeat 7px center;
+  background-size: 11px 13px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksBtns .bgscrolled, .mains .rightBox .rmainBox .talksBox .talksBtns .bgscrolled {
+  background: white url(../imgs/selected.png) no-repeat 7px center;
+  background-size: 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksBtns .bgscrollno, .mains .rightBox .rmainBox .talksBox .talksBtns .bgscrollno {
+  background: url(../imgs/select.png) no-repeat 7px center;
+  background-size: 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain, .mains .rightBox .rmainBox .talksBox .talksmain {
+  width: 100%;
+  max-height: 610px;
+  overflow-y: auto;
+  padding: 5px 0;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users, .mains .rightBox .rmainBox .talksBox .talksmain .users {
+  padding: 10px 0;
+  width: 100%;
+  float: left;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli {
+  float: left;
+  padding: 0 10px 10px;
+  width: 100%;
+  clear: both;
+  min-height: 30px;
+  position: relative;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .times, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .times {
+  font-size: 12px;
+  border-radius: 3px;
+  line-height: 20px;
+  background: #505050;
+  color: #ffffff;
+  margin-right: 0;
+  text-align: center;
+  width: 36px;
+  height: 20px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .cardindetify, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .cardindetify {
+  width: 52px;
+  height: 20px;
+  line-height: 20px;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 12px;
+  margin: 0 8px 0 4px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip1, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip1 {
+  background: #d8a68a url(../imgs/vip1.png) no-repeat 2px center;
+  background-size: 16px 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip1:before, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip1:before {
+  content: "会员";
+  padding: 0 0 0 22px;
+  text-shadow: 0 1px #784930, 1px 0 #784930, -1px 0 #784930, 0 -1px #784930;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip2, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip2 {
+  background: #ccd7dd url(../imgs/vip2.png) no-repeat 2px center;
+  background-size: 16px 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip2:before, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip2:before {
+  content: "白银";
+  padding: 0 0 0 22px;
+  text-shadow: 0 1px #7ca8b6, 1px 0 #7ca8b6, -1px 0 #7ca8b6, 0 -1px #7ca8b6;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip3, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip3 {
+  background: #ffe51c url(../imgs/vip3.png) no-repeat 2px center;
+  background-size: 16px 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip3:before, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip3:before {
+  content: "黄金";
+  padding: 0 0 0 22px;
+  text-shadow: 0 1px #ff7c00, 1px 0 #ff7c00, -1px 0 #ff7c00, 0 -1px #ff7c00;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip0, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip0 {
+  background: #ff3939 url(../imgs/bgservice.png) no-repeat 2px center;
+  background-size: 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip0:before, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip0:before {
+  content: "客服";
+  padding: 0 0 0 22px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip4, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip4 {
+  background: #2093ff url(../imgs/vip4.png) no-repeat 2px center;
+  background-size: 14px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .vip4:before, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .vip4:before {
+  content: "管理员";
+  padding: 0 0 0 22px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .peoplename, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .peoplename {
+  color: #388de8;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 10px 0 0;
+  cursor: pointer;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .peoplenames, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .peoplenames {
+  color: #388de8;
+  font-size: 12px;
+  line-height: 20px;
+  margin: 0 10px 0 0;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .peoplemsg, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .peoplemsg {
+  color: #333333;
+  font-size: 12px;
+  line-height: 20px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .peoplemsg .sina-emotion, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .peoplemsg .sina-emotion {
+  width: 22px;
+  height: 22px;
+  vertical-align: middle;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .peoplemsg img, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .peoplemsg img {
+  max-width: 100%;
+  height: auto;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .right_options, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .right_options {
+  position: absolute;
+  width: 110px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 5px;
+  border: 1px solid #2093ff;
+  left: 130px;
+  top: 10px;
+  z-index: 1;
+  display: none;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .right_options .roptionslist, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .right_options .roptionslist {
+  overflow: hidden;
+  clear: both;
+  margin: 18px 0 0;
+  cursor: pointer;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .right_options .roptionslist .roptionbg, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .right_options .roptionslist .roptionbg {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  margin: 0 9px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .right_options .roptionslist .roptiontxt, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .right_options .roptionslist .roptiontxt {
+  font-size: 14px;
+  color: #333;
+  line-height: 16px;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .right_options .roptionslist:last-child, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .right_options .roptionslist:last-child {
+  margin: 18px 0;
+}
+
+.mains .rightBox .rightmainBox .talksBox .talksmain::-webkit-scrollbar, .mains .rightBox .rmainBox .talksBox .talksmain::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+.mains .rightBox .rightmainBox .talkOptions, .mains .rightBox .rmainBox .talkOptions {
+  width: 100%;
+  position: relative;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .setFonts, .mains .rightBox .rmainBox .talkOptions .setFonts {
+  width: 100%;
+  height: 34px;
+  padding: 0 10px 10px;
+  position: absolute;
+  background: #fff;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .setFonts select, .mains .rightBox .rmainBox .talkOptions .setFonts select {
+  height: 24px;
+  line-height: 24px;
+  float: left;
+  margin: 0 0 0 10px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .setFonts input, .mains .rightBox .rmainBox .talkOptions .setFonts input {
+  display: block;
+  float: left;
+  margin: 4px 0 0 10px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .setFonts .bt_true, .mains .rightBox .rmainBox .talkOptions .setFonts .bt_true {
+  border: 1px #999 solid;
+  background-color: #CCC;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .setFonts .bt_false, .mains .rightBox .rmainBox .talkOptions .setFonts .bt_false {
+  border: 1px #F8F8F8 solid;
+  background-color: #F8F8F8;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .onlineservice, .mains .rightBox .rmainBox .talkOptions .onlineservice {
+  width: 100%;
+  padding: 5px 0;
+  border-bottom: 1px solid #ececec;
+  color: #333;
+  height: 34px;
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .onlineservice span, .mains .rightBox .rmainBox .talkOptions .onlineservice span {
+  padding: 0 10px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .onlineservice .curservice, .mains .rightBox .rmainBox .talkOptions .onlineservice .curservice {
+  width: 83px;
+  height: 24px;
+  border: 1px solid #a3a3a3;
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: white url(../imgs/qq.png) no-repeat 5px center;
+  padding: 0 0 0 25px;
+  color: #333;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .onlineservice .morekf, .mains .rightBox .rmainBox .talkOptions .onlineservice .morekf {
+  padding: 0 8px 0;
+  color: #333;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar, .mains .rightBox .rmainBox .talkOptions .shareBar {
+  width: 100%;
+  padding: 5px 0;
+  height: 34px;
+  position: relative;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .sharebox, .mains .rightBox .rmainBox .talkOptions .shareBar .sharebox {
+  box-sizing: border-box;
+  border: 1px solid #a3a3a3;
+  font-size: 12px;
+  height: 24px;
+  line-height: 24px;
+  border-radius: 4px;
+  background: white url(../imgs/opshare.png) no-repeat 4px center;
+  background-size: 14px 13px;
+  padding: 0 4px 0 25px;
+  margin-left: 11px;
+  cursor: pointer;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .sharebox a, .mains .rightBox .rmainBox .talkOptions .shareBar .sharebox a {
+  color: #333;
+  position: relative;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .screenshot, .mains .rightBox .rmainBox .talkOptions .shareBar .screenshot {
+  background: white url(../imgs/opprintscreen.png) no-repeat 4px center;
+  background-size: 14px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .privateChat, .mains .rightBox .rmainBox .talkOptions .shareBar .privateChat {
+  background: white url(../imgs/rtalk.png) no-repeat 4px center;
+  background-size: 16px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .box, .mains .rightBox .rmainBox .talkOptions .shareBar .box {
+  position: relative;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .box .down, .mains .rightBox .rmainBox .talkOptions .shareBar .box .down {
+  position: absolute;
+  width: 210px;
+  bottom: 30px;
+  left: -65px;
+  z-index: 99;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .shareBar .box .down .downinner, .mains .rightBox .rmainBox .talkOptions .shareBar .box .down .downinner {
+  height: 100px;
+  padding: 0 0 15px;
+  border-left: 1px solid #f1f1f1;
+  border-right: 1px solid #f1f1f1;
+  border-bottom: 3px solid #ee3030;
+  border-top: 1px solid #dbdbdb;
+  background: #fff;
+  font-size: 12px;
+  color: #999;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox, .mains .rightBox .rmainBox .talkOptions .otherSetBox {
+  width: 100%;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox .userselect, .mains .rightBox .rmainBox .talkOptions .otherSetBox .userselect {
+  width: 84px;
+  height: 24px;
+  border-radius: 4px;
+  box-sizing: border-box;
+  border: 1px solid #a3a3a3;
+  text-align: center;
+  margin: 0 0 0 10px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox .userselect option, .mains .rightBox .rmainBox .talkOptions .otherSetBox .userselect option {
+  width: 100%;
+  text-align: center;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox span .somewords, .mains .rightBox .rmainBox .talkOptions .otherSetBox span .somewords {
+  position: relative;
+  cursor: pointer;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox span .somewords .bar, .mains .rightBox .rmainBox .talkOptions .otherSetBox span .somewords .bar {
+  width: 19px;
+  height: 19px;
+  background: url(../imgs/saysetfont.png) no-repeat center;
+  background-size: contain;
+  margin: 2.5px 0 0 16px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox span .somewords .ption_a, .mains .rightBox .rmainBox .talkOptions .otherSetBox span .somewords .ption_a {
+  position: absolute;
+  background: #fff;
+  border: #92928e 1px solid;
+  border-radius: 3px;
+  padding: 5px;
+  width: 70px;
+  height: 120px;
+  left: 155px;
+  bottom: 0;
+  box-shadow: 1px 1px 5px #666;
+  color: #000;
+  z-index: 1;
+  font-size: 14px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox span .somewords:nth-child(2) .bar, .mains .rightBox .rmainBox .talkOptions .otherSetBox span .somewords:nth-child(2) .bar {
+  background: url(../imgs/sayface.png) no-repeat center;
+  background-size: contain;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .otherSetBox span .somewords:nth-child(3) .bar, .mains .rightBox .rmainBox .talkOptions .otherSetBox span .somewords:nth-child(3) .bar {
+  background: url(../imgs/saysetword.png) no-repeat center;
+  background-size: contain;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .Msg_input, .mains .rightBox .rmainBox .talkOptions .Msg_input {
+  padding: 10px;
+  overflow: hidden;
+  clear: both;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .Msg_input .form, .mains .rightBox .rmainBox .talkOptions .Msg_input .form {
+  display: block;
+  width: 100%;
+  height: 56px;
+  box-sizing: border-box;
+  border: 1px solid #2093ff;
+  margin: 0 auto;
+  border-radius: 4px;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .Msg_input .form .input, .mains .rightBox .rmainBox .talkOptions .Msg_input .form .input {
+  padding: 4px 5px;
+  font-size: 12px;
+  color: #333;
+  width: 80%;
+  border: none;
+  height: 100%;
+  line-height: 16px;
+  border-radius: 4px 0 0 4px;
+  resize: none;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .Msg_input .form .input::-webkit-scrollbar, .mains .rightBox .rmainBox .talkOptions .Msg_input .form .input::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .Msg_input .form .button, .mains .rightBox .rmainBox .talkOptions .Msg_input .form .button {
+  width: 20%;
+  background: #2093ff;
+  color: #fff;
+  font-size: 14px;
+  border: none;
+  height: 100%;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+
+.mains .rightBox .rightmainBox .teacher_introduce, .mains .rightBox .rmainBox .teacher_introduce {
+  width: 100%;
+  overflow: hidden;
+  padding: 16px;
+}
+
+.mains .rightBox .rightmainBox .teacher_introduce .headsBox, .mains .rightBox .rmainBox .teacher_introduce .headsBox {
+  overflow: hidden;
+  clear: both;
+}
+
+.mains .rightBox .rightmainBox .teacher_introduce .headsBox .teacherpic, .mains .rightBox .rmainBox .teacher_introduce .headsBox .teacherpic {
+  width: 58px;
+  height: 58px;
+  border-radius: 100%;
+  margin: 0 15px 0 0;
+}
+
+.mains .rightBox .rightmainBox .teacher_introduce .headsBox .teachername, .mains .rightBox .rmainBox .teacher_introduce .headsBox .teachername {
+  font-size: 22px;
+  color: #333333;
+  padding: 0 0 10px 0;
+}
+
+.mains .rightBox .rightmainBox .teacher_introduce .headsBox .teacherlable, .mains .rightBox .rmainBox .teacher_introduce .headsBox .teacherlable {
+  padding: 5px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 14px;
+  text-align: center;
+  background: #2093ff;
+}
+
+.mains .rightBox .rightmainBox .teacher_introduce .introduce, .mains .rightBox .rmainBox .teacher_introduce .introduce {
+  margin: 16px 0 0;
+  font-size: 14px;
+  line-height: 30px;
+}
+
+/* 彩条 */
+#sinaEmotion {
+  width: 265px;
+  right: 5px;
+}
+
+#sinaEmotion .faces {
+  width: 100%;
+}
+
+#sinaEmotion .faces .face img {
+  width: 24px;
+  height: 24px;
+}
+
+#sinaEmotion .face {
+  width: 30px;
+  height: 30px;
+  padding: 2px;
+}
+
+#caitiao ul li:hover, #caitiao ul .f_cur {
+  background: #fff;
+  border-color: #d9d9d8;
+  cursor: pointer;
+}
+
+#caitiao dd {
+  background: #f8f6fe;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#caitiao dd:hover {
+  background: #4ca0d9;
+}
+
+.shareBar .down {
+  display: none;
+}
+
+.shareBar .downinner {
+  height: 100px;
+  padding: 0 0 15px;
+  border-left: 1px solid #f1f1f1;
+  border-right: 1px solid #f1f1f1;
+  border-bottom: 3px solid #ee3030;
+  border-top: 1px solid #dbdbdb;
+  background: #fff;
+  font-size: 12px;
+  color: #999;
+}
+
+.shareBar .down em {
+  position: absolute;
+  width: 25px;
+  height: 16px;
+  left: 73px;
+  bottom: -6px;
+  z-index: 2;
+  background: url(../imgs/down.png) no-repeat 0 0/23px auto;
+}
+
+.shareBar .down p {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+}
+
+.shareBar .down .shdiv a {
+  float: left;
+  width: 46px;
+  height: 44px;
+  margin: 0 0 0 18px;
+  background: url(../imgs/icons.png) no-repeat;
+}
+
+.shareBar .down .shdiv .weispan {
+  position: relative;
+  padding-bottom: 15px;
+  float: left;
+}
+
+.shareBar .down .shdiv .weispan span {
+  display: none;
+  position: absolute;
+  padding-top: 13px;
+  left: 0;
+  bottom: 58px;
+}
+
+.shareBar .down .shdiv .weispan:hover span {
+  display: block;
+}
+
+.shareBar .down .shdiv .weispan i {
+  position: absolute;
+  width: 16px;
+  height: 13px;
+  right: 50px;
+  top: 0px;
+  z-index: 2;
+  background: url(../images/room/roomicon.png) no-repeat 1px -306px;
+}
+
+.shareBar .down .shdiv a.weixin {
+  background-position: 0 -250px;
+}
+
+.shareBar .down .shdiv a.qq {
+  background-position: 0 -294px;
+}
+
+.shareBar .down .shdiv a.fship {
+  background-position: 0 -338px;
+}
+
+.shareBar .fl {
+  margin-left: 10px;
+}
+
+.shareBar .followRoom {
+  display: inline-block;
+  width: 45px;
+  margin-left: 10px;
+  padding-left: 25px;
+  color: #1a8ce1;
+  background: url(../imgs/icons.png) no-repeat 0px -104px;
+  vertical-align: middle;
+}
+
+.shareBar .followRoom.on {
+  background-position: 0 -77px;
+  color: #999;
+}
+
+.shareBar .box:hover .down {
+  display: block;
+}
+
+.fixedBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.fixedBox .fixedMain {
+  position: absolute;
+  left: 50%;
+  margin-left: -154px;
+  top: 30%;
+}
+
+.fixedBox .ordersBox {
+  width: 1100px;
+  height: 600px;
+  border-radius: 4px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -550px;
+  margin-top: -300px;
+  padding: 10px;
+  z-index: 9;
+}
+
+.fixedBox .ordersBox .orderTitle {
+  width: 100%;
+  height: 30px;
+}
+
+.fixedBox .ordersBox .orderTitle .orderbt {
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.fixedBox .ordersBox .orderTitle .ordertab {
+  width: 110px;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #2093ff;
+  border-radius: 3px;
+  line-height: 30px;
+}
+
+.fixedBox .ordersBox .orderTitle .ordertab .tabs {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  width: 54px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.fixedBox .ordersBox .orderTitle .ordertab .tabsactive {
+  background: #2093ff;
+  color: #fff;
+}
+
+.fixedBox .ordersBox .dataBox {
+  width: 100%;
+  height: 490px;
+  margin: 10px auto 0;
+  box-sizing: border-box;
+  border: 1px solid #d4e1ea;
+  border-radius: 4px;
+}
+
+.fixedBox .ordersBox .dataBox table .thead-light {
+  background: #f1f4fa;
+}
+
+.fixedBox .ordersBox .dataBox table thead tr th {
+  border-bottom: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.fixedBox .ordersBox .dataBox table tbody tr td {
+  border-top: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.fixedBox .ordersBox .dataBox table tbody tr:nth-of-type(even) {
+  background: #f7fbff;
+}
+
+.fixedBox .ordersBox .dataBox table tbody tr:nth-of-type(odd) {
+  background: #ffffff;
+}
+
+.fixedBox .ordersBox .pagesBox {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.fixedBox .ordersBox .pagesBox .alltotal {
+  height: 34px;
+  line-height: 34px;
+  color: #333;
+}
+
+.fixedBox .ordersBox .pagesBox .alltotal span {
+  color: #1a8ce1;
+}
+
+.fixedBox .ordersBox .pagesBox .pagination {
+  margin: 6px 20px;
+}
+
+.fixedBox .ordersBox .pagesBox .pagination li a {
+  color: #000;
+  font-size: 12px;
+  padding: 2.5px 5px;
+}
+
+.fixedBox .ordersBox .pagesBox .pagination .active a {
+  background: #2093ff;
+  color: #fff;
+  border-color: #2093ff;
+}
+
+.fixedBox .ordersBox .pagesBox .gotoPage {
+  height: 34px;
+  line-height: 34px;
+}
+
+.fixedBox .ordersBox .pagesBox .gotoPage .input {
+  width: 50px;
+  height: 26px;
+  text-align: center;
+  border: 1px solid #7b7b7b;
+  box-sizing: border-box;
+  margin: 4px;
+}
+
+.fixedBox .iframemain {
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}
+
+.fixedBox .fiexdclose {
+  color: #000000;
+  font-size: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}
+
+.otheruserBox .ordersBox {
+  width: 340px;
+  margin-left: -170px;
+  height: 440px;
+  margin-top: -220px;
+}
+
+.otheruserBox .user_infor {
+  width: 100%;
+  overflow: hidden;
+}
+
+.otheruserBox .user_infor .bgusers {
+  display: block;
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  margin: 19px auto 10px;
+}
+
+.otheruserBox .user_infor .user_names {
+  text-align: center;
+  font-size: 15px;
+  color: #333333;
+  padding: 0 10px;
+}
+
+.otheruserBox .user_infor .user_names .viplevel {
+  background: #2093ff;
+  color: #fff;
+  font-size: 8px;
+  transform: scale(0.67);
+  -webkit-transform: scale(0.67);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.otheruserBox .user_infor .user_sign {
+  padding: 5px 10px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.otheruserBox .detail_box {
+  width: 100%;
+}
+
+.otheruserBox .detail_box .baseInfor {
+  width: 100%;
+}
+
+.otheruserBox .detail_box .baseInfor .baseli {
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+  padding: 0 0 10px 0;
+  height: 32px;
+  line-height: 22px;
+  font-size: 12px;
+  color: #333;
+}
+
+.otheruserBox .detail_box .baseInfor .baseli .baseBt {
+  color: #7b7b7b;
+  width: 78px;
+  padding: 0 10px 0 0;
+  text-align: right;
+}
+
+.textdiv {
+  display: none;
+}
+
+.barragetxt {
+  position: relative;
+  left: 500px;
+  top: 20px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  overflow: hidden;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.switch {
+  width: 60px;
+  height: 20px;
+  line-break: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 30px;
+  cursor: pointer;
+}
+
+.switch label {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 20px;
+}
+
+.switch label span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  padding: 0 0 0 25px;
+  background: #388de8;
+  border-radius: 20px;
+  transition: .3s;
+  cursor: pointer;
+}
+
+.switch label span::before {
+  width: 16px;
+  height: 16px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 100%;
+  content: '';
+  position: absolute;
+  top: 50%;
+  margin-top: -8px;
+  left: 5px;
+}
+
+.switch label .inputswitch {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.switch label .spanoff {
+  background: #8d8d8d;
+  padding: 0 0 0 7px;
+}
+
+.switch label .spanoff::before {
+  left: 36px;
+}
+
+.mytalkBox .ordersBox {
+  padding: 0;
+}
+
+.mytalkBox .talkHead {
+  width: 100%;
+  height: 56px;
+  padding: 10px;
+  background: #2093ff;
+  border-radius: 3px 3px 0 0;
+}
+
+.mytalkBox .talkHead .bgusers {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.mytalkBox .talkHead .user_name {
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  padding: 0 10px;
+}
+
+.mytalkBox .talkHead .fiexdclose {
+  font-size: 30px;
+  color: #fff;
+  line-height: 40px;
+}
+
+.mytalkBox .talkmain {
+  width: 100%;
+  height: 544px;
+}
+
+.mytalkBox .talkmain .talklist {
+  width: 160px;
+  background: #fafafa;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.mytalkBox .talkmain .talklist .friends {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mytalkBox .talkmain .talklist .friends .friend {
+  padding: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+}
+
+.mytalkBox .talkmain .talklist .friends .friend .bgfriend {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+}
+
+.mytalkBox .talkmain .talklist .friends .friend .friendname {
+  color: #333333;
+  font-size: 14px;
+  line-height: 40px;
+  padding: 0 10px;
+  max-width: 100px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mytalkBox .talkmain .talklist .friends .friend .redcircle {
+  right: 5px;
+  top: 5px;
+}
+
+.mytalkBox .talkmain .talklist .friends .friends:hover {
+  background: #ebebec;
+}
+
+.mytalkBox .talkmain .talklist .friends .active {
+  background: #ebebec;
+}
+
+.mytalkBox .talkmain .talklist::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+.mytalkBox .talkmain .talkcontent {
+  width: 940px;
+  padding: 10px 3px 0 3px;
+  height: 100%;
+}
+
+.mytalkBox .talkmain .talkcontent .someheight {
+  width: 100%;
+  height: 414px;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg {
+  width: 100%;
+  height: 414px;
+  border-bottom: 1px solid #ececec;
+  overflow-y: auto;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox {
+  width: 100%;
+  overflow: hidden;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli {
+  width: 100%;
+  overflow: hidden;
+  margin: 0 0 20px 0;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli .bgli {
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  margin: 0 3px 0 0;
+  float: left;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli .msg_txts {
+  max-width: 820px;
+  overflow: hidden;
+  padding: 0 12px;
+  float: left;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli .msg_txts .liname {
+  font-size: 12px;
+  padding: 8px 0;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli .msg_txts .txtword {
+  padding: 12px;
+  background: #eeeeee;
+  color: #333333;
+  border-radius: 3px;
+  position: relative;
+  max-width: 100%;
+  line-height: 20px;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli .msg_txts .txtword::before {
+  content: '';
+  width: 12px;
+  height: 17px;
+  background: url(../imgs/mtalkbgl.png) no-repeat left top;
+  background-size: contain;
+  position: absolute;
+  left: -12px;
+  top: 0px;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli_right .bgli {
+  float: right;
+  margin: 0 0 0 3px;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli_right .msg_txts {
+  float: right;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli_right .msg_txts .liname {
+  text-align: right;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli_right .msg_txts .txtword {
+  background: #2093ff;
+  color: #fff;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg .msgBox .msgli_right .msg_txts .txtword::before {
+  background: url(../imgs/mtalkr.png) no-repeat left top;
+  background-size: contain;
+  left: 100%;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg::-webkit-scrollbar-thumb {
+  /*滚动条里面小方块*/
+  border-radius: 2px;
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.7);
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.mytalkBox .talkmain .talkcontent .talksmsg::-webkit-scrollbar-track {
+  /*滚动条里面轨道*/
+  box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.7);
+  border-radius: 0;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.mytalkBox .talkmain .talkcontent .talkform {
+  width: 100%;
+  padding: 0 10px;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .somewords {
+  width: 100%;
+  height: 36px;
+  padding: 8px 0;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .somewords .bar {
+  display: block;
+  border: none;
+  cursor: pointer;
+  width: 20px;
+  height: 20px;
+  margin: 0 20px 0 0;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .somewords .face {
+  background: url(../imgs/sayface.png) no-repeat center;
+  background-size: 20px;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .somewords .uploadimg {
+  background: url(../imgs/mtalking.png) no-repeat center;
+  background-size: 20px;
+  cursor: pointer;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .somewords .uploadimg .inputimg {
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .friendmsg {
+  width: 100%;
+  height: 78px;
+  position: relative;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .friendmsg .input {
+  width: 100%;
+  height: 50px;
+  line-height: 20px;
+  font-size: 14px;
+  color: #333;
+  resize: none;
+  border: none;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .friendmsg .input::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+  background: transparent;
+}
+
+.mytalkBox .talkmain .talkcontent .talkform .friendmsg .button {
+  width: 60px;
+  height: 30px;
+  position: absolute;
+  background: #2093ff;
+  color: #fff;
+  text-align: center;
+  font-size: 14px;
+  border-radius: 3px;
+  bottom: 0;
+  right: 0;
+  border: none;
+  cursor: pointer;
+}
+
+.redcircle {
+  width: 0;
+  height: 0;
+  display: inline-block;
+  border: 3px solid red;
+  border-radius: 100%;
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  animation: heartbeat 1s infinite;
+  -webkit-animation: heartbeat 1s infinite;
+  display: none;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: rotate(45deg) scale(0.8, 0.8);
+    opacity: 1;
+  }
+  25% {
+    transform: rotate(45deg) scale(1.1, 1.1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: rotate(45deg) scale(0.8, 0.8);
+    opacity: 1;
+  }
+}

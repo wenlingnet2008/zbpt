@@ -1,0 +1,225 @@
+header, footer, main, nav {
+  display: block; }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+
+body, button, input, select, textarea {
+  font: 12px/1 'arial'; }
+
+button, input, select, textarea {
+  outline: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+address, cite, dfn, em, i {
+  font-style: normal; }
+
+code, kbd, pre, samp {
+  font-family: couriernew, courier, monospace; }
+
+small {
+  font-size: 12px; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+body {
+  background: #f9f9f9; }
+
+header {
+  background: #2093ff;
+  padding: 2.6666666667vw 2.4vw; }
+  header .logo_box, header .input_box {
+    float: left; }
+  header .login_box {
+    float: right; }
+  header .logo_box {
+    width: 12vw;
+    height: 5.3333333333vw;
+    margin-top: 1.3333333333vw; }
+    header .logo_box img {
+      width: 12vw;
+      height: 5.3333333333vw; }
+  header .input_box {
+    width: 67.4666666667vw;
+    height: 7.4666666667vw;
+    margin-left: 2.6666666667vw;
+    position: relative; }
+    header .input_box input {
+      border-radius: 7.4666666667vw;
+      width: 67.4666666667vw;
+      height: 7.4666666667vw;
+      border: none;
+      outline-style: none;
+      padding-left: 7.4666666667vw;
+      font-size: 2.6666666667vw;
+      line-height: 7.4666666667vw; }
+    header .input_box .search_png {
+      position: absolute;
+      left: 2.4vw;
+      top: 1.8666666667vw;
+      display: inline-block;
+      width: 4vw;
+      height: 4vw;
+      background: url("../imgs/search_gray.png") no-repeat center;
+      background-size: 4vw; }
+  header .login_box {
+    font-size: 3.2vw;
+    height: 7.4666666667vw;
+    color: #FFFFFF;
+    width: 12.2666666667vw;
+    text-align: center; }
+    header .login_box a {
+      line-height: 7.4666666667vw;
+      color: #FFFFFF; }
+      header .login_box a img {
+        width: 6.6666666667vw;
+        height: 6.6666666667vw;
+        border-radius: 50%; }
+
+header:after {
+  display: block;
+  content: "";
+  clear: both; }
+
+main .title_box {
+  background: #FFFFFF;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  border-top: 2px solid #f3f3f3;
+  min-height: 6.1333333333vw; }
+  main .title_box > div[class="active"] {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0; }
+    main .title_box > div[class="active"] ul {
+      overflow: hidden; }
+  main .title_box > div {
+    transition: 0.5s; }
+  main .title_box > div[class="not_active"] {
+    max-height: 24.5333333333vw;
+    overflow-y: auto; }
+  main .title_box ul {
+    padding-right: 4vw; }
+    main .title_box ul li {
+      line-height: 5.8666666667vw;
+      padding: 0 1.6vw;
+      font-size: 2.6666666667vw;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap; }
+      main .title_box ul li span {
+        color: #333333; }
+    main .title_box ul .icon_horn {
+      display: inline-block;
+      vertical-align: middle;
+      margin-right: 1.6vw;
+      width: 2.6666666667vw;
+      height: 2.6666666667vw;
+      background-image: url("../imgs/notifyphone_icn@2x.png");
+      background: -webkit-image-set(url("../imgs/notifyphone_icn@2x.png") 1x, url("../imgs/notifyphone_icn@3x.png") 2x) no-repeat center;
+      background-size: 2.6666666667vw; }
+  main .title_box .copy_btn {
+    position: absolute;
+    top: 1.0666666667vw;
+    right: 20px;
+    z-index: 2; }
+    main .title_box .copy_btn span {
+      display: inline-block;
+      width: 3.2vw;
+      height: 3.2vw;
+      background: url("../imgs/m_more2@2x.png") no-repeat center;
+      overflow: hidden;
+      transform: rotateZ(90deg);
+      background-size: 2.1333333333vw; }
+    main .title_box .copy_btn span[class=active] {
+      transform: rotateZ(270deg); }
+main .comment_box {
+  margin-top: 1.3333333333vw; }
+  main .comment_box .comment_title {
+    background: #FFFFFF;
+    font-size: 3.2vw;
+    padding-left: 2.9333333333vw;
+    line-height: 7.4666666667vw; }
+  main .comment_box .comment_ul {
+    padding: 0 1.3333333333vw; }
+    main .comment_box .comment_ul > li {
+      position: relative; }
+      main .comment_box .comment_ul > li .img_box {
+        overflow: hidden;
+        height: 29.3333333333vw;
+        width: 48vw;
+        border-radius: 4px; }
+        main .comment_box .comment_ul > li .img_box img {
+          height: 100%;
+          width: 100%; }
+      main .comment_box .comment_ul > li .title_text {
+        width: 48vw;
+        line-height: 8.2666666667vw;
+        font-size: 2.6666666667vw;
+        color: #333; }
+      main .comment_box .comment_ul > li .live_logo {
+        position: absolute;
+        left: 0;
+        top: 0;
+        border-bottom-right-radius: 4px;
+        border-top-left-radius: 4px;
+        padding: 0 1.3333333333vw;
+        height: 4vw;
+        background: #2093ff;
+        color: #FFFFFF;
+        line-height: 4vw;
+        font-size: 2.6666666667vw; }
+        main .comment_box .comment_ul > li .live_logo span {
+          display: inline-block;
+          width: 2.9333333333vw;
+          height: 2.9333333333vw;
+          background: url("../imgs/m_livestate@3x.png") no-repeat center;
+          background-size: 2.9333333333vw;
+          vertical-align: middle;
+          margin-top: -0.5333333333vw; }
+      main .comment_box .comment_ul > li .teacher_tet {
+        position: absolute;
+        bottom: 9.3333333333vw;
+        width: 48vw;
+        left: 0;
+        color: #FFFFFF;
+        line-height: 2.6666666667vw; }
+        main .comment_box .comment_ul > li .teacher_tet .icon_ong {
+          display: inline-block;
+          width: 2.6666666667vw;
+          height: 2.6666666667vw;
+          background: url("../imgs/m_onlinenumber@2x.png") no-repeat center;
+          background-size: 2.6666666667vw;
+          vertical-align: bottom;
+          margin-right: 1.3333333333vw; }
+        main .comment_box .comment_ul > li .teacher_tet span:nth-child(1) {
+          float: left;
+          font-size: 2.6666666667vw;
+          margin-left: 1.3333333333vw; }
+        main .comment_box .comment_ul > li .teacher_tet span:nth-child(2) {
+          float: right;
+          margin-right: 1.3333333333vw;
+          font-size: 2.1333333333vw;
+          line-height: 2.6666666667vw; }
+    main .comment_box .comment_ul li:nth-child(n+1) {
+      float: left; }
+    main .comment_box .comment_ul li:nth-child(2n) {
+      float: right; }
+  main .comment_box .comment_ul:after {
+    display: block;
+    content: "";
+    clear: both; }
+
+/*# sourceMappingURL=m_livelist.css.map */

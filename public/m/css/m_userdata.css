@@ -1,0 +1,202 @@
+header, footer, main, nav {
+  display: block; }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+
+body, button, input, select, textarea {
+  font: 12px/1 'arial'; }
+
+button, input, select, textarea {
+  outline: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+address, cite, dfn, em, i {
+  font-style: normal; }
+
+code, kbd, pre, samp {
+  font-family: couriernew, courier, monospace; }
+
+small {
+  font-size: 12px; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+body {
+  background: #f9f9f9; }
+
+header {
+  background: #2093ff;
+  padding: 4vw 3.2vw;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  color: #FFFFFF;
+  font-size: 4.5333333333vw;
+  line-height: 4vw; }
+  header > div {
+    flex: 2; }
+  header .backoff {
+    height: 100%;
+    width: 6.6666666667vw;
+    text-align: left; }
+    header .backoff span {
+      display: inline-block;
+      width: 4vw;
+      height: 4vw;
+      background-size: 4vw;
+      background-image: url("../imgs/m_backoff@3x.png");
+      background: -webkit-image-set(url("../imgs/m_backoff@3x.png") 1x, url("../imgs/m_backoff@3x.png") 2x) no-repeat center; }
+  header .center {
+    text-align: center; }
+  header .register {
+    text-align: right; }
+    header .register a {
+      color: #FFFFFF;
+      font-size: 3.2vw; }
+
+main .top:after {
+  display: block;
+  content: "";
+  clear: both; }
+main .top > .toleft {
+  float: right; }
+main .toleft {
+  width: 3.2vw;
+  height: 3.2vw;
+  position: absolute;
+  top: 50%;
+  right: 3.2vw;
+  margin-top: -1.6vw;
+  margin-left: -1.6vw; }
+  main .toleft span {
+    display: inline-block;
+    width: 3.2vw;
+    height: 3.2vw;
+    background-image: url("../imgs/m_more2@2x.png");
+    background: -webkit-image-set(url("../imgs/m_more2@2x.png") 1x, url("../imgs/m_more2@3x.png") 2x) no-repeat center;
+    background-size: 3.2vw; }
+main .top {
+  background: #FFFFFF;
+  width: 100%;
+  position: relative;
+  padding: 4.8vw 3.2vw 4.5333333333vw 3.2vw; }
+  main .top > div {
+    float: left; }
+  main .top .headpng img {
+    overflow: hidden;
+    border-radius: 50%;
+    width: 10.6666666667vw;
+    height: 10.6666666667vw; }
+  main .top .username {
+    margin-left: 1.8666666667vw;
+    text-align: left;
+    max-width: 77.3333333333vw; }
+    main .top .username h1 {
+      margin-top: 1.3333333333vw;
+      font-size: 3.7333333333vw;
+      color: #333333; }
+      main .top .username h1 input {
+        border: none;
+        outline-style: none; }
+    main .top .username h2 {
+      margin-top: 1.8666666667vw; }
+      main .top .username h2 .cardindetify {
+        display: inline-block;
+        width: 7.2vw;
+        height: 2.9333333333vw;
+        position: relative;
+        border-radius: 4px; }
+      main .top .username h2 .cardindetify:after {
+        content: "";
+        display: block;
+        border-radius: 4px;
+        width: 7.2vw;
+        height: 2.9333333333vw;
+        position: absolute;
+        top: 0vw; }
+      main .top .username h2 .cardindetify[data-type="1"]:after {
+        background-image: url("../imgs/customer_icn@2x.png");
+        background: -webkit-image-set(url("../imgs/customer_icn@2x.png") 1x, url("../imgs/customer_icn@3x.png") 2x) no-repeat center;
+        background-size: 100%; }
+      main .top .username h2 .cardindetify[data-type="1"] {
+        background: #ff3939; }
+      main .top .username h2 .cardindetify[data-type="2"]:after {
+        background-image: url("../imgs/gold_icn@2x.png");
+        background: -webkit-image-set(url("../imgs/gold_icn@2x.png") 1x, url("../imgs/gold_icn@3x.png") 2x) no-repeat center;
+        background-size: 100%; }
+      main .top .username h2 .cardindetify[data-type="2"] {
+        background: #ffe51c; }
+      main .top .username h2 .cardindetify[data-type="3"]:after {
+        background-image: url("../imgs/silver_icn@2x.png");
+        background: -webkit-image-set(url("../imgs/silver_icn@2x.png") 1x, url("../imgs/silver_icn@3x.png") 2x) no-repeat center;
+        background-size: 100%; }
+      main .top .username h2 .cardindetify[data-type="3"] {
+        background: #ccd7dd; }
+      main .top .username h2 .cardindetify[data-type="4"]:after {
+        background-image: url("../imgs/ordinary_icn@2x.png");
+        background: -webkit-image-set(url("../imgs/ordinary_icn@2x.png") 1x, url("../imgs/ordinary_icn@3x.png") 2x) no-repeat center;
+        background-size: 100%; }
+      main .top .username h2 .cardindetify[data-type="4"] {
+        background: #d8a68a; }
+      main .top .username h2 .cardindetify[data-type="5"]:after {
+        background-image: url("../imgs/tourist_icn@2x.png");
+        background: -webkit-image-set(url("../imgs/tourist_icn@2x.png") 1x, url("../imgs/tourist_icn@3x.png") 2x) no-repeat center;
+        background-size: 100%; }
+      main .top .username h2 .cardindetify[data-type="5"] {
+        background: #f0cba6; }
+      main .top .username h2 .cardindetify[data-type="6"]:after {
+        background-image: url("../imgs/m_admin@2x.png");
+        background: -webkit-image-set(url("../imgs/m_admin@2x.png") 1x, url("../imgs/m_admin@3x.png") 2x) no-repeat center;
+        background-size: 100%; }
+      main .top .username h2 .cardindetify[data-type="6"] {
+        background: #2093ff; }
+main .comment_box {
+  margin-top: 1.3333333333vw;
+  background: #FFFFFF; }
+  main .comment_box .comment_ul > li + li {
+    border-top: 1px solid #f9f9f9; }
+  main .comment_box .comment_ul > li {
+    position: relative;
+    height: 12vw;
+    text-align: left;
+    padding: 0 3.2vw; }
+    main .comment_box .comment_ul > li h1 {
+      padding-top: 1.3333333333vw;
+      font-size: 2.9333333333vw;
+      color: #898989; }
+    main .comment_box .comment_ul > li p {
+      padding-top: 1.8666666667vw;
+      font-size: 3.7333333333vw;
+      color: #333333; }
+    main .comment_box .comment_ul > li input {
+      display: block;
+      padding-top: 1.8666666667vw;
+      font-size: 3.7333333333vw;
+      color: #333333;
+      border: none;
+      outline-style: none; }
+main .loginout {
+  margin-top: 1.3333333333vw;
+  background: #FFFFFF;
+  color: #fe3a36;
+  font-size: 3.7333333333vw;
+  height: 12vw;
+  line-height: 12vw;
+  text-align: center; }
+  main .loginout span {
+    cursor: pointer; }
+
+/*# sourceMappingURL=m_userdata.css.map */

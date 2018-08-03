@@ -1,0 +1,753 @@
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0;
+}
+
+body, button, input, select, textarea {
+  font: 12px/1 'arial';
+}
+
+button, input, select, textarea {
+  outline: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+address, cite, dfn, em, i {
+  font-style: normal;
+}
+
+code, kbd, pre, samp {
+  font-family: couriernew,  courier, monospace;
+}
+
+small {
+  font-size: 12px;
+}
+
+ul, ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: none;
+}
+
+sup {
+  vertical-align: text-top;
+}
+
+sub {
+  vertical-align: text-bottom;
+}
+
+legend {
+  color: #000;
+}
+
+fieldset, img {
+  border: 0;
+}
+
+.fl {
+  display: block;
+  float: left;
+}
+
+.fr {
+  display: block;
+  float: right;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  line-height: 1;
+  background: #dddedf;
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+/* ==vw== */
+/* head */
+.headBox {
+  width: 100%;
+  height: 50px;
+  background: white;
+}
+
+.headmain {
+  width: 67.70833vw;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.headmain .logoBox {
+  width: 88px;
+  height: 35px;
+  margin: 7.5px 0;
+}
+
+.headmain .logoBox img {
+  width: 100%;
+  height: 100%;
+}
+
+.headmain .userBox .optionBox {
+  height: 15px;
+  margin: 17.5px 0;
+}
+
+.headmain .userBox .optionBox .options {
+  margin: 0 25px 0 0;
+}
+
+.headmain .userBox .optionBox .options .bgoption {
+  width: 15px;
+  height: 15px;
+}
+
+.headmain .userBox .optionBox .options .optxt {
+  height: 15px;
+  line-height: 15px;
+  font-size: 14px;
+  color: #333333;
+  padding: 0 7px;
+}
+
+.headmain .userBox .loginBox .login {
+  height: 15px;
+  line-height: 15px;
+  margin: 17.5px 0;
+}
+
+.headmain .userBox .loginBox .login .bglogin {
+  width: 15px;
+  height: 15px;
+}
+
+.headmain .userBox .loginBox .login .logintxt {
+  height: 100%;
+  padding: 0 5px;
+  border-right: 1px solid #333333;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.headmain .userBox .loginBox .login .logintxt:last-child {
+  border-right: none;
+}
+
+.headmain .userBox .loginBox .logined {
+  height: 30px;
+  margin: 10px 0;
+}
+
+.headmain .userBox .loginBox .logined .bguser {
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+  border-radius: 100%;
+}
+
+.headmain .userBox .loginBox .logined .usernames {
+  position: relative;
+  cursor: pointer;
+}
+
+.headmain .userBox .loginBox .logined .usernames .username {
+  display: block;
+  max-width: 120px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #333;
+  line-height: 30px;
+  margin: 0 5px;
+  padding: 0 20px 0 0;
+}
+
+.headmain .userBox .loginBox .logined .usernames:before {
+  transition: .3s;
+  content: '';
+  border: 6px solid transparent;
+  border-top: 6px solid #000;
+  position: absolute;
+  right: 0;
+  top: 12px;
+  transform-origin: 50%;
+}
+
+.headmain .userBox .loginBox .logined .usernames:hover::before {
+  transform: rotateZ(-180deg);
+  top: 6px;
+}
+
+.headmain .loginBox:hover .user_infors {
+  display: block;
+}
+
+.headmain .user_infors {
+  position: absolute;
+  width: 340px;
+  height: 440px;
+  background: #fff url(../imgs/huserboxbg.png) no-repeat left top;
+  background-size: 100% 9px;
+  right: 0;
+  top: 30px;
+  padding: 9px 0 0 0;
+  z-index: 99999;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+  display: none;
+}
+
+.headmain .user_infors .inforsMain {
+  width: 100%;
+  height: 100%;
+}
+
+.headmain .user_infors .inforsMain .infor_top {
+  width: 100%;
+}
+
+.headmain .user_infors .inforsMain .infor_top .infor_exit {
+  position: absolute;
+  right: 15px;
+  top: 19px;
+  height: 16px;
+  line-height: 16px;
+  font-size: 12px;
+  color: #7b7b7b;
+  background: url(../imgs/hexit.png) no-repeat left center;
+  padding: 0 0 0 20px;
+  background-size: 16px;
+}
+
+.headmain .user_infors .inforsMain .infor_top .user_infor {
+  width: 100%;
+  overflow: hidden;
+}
+
+.headmain .user_infors .inforsMain .infor_top .user_infor .bgusers {
+  display: block;
+  width: 55px;
+  height: 55px;
+  border-radius: 100%;
+  margin: 19px auto 10px;
+}
+
+.headmain .user_infors .inforsMain .infor_top .user_infor .user_names {
+  text-align: center;
+  font-size: 15px;
+  color: #333333;
+  padding: 0 10px;
+}
+
+.headmain .user_infors .inforsMain .infor_top .user_infor .user_names .viplevel {
+  background: #2093ff;
+  color: #fff;
+  font-size: 8px;
+  transform: scale(0.67);
+  -webkit-transform: scale(0.67);
+  padding: 2px 4px;
+  border-radius: 2px;
+}
+
+.headmain .user_infors .inforsMain .infor_top .user_infor .user_sign {
+  padding: 5px 10px;
+  overflow: hidden;
+  padding: 5px 10px;
+  text-align: center;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom {
+  width: 100%;
+  overflow: hidden;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .userNavs {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  font-size: 12px;
+  color: #333;
+  text-align: center;
+  background: #ececec;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .userNavs .usernav {
+  width: 86px;
+  cursor: pointer;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .userNavs .active {
+  background: #fff;
+  border-top: 2px solid #2093ff;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details {
+  width: 100%;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .detail_box {
+  width: 100%;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .detail_box .baseInfor {
+  width: 100%;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .detail_box .baseInfor .baseli {
+  width: 100%;
+  overflow: hidden;
+  clear: both;
+  padding: 0 0 10px 0;
+  height: 32px;
+  line-height: 22px;
+  font-size: 12px;
+  color: #333;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .detail_box .baseInfor .baseli .baseBt {
+  color: #7b7b7b;
+  width: 78px;
+  padding: 0 10px 0 0;
+  text-align: right;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .editInfors .basetxt {
+  width: 196px;
+  height: 100%;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .editInfors .basetxt input {
+  border: none;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ececec;
+  width: 100%;
+  height: 100%;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .editInfors .basetxt select {
+  width: 54px;
+  height: 22px;
+  border: 1px solid #ececec;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .editInfors .basetxt img {
+  width: 26px;
+  height: 26px;
+  border-radius: 100%;
+  box-sizing: border-box;
+  border: 1px solid #fff;
+  margin: 0 5px 0 0;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .editInfors .basetxt .imgactive {
+  border: 1px solid #2093ff;
+}
+
+.headmain .user_infors .inforsMain .user_Bottom .user_details .editInfors .savebtn {
+  width: 60px;
+  height: 24px;
+  border-radius: 3px;
+  background: #2093ff;
+  font-size: 12px;
+  color: #fff;
+  text-align: center;
+  position: absolute;
+  right: 20px;
+  bottom: 10px;
+  border: none;
+}
+
+.login_box {
+  width: 360px;
+  border-radius: 4px;
+  position: relative;
+  padding: 0 26px;
+  background: #fff;
+}
+
+.login_box .login_title:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.login_box .form_box {
+  transition: .5s;
+}
+
+.login_box .login_title {
+  position: relative;
+  width: 100%;
+  height: 42px;
+}
+
+.login_box .login_title .active {
+  color: #2093ff;
+  border-bottom: 2px solid #2093ff;
+}
+
+.login_box .login_title .border_color {
+  display: inline-block;
+  width: 120px;
+  position: absolute;
+  transition: 0.5s;
+  bottom: 0px;
+  left: 0px;
+  border-bottom: 2px solid #2093ff;
+}
+
+.login_box .login_title .close_box {
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../imgs/btn_close.png") no-repeat center;
+  background-size: 12px;
+  position: absolute;
+  right: -18px;
+  top: 4px;
+  cursor: pointer;
+}
+
+.login_box .login_title > span {
+  width: 120px;
+  color: #333;
+  cursor: pointer;
+  font-size: 18px;
+  text-align: center;
+  float: left;
+  line-height: 42px;
+  border-bottom: 2px solid transparent;
+}
+
+.login_box .login_title > span:nth-child(2) {
+  float: right;
+}
+
+.login_box .login_form {
+  margin-top: 14px;
+  padding-bottom: 40px;
+}
+
+.login_box .login_form .input_box {
+  position: relative;
+  margin-bottom: 14px;
+}
+
+.login_box .login_form .input_box input {
+  width: 310px;
+  height: 40px;
+  padding-right: 10px;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  outline-style: none;
+  padding-left: 50px;
+}
+
+.login_box .login_form .input_box input[class='error'] {
+  border: 1px solid rgba(228, 62, 25, 0.92);
+}
+
+.login_box .login_form .input_box span {
+  text-align: center;
+  display: inline-block;
+  position: absolute;
+  width: 40px;
+  height: 38px;
+  line-height: 38px;
+  background: #f9f9f9;
+  top: 1px;
+  left: 1px;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+.login_box .login_form .input_box span i {
+  display: inline-block;
+  width: 15px;
+  height: 17px;
+  background: url("../imgs/user_png.png") no-repeat center;
+  background-size: 13px;
+  margin-top: 10px;
+}
+
+.login_box .login_form .input_box:nth-child(2) {
+  margin-bottom: 0px;
+}
+
+.login_box .login_form .input_box:nth-child(2) i {
+  height: 18px;
+  background: url("../imgs/pwd_png.png") no-repeat center;
+}
+
+.login_box .login_form .sub_btn {
+  margin-top: 20px;
+}
+
+.login_box .login_form .sub_btn input {
+  display: inline-block;
+  width: 310px;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  outline-style: none;
+  border: none;
+  background: #2093ff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login_box .login_form .on_btn {
+  position: absolute;
+  bottom: 10px;
+  right: 26px;
+}
+
+.login_box .login_form .on_btn a {
+  text-decoration: none;
+  font-size: 12px;
+  color: #333333;
+}
+
+.login_box .register_form {
+  padding-top: 18px;
+  padding-bottom: 40px;
+}
+
+.login_box .register_form .input_box:after {
+  display: block;
+  content: "";
+  clear: both;
+}
+
+.login_box .register_form .input_box span {
+  float: left;
+  text-align: right;
+  line-height: 40px;
+  display: block;
+  width: 68px;
+}
+
+.login_box .register_form .input_box input {
+  padding-left: 10px;
+  float: right;
+  width: 100%;
+  height: 40px;
+  border: 1px solid #dedede;
+  border-radius: 4px;
+  outline-style: none;
+}
+
+.login_box .register_form .input_box input[class='error'] {
+  border: 1px solid rgba(228, 62, 25, 0.92);
+}
+
+.login_box .register_form .input_box + .input_box {
+  margin-top: 10px;
+}
+
+.login_box .sub_btn {
+  margin-top: 20px;
+}
+
+.login_box .sub_btn input {
+  display: inline-block;
+  width: 310px;
+  height: 40px;
+  line-height: 40px;
+  color: #ffffff;
+  font-size: 18px;
+  text-align: center;
+  outline-style: none;
+  border: none;
+  background: #2093ff;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.login_box .on_btn {
+  position: absolute;
+  bottom: 10px;
+  right: 26px;
+}
+
+.login_box .on_btn a {
+  text-decoration: none;
+  font-size: 12px;
+  color: #333333;
+}
+
+.fixedBox {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 99;
+  background: rgba(0, 0, 0, 0.1);
+}
+
+.fixedBox .fixedMain {
+  position: absolute;
+  left: 50%;
+  margin-left: -154px;
+  top: 30%;
+}
+
+.fixedBox .ordersBox {
+  width: 1100px;
+  height: 600px;
+  border-radius: 4px;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -550px;
+  margin-top: -300px;
+  padding: 10px;
+  z-index: 9;
+}
+
+.fixedBox .ordersBox .orderTitle {
+  width: 100%;
+  height: 30px;
+}
+
+.fixedBox .ordersBox .orderTitle .orderbt {
+  font-size: 14px;
+  color: #000;
+  font-weight: 600;
+  line-height: 30px;
+}
+
+.fixedBox .ordersBox .orderTitle .ordertab {
+  width: 110px;
+  height: 100%;
+  box-sizing: border-box;
+  border: 1px solid #2093ff;
+  border-radius: 3px;
+  line-height: 30px;
+}
+
+.fixedBox .ordersBox .orderTitle .ordertab .tabs {
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+  width: 54px;
+  height: 28px;
+  cursor: pointer;
+}
+
+.fixedBox .ordersBox .orderTitle .ordertab .tabsactive {
+  background: #2093ff;
+  color: #fff;
+}
+
+.fixedBox .ordersBox .dataBox {
+  width: 100%;
+  height: 490px;
+  margin: 10px auto 0;
+  box-sizing: border-box;
+  border: 1px solid #d4e1ea;
+  border-radius: 4px;
+}
+
+.fixedBox .ordersBox .dataBox table .thead-light {
+  background: #f1f4fa;
+}
+
+.fixedBox .ordersBox .dataBox table thead tr th {
+  border-bottom: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.fixedBox .ordersBox .dataBox table tbody tr td {
+  border-top: none;
+  padding: 10px;
+  text-align: center;
+}
+
+.fixedBox .ordersBox .dataBox table tbody tr:nth-of-type(even) {
+  background: #f7fbff;
+}
+
+.fixedBox .ordersBox .dataBox table tbody tr:nth-of-type(odd) {
+  background: #ffffff;
+}
+
+.fixedBox .ordersBox .pagesBox {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.fixedBox .ordersBox .pagesBox .alltotal {
+  height: 34px;
+  line-height: 34px;
+  color: #333;
+}
+
+.fixedBox .ordersBox .pagesBox .alltotal span {
+  color: #1a8ce1;
+}
+
+.fixedBox .ordersBox .pagesBox .pagination {
+  margin: 6px 20px;
+}
+
+.fixedBox .ordersBox .pagesBox .pagination li a {
+  color: #000;
+  font-size: 12px;
+  padding: 2.5px 5px;
+}
+
+.fixedBox .ordersBox .pagesBox .pagination .active a {
+  background: #2093ff;
+  color: #fff;
+  border-color: #2093ff;
+}
+
+.fixedBox .ordersBox .pagesBox .gotoPage {
+  height: 34px;
+  line-height: 34px;
+}
+
+.fixedBox .ordersBox .pagesBox .gotoPage .input {
+  width: 50px;
+  height: 26px;
+  text-align: center;
+  border: 1px solid #7b7b7b;
+  box-sizing: border-box;
+  margin: 4px;
+}
+
+.fixedBox .iframemain {
+  width: 100%;
+  height: 550px;
+  overflow: hidden;
+}
+
+.fixedBox .fiexdclose {
+  color: #000000;
+  font-size: 30px;
+  line-height: 30px;
+  cursor: pointer;
+}

@@ -1,0 +1,136 @@
+header, footer, main, nav {
+  display: block; }
+
+body, h1, h2, h3, h4, h5, h6, hr, p, blockquote, dl, dt, dd, ul, ol, li, pre, form, fieldset, legend, button, input, textarea, th, td {
+  margin: 0;
+  padding: 0; }
+
+body, button, input, select, textarea {
+  font: 12px/1 'arial'; }
+
+button, input, select, textarea {
+  outline: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%; }
+
+address, cite, dfn, em, i {
+  font-style: normal; }
+
+code, kbd, pre, samp {
+  font-family: couriernew, courier, monospace; }
+
+small {
+  font-size: 12px; }
+
+ul, ol {
+  list-style: none; }
+
+a {
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: none; }
+
+body {
+  background: #f9f9f9; }
+
+header {
+  background: #2093ff;
+  padding: 4vw 3.2vw;
+  width: 100%;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
+  color: #FFFFFF;
+  font-size: 4.5333333333vw;
+  line-height: 4vw; }
+  header > div {
+    flex: 2; }
+  header .backoff {
+    height: 100%;
+    width: 6.6666666667vw;
+    text-align: left; }
+    header .backoff span {
+      display: inline-block;
+      width: 4vw;
+      height: 4vw;
+      background-size: 4vw;
+      background-image: url("../imgs/m_backoff@3x.png");
+      background: -webkit-image-set(url("../imgs/m_backoff@3x.png") 1x, url("../imgs/m_backoff@3x.png") 2x) no-repeat center; }
+  header .center {
+    text-align: center; }
+  header .register {
+    text-align: right; }
+    header .register a {
+      color: #FFFFFF;
+      font-size: 3.2vw; }
+
+body {
+  background: #FFFFFF; }
+
+main {
+  margin-top: 6.6666666667vw; }
+  main .comment_box {
+    width: 80vw;
+    margin: auto;
+    position: relative; }
+  main .comment_box + .comment_box {
+    margin-top: 3.2vw; }
+  main .user_name span, main .user_password span {
+    display: inline-block;
+    width: 11.4666666667vw;
+    height: 10.4vw;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #f1f1f1; }
+  main .user_name i, main .user_password i {
+    display: inline-block;
+    width: 4.8vw;
+    height: 4.8vw;
+    background-size: 4.8vw;
+    background-image: url("../imgs/m_number@2x.png");
+    background: -webkit-image-set(url("../imgs/m_number@3x.png") 1x, url("../imgs/m_number@2x.png") 2x) no-repeat center;
+    position: absolute;
+    top: 2.6666666667vw;
+    left: 2.9333333333vw; }
+  main .user_name input, main .user_password input {
+    width: 100%;
+    height: 10.4vw;
+    border: 1px solid #f1f1f1;
+    padding-left: 12.5333333333vw; }
+  main .user_password i {
+    background-image: url("../imgs/m_password@2x.png");
+    background: -webkit-image-set(url("../imgs/m_password@3x.png") 1x, url("../imgs/m_password@2x.png") 2x) no-repeat center; }
+  main .ajax_btn {
+    padding-top: 5.3333333333vw; }
+    main .ajax_btn span {
+      display: block;
+      width: 80vw;
+      text-align: center;
+      font-size: 1.6vw;
+      height: 5.3333333333vw;
+      line-height: 2.6666666667vw;
+      position: absolute;
+      top: 0.8vw;
+      overflow: hidden;
+      color: red; }
+    main .ajax_btn i {
+      position: absolute;
+      top: -1.6vw;
+      font-size: 2.4vw;
+      right: 0; }
+    main .ajax_btn input {
+      background: #2093ff;
+      width: 80vw;
+      height: 10.6666666667vw;
+      border: none;
+      outline-style: none;
+      color: #FFFFFF;
+      font-size: 3.7333333333vw;
+      line-height: 10.6666666667vw;
+      border-radius: 4px; }
+
+/*# sourceMappingURL=m_login.css.map */
