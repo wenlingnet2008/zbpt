@@ -234,7 +234,7 @@
 <script>
     //
     <!--没有登录跳转-->
-    var success_url = "m_login.html";
+    var success_url = "{{route('main.login')}}";
 
     //    是否支持跨域；
     var flag = true;//是否携带cookie

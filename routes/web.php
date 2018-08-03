@@ -11,9 +11,6 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
 
 Route::get('/get_token', function(){
    return response()->json(['_token'=>csrf_token()]);
@@ -30,7 +27,7 @@ require base_path('routes/admin.php');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/is_login', 'RoomController@isLogin')->name('room.islogin');
 
@@ -52,5 +49,12 @@ Route::post('/room/private_user_list', 'RoomController@privateUserList')->name('
 Route::post('/room/private_say_list', 'RoomController@privateSayList')->name('room.privatesaylist');
 Route::post('/room/search_online_user', 'RoomController@searchOnlineUser')->name('room.searchonlineuser');
 Route::get('/room_customer_service/{id}', 'RoomController@customerService')->name('room.customerservice');
+
+
+Route::get('/', 'MainController@index')->name('main.index');
+Route::get('/roomlist', 'MainController@roomList')->name('main.roomlist');
+Route::get('/m/login', 'MainController@login')->name('main.login');
+Route::get('/m/register', 'MainController@register')->name('main.register');
+
 
 //Route::any('/wechat', 'WeChatController@serve');
