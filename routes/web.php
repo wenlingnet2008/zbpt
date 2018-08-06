@@ -60,4 +60,8 @@ Route::get('/m/login', 'MainController@login')->name('main.login');
 Route::get('/m/register', 'MainController@register')->name('main.register');
 
 
+Route::post('/update_user_profile', 'UserController@updateUserProfile')->name('user.updateprofile');
+Route::post('/update_user_password', 'UserController@changePassword')->name('user.changepassword');
+
+
 //Route::any('/wechat', 'WeChatController@serve');

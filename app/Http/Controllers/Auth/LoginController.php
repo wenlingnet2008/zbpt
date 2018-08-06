@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Support\Facades\Cookie;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class LoginController extends Controller
 {
@@ -63,9 +64,15 @@ class LoginController extends Controller
 
         $this->clearLoginAttempts($request);
 
+        $user = $this->guard()->user();
+
+        if($user->image){
+            $user->image = Storage::disk('uploads')->url($user->image);
+        }
+
         return $this->authenticated($request, $this->guard()->user())
             ?: $request->expectsJson()
-                ? response()->json(['message' => '会员登录成功', 'data' => $this->guard()->user()], 200)
+                ? response()->json(['message' => '会员登录成功', 'data' => $user], 200)
                 : redirect()->intended($this->redirectPath());
     }
 

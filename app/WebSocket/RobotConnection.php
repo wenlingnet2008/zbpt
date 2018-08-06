@@ -45,11 +45,13 @@ class RobotConnection
             ]);
             Gateway::joinGroup($client_id, $id);
 
+            /* 添加定时发言
 
             $_SESSION[$this->robot['user_id']] = Timer::add($time_interval, function() use($id, $client_id, $client_name)
             {
                 $this->say($id, $client_id, $client_name, $this->getMessage());
             });
+            */
             //echo "添加{$_SESSION[$this->robot['user_id']]}定时发言\n";
 
         }elseif($data['type'] == 'ping'){
@@ -58,7 +60,7 @@ class RobotConnection
                 //echo "机器人{$this->robot['user_name']}下线\n";
                 $connection->close();
                 //echo "删除{$_SESSION[$this->robot['user_id']]}定时发言\n";
-                Timer::del($_SESSION[$this->robot['user_id']]);
+                //Timer::del($_SESSION[$this->robot['user_id']]);
             }
 
 
