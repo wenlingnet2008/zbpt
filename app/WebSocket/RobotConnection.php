@@ -27,6 +27,9 @@ class RobotConnection
     public function message($connection, $data)
     {
         $time_interval = 10;
+        $roles = [
+            ['id' => 2, 'name' => '普通会员'],
+        ];
         $id = $this->robot['room_id'];
         $client_name = $this->robot['user_name'];
         $user_id = $this->robot['user_id'];
@@ -34,7 +37,7 @@ class RobotConnection
         $data = json_decode($data, true);
         if($data['type'] == 'init'){
             $client_id = $data['client_id'];
-            $new_message = array('type'=>'login', 'user_id'=>$user_id, 'name'=>htmlspecialchars($client_name), 'time'=>date('Y-m-d H:i:s'));
+            $new_message = array('type'=>'login', 'user_id'=>$user_id, 'name'=>htmlspecialchars($client_name), 'roles' => $roles, 'time'=>date('Y-m-d H:i:s'));
             Gateway::sendToGroup($id, json_encode($new_message));
 
             Gateway::bindUid($client_id, $user_id);
@@ -42,6 +45,7 @@ class RobotConnection
                 'client_name'  => $client_name,
                 'user_id' => $user_id,
                 'room_id' => $id,
+                'roles' => $roles,
             ]);
             Gateway::joinGroup($client_id, $id);
 
