@@ -1,4 +1,5 @@
-var privatelsit = [];//私聊用户列表
+var privatelsit = [],//私聊用户列表
+robot_id = 'norobot';//机器人id,默认未选
 //获取token
 function getToken(cb) {
   $.ajax({
@@ -31,7 +32,6 @@ var ws, name, client_list = {};
 function connect() {
   // 创建websocket
   ws = new WebSocket("ws://"+document.domain+":7272");
-
 
 
   // 当有消息时根据消息类型显示不同信息
@@ -134,10 +134,7 @@ function onmessage(e) {
       delete client_list[data['user_id']];
       flush_client_list();
   }
-
-
 }
-
 // 播报进入、离开用户
 function recordUsers(data, msg) {
   var recordmsg = '',
@@ -254,7 +251,7 @@ function say(data, content) {
   } else if (rolesname == '客服') {
     str += '<div class="fl cardindetify vip0"></div>';
   }
-  str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '</span>';
+  str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '：</span>';
   if (to_client_id != 'all' && to_client_id != undefined) {
     str += '<span class="fl peoplenames"> @ ' + to_client_name + '</span>';
   }
@@ -279,19 +276,19 @@ function say_privates(data, content) {
   var storage = window.localStorage,
     userid = storage.getItem('userid');
   if (to_client_id == userid) {
-    getPrivateList('', '',function(){
+    getPrivateList('', '', function () {
       if ($('.mytalkBox').css('display') == 'block') {
         privatelsit.forEach((el, i) => {
           if (from_client_id == el.id) {
             $("#talklist li").eq(i).find('.redcircle').css('display', 'block');
           }
         })
-      } else {  
+      } else {
         privatelsit.forEach((el, i) => {
-        if (from_client_id == el.id) {
-          $("#talklist li").eq(i).find('.redcircle').css('display', 'block');
-        }
-      })
+          if (from_client_id == el.id) {
+            $("#talklist li").eq(i).find('.redcircle').css('display', 'block');
+          }
+        })
         $("#openmyChat .redcircle").css('display', 'block');
       }
     });
@@ -327,7 +324,6 @@ function ranDom(m, n) {
   return num;
 };
 
-
 // 弹幕运动
 function bulletMove(bullentmsg) {
   var barrageBoxh = $(".currentVideo").height() - 50,
@@ -338,7 +334,6 @@ function bulletMove(bullentmsg) {
   bullet.addClass("barragetxt");
   bullet.css("left", width);
   bullet.css("top", toph);
-  bullet.css("color", "rgb(" + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) + "," + Math.round(Math.random() * 255) + ")");
   bullet.animate({
     left: -1000
   }, ranDom(5, 10) * 1000, "linear", function () {
@@ -440,10 +435,13 @@ $(function () {
     }
     $('.textdiv .message').html(content).parseEmotion();
     var msg = $('.textdiv').html();
-    getToken(function () {
-      onSubmit(msg, token);
-    })
-
+    if(robot_id == 'norobot'){
+      getToken(function () {
+        onSubmit(msg, token);
+      })
+    }else{
+      robotsSay(robot_id, msg)
+    }
   })
   $("#content").keydown(function (e) {
     if (e.keyCode == 13) {
@@ -530,21 +528,16 @@ $(function () {
         _token: token,
       },
       success: function (data) {
-        if (msg == '<div class="saywords message"></div>') {
-          $(".mytalkBox").fadeIn();
-        } else {
-          input.val('');
-          input.focus();
-        }
+        input.val('');
+        input.focus();
       },
       fail: function (res) {
         console.log(res);
       },
       complete: function (res) {
-        console.log(res);
         var status = res.status;
         if (status == 401) {
-          $(".loginFixed").css("display", 'block');
+
         } else if (status == 400) {
           alert(res.responseJSON.message)
         }
@@ -630,21 +623,19 @@ $(function () {
   };
 });
 // 页面js
-$(function () {
-  // 计算内容高度
-  var centerMax = 0;
-  window.onresize = function () {//浏览器窗口改变事件
-    calMainHeight();
-  }
   calMainHeight()
   function calMainHeight() {
+    var roboth = 0;
+    if($("#robotBox").css('display')=='block'){
+      roboth = 34;
+    }
     var winHeight = $(window).height(),
       winWidth = $(window).width(),
       main = $("#main"),
       talksBox = $(".talksBox"),
       peoples = $(".peoples"),
       mainHeight = winHeight - 59,
-      talksBoxh = mainHeight - 30 - 34 - 168,
+      talksBoxh = mainHeight - 30 - 34 - 168 - roboth,
       talksmainh = talksBoxh - 40,
       peoplesh = mainHeight - 497,
       mainw = winWidth - 340 - 254 - 40,
@@ -658,6 +649,12 @@ $(function () {
     $(".currentVideo").css("height", videoh + 'px');
   }
 
+$(function () {
+  // 计算内容高度
+  var centerMax = 0;
+  window.onresize = function () {//浏览器窗口改变事件
+    calMainHeight();
+  }
   autoPlay();
   function autoPlay() {
     var len = $(".marquees li").length;
@@ -702,17 +699,17 @@ $(function () {
     }
   });
   // 在线人数与我的客服间切换
-  getCustomer();
+  getCustomer();//获取我的客服
   $(".userTap .taptxt").click(function () {
     var index = $(this).index();
     $(this).addClass('taptxta').siblings().removeClass('taptxta');
     if (index == 0) {
-      $('.usersBox .onlineusers').fadeIn();
-      $('.usersBox .myservice').fadeOut();
+      $('.usersBox .onlineusers').css('display', 'block');
+      $('.usersBox .myservice').css('display', 'none');
     } else if (index == 1) {
       getCustomer();
-      $('.usersBox .onlineusers').fadeOut();
-      $('.usersBox .myservice').fadeIn();
+      $('.usersBox .onlineusers').css('display', 'none');
+      $('.usersBox .myservice').css('display', 'block');
     }
   });
   // 右边导航切换
@@ -1049,7 +1046,10 @@ $(function () {
       getSearchuser(keyword)
     }
   })
-
+  getRobots();//获取机器人
+  $("#robots").change(function(){
+    robot_id = $(this).find("option:selected").val();
+  })
 });
 // 获取用户信息
 function getuserInfors(id, type) {
@@ -1082,7 +1082,7 @@ function getuserInfors(id, type) {
 };
 
 // 私聊列表
-function getPrivateList(id, name,cb) {
+function getPrivateList(id, name, cb) {
   var hasin = true;//当前的私聊用户默认在私聊列表里面
   $.ajax({
     type: "POST",
@@ -1145,7 +1145,7 @@ function getPrivateList(id, name,cb) {
         $("#talkcontent").prepend(newdivstr);
       }
       getPrivateSay(other_userid);
-      cb && cb(token);
+      cb && cb(data);
     }
   })
 }
@@ -1217,7 +1217,6 @@ function getCustomer() {
       withCredentials: flag
     },
     error: function (data) {
-      getToken();
     },
     success: function (data) {
       var serviceBox = $("#onlineservice");
@@ -1285,4 +1284,71 @@ function getSearchuser(keyword) {
       userlist_window.append(str);
     }
   })
+};
+// 机器人列表
+function getRobots() {
+  $.ajax({
+    type: "GET",
+    data: {},
+    url: api.robots + room_id,
+    dataType: "json",
+    xhrFields: {
+      withCredentials: flag
+    },
+    error: function (data) {
+    },
+    success: function (data) {
+      var robotsBox = $("#robots");
+      robotsBox.empty(),
+        len = data.length;
+      if (len) {
+        var str = '';
+        str += '<option value="norobot">选择机器人</option>';
+        $("#robotBox").css('display','block');
+        data.forEach(el => {
+          str += '<option value="' + el.user_id + '">' + el.user_name + '</option>';
+        })
+        robotsBox.append(str);
+      }else{
+        $("#robotBox").css('display','none');
+      }
+    },
+    complete:function(res){
+      var status = res.status;
+      if (status == 400) {
+        $("#robotBox").css('display','none');
+      }
+      calMainHeight()
+    }
+  })
+};
+// 机器人发言
+function robotsSay(robot_id, msg){
+  var input = $("#content");
+  $.ajax({
+    type: 'POST',
+    url: api.robotSay,
+    xhrFields: { withCredentials: flag },
+    data: {
+      user_id: robot_id,
+      room_id: room_id,
+      content: msg,
+    },
+    success: function (data) {
+      input.val('');
+      input.focus();
+    },
+    fail: function (res) {
+      console.log(res);
+    },
+    complete: function (res) {
+      var status = res.status;
+      if (status == 401) {
+        $(".loginFixed").css("display", 'block');
+      } else if (status == 400) {
+        alert(res.responseJSON.message)
+      }
+    }
+  });
+  return false;
 };

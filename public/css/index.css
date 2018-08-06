@@ -462,7 +462,7 @@
 .mains .centerBox .platTipsBox {
   width: 100%;
   overflow: hidden;
-  margin: 10px 0 0;
+  margin: 20px 0 0;
 }
 
 .mains .centerBox .platTipsBox .bgplattip {
@@ -611,7 +611,7 @@
   font-size: 12px;
   border-radius: 3px;
   line-height: 20px;
-  background: #505050;
+  background: #dadada;
   color: #ffffff;
   margin-right: 0;
   text-align: center;
@@ -821,6 +821,12 @@
 .mains .rightBox .rightmainBox .talkOptions .onlineservice .morekf, .mains .rightBox .rmainBox .talkOptions .onlineservice .morekf {
   padding: 0 8px 0;
   color: #333;
+}
+
+.mains .rightBox .rightmainBox .talkOptions .onlineservice .userselect, .mains .rightBox .rmainBox .talkOptions .onlineservice .userselect {
+  width: 90px;
+  height: 24px;
+  border-radius: 3px;
 }
 
 .mains .rightBox .rightmainBox .talkOptions .shareBar, .mains .rightBox .rmainBox .talkOptions .shareBar {
@@ -1407,7 +1413,7 @@
   border-radius: 20px;
   font-size: 14px;
   overflow: hidden;
-  color: rgba(255, 255, 255, 0.8);
+  color: white;
 }
 
 .switch {
@@ -1415,8 +1421,8 @@
   height: 20px;
   line-break: 20px;
   position: absolute;
-  left: 0;
-  bottom: 30px;
+  right: 0;
+  bottom: 40px;
   cursor: pointer;
 }
 

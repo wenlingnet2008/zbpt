@@ -398,6 +398,13 @@
                             <a class="fr morekf" href="javascript: void(0)" id="moreservice">更多客服&gt;&gt;</a>
                         </div>
 
+                        <!-- 增加机器人start -->
+                        <div class="onlineservice" id="robotBox">
+                            <span class="fl">机器人：</span>
+                            <select class="fl userselect" id="robots"></select>
+                        </div>
+                        <!-- 增加机器人end -->
+
                         <div class="shareBar">
                             <div class="fl sharebox privateChat">
                                 <a href="javascript:void(0)" class="bar_6 bar" id="openmyChat">我的私聊<span
@@ -743,6 +750,8 @@
             checkOnline: hosturl + 'room_check_online',//检查是否在线
             isLogin: hosturl + 'is_login',//判断用户是否登录
             customerService: hosturl + 'room_customer_service/',//客服列表
+            robots:hosturl+'room_robots/',//机器人列表
+            robotSay:hostsrc+'robot_say',//机器人发言
             bindlogin: hostsrc + "login",//绑定连接
             say: hostsrc + 'say',//发送消息
             kick: hostsrc + "kick",//踢出房间
