@@ -51,24 +51,30 @@
             全部直播
         </div>
         <ul class="comment_ul">
-            @foreach($rooms as $room)
+            @foreach($livelists as $livelist)
             <li>
-                <a href="{{route('room.index', ['id'=>$room->id])}}">
+                <a href="{{route('room.index', ['id'=>$livelist->room_id])}}">
                     <div class="live_logo">
                         <span></span>
-                        <i>直播中</i>
+                        <i>
+                            @if(\Carbon\Carbon::now()->gte(\Carbon\Carbon::parse($livelist->start_time)))
+                                直播中
+                            @else
+                                直播时间: {{$livelist->start_time}}
+                            @endif
+                            </i>
                     </div>
                     <div class="img_box">
-                        <img src="/storage/{{$room->logo}}" alt=""/>
+                        <img src="/storage/{{$livelist->image}}" alt=""/>
                     </div>
                     <div class="teacher_tet">
                             <span>
-                                {{$room->teacher->name}}
+                                {{$livelist->room->teacher->name ?? ''}}
                             </span>
                         <span><i class="icon_ong"></i></span>
                     </div>
                     <div class="title_text">
-                        {{$room->name}}
+                        {{$livelist->name}}
                     </div>
                 </a>
             </li>

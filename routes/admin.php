@@ -40,4 +40,6 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::get('server/{service?}/{action?}', 'ServerController@index')->name('server');
 
     Route::resource('courses', 'CourseController');
+
+    Route::resource('livelists', 'LiveListController');
 });

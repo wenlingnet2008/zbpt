@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LiveList;
 use App\Room;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,8 +28,11 @@ class MainController extends Controller
 
         $data['site'] = $this->site;
 
-        $rooms = Room::with(['teacher'])->get();
-        $data['rooms'] = $rooms;
+        $livelists = LiveList::with(['room'])->where('end_time', '>', date('Y-m-d H:i:s'))
+                    ->get();
+
+        $data['livelists'] = $livelists;
+
         return view('mobile.livelist', $data);
     }
 

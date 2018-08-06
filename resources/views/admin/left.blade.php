@@ -151,6 +151,13 @@
                     <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.permissions.index')}}">权限列表</a></dd>
 
                 </dl>
+
+                <dl id="dl_9">
+                    <dt onclick="m(9);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">直播列表管理</dt>
+                    <dd onclick="c(this);" style="display:none;"><a href="{{route('admin.livelists.index')}}">直播列表</a></dd>
+
+                </dl>
+
                 <!--
                 <dl id="dl_17">
                     <dt onclick="m(17);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">团购管理</dt>
@@ -172,16 +179,7 @@
                     <dd onclick="c(this);" style="display:none;"><a href="?moduleid=7&file=html">更新数据</a></dd>
                     <dd onclick="c(this);" style="display:none;"><a href="?moduleid=7&file=setting">模块设置</a></dd>
                 </dl>
-                <dl id="dl_8">
-                    <dt onclick="m(8);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">展会管理</dt>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=8&action=add">添加展会</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=8">展会列表</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=8&file=sign">报名列表</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=8&action=check">审核展会</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?file=category&mid=8">分类管理</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=8&file=html">更新数据</a></dd>
-                    <dd onclick="c(this);" style="display:none;"><a href="?moduleid=8&file=setting">模块设置</a></dd>
-                </dl>
+
                 <dl id="dl_21">
                     <dt onclick="m(21);" onmouseover="this.className='dt_on';" onmouseout="this.className='';">资讯管理</dt>
                     <dd onclick="c(this);" style="display:none;"><a href="?moduleid=21&action=add">添加资讯</a></dd>

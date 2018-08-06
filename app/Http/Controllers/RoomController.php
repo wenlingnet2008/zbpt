@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Jenssegers\Agent\Facades\Agent;
+use Mews\Purifier\Facades\Purifier;
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
 use Spatie\Permission\Models\Role;
 use App\Order;
@@ -270,6 +271,7 @@ class RoomController extends Controller
             $to_user_id = $request->input('to_user_id');
             $to_user = User::find($to_user_id);
             $content = $request->input('content');
+            $content = Purifier::clean($content);
             $content = nl2br(e($content));
 
             if ($to_user_id == $user->id) {

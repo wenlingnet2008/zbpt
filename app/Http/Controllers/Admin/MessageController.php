@@ -38,6 +38,12 @@ class MessageController extends Controller
             ['id' , '>', $id],
         ])->orderBy('id', 'asc')->get();
 
+        $messages = $messages->map(function ($message){
+            $message->content = strip_tags(html_entity_decode(html_entity_decode($message->content)), '<div><span><img>');
+
+            return $message;
+        });
+
         return response()->json(['data'=>$messages]);
     }
 }
