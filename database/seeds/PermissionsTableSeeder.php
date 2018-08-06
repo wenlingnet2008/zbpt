@@ -93,6 +93,11 @@ class PermissionsTableSeeder extends Seeder
                 'desc' => '前台查看用户',
                 'guard_name' => 'web',
             ],
+            [
+                'name' => 'front_robot_say',
+                'desc' => '前台机器人手动发言',
+                'guard_name' => 'web',
+            ],
 
         ]);
     }

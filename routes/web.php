@@ -49,6 +49,9 @@ Route::post('/room/private_user_list', 'RoomController@privateUserList')->name('
 Route::post('/room/private_say_list', 'RoomController@privateSayList')->name('room.privatesaylist');
 Route::post('/room/search_online_user', 'RoomController@searchOnlineUser')->name('room.searchonlineuser');
 Route::get('/room_customer_service/{id}', 'RoomController@customerService')->name('room.customerservice');
+Route::get('/room_robots/{id}', 'RoomController@robots')->name('room.robots');
+Route::post('/room/robot_say', 'RoomController@robotSay')->name('room.robot_say');
+
 
 
 Route::get('/', 'MainController@index')->name('main.index');

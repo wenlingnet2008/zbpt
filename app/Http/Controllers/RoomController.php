@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Message;
 use App\Online;
+use App\Robot;
 use App\Room;
 use App\User;
 use Carbon\Carbon;
@@ -27,6 +28,7 @@ class RoomController extends Controller
         $this->middleware('auth')->only(['mute', 'kick', 'unmute']);
         $this->middleware('permission:kick|mute|unmute')->only(['mute', 'kick', 'unmute']);
         $this->middleware('permission:front_view_user')->only(['user']);
+        $this->middleware('permission:front_robot_say')->only(['robots', 'robotSay']);
         if (\request()->filled('room_id')) {
             $room = Room::findOrFail(\request()->input('room_id'));
             $say_limit = $room->say_limit;
@@ -600,6 +602,50 @@ class RoomController extends Controller
 
 
         return response()->json($c_services);
+    }
+
+
+    public function robots($id)
+    {
+        $robots = Robot::where('room_id', $id)->get();
+
+        return response()->json($robots);
+    }
+
+
+    public function robotSay(Request $request)
+    {
+        $this->validate($request, [
+            'user_id' => ['required'],
+            'room_id' => ['required', 'integer'],
+            'content' => ['required'],
+        ], [
+            'user_id.required' => '用户不能为空',
+            'room_id.required' => '房间不能为空',
+            'content.required' => '发言内容不能为空',
+        ]);
+
+        $robot = Robot::where([
+            ['room_id', $request->room_id],
+            ['user_id', $request->user_id],
+        ])->firstOrFail();
+
+        $content = Purifier::clean($request->input('content'));
+        $content = nl2br(htmlspecialchars($content));
+        $message = [
+            'type'=>'say',
+            'from_client_id'=>$robot->user_id,
+            'from_client_name' => e($robot->user_name),
+            'to_client_id'=>'all',
+            'content'=>$content,
+            'roles' => Role::select('id', 'name')->where('id', 2)->get(),
+            'time'=>date('Y-m-d H:i:s'),
+        ];
+
+        Gateway::sendToGroup($request->room_id ,json_encode($message));
+
+        return response()->json(['message' => '发言成功']);
+
     }
 
 }
