@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class UserController extends Controller
@@ -31,17 +32,26 @@ class UserController extends Controller
     public function updateUserProfile(Request $request)
     {
         $this->validate($request, [
-            'mobile' => ['required'],
-            'qq'    => ['required'],
+            'mobile' => ['required', 'max:11'],
+            'qq'    => ['required', 'max:20'],
         ]);
 
         $user = \request()->user();
+
+        if($request->file('image')){
+            $image = $request->file('image')->store(date('Ymd'), 'uploads');
+            $user->image = $image;
+        }
 
         $user->qq = $request->qq;
         $user->mobile = $request->mobile;
         $user->save();
 
-        return response()->json(['message'=>'更新成功']);
+        if($user->image){
+            $user->image = Storage::disk('uploads')->url($user->image);
+        }
+
+        return response()->json(['message'=>'更新成功', 'data'=> $user]);
     }
 
 
