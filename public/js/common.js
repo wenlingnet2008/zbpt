@@ -20,12 +20,12 @@ function getToken(cb) {
     }
   })
 };
+var regemail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
+  regtel = /^[1][3,4,5,7,8][0-9]{9}$/,
+  regpwd = /^[a-zA-Z0-9]{6,16}$/;
 // login/register/edituserinfors
 $(function () {
   $(".roomid").val(room_id);
-  var regemail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
-    regtel = /^[1][3,4,5,7,8][0-9]{9}$/,
-    regpwd = /^[a-zA-Z0-9]{6,16}$/;
   $(".logintxt").click(function () {
     var $this = $(this),
       type = $this.attr("data-type");
@@ -158,7 +158,9 @@ $(function () {
           var id = msg.id;
           storage.setItem("userid", id);
           $(".loginBox .user_login ").css("display", 'none').eq(1).css("display", 'block');
-          $(".bguser").src = msg.image;
+          if (msg.image != null) {
+            $(".bguser").attr('src', msg.image);
+          }
           $(".username").html(msg.name);
         }
         location.reload();
@@ -217,7 +219,9 @@ $(function () {
           var id = msg.id;
           storage.setItem("userid", id);
           $(".loginBox .user_login ").css("display", 'none').eq(1).css("display", 'block');
-          $(".bguser").src = msg.image;
+          if (msg.image != null) {
+            $(".bguser").attr('src', msg.image);
+          }
           $(".user_name").html(msg.name);
           $(".user_sign").html(msg.introduce)
         }
@@ -251,10 +255,10 @@ $(function () {
         if (is_login) {
           var data = data.data;
           if (data) {
-            if(data.image != null){
-              $(".bgusers").attr('src',data.image);
-            }else{
-              $(".bgusers").attr('src','../imgs/hdefaultuser.png');
+            if (data.image != null) {
+              $(".bgusers").attr('src', data.image);
+            } else {
+              $(".bgusers").attr('src', '../imgs/hdefaultuser.png');
             }
             $(".user_truename").html(data.true_name);
             $(".user_name").html(data.name);
@@ -297,5 +301,166 @@ $(function () {
       }
     })
   };
+  // 资料编辑
+  $(".logined .usernames .username").click(function () {
+    $(this).toggleClass('usernamesh');
+    $(this).siblings('.user_infors').toggle();
+  });
+  // 修改密码正则验证  
+  $("#editpwd_form input[name='oldpassword']").blur(function () {
+    var val = $(this).val().trim();
+    if (!regpwd.test(val)) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
+  $("#editpwd_form input[name='password']").blur(function () {
+    var val = $(this).val().trim();
+    if (!regpwd.test(val)) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
+  $("#editpwd_form input[name='password_confirmation']").blur(function () {
+    var val = $(this).val().trim(),
+      pwd = $("#editpwd_form input[name='password']").val().trim();
+    if (val != pwd || !regpwd.test(val)) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
+  // 修改密码保存
+  $("#savepwd").on('click', function () {
+    var check = true;
+    $("#editpwd_form input").blur();
+    if ($("#editpwd_form input").hasClass("error")) {
+      check = false;
+    }
+    if (check) {
+      getToken(function () {
+        editPwd()
+      });
+    }
+    return false;
+  });
+  function editPwd() {
+    $.ajax({
+      type: "POST",
+      data: $("#editpwd_form").serialize(),
+      url: api.editpassword,
+      xhrFields: {
+        withCredentials: flag
+      },
+      dataType: "json",
+      beforeSend: function () {
+        check = false;
+      },
+      error: function (data) {
+        var msg = data.responseJSON;
+        alert(msg.message);
+      },
+      success: function (data) {
+        alert(data.message);
+        $('.logined .usernames .user_infors').toggle();
+        $("#editpwd_form input").val('');
+      },
+      complate: function () {
+        check = true;
+      }
+    })
+  }
+  // 编辑资料正则
+  
+  $("#editinfors_form input[name='qq']").blur(function () {
+    var val = $(this).val().trim(),
+      regqq = /[1-9][0-9]{4,14}/;
+    if (!regqq.test(val)) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
+  $("#editinfors_form input[name='mobile']").blur(function () {
+    var val = $(this).val().trim();
+    if (!regtel.test(val)) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
+  // 选择头像
+  var objimg = '';
+  $(".basehead img").click(function(){
+    $(this).addClass('imgactive').siblings().removeClass('imgactive');
+    var src = $(this).attr('src');
+    $('.userimgs').val(src);
+  });
+  $(".selectimage").on('change',function(){
+    objimg=$(this)[0].files[0];
+    console.log(URL.createObjectURL($(this)[0].files[0]));
+    $(".selectBox img").attr('src',URL.createObjectURL($(this)[0].files[0]));
+  })
+  // 编辑资料保存
+  $("#saveInfors").on('click', function () {
+    var check = true;
+    $("#editinfors_form input").blur();
+    if ($("#editinfors_form input").hasClass("error")) {
+      check = false;
+    }
+    var formdatas = new FormData();
+    var data =  $("#editinfors_form").serialize();
+    data = data.split('&');
+    data.forEach(el => {
+      el = el.split('=');
+      formdatas.append(el[0],el[1]);
+    });
+    formdatas.append('image',objimg);
+    if (check) {
+      getToken(function () {
+        editProfile(formdatas)
+      });
+    }
+    return false;
+  });
+  function editProfile(formdatas) {
+    $.ajax({
+      type: "POST",
+      data:formdatas,
+      url: api.editprofile,
+      xhrFields: {
+        withCredentials: flag
+      },
+      contentType: false,
+      processData: false,
+      dataType: "json",
+      beforeSend: function () {
+        check = false;
+      },
+      error: function (data) {
+        var msg = data.responseJSON;
+        alert(msg.message);
+      },
+      success: function (data) {
+        alert(data.message);
+        $('.logined .usernames .user_infors').toggle();
+        var data = data.data;
+        if (data) {
+          if (data.image != null) {
+            $(".bgusers").attr('src', data.image);
+          } else {
+            $(".bgusers").attr('src', '../imgs/hdefaultuser.png');
+          }
+          $(".user_qq").html(data.qq);
+        }
+        $("#editinfors_form input").val('');
+      },
+      complate: function () {
+        check = true;
+      }
+    })
+  }
 });
 

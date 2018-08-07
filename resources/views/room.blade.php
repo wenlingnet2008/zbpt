@@ -68,7 +68,7 @@
                                         <div class="fl usernav">修改密码</div>
                                     </div>
                                     <div class="user_details">
-                                        <div class="detail_box baseInfors">
+                                        <div class="detail_box baseInfors" style="display: block;">
                                             <ul class="baseInfor">
                                                 <li class="baseli">
                                                     <span class="fl baseBt">用户姓名： </span>
@@ -93,26 +93,8 @@
                                             </ul>
                                         </div>
                                         <div class="detail_box editInfors" style="display: none;">
-                                            <form action="">
+                                            <form id="editinfors_form" action="" method="post">
                                                 <ul class="baseInfor">
-                                                    <li class="baseli">
-                                                        <span class="fl baseBt">用户昵称： </span>
-                                                        <span class="fl basetxt">
-                                <input type="text" name="nickname" autocomplete="off">
-                              </span>
-                                                    </li>
-                                                    <li class="baseli">
-                                                        <span class="fl baseBt">用户签名： </span>
-                                                        <span class="fl basetxt">
-                                <input type="text" name="usersign" autocomplete="off">
-                              </span>
-                                                    </li>
-                                                    <li class="baseli">
-                                                        <span class="fl baseBt">联系邮箱： </span>
-                                                        <span class="fl basetxt">
-                                <input type="text" name="email" autocomplete="off">
-                              </span>
-                                                    </li>
                                                     <li class="baseli">
                                                         <span class="fl baseBt">联系QQ： </span>
                                                         <span class="fl basetxt">
@@ -122,54 +104,48 @@
                                                     <li class="baseli">
                                                         <span class="fl baseBt">联系手机： </span>
                                                         <span class="fl basetxt">
-                                <input type="text" name="tel" autocomplete="off">
-                              </span>
-                                                    </li>
-                                                    <li class="baseli">
-                                                        <span class="fl baseBt">联系性别： </span>
-                                                        <span class="fl basetxt">
-                                <select name="sex" id="">
-                                  <option value="男">男</option>
-                                  <option value="女">女</option>
-                                </select>
+                                <input type="text" name="mobile" autocomplete="off">
                               </span>
                                                     </li>
 
                                                     <li class="baseli">
                                                         <span class="fl baseBt">用户头像： </span>
-                                                        <span class="fl basetxt">
-                                <img src="/imgs/hdefaultuser.png" alt="" class="fl imgactive">
-                                <img src="/imgs/hdefaultuser.png" alt="" class="fl">
-                                <img src="/imgs/hdefaultuser.png" alt="" class="fl">
+                                                        <span class="fl basetxt basehead">
+                                <div class="selectBox">
+                                  <img src="/imgs/hdefaultuser.png" alt="" class="bgusers">
+                                  <input type="file" value="" class="selectimage" />
+                                </div>
+                                <input type="hidden" value="" class="token" name="_token" />
                               </span>
                                                     </li>
                                                 </ul>
-                                                <input type="button" class="fr savebtn" value="保存">
+                                                <input type="button" class="fr savebtn" value="保存" id="saveInfors">
                                             </form>
                                         </div>
                                         <div class="detail_box editInfors" style="display: none;">
-                                            <form action="">
+                                            <form id="editpwd_form" action="" method="post">
                                                 <ul class="baseInfor">
                                                     <li class="baseli">
                                                         <span class="fl baseBt">旧密码： </span>
                                                         <span class="fl basetxt">
-                                <input type="password" name="oldpwd" autocomplete="off">
+                                <input type="password" name="oldpassword" autocomplete="off">
                               </span>
                                                     </li>
                                                     <li class="baseli">
                                                         <span class="fl baseBt">新密码： </span>
                                                         <span class="fl basetxt">
-                                <input type="password" name="newpwd" autocomplete="off">
+                                <input type="password" name="password" autocomplete="off">
                               </span>
                                                     </li>
                                                     <li class="baseli">
                                                         <span class="fl baseBt">确认密码： </span>
                                                         <span class="fl basetxt">
-                                <input type="password" name="config" autocomplete="off">
+                                <input type="password" name="password_confirmation" autocomplete="off">
+                                <input type="hidden" value="" class="token" name="_token" />
                               </span>
                                                     </li>
                                                 </ul>
-                                                <input type="button" class="fr savebtn" value="保存">
+                                                <input type="button" class="fr savebtn" value="保存" id="savepwd">
                                             </form>
                                         </div>
                                     </div>
@@ -466,9 +442,7 @@
                             <div class="Msg_input">
                                 <div class="form">
                                     <textarea class="fl input saywords" placeholder="在这里输入发送内容" id="content"></textarea>
-                                    <div class="fl input textdiv">
-                                        <div class="saywords message"></div>
-                                    </div>
+
                                     <input type="button" id="submitmsg" value="发送" class="fr button">
                                 </div>
                             </div>
@@ -762,6 +736,8 @@
             privat_userlist: hostsrc + 'private_user_list',//私聊用户列表
             privat_saylist: hostsrc + 'private_say_list',//与私聊用户聊天内容
             searchOnlineuser: hostsrc + 'search_online_user',//搜索房间在线用户
+            editpassword: hosturl + 'update_user_password',//修改密码
+            editprofile: hosturl + 'update_user_profile',//编辑资料
         };
     var flag = true;//是否携带cookie
     var room_id = '{{$room->id}}';//房间id

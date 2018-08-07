@@ -213,7 +213,6 @@ function html_decode(str) {
   s = s.replace(/<br\/>/g, "\n");
   return s;
 }
-
 // 主界面发言渲染
 function say(data, content) {
   var from_client_id = data['from_client_id'],
@@ -235,8 +234,16 @@ function say(data, content) {
   if (user_id == undefined) {
     user_id = data['from_client_id'];
   }
-
   content = html_decode(content);
+  var arr = content.split('@start');
+  var style = '';
+  if(arr[1] != undefined){
+    var arr1 = arr[1].split('@end');
+    if(arr1[1] != undefined){
+      content = arr[0]+arr1[1];
+      style = arr1[0];
+    }
+  }
   var str = '';
   str += '    <li class="userli">';
   str += '<span class="fl times">' + getTime(time) + '</span>';
@@ -255,7 +262,7 @@ function say(data, content) {
   if (to_client_id != 'all' && to_client_id != undefined) {
     str += '<span class="fl peoplenames"> @ ' + to_client_name + '</span>';
   }
-  str += '<span class="fl peoplemsg">' + content + ' </span>';
+  str += '<span class="fl peoplemsg" '+style+'>' + content + ' </span>';
   str += '</li>';
   $("#talkusers").append(str).parseEmotion();
   if (isonBullet) {
@@ -330,7 +337,7 @@ function bulletMove(bullentmsg) {
     width = $(".currentVideo").width() + 200 + 'px',
     toph = ranDom(10, barrageBoxh) + 'px';
   var bullet = $("<span>");
-  bullet.html(bullentmsg);
+  bullet.html(bullentmsg).parseEmotion();
   bullet.addClass("barragetxt");
   bullet.css("left", width);
   bullet.css("top", toph);
@@ -393,10 +400,12 @@ $(function () {
       alert("请选择聊天用户");
       return false;
     }
-    $('.textdiv .message').html(content).parseEmotion();
-    var msg = $('.textdiv').html();
+    var style = $('#content').attr('style');
+    if(style != undefined){
+       content = content+'@startstyle="'+style+'"@end';
+    }
     getToken(function () {
-      sayPrivate(other_userid, msg, token);
+      sayPrivate(other_userid, content, token);
     })
   })
   $("#textarea").keydown(function (e) {
@@ -433,14 +442,16 @@ $(function () {
       alert("发送内容不能为空");
       return false;
     }
-    $('.textdiv .message').html(content).parseEmotion();
-    var msg = $('.textdiv').html();
+    var style = $('#content').attr('style');
+    if(style != undefined){
+       content = content+'@startstyle="'+style+'"@end';
+    }
     if(robot_id == 'norobot'){
       getToken(function () {
-        onSubmit(msg, token);
+        onSubmit(content, token);
       })
     }else{
-      robotsSay(robot_id, msg)
+      robotsSay(robot_id, content)
     }
   })
   $("#content").keydown(function (e) {
