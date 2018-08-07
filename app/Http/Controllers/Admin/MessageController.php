@@ -40,6 +40,7 @@ class MessageController extends Controller
 
         $messages = $messages->map(function ($message){
             $message->content = strip_tags(html_entity_decode(html_entity_decode($message->content)), '<div><span><img>');
+            $message->content = preg_replace("/@start.*?@end/", '', $message->content);
 
             return $message;
         });

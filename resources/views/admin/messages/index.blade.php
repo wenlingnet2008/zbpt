@@ -47,7 +47,13 @@
                 <tr align="center">
                     <td align="left">&nbsp;{{$message->user_name}}</td>
                     <td class="px12">{{$message->to_user_name}}</td>
-                    <td>{{strip_tags(htmlspecialchars_decode(htmlspecialchars_decode($message->content)))}}</td>
+                    <td>
+                     @php
+                            $message->content = strip_tags(htmlspecialchars_decode(htmlspecialchars_decode($message->content)));
+                            $message->content = preg_replace("/@start.*?@end/", '', $message->content);
+                     @endphp
+                        {{$message->content}}
+                    </td>
                     <td>{{$message->room->name}}</td>
                     <td class="px12">{{$message->created_at}}</td>
                 </tr>

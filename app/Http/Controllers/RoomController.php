@@ -134,13 +134,25 @@ class RoomController extends Controller
             ['is_private', 0],
             ['created_at', '>', Carbon::now()->format('Y-m-d')],
         ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
-        $data['messages'] = $messages;
+        //$data['messages'] = $messages;
 
         if(Agent::isMobile()){
             return response()->view('m_room', $data)->cookie('access_token', json_encode($login_user), 60 * 6);
 
         }
         return response()->view('room', $data)->cookie('access_token', json_encode($login_user), 60 * 6);
+    }
+
+    //获取当天的聊天消息
+    public function getTodayMessage($id)
+    {
+        $messages = Message::with(['user:id,name', 'user.roles:id,name'])->where([
+            ['room_id', $id],
+            ['is_private', 0],
+            ['created_at', '>', Carbon::now()->format('Y-m-d')],
+        ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
+
+        return response()->json($messages);
     }
 
     public function access($id)

@@ -51,6 +51,7 @@ Route::post('/room/search_online_user', 'RoomController@searchOnlineUser')->name
 Route::get('/room_customer_service/{id}', 'RoomController@customerService')->name('room.customerservice');
 Route::get('/room_robots/{id}', 'RoomController@robots')->name('room.robots');
 Route::post('/room/robot_say', 'RoomController@robotSay')->name('room.robot_say');
+Route::get('/room_today_message/{id}', 'RoomController@getTodayMessage')->name('room.todaymessage');
 
 
 
