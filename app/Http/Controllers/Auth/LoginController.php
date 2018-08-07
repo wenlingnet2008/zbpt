@@ -67,7 +67,7 @@ class LoginController extends Controller
         $user = $this->guard()->user();
 
         if($user->image){
-            $user->image = Storage::disk('uploads')->url($user->image);
+            //$user->image = Storage::disk('uploads')->url($user->image);
         }
 
         return $this->authenticated($request, $this->guard()->user())

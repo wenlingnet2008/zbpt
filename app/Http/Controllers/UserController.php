@@ -48,7 +48,7 @@ class UserController extends Controller
         $user->save();
 
         if($user->image){
-            $user->image = Storage::disk('uploads')->url($user->image);
+            //$user->image = Storage::disk('uploads')->url($user->image);
         }
 
         return response()->json(['message'=>'更新成功', 'data'=> $user]);

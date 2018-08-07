@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 use Spatie\Permission\Traits\HasRoles;
 
@@ -106,5 +107,14 @@ class User extends Authenticatable
     {
         $this->forbid_talk = 0;
         $this->save();
+    }
+
+    //获取image http绝对路径
+    public function getImageAttribute($value)
+    {
+        if($value){
+            return Storage::disk('uploads')->url($value);
+        }
+        return $value;
     }
 }

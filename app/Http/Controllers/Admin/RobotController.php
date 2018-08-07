@@ -95,7 +95,7 @@ class RobotController extends Controller
         $rooms = Room::get();
         $data['rooms'] = $rooms;
         $robot = Robot::findOrFail($id);
-        $robot->image = Storage::disk('uploads')->url($robot->image);
+        //$robot->image = Storage::disk('uploads')->url($robot->image);
         $data['robot'] = $robot;
 
         return view('admin.robots.edit', $data);

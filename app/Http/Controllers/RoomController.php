@@ -330,6 +330,7 @@ class RoomController extends Controller
             if($user){
                 $online = Online::where('user_id', $user->id)->first();
                 $user->online_total_time = $online ? $online->total_time : 0 ;
+
             }
 
 
@@ -438,7 +439,7 @@ class RoomController extends Controller
 
         $teacher = $room->teacher->only(['id', 'name', 'image', 'introduce']);
         if($teacher['image']){
-            $teacher['image'] = Storage::disk('uploads')->url($teacher['image']);
+            //$teacher['image'] = Storage::disk('uploads')->url($teacher['image']);
         }
 
         $teacher['order_num'] = Order::where([
@@ -474,7 +475,7 @@ class RoomController extends Controller
         $online = Online::where('user_id', $user_id)->first();
         $user->online_total_time = $online ? $online->total_time : 0;
         if($user->image){
-            $user->image = Storage::disk('uploads')->url($user->image);
+            //$user->image = Storage::disk('uploads')->url($user->image);
         }
 
 

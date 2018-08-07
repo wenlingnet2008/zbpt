@@ -115,7 +115,7 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::findOrFail($id);
-        $user->image = Storage::disk('uploads')->url($user->image);
+        //$user->image = Storage::disk('uploads')->url($user->image);
         $data['user'] = $user;
         $data['user_role'] = $user->roles->first();
         $roles = Role::get();
