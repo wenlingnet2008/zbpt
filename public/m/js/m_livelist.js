@@ -76,17 +76,17 @@ function isLogin() {
                 }else{
                     img=" <img src='../imgs/big_bgcolor.jpg' alt=''/>";
                 }
-                html="<a href='m_userdata.html'>"+
+                html="<a href='"+login_yes+"'>"+
                     img+
                     "</a>";
-                $(".login_box").html(html);
+
             }else{
                 var html="";
-                html="<a href='m_login.html'>"+
+                html="<a href='"+login_no+"'>"+
                     "<span>登录</span>"+
                     "</a>";
-                $(".login_box").html(html);
             }
+            $(".login_box").html(html);
         }
     })
 };

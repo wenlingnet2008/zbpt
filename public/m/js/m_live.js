@@ -362,6 +362,10 @@ $(function(){
 
 
 $(function(){
+    $(".return_btn span").on("click",function(){
+        window.history.back(-1);
+    })
+
 
 //提交尾部
     var tttthg=$(".header_box").height()+$(".nav").height()+$(".teacher_box").height()+$(".title_box").height()+2*$(".input_ajax").height()+2;

@@ -63,8 +63,26 @@
 </main>
 <footer></footer>
 <script>
-    // <!--注册成功跳转-->
-    var  success_url="m_success.html";
+    <!--注册成功跳转-->
+    var  success_url="{{route('room.index', ['id'=> request()->user() ? request()->user()->room_id : 1])}}";
+    //    是否支持跨域；
+    var flag = true;//是否携带cookie
+    //关于请求路径
+    var hosturl = '/',
+        hostsrc = "/room/";
+    //关于api接口
+    var api={
+        get_token:hosturl+'get_token',
+        register: hosturl + 'register',
+        room_teacher: hosturl + 'room_teacher/',
+        room_orders: hosturl + 'room_orders/',
+        bindlogin: hostsrc + "login",//绑定连接
+        getuserinfors: hosturl + 'room_user/',
+    };
+    var to_user_id="all";
+    var room_id = '1';
+    //没有登录跳转页面地址
+    //关于获取token  字段
 </script>
 <script src="{{asset('m/js/m_register.js')}}"></script>
 </body>

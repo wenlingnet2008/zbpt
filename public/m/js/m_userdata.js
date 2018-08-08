@@ -89,7 +89,7 @@ function isLogin() {
                 $(".comment_ul").html(datahtml);
                 $(".comment_box").append("<input type='hidden' class='token' value=''  name='token'/>");
             }else{
-                window.location.href="m_login.html";
+                window.location.href="/m/login";
             }
         }
     })
@@ -105,6 +105,7 @@ $(".loginout").click(function () {
         loginOut(token)
     });
 })
+
 var yesuserpng=false;
 //-------------------------------关于头像的更改-----------------------------------
 $("#userdata_form").on("change","#image",function(){
@@ -123,7 +124,7 @@ $("#userdata_form").on("change","#image",function(){
             }
             yesuserpng=true;
         }else{
-            alert("Can only upload jpg/png format, and pictures can not exceed 10m");
+            alert("只能上传JPG/PNG格式，图片不能超过10M");
             return false;
         }
     }
@@ -191,7 +192,7 @@ function loginOut(token) {
         success: function (data) {
             var storage = window.localStorage;
             storage.removeItem("userid");
-            window.location.href="m_login.html";
+            window.location.href="/";
         }
     })
 };

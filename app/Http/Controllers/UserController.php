@@ -16,7 +16,7 @@ class UserController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except(['index']);
     }
 
     /**
@@ -26,7 +26,12 @@ class UserController extends Controller
      */
     public function index()
     {
-        //return view('home');
+        return view('mobile.user_profile');
+    }
+
+    public function changePassword()
+    {
+        return view('mobile.chang_password');
     }
 
     public function updateUserProfile(Request $request)
@@ -55,12 +60,12 @@ class UserController extends Controller
     }
 
 
-    public function changePassword(Request $request)
+    public function updatePassword(Request $request)
     {
         $this->validate($request, ['password' => 'required|confirmed|min:6', 'oldpassword'=>'required']);
         $user = \request()->user();
-        if(Hash::check($request->input('oldpassword'), $user->password)){
-            $user->password = Hash::make($request->input('password'));
+        if(Hash::check(md5($request->input('oldpassword')), $user->password)){
+            $user->password = Hash::make(md5($request->input('password')));
             $user->setRememberToken(Str::random(60));
             $user->save();
             return response()->json(['message'=>'修改密码成功']);

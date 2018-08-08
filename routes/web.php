@@ -62,7 +62,9 @@ Route::get('/m/register', 'MainController@register')->name('main.register');
 
 
 Route::post('/update_user_profile', 'UserController@updateUserProfile')->name('user.updateprofile');
-Route::post('/update_user_password', 'UserController@changePassword')->name('user.changepassword');
+Route::post('/update_user_password', 'UserController@updatePassword')->name('user.updatepassword');
+Route::get('/user_profile', 'UserController@index')->name('user.profile');
+Route::get('/change_password', 'UserController@changePassword')->name('user.changepassword');
 
 
 Route::get('/import_user/update_password', 'ImportUserController@updateUserPassword')->name('import.update_user_password');

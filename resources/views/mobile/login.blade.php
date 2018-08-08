@@ -46,8 +46,6 @@
 </main>
 <footer></footer>
 <script>
-    //    登录成功跳转路径
-    var success_url="{{route('room.index', ['id'=>1])}}";
     //    是否支持跨域；
     var flag = true;//是否携带cookie
     //关于请求路径
@@ -61,7 +59,7 @@
         logout: hosturl + 'logout',
         room_teacher: hosturl + 'room_teacher/',
         room_orders: hosturl + 'room_orders/',
-        checkOnline: hosturl + 'room_check_onlineroom_check_online',//检查是否在线
+        checkOnline: hosturl + 'room_check_online',//检查是否在线
         bindlogin: hostsrc + "login",//绑定连接
         getuserinfors: hosturl + 'room_user/',
     };

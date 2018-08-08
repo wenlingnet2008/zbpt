@@ -25,10 +25,10 @@
     </div>
     <div class="login_box">
         <a href="#">
-                    <span>
-                        登录
-                    </span>
-            <!--<img src="../imgs/big_bgcolor.jpg" alt=""/>-->
+            <!--<span>-->
+            <!--登录-->
+            <!--</span>-->
+            <img src="/m/imgs/big_bgcolor.jpg" alt=""/>
         </a>
     </div>
 </header>
@@ -85,7 +85,8 @@
 <footer></footer>
 <script>
     // <!--没有登录跳转-->
-    var  success_url="m_login.html";
+    var  login_no="{{route('main.login')}}";
+    var  login_yes="{{route('user.profile')}}";
 
     //    是否支持跨域；
     var flag = true;//是否携带cookie
@@ -100,15 +101,21 @@
         logout: hosturl + 'logout',
         room_teacher: hosturl + 'room_teacher/',
         room_orders: hosturl + 'room_orders/',
+        checkOnline: hosturl + 'room_check_onlineroom_check_online',//检查是否在线
         bindlogin: hostsrc + "login",//绑定连接
+        say: hostsrc + 'say',//发送消息
+        kick: hostsrc + "kick",//踢出房间
+        mute: hostsrc + "mute",//禁止发言
+        unmute: hostsrc + "unmute",//解除禁止
         getuserinfors: hosturl + 'room_user/',
+        sayprivate: hostsrc + 'sayprivate',//私聊
         isLogin: hosturl + 'is_login',//判断用户是否登录
+        upuserdata:hosturl+"update_user_profile",
     };
     var to_user_id="all";
-    var room_id = '';
+    var room_id = '1';
     //没有登录跳转页面地址
     //关于获取token  字段
-
 </script>
 <script src="{{asset('m/js/m_livelist.js')}}"></script>
 </body>
