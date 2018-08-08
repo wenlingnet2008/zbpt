@@ -64,7 +64,7 @@ class UserController extends Controller
     {
         
         $user_arr = $request->input('user');
-        $user_arr['password'] = bcrypt($request->input('password'));
+        $user_arr['password'] = bcrypt(md5($request->input('password')));
 
         if($request->file('user.image')){
 
@@ -139,7 +139,7 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         $user->syncRoles($request->input('role'));
         if($request->filled('password')){
-            $user->password = bcrypt($request->input('password'));
+            $user->password = bcrypt(md5($request->input('password')));
         }
         $user->name = $request->input('user.name');
         $user->mobile = $request->input('user.mobile');

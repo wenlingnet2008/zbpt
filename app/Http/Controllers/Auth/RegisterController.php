@@ -54,7 +54,7 @@ class RegisterController extends Controller
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'room_id'  => 'required|integer',
-            'mobile'  => 'required|integer',
+            'mobile'  => 'required',
         ]);
     }
 
@@ -92,7 +92,7 @@ class RegisterController extends Controller
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password']),
+            'password' => bcrypt(md5($data['password'])),
             'room_id'  => $data['room_id'],
             'mobile'   => $data['mobile'],
         ]);

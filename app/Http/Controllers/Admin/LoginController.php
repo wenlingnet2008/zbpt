@@ -21,7 +21,7 @@ class LoginController extends Controller
         if (Auth::attempt(
             [
                 'email' => $request->input('email'),
-                'password' => $request->input('password'),
+                'password' => md5($request->input('password')),
             ],
             $request->filled('remember')
         )) {

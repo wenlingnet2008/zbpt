@@ -36,8 +36,8 @@ class DashboardController extends Controller
 
         $this->validate($request, ['password' => 'required|confirmed|min:6', 'oldpassword'=>'required']);
         $user = \request()->user();
-        if(Hash::check($request->input('oldpassword'), $user->password)){
-            $user->password = Hash::make($request->input('password'));
+        if(Hash::check(md5($request->input('oldpassword')), $user->password)){
+            $user->password = Hash::make(md5($request->input('password')));
             $user->setRememberToken(Str::random(60));
             $user->save();
         }else{

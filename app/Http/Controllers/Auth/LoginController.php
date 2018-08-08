@@ -76,5 +76,12 @@ class LoginController extends Controller
                 : redirect()->intended($this->redirectPath());
     }
 
+    protected function credentials(Request $request)
+    {
+        $password = md5($request->password);
+        return ["{$this->username()}" => $request->{$this->username()}, "password" => $password];
+        //return $request->only($this->username(), 'password');
+    }
+
 
 }
