@@ -150,9 +150,9 @@ class RoomController extends Controller
             ['room_id', $id],
             ['is_private', 0],
             ['created_at', '>', Carbon::now()->format('Y-m-d')],
-        ])->orderBy('id', 'desc')->limit(50)->get()->reverse();
+        ])->orderBy('id', 'desc')->limit(50)->get();
 
-        return response()->json($messages);
+        return response()->json(array_values($messages->reverse()->toArray()));
     }
 
     public function access($id)
@@ -288,6 +288,10 @@ class RoomController extends Controller
             $content = Purifier::clean($content);
             $content = nl2br(e($content));
 
+            if (!$to_user) {
+                return response()->json(['message' => '不能和游客聊天'], 400);
+            }
+
             if ($to_user_id == $user->id) {
                 return response()->json(['message' => '自己不能更自己聊天'], 400);
             }
@@ -296,9 +300,7 @@ class RoomController extends Controller
                     $room->sayAll($user, $content);
                 } else {
 
-                    if (!$to_user) {
-                        return response()->json(['message' => '不能和游客聊天'], 400);
-                    }
+
                     $room->sayToUser($user, $to_user, $content);
                 }
             } else {
