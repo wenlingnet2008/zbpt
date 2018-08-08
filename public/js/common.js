@@ -297,7 +297,7 @@ $(function () {
       success: function (data) {
         var storage = window.localStorage;
         storage.removeItem("userid");
-        $(".loginBox .user_login ").css("display", 'none').eq(0).css("display", 'block');
+        location.reload();
       }
     })
   };
@@ -366,6 +366,7 @@ $(function () {
         alert(data.message);
         $('.logined .usernames .user_infors').toggle();
         $("#editpwd_form input").val('');
+        $(".logined .savebtn").val('保存');
       },
       complate: function () {
         check = true;
@@ -400,8 +401,19 @@ $(function () {
   });
   $(".selectimage").on('change',function(){
     objimg=$(this)[0].files[0];
-    console.log(URL.createObjectURL($(this)[0].files[0]));
-    $(".selectBox img").attr('src',URL.createObjectURL($(this)[0].files[0]));
+    if(objimg){
+        var reader = new FileReader();
+        var testmsg = objimg.name.substring(objimg.name.lastIndexOf(".") + 1),
+            extension = testmsg === "jpg",
+            extension2 = testmsg === "png",
+            isLt2M = objimg.size / 1024 / 1024 < 10;
+        if ((extension || extension2) && isLt2M) {
+          $(".selectBox img").attr('src',URL.createObjectURL($(this)[0].files[0]));
+        }else{
+            alert("只能上传JPG/PNG格式，图片不能超过10M");
+            return false;
+        }
+    }
   })
   // 编辑资料保存
   $("#saveInfors").on('click', function () {

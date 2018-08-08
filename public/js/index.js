@@ -472,10 +472,6 @@ $(function () {
       alert("请选择聊天用户");
       return false;
     }
-    var style = $('#content').attr('style');
-    if(style != undefined){
-       content = content+'@startstyle="'+style+'"@end';
-    }
     getToken(function () {
       sayPrivate(other_userid, content, token);
     })
@@ -991,11 +987,10 @@ $(function () {
       fail: function (res) {
         console.log(res);
       },
+      error:function(res){
+        alert(res.responseJSON.message);
+      },
       complete: function (res) {
-        var status = res.status;
-        if (status == 401) {
-          alert(res.responseJSON.message);
-        }
       }
     });
   };
