@@ -65,4 +65,8 @@ Route::post('/update_user_profile', 'UserController@updateUserProfile')->name('u
 Route::post('/update_user_password', 'UserController@changePassword')->name('user.changepassword');
 
 
+Route::get('/import_user/update_password', 'ImportUserController@updateUserPassword')->name('import.update_user_password');
+
+
+
 //Route::any('/wechat', 'WeChatController@serve');

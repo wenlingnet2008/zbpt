@@ -54,7 +54,7 @@
                      @endphp
                         {{$message->content}}
                     </td>
-                    <td>{{$message->room->name}}</td>
+                    <td>{{$message->room->name ?? ''}}</td>
                     <td class="px12">{{$message->created_at}}</td>
                 </tr>
             @endforeach

@@ -1787,3 +1787,20 @@
     opacity: 1;
   }
 }
+
+#historytip {
+  font-size: 12px;
+  color: #999;
+  padding: 5px 0 0;
+  height: 12px;
+  text-align: center;
+  position: relative;
+}
+
+#historytip i {
+  display: inline-block;
+  width: 50px;
+  height: 1px;
+  background: #eeeeee;
+  margin: 4.5px 8px;
+}

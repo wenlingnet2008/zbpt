@@ -288,9 +288,6 @@ class RoomController extends Controller
             $content = Purifier::clean($content);
             $content = nl2br(e($content));
 
-            if (!$to_user) {
-                return response()->json(['message' => '不能和游客聊天'], 400);
-            }
 
             if ($to_user_id == $user->id) {
                 return response()->json(['message' => '自己不能更自己聊天'], 400);
@@ -299,11 +296,16 @@ class RoomController extends Controller
                 if ($to_user_id == 'all') {
                     $room->sayAll($user, $content);
                 } else {
-
+                    if (!$to_user) {
+                        return response()->json(['message' => '不能和游客聊天'], 400);
+                    }
 
                     $room->sayToUser($user, $to_user, $content);
                 }
             } else {
+                if (!$to_user) {
+                    return response()->json(['message' => '用户不在线!!'], 400);
+                }
                 if(Room::userIsOnline($to_user_id)){
                     $room->sayPrivate($user, $to_user, $content);
                 }else{

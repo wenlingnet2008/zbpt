@@ -199,7 +199,7 @@ function getTime(time) {
     min = '0' + min
   }
   return hour + ':' + min;
-}
+};
 // 转义
 function html_decode(str) {
   var s = "";
@@ -212,7 +212,7 @@ function html_decode(str) {
   s = s.replace(/&quot;/g, "\"");
   s = s.replace(/<br\/>/g, "\n");
   return s;
-}
+};
 // 主界面发言渲染
 function say(data, content) {
   var from_client_id = data['from_client_id'],
@@ -257,10 +257,12 @@ function say(data, content) {
     str += '<div class="fl cardindetify vip3"></div>';
   } else if (rolesname == '客服') {
     str += '<div class="fl cardindetify vip0"></div>';
+  }else{
+    str += '<div class="fl cardindetify vip1"></div>';
   }
   str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '：</span>';
   if (to_client_id != 'all' && to_client_id != undefined) {
-    str += '<span class="fl peoplenames"> @ ' + to_client_name + '</span>';
+    str += '<span class="fl peoplenames"> @ ' + to_client_name + '：</span>';
   }
   str += '<span class="fl peoplemsg" '+style+'>' + content + ' </span>';
   str += '</li>';
@@ -271,7 +273,77 @@ function say(data, content) {
   if (isscroll) {
     $('.talksmain').scrollTop($("#talkusers").height());
   }
-}
+};
+// 聊天记录
+getTodayTalks();
+function getTodayTalks(){
+  $.ajax({
+    type: "GET",
+    data: {},
+    url: api.getTodayTalks+room_id,
+    dataType: "json",
+    xhrFields: {
+      withCredentials: flag
+    },
+    error: function (data) {
+
+    },
+    success: function (data) {
+      var str = '';
+      for(var i in data){
+        let msg = data[i];
+        var content = msg['content'],
+        from_client_name = msg['user_name'],
+        to_client_id = msg['to_user_id'],
+        time = msg['created_at'],
+        user_id = msg['user_id'],
+        roles = msg['user']['roles'][0],
+        to_client_name = '',
+        rolesname = roles.name;
+      if (to_client_id != 0 && to_client_id != undefined) {
+        to_client_name = msg['to_user_name'];
+      }
+      content = html_decode(content);
+      var arr = content.split('@start');
+      var style = '';
+      if(arr[1] != undefined){
+        var arr1 = arr[1].split('@end');
+        if(arr1[1] != undefined){
+          content = arr[0]+arr1[1];
+          style = arr1[0];
+        }
+      }
+      var str = '';
+      str += '    <li class="userli">';
+      str += '<span class="fl times">' + getTime(time) + '</span>';
+      if (rolesname == '管理员') {
+        str += '<div class="fl cardindetify vip4"></div>';
+      } else if (rolesname == '普通会员') {
+        str += '<div class="fl cardindetify vip1"></div>';
+      } else if (rolesname == '白银会员') {
+        str += '<div class="fl cardindetify vip2"></div>';
+      } else if (rolesname == '黄金会员') {
+        str += '<div class="fl cardindetify vip3"></div>';
+      } else if (rolesname == '客服') {
+        str += '<div class="fl cardindetify vip0"></div>';
+      }else{
+        str += '<div class="fl cardindetify vip1"></div>';
+      }
+      str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '：</span>';
+      if (to_client_id != 0 && to_client_id != undefined) {
+        str += '<span class="fl peoplenames"> @ ' + to_client_name + '：</span>';
+      }
+      str += '<span class="fl peoplemsg" '+style+'>' + content + ' </span>';
+      str += '</li>';
+      $("#talkusers").append(str).parseEmotion();
+      $('.talksmain').scrollTop($("#talkusers").height());
+      }
+      var tipstr = '<li class="userli" id="historytip"><i></i><span>以上是历史消息<span><i></i></li>';
+      $("#talkusers").append(tipstr);
+      $('.talksmain').scrollTop($("#talkusers").height());
+    }
+  })
+};
 // 私聊界面发言渲染
 function say_privates(data, content) {
   var from_client_id = data['from_client_id'].toString(),
@@ -324,7 +396,7 @@ function say_privates(data, content) {
       $(this).scrollTop($(this).find('.msgBox').height())
     }
   })
-}
+};
 // 随机数
 function ranDom(m, n) {
   var num = Math.floor(Math.random() * (m - n) + n);

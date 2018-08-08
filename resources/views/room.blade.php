@@ -312,14 +312,6 @@
                     <div class="talksmain">
                         <!-- 聊天界面 -->
                         <ul class="users" id="talkusers">
-                            @foreach($messages as $message)
-                            <li class="userli"><span class="fl times">{{\Carbon\Carbon::parse($message->created_at)->format('H:i')}}</span>
-                                <div class="fl cardindetify vip1"></div>
-                                <span class="fl peoplename" data-id="{{$message->user_id}}">{{$message->user_name}}</span><span class="fl peoplemsg">
-                                    {!! htmlspecialchars_decode(htmlspecialchars_decode($message->content)) !!} </span>
-                            </li>
-                            @endforeach
-
                         </ul>
                     </div>
                     <div class="talksBtns">
@@ -334,9 +326,9 @@
                             <option value="SimHei" style="font-family: SimHei">黑体</option>
                             <option value="KaiTi_GB2312" style="font-family: KaiTi_GB2312">楷体</option>
                             <option value="FangSong_GB23122" style="font-family:FangSong_GB2312">仿宋</option>
-                            <option value="Microsoft YaHei" style="font-family: Microsoft YaHei">微软雅黑</option>
+                            <option value="Microsoft-YaHei" style="font-family: Microsoft YaHei">微软雅黑</option>
                             <option value="Arial">Arial</option>
-                            <option value="MS Sans Serif">MS Sans Serif</option>
+                            <option value="MS-Sans-Serif">MS Sans Serif</option>
                             <option value="Wingdings">Wingdings</option>
                         </select>
                         <select name="FontSize" id="FontSize">
@@ -738,6 +730,7 @@
             searchOnlineuser: hostsrc + 'search_online_user',//搜索房间在线用户
             editpassword: hosturl + 'update_user_password',//修改密码
             editprofile: hosturl + 'update_user_profile',//编辑资料
+            getTodayTalks: hosturl + 'room_today_message/',//获取房间当天聊天记录
         };
     var flag = true;//是否携带cookie
     var room_id = '{{$room->id}}';//房间id

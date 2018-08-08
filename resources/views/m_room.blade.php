@@ -135,9 +135,7 @@
                         </div>
                         <div class="fldd input_box">
                             <textarea class="textarea" name="" id="textarea" cols="30" rows="1"></textarea>
-                            <div class="textdiv" contenteditable="true" style="display: none">
-                                <span class="message"></span>
-                            </div>
+
                         </div>
                         <div class="fldd sun_box">
                             <input id="submitmsg" type="button" value="提交"/>
@@ -254,6 +252,7 @@
         say: hostsrc + 'say',//发送消息
         getuserinfors: hosturl + 'room_user/',
         isLogin: hosturl + 'is_login',//判断用户是否登录
+        oldmessage:hosturl+"room_today_message/",
     };
     var to_user_id = "all";
     var room_id = '{{$room->id}}';

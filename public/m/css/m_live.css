@@ -187,6 +187,19 @@ main .main_comment .comment_box li:nth-child(1) .chat_box {
     word-break: break-all; }
   main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users {
     overflow-y: auto; }
+    main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users #historytip {
+      font-size: 12px;
+      color: #999;
+      padding: 0.6666666667vw 0 0;
+      height: 1.6vw;
+      text-align: center;
+      position: relative; }
+      main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users #historytip i {
+        display: inline-block;
+        width: 6.6666666667vw;
+        height: 0.1333333333vw;
+        background: #eeeeee;
+        margin: 0.6vw 1.0666666667vw; }
     main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users .fl {
       float: left; }
     main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users .user .times {
