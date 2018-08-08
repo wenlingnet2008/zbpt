@@ -1,32 +1,16 @@
 /**
- * Created by Administrator on 2018/7/31 0031.
+ * Created by Administrator on 2018/8/7 0007.
  */
 $(function(){
 
 
+
+
+
     var regemail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
         reg=/^\w{6,16}$/;
-    var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
-    var regqq=/^[1][0-9]{4,10}$/;
-    $(".yourname_box").each(function(){
-        $(this).find("input").on("focus",function(){
-            $(this).removeClass("error")
-        })
-    })
-
-    $("#yournumber").on("blur",function(){
-        if($("#yournumber").val().trim()=="" || !regemail.test($("#yournumber").val().trim())){
-            $(this).addClass("error");
-            return false;
-        }else{
-            $(this).removeClass("error");
-            return false;
-        }
-
-    })
-
-    $("#yourname").on("blur",function(){
-        if($("#yourname").val().trim()==""){
+    $("#oldpassword").on("blur",function(){
+        if($("#oldpassword").val().trim()=="" || !reg.test($("#oldpassword").val().trim())){
             $(this).addClass("error");
             return false;
         }else{
@@ -34,7 +18,6 @@ $(function(){
             return false;
         }
     })
-
     $("#password").on("blur",function(){
         if($("#password").val().trim()=="" || !reg.test($("#password").val().trim())){
             $(this).addClass("error");
@@ -57,46 +40,25 @@ $(function(){
             return false;
         }
     })
-
-    $("#phonenumber").on("blur",function(){
-        if($("#phonenumber").val().trim()=="" || !myreg.test($("#phonenumber").val().trim())){
-            $(this).addClass("error");
-            return false;
-        }else{
-            $(this).removeClass("error");
-            return false;
-        }
-    })
-
-
-    $("#qqnumber").on("blur",function(){
-        if($("#qqnumber").val().trim()=="" || !regqq.test($("#qqnumber").val().trim())){
-            $(this).addClass("error");
-            return false;
-        }else{
-            $(this).removeClass("error");
-            return false;
-        }
-    })
-
     $(".ajax_btn input").on("click",function(){
         var error=true;
         $("main").each(function(){
             $(this).find("input").focus();
         })
+        var num=0;
         $(".yourname_box").each(function(){
             if($(this).find("input").hasClass("error")){
-                error=false;
+                num++;
             }
         })
-        if(error){
+        if(error && num==0){
             $.ajax({
                 type: "POST",
-                data: $("#register_form").serialize(),
+                data: $("#changepwd_form").serialize(),
                 xhrFields: {
                     withCredentials: flag
                 },
-                url: api.register,
+                url: api.changepwd,
                 dataType: "json",
                 beforeSend: function () {
                     error = false;
@@ -105,24 +67,16 @@ $(function(){
                     var msg = data.responseJSON,
                         errors = msg.errors;
                     if (data.status == 422) {
-                        if (errors.email) {
-                            alert(errors.email[0]);
-                        }
-                        if (errors.mobile) {
-                            alert(errors.mobile[0]);
-                        }
-                        if (errors.name) {
-                            alert(errors.name[0]);
-                        }
-                        if (errors.password) {
-                            alert(errors.password[0]);
-                        }
-                    } else {
+                        alert(msg.message);
+                    }else{
                         alert(msg.message);
                     }
                 },
                 success: function (data) {
                     alert(data.message);
+                    getToken(function () {
+                        loginOut(token)
+                    });
                     window.location.href=success_url;
                 },
                 complate: function () {
@@ -131,17 +85,32 @@ $(function(){
             })
         }
     })
+    //获取token
+    getToken();
 
-    $("#run_1").on("click",function(){
-        window.history.back(-1);
-    })
 
     $(".backoff span").on("click",function(){
         window.history.back(-1);
     })
-    getToken()
-    function getToken() {
-        var token = '';
+
+    function loginOut(token) {
+        $.ajax({
+            type: "POST",
+            data: { _token: token },
+            url: api.logout,
+            xhrFields: {
+                withCredentials: flag
+            },
+            dataType: "json",
+            success: function (data) {
+                var storage = window.localStorage;
+                storage.removeItem("userid");
+                window.location.href="m_login.html";
+            }
+        })
+    };
+//获取token
+    function getToken(cb) {
         $.ajax({
             type: "GET",
             data: {},
@@ -151,13 +120,15 @@ $(function(){
                 withCredentials: flag
             },
             error: function (data) {
-                // getToken();
+                getToken();
             },
             success: function (data) {
                 token = data._token;
                 $(".token").val(token);
-                return token;
+                cb && cb(token);
+                return false;
             }
         })
-    }
+    };
+
 })

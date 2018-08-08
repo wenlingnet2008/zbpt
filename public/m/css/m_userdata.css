@@ -95,11 +95,22 @@ main .top {
   padding: 4.8vw 3.2vw 4.5333333333vw 3.2vw; }
   main .top > div {
     float: left; }
-  main .top .headpng img {
-    overflow: hidden;
-    border-radius: 50%;
+  main .top .headpng {
+    position: relative;
     width: 10.6666666667vw;
     height: 10.6666666667vw; }
+    main .top .headpng img, main .top .headpng input[type=file] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      overflow: hidden;
+      border-radius: 50%;
+      width: 10.6666666667vw;
+      height: 10.6666666667vw;
+      z-index: 1; }
+    main .top .headpng input[type=file] {
+      opacity: 0;
+      z-index: 2; }
   main .top .username {
     margin-left: 1.8666666667vw;
     text-align: left;
@@ -110,7 +121,8 @@ main .top {
       color: #333333; }
       main .top .username h1 input {
         border: none;
-        outline-style: none; }
+        outline-style: none;
+        background: transparent; }
     main .top .username h2 {
       margin-top: 1.8666666667vw; }
       main .top .username h2 .cardindetify {
@@ -187,8 +199,9 @@ main .comment_box {
       font-size: 3.7333333333vw;
       color: #333333;
       border: none;
-      outline-style: none; }
-main .loginout {
+      outline-style: none;
+      background: transparent; }
+main .loginout, main .changepwd {
   margin-top: 1.3333333333vw;
   background: #FFFFFF;
   color: #fe3a36;
@@ -196,7 +209,9 @@ main .loginout {
   height: 12vw;
   line-height: 12vw;
   text-align: center; }
-  main .loginout span {
+  main .loginout span, main .changepwd span {
     cursor: pointer; }
+main .changepwd {
+  color: #2093ff; }
 
 /*# sourceMappingURL=m_userdata.css.map */

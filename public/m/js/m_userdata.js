@@ -41,54 +41,53 @@ function isLogin() {
                 }
                 top = "<div class='headpng'>";
                 if (data.image) {
-                    top += "<img src='" + data.image + "' alt='头像'/> <input type='hidden' name='image' value='" + data.name + "'/>";
+                    top += "<img class='userpng' src='" + data.image + "' alt='头像'/> <input name='image' id='image' type='file' accept='image/gif, image/jpeg, image/png' />";
                 } else {
-                    top += "<img src='../imgs/hdefaultuser.png' alt='头像'/><input name='image' type='hidden' value=''/>";
+                    top += "<img src='../imgs/hdefaultuser.png' alt='头像'/><input name='image' id='image' type='file' accept='image/gif, image/jpeg, image/png' />";
                 }
                 top += "</div>" + "<div class='username'>";
                 if (data.name) {
-                    top += "<h1><input type='text' value='" + data.name + "' name='name'/></h1>";
+                    top += "<h1><input type='text' disabled value='" + data.name + "' name='name'/></h1>";
                 } else {
                     top += "<h1><input type='text' value='' name='name'/></h1>";
                 }
-
                 top += "<h2><span class='cardindetify' data-type='" + dengji + "'></span></h2>" +
                     "</div>" +
                     "<div class='toleft'><span></span></div>";
                 $(".top").html(top);
                 var datahtml = "";
                 if (data.nick_name) {
-                    datahtml += "<li><h1>昵称</h1><input type='text' value='" + data.nick_name + "'name='nick_name' /><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>昵称</h1><input type='text' disabled value='" + data.nick_name + " '/></li>";
                 } else {
-                    datahtml += "<li><h1>昵称</h1><input type='text' value=''/><div class='toleft' name='nick_name'><span></span></div></li>";
+                    datahtml += "<li><h1>昵称</h1><input type='text' disabled value=''/></li>";
                 }
                 if (data.mobile) {
-                    datahtml += "<li><h1>联系手机</h1><input type='text' value='" + data.mobile + "'  name='mobile'/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>联系手机</h1><input type='text' id='datamobile' value='" + data.mobile + "'  name='mobile'/><div class='toleft'><span></span></div></li>";
                 } else {
-                    datahtml += "<li><h1>联系手机</h1><input type='text' value=''  name='mobile'/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>联系手机</h1><input type='text' id='datamobile' value=''  name='mobile'/><div class='toleft'><span></span></div></li>";
                 }
                 if (data.email) {
-                    datahtml += "<li><h1>联系邮箱</h1><input type='text' value='" + data.email + "'  name='email'/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>联系邮箱</h1><input type='text' disabled value='" + data.email + "' /></li>";
                 } else {
-                    datahtml += "<li><h1>联系邮箱</h1><input type='text' value=''  name='email'/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>联系邮箱</h1><input type='text' disabled value='' /></li>";
                 }
-                if (data.sex) {
-                    datahtml += "<li><h1>性别</h1><input type='text' value='" + data.sex + "'  name='sex'/><div class='toleft'><span></span></div></li>";
-                } else {
-                    datahtml += "<li><h1>性别</h1><input type='text' value=' '  name='sex'/><div class='toleft'><span></span></div></li>";
-
-                }
+                //if (data.sex) {
+                //    datahtml += "<li><h1>性别</h1><input type='text' value='" + data.sex + "'  name='sex'/><div class='toleft'><span></span></div></li>";
+                //} else {
+                //    datahtml += "<li><h1>性别</h1><input type='text' value=' '  name='sex'/><div class='toleft'><span></span></div></li>";
+                //}
                 if (data.qq) {
-                    datahtml += "<li><h1>联系QQ</h1><input type='text' value='" + data.qq + "'  name='qq'/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>联系QQ</h1><input type='text' id='dataqq' value='" + data.qq + "'  name='qq'/><div class='toleft'><span></span></div></li>";
                 } else{
-                    datahtml += "<li><h1>联系QQ</h1><input type='text' value=''  name='qq'/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>联系QQ</h1><input type='text' id='dataqq' value=''  name='qq'/><div class='toleft'><span></span></div></li>";
                 }
-                if (data.autograph) {
-                    datahtml += "<li><h1>个性签名</h1><input type='text' value='" + data.autograph + "'  name='autograph'/><div class='toleft'><span></span></div></li>";
-                } else {
-                    datahtml += "<li><h1>个性签名</h1><input type='text' value=''  name='autograph'/><div class='toleft'><span></span></div></li>";
-                }
+                //if (data.autograph) {
+                //    datahtml += "<li><h1>个性签名</h1><input type='text' value='" + data.autograph + "'  name='autograph'/> <input type='hidden' class='_token' value=''  name='token'/><div class='toleft'><span></span></div></li>";
+                //} else {
+                //    datahtml += "<li><h1>个性签名</h1><input type='text' value=''  name='autograph'/> <input class='token' type='hidden' value=''  name='_token'/><div class='toleft'><span></span></div></li>";
+                //}
                 $(".comment_ul").html(datahtml);
+                $(".comment_box").append("<input type='hidden' class='token' value=''  name='token'/>");
             }else{
                 window.location.href="m_login.html";
             }
@@ -96,19 +95,86 @@ function isLogin() {
     })
 };
 var token="";
-
-
+var flag=true;
+var check=true;
+//获取token
+getToken();
 // 退出登录
 $(".loginout").click(function () {
     getToken(function () {
         loginOut(token)
     });
 })
+var yesuserpng=false;
+//-------------------------------关于头像的更改-----------------------------------
+$("#userdata_form").on("change","#image",function(){
+    var ImgFile = $(this)[0].files[0];
+    if(ImgFile){
+        var reader = new FileReader();
+        var testmsg = ImgFile.name.substring(ImgFile.name.lastIndexOf(".") + 1),
+            extension = testmsg === "jpg",
+            extension2 = testmsg === "png",
+            isLt2M = ImgFile.size / 1024 / 1024 < 10;
+        if ((extension || extension2) && isLt2M) {
+            var self = $(this);
+            reader.readAsDataURL(ImgFile);
+            reader.onload = function () {
+                self.parent().find("img").attr("src",this.result)
+            }
+            yesuserpng=true;
+        }else{
+            alert("Can only upload jpg/png format, and pictures can not exceed 10m");
+            return false;
+        }
+    }
+})
 
 
 $(".backoff span").on("click",function(){
     window.history.back(-1);
 })
+
+$("#ajax").on("click",function(){
+    var formdata = new FormData();
+    formdata.append("mobile",$("#datamobile").val().trim());
+    formdata.append("qq",$("#dataqq").val().trim());
+    formdata.append("_token",$(".token").val().trim());
+
+    if(yesuserpng){
+      var   FileObj = document.getElementById( "image" ).files[0];
+            formdata.append("image",FileObj);
+    }
+    if(check){
+        $.ajax({
+            type: "POST",
+            data: formdata,
+            url: api.upuserdata,
+            xhrFields: {
+                withCredentials:flag
+            },
+            dataType: "json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                check = false;
+            },
+            error: function (data) {
+                check = true
+            },
+            success: function (data) {
+                //window.location.href=success_url;
+                window.location.reload();
+            },
+            complate: function () {
+                check = true
+            }
+        })
+    }
+})
+
+
+
 
 function loginOut(token) {
     $.ajax({
@@ -130,6 +196,7 @@ function loginOut(token) {
     })
 };
 //获取token
+getToken();
 function getToken(cb) {
     $.ajax({
         type: "GET",
@@ -145,7 +212,7 @@ function getToken(cb) {
         success: function (data) {
             token = data._token;
             $(".token").val(token);
-            cb && cb(token)
+            cb && cb(token);
             return false;
         }
     })

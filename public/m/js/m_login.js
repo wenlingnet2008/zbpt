@@ -55,8 +55,8 @@ $(function(){
                     }
                 },
                 success: function (data) {
-                        window.location.href=success_url;
-                    //window.history.back(-1);
+                        //window.location.href=success_url;
+                    window.history.back(-1);
                 },
                 complate: function () {
                     check = true

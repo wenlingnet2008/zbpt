@@ -966,9 +966,10 @@ header h2 {
   background: #000;
   overflow: hidden;
   position: relative; }
-  .banner img {
-    height: 9.0666666667rem;
-    display: block; }
+
+.banner img {
+  height: 9.0666666667rem;
+  display: block; }
 
 .banner-pagination {
   position: absolute;
@@ -978,16 +979,18 @@ header h2 {
   text-align: center;
   z-index: 3;
   font-size: 0; }
-  .banner-pagination span {
-    width: 0.32rem;
-    height: 0.32rem;
-    display: inline-block;
-    background: rgba(255, 255, 255, 0.4);
-    margin: 0 0.1333333333rem;
-    border-radius: 0.32rem; }
-    .banner-pagination span.swiper-pagination-bullet-active {
-      background: #2093ff;
-      opacity: 0.5; }
+
+.banner-pagination span {
+  width: 0.32rem;
+  height: 0.32rem;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.4);
+  margin: 0 0.1333333333rem;
+  border-radius: 0.32rem; }
+
+.banner-pagination span.swiper-pagination-bullet-active {
+  background: #2093ff;
+  opacity: 0.5; }
 
 .fz12 {
   font-size: 0.5333333333rem; }
@@ -996,6 +999,7 @@ header h2 {
   float: left;
   width: 25%;
   margin-top: 0.8rem; }
+
 .index-nav b {
   width: 100%;
   text-align: center;
@@ -1005,30 +1009,37 @@ header h2 {
   background-image: url("../imgs/rili@2x.png");
   background: -webkit-image-set(url("../imgs/rili@3x.png") 1x, url("../imgs/rili@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(2) .index-nav-icon {
   background-image: url("../imgs/zhibo@2x.png");
   background: -webkit-image-set(url("../imgs/zhibo@3x.png") 1x, url("../imgs/zhibo@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(3) .index-nav-icon {
   background-image: url("../imgs/hangqing@2x.png");
   background: -webkit-image-set(url("../imgs/hangqing@3x.png") 1x, url("../imgs/hangqing@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(4) .index-nav-icon {
   background-image: url("../imgs/touzicelv@2x.png");
   background: -webkit-image-set(url("../imgs/touzicelv@3x.png") 1x, url("../imgs/touzicelv@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(5) .index-nav-icon {
   background-image: url("../imgs/caijingzixun@2x.png");
   background: -webkit-image-set(url("../imgs/caijingzixun@3x.png") 1x, url("../imgs/caijingzixun@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(6) .index-nav-icon {
   background-image: url("../imgs/huangjingquan@2x.png");
   background: -webkit-image-set(url("../imgs/huangjingquan@3x.png") 1x, url("../imgs/huangjingquan@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(7) .index-nav-icon {
   background-image: url("../imgs/huangjinquan@2x.png");
   background: -webkit-image-set(url("../imgs/huangjinquan@3x.png") 1x, url("../imgs/huangjinquan@2x.png") 2x) no-repeat center;
   background-size: 1.2rem; }
+
 .index-nav a:nth-child(8) .index-nav-icon {
   background-image: url("../imgs/guanyu@2x.png");
   background: -webkit-image-set(url("../imgs/guanyu@3x.png") 1x, url("../imgs/guanyu@2x.png") 2x) no-repeat center;
@@ -1072,10 +1083,11 @@ header h2 {
   background-position: center center;
   border-radius: 2.1333333333rem;
   overflow: hidden; }
-  .index-nav-icon img {
-    display: block;
-    width: 100%;
-    min-height: 2.1333333333rem; }
+
+.index-nav-icon img {
+  display: block;
+  width: 100%;
+  min-height: 2.1333333333rem; }
 
 .syy-gold {
   width: 0.8533333333rem;
@@ -1089,25 +1101,29 @@ header h2 {
 .gold-nav {
   overflow: hidden;
   height: 4.2666666667rem; }
-  .gold-nav ul {
-    font-size: 0;
-    white-space: nowrap;
-    overflow: auto;
-    height: 5.3333333333rem;
-    -webkit-overflow-scrolling: touch; }
-  .gold-nav li {
-    display: inline-block;
-    width: 5rem; }
-  .gold-nav i {
-    width: 1.76rem;
-    height: 1.6rem;
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center center;
-    overflow: hidden; }
-    .gold-nav i img {
-      display: block;
-      width: 100%; }
+
+.gold-nav ul {
+  font-size: 0;
+  white-space: nowrap;
+  overflow: auto;
+  height: 5.3333333333rem;
+  -webkit-overflow-scrolling: touch; }
+
+.gold-nav li {
+  display: inline-block;
+  width: 5rem; }
+
+.gold-nav i {
+  width: 1.76rem;
+  height: 1.6rem;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  overflow: hidden; }
+
+.gold-nav i img {
+  display: block;
+  width: 100%; }
 
 .bgc {
   background: #fff;
@@ -1183,5 +1199,7 @@ header h2 {
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale; }
+
+/*# sourceMappingURL=m_index.css.map */
 
 /*# sourceMappingURL=m_index.css.map */

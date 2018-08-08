@@ -11,6 +11,8 @@ var ws, name, client_list = {};
 
 // 连接服务端
 function connect() {
+
+
     // 创建websocket
     ws = new WebSocket("ws://"+document.domain+":7272");
     // 当有消息时根据消息类型显示不同信息
@@ -47,10 +49,68 @@ function connect() {
                 }
             }
         });
+
     };
     ws.onerror = function () {
         console.log("出现错误");
     };
+}
+
+
+oldemessage();
+function oldemessage(){
+    $.ajax({
+        type: "GET",
+        data: {},
+        url: api.oldmessage + room_id,
+        dataType: "json",
+        xhrFields: { withCredentials: flag },
+        error: function (data) {
+        },
+        success: function (data) {
+            var html="";
+            for (variable in data) {
+                var roles = data[variable]["user"]["roles"][0],
+                    rolesname = roles.name,
+                    peoplename = data[variable]["user"].name;
+                var dengji=4;
+                if (rolesname == '管理员') {
+                    dengji=6;
+                }else if (rolesname == '普通会员') {
+                    dengji=4;
+                }else if (rolesname == '白银会员') {
+                    dengji=3;
+                }else if (rolesname == '黄金会员') {
+                    dengji=2;
+                }else if (rolesname == '客服') {
+                    dengji=1;
+                }
+                var content = html_decode(data[variable].content);
+                var style='';
+                var arr = content.split('@start');
+                if(arr[1] != undefined){
+                    var arr1 = arr[1].split('@end');
+                    if(arr1[1] != undefined){
+                        content = arr[0]+arr1[1];
+                        style = arr1[0];
+                    }
+                }
+                html+="<li class='user'>"+
+                    "<span class='fl times'>9:20</span>"+
+                    "<div class='fl cardindetify' data-type="+dengji+"></div>"+
+                    "<div class='fl peoplename_box'>"+
+                    "<span class='peoplename'>"+peoplename+"：</span>"+
+                    "<span class='peoplemsg' "+style+">"+
+                    content+
+                    "</span>"+
+                    "</div>"+
+                    "</li>";
+            }
+            html+="<li class='userli user' id='historytip'><i></i><span>以上是历史消息<span><i></i></li>";
+            $("#talkusers").append(html).parseEmotion();
+            $('#chat_box').scrollTop($("#talkusers").height());
+        }
+    })
 }
 
 
@@ -143,7 +203,21 @@ function say(data, content) {
     if (user_id == undefined) {
         user_id = data['from_client_id'];
     }
+
     content = html_decode(content);
+    var style='';
+    var arr = content.split('@start');
+    if(arr[1] != undefined){
+        var arr1 = arr[1].split('@end');
+        if(arr1[1] != undefined){
+            content = arr[0]+arr1[1];
+            style = arr1[0];
+        }
+    }
+
+
+
+
     var roles = data['roles'][0],
         rolesname = roles.name;
     var dengji=4;
@@ -164,12 +238,16 @@ function say(data, content) {
         "<div class='fl cardindetify' data-type="+dengji+"></div>"+
         "<div class='fl peoplename_box'>"+
         "<span class='peoplename'>"+from_client_name+"：</span>"+
-        "<span class='peoplemsg'>"+
+        "<span class='peoplemsg' "+style+">"+
         content+
         "</span>"+
         "</div>"+
         "</li>";
-    $("#talkusers").append(html);
+
+
+    $("#talkusers").append(html).parseEmotion();
+
+
     if (isonBullet) {
         bulletMove(content);
     };
@@ -203,7 +281,7 @@ function bulletMove(bullentmsg) {
         width = $(window).width()+"px",
         toph = ranDom(0, barrageBoxh) + 'px';
     var bullet = $("<span>");
-    bullet.html(bullentmsg);
+    bullet.html(bullentmsg).parseEmotion();
     bullet.addClass("barragetxt");
     bullet.css("left", width);
     bullet.css("bottom", toph);
@@ -341,9 +419,9 @@ $(function(){
             alert("发送内容不能为空");
             return false;
         }
-        $('.textdiv .message').html(content).parseEmotion();
-        var msg = $('.textdiv').html();
-        onSubmit(msg);
+        //$('.textdiv .message').html(content).parseEmotion();
+        //var msg = $('.textdiv').html();
+        onSubmit(content);
         $('#textarea').val("");
         $('.textdiv .message').html("");
 
@@ -392,7 +470,6 @@ $(function(){
     getRoomTeacher();
     // 获取房间老师
     function getRoomTeacher() {
-        var room_id = 1;
         $.ajax({
             type: "GET",
             data: {},
