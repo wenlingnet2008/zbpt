@@ -431,7 +431,11 @@ class RoomController extends Controller
 
         if($user){
             $permission = [];
-            if($user->id != $request->to_user_id and !str_contains($request->to_user_id, 'guest_')){
+            if(
+                $user->id != $request->to_user_id
+                and !str_contains($request->to_user_id, 'guest_')
+                and !str_contains($request->to_user_id, 'robot_')
+            ){
                 $permission = ['say_private' => '私聊'];
             }
 
