@@ -64,9 +64,17 @@ $(function () {
   }
 
   // 注册验证
-  $(".form_box input[name='email']").blur(function () {
+  // $(".register_form input[name='email']").blur(function () {
+  //   var val = $(this).val().trim();
+  //   if (!regemail.test(val)) {
+  //     $(this).addClass("error");
+  //   } else {
+  //     $(this).removeClass("error");
+  //   }
+  // });
+  $(".login_form input[name='email']").blur(function () {
     var val = $(this).val().trim();
-    if (!regemail.test(val)) {
+    if (!regemail) {
       $(this).addClass("error");
     } else {
       $(this).removeClass("error");
