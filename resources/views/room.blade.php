@@ -490,18 +490,18 @@
                 <span>
                   <i></i>
                 </span>
-                            <input type="text" name="email"/>
+                            <input type="text" name="name" />
                         </div>
                         <div class="input_box">
                 <span>
                   <i></i>
                 </span>
-                            <input type="password" maxlength="16" name="password" autocomplete="off"/>
-                            <input type="hidden" value="" class="roomid" name="room_id"/>
-                            <input type="hidden" value="" class="token" name="_token"/>
+                            <input type="password" maxlength="16" name="password" autocomplete="off" />
+                            <input type="hidden" value="" class="roomid" name="room_id" />
+                            <input type="hidden" value="" class="token" name="_token" />
                         </div>
                         <div class="sub_btn">
-                            <input type="button" value="立即登陆" id="login"/>
+                            <input type="button" value="立即登陆" id="login" />
                         </div>
                         <div class="on_btn">
                             <a href="#" target="_blank">游客体验</a>
@@ -511,27 +511,27 @@
                 <div class="register_form" style="display: none">
                     <form id="register_form" action="" method="post">
                         <div class="input_box">
-                            <input type="text" placeholder="请输入您的邮箱" name="email"/>
+                            <input type="text" placeholder="请输入账号" name="name" />
                         </div>
                         <div class="input_box">
-                            <input type="text" placeholder="请输入昵称" name="name"/>
+                            <input type="text" placeholder="请输入您的邮箱" name="email" />
                         </div>
                         <div class="input_box">
-                            <input type="password" placeholder="请输入6-16位的数字或字符" name="password"/>
+                            <input type="password" placeholder="请输入密码，6-16位的数字或字符" name="password" />
                         </div>
                         <div class="input_box">
-                            <input type="password" placeholder="请确认密码" name="password_confirmation"/>
+                            <input type="password" placeholder="请确认密码" name="password_confirmation" />
                         </div>
                         <div class="input_box">
-                            <input type="text" placeholder="请输入QQ号" name="qq"/>
+                            <input type="text" placeholder="请输入QQ号" name="qq" />
                         </div>
                         <div class="input_box">
-                            <input type="text" placeholder="请输入手机号码" name="mobile"/>
-                            <input type="hidden" value="" class="roomid" name="room_id"/>
-                            <input type="hidden" value="" class="token" name="_token"/>
+                            <input type="text" placeholder="请输入手机号码" name="mobile" />
+                            <input type="hidden" value="" class="roomid" name="room_id" />
+                            <input type="hidden" value="" class="token" name="_token" />
                         </div>
                         <div class="sub_btn">
-                            <input type="submit" id="register" value="同意协议并注册"/>
+                            <input type="submit" id="register" value="同意协议并注册" />
                         </div>
                         <div class="on_btn">
                             <a href="#" target="_blank">注册协议</a>

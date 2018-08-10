@@ -29,12 +29,12 @@ class ImportUserController extends Controller
             if(!$member->username) continue;
             $user = [
                 'name' => $member->username,
-                'email' => $member->username,
+                'email' => null,
                 'password' => bcrypt($member->password),
                 'room_id' => 1,
                 'mobile' => $member->phone,
             ];
-            if(!User::where('email', $member->username)->first()){
+            if(!User::where('name', $member->username)->first()){
                 User::create($user);
             }
 

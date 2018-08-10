@@ -31,11 +31,11 @@
     <form action="" id="register_form">
         <div class="yourname_box">
             <span>账号</span>
-            <input type="text" id="yournumber"  name="email"  placeholder="请输入你的邮箱"/>
+            <input id="yourname" type="text" name="name" maxlength="16" />
         </div>
         <div class="yourname_box" >
-            <span>昵称</span>
-            <input id="yourname" type="text" name="name" maxlength="16" />
+            <span>邮箱</span>
+            <input type="text" id="yournumber"  name="email"  placeholder="请输入你的邮箱"/>
         </div>
         <div class="yourname_box">
             <span>密码</span>

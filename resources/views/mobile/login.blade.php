@@ -30,7 +30,7 @@
     <form id="login_form" action="">
         <div class="comment_box user_name">
             <span><i></i></span>
-            <input type="text" id="user_name" name="email" />
+            <input type="text" id="user_name" name="name" />
         </div>
         <div class="comment_box user_password">
             <span><i></i></span>

@@ -3,21 +3,17 @@
  */
 
 $(function(){
-    var regemail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
-        reg=/^\w{6,16}$/;
+    var   reg=/^\w{6,16}$/;
     getToken();
     $("#ajax_btn").on("click",function(){
-        if($("#user_name").val().trim()!="" && !regemail.test($("#user_name").val().trim())){
-            $(".ajax_btn").find("span").html("用户名格式不正确!!!");
-            return false;
-        }else if($("#user_name").val().trim() =="" ){
+         if($("#user_name").val().trim() =="" ){
             $(".ajax_btn").find("span").html("用户名不能为空!!!");
             return false;
         }else if($("#user_password").val().trim()!="" && !reg.test($("#user_password").val().trim())){
             $(".ajax_btn").find("span").html("密码格式不正确!!!");
             return false;
         }else if($("#user_password").val().trim() ==""){
-            $(".ajax_btn").find("span").html("密码名不能为空!!!");
+            $(".ajax_btn").find("span").html("密码不能为空!!!");
             return false;
         }
         $(".ajax_btn").find("span").html(" ");
