@@ -14,16 +14,7 @@ $(function(){
         })
     })
 
-    $("#yournumber").on("blur",function(){
-        if($("#yournumber").val().trim()=="" || !regemail.test($("#yournumber").val().trim())){
-            $(this).addClass("error");
-            return false;
-        }else{
-            $(this).removeClass("error");
-            return false;
-        }
 
-    })
 
     $("#yourname").on("blur",function(){
         if($("#yourname").val().trim()==""){
@@ -69,15 +60,6 @@ $(function(){
     })
 
 
-    $("#qqnumber").on("blur",function(){
-        if($("#qqnumber").val().trim()=="" || !regqq.test($("#qqnumber").val().trim())){
-            $(this).addClass("error");
-            return false;
-        }else{
-            $(this).removeClass("error");
-            return false;
-        }
-    })
 
     $(".ajax_btn input").on("click",function(){
         var error=true;

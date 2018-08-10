@@ -50,7 +50,7 @@ header {
       width: 12vw;
       height: 5.3333333333vw; }
   header .input_box {
-    width: 67.4666666667vw;
+    width: 64vw;
     height: 7.4666666667vw;
     margin-left: 2.6666666667vw;
     position: relative; }
@@ -132,17 +132,17 @@ main .title_box {
       background-size: 2.6666666667vw; }
   main .title_box .copy_btn {
     position: absolute;
-    top: 1.0666666667vw;
+    top: 1.8666666667vw;
     right: 20px;
     z-index: 2; }
     main .title_box .copy_btn span {
       display: inline-block;
-      width: 3.2vw;
-      height: 3.2vw;
+      width: 1.6vw;
+      height: 2.6666666667vw;
       background: url("../imgs/m_more2@2x.png") no-repeat center;
       overflow: hidden;
       transform: rotateZ(90deg);
-      background-size: 2.1333333333vw; }
+      background-size: 1.0666666667vw; }
     main .title_box .copy_btn span[class=active] {
       transform: rotateZ(270deg); }
 main .comment_box {
