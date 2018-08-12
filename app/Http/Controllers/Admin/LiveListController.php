@@ -43,7 +43,7 @@ class LiveListController extends Controller
     {
         $this->validate($request, [
             'live.name' => ['required'],
-            'live.room_id' => ['required'],
+            'live.room_id' => ['required', 'integer', 'min:1'],
             'live.image' => ['required'],
             'live.start_time' => ['required'],
             'live.end_time' => ['required']
@@ -102,7 +102,7 @@ class LiveListController extends Controller
     {
         $this->validate($request, [
             'live.name' => ['required'],
-            'live.room_id' => ['required'],
+            'live.room_id' => ['required', 'integer', 'min:1'],
             'live.start_time' => ['required'],
             'live.end_time' => ['required']
         ]);

@@ -77,7 +77,7 @@ class RoomController extends Controller
             $user_id = $user->id;
             $client_name = $user->name;
             if (!$user->isAdmin() and $room->user_id != $user->id and $room->owner_id != $user->id and $user->room_id != $room->id) {
-                return view('admin.error_notice')->with(['permission' => '不是该房间的用户，无法访问 ']);
+                //return view('admin.error_notice')->with(['permission' => '不是该房间的用户，无法访问 ']);
             }
         } else {
             //游客
