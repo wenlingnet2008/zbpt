@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
+use Mews\Purifier\Facades\Purifier;
 
 class RegisterController extends Controller
 {
@@ -89,6 +90,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $data['name'] = Purifier::clean($data['name']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],

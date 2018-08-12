@@ -48,15 +48,15 @@
                 <td align="left">&nbsp;{{$user->name}}</td>
                 <td class="px12">{{$user->email}}</td>
                 <td>{{$user->mobile}}</td>
-                <td>{{$user->roles->first()->name}}</td>
+                <td>{{$user->roles->first()->name ?? ''}}</td>
                 <td>@if($user->room){{$user->room->name}} @endif</td>
                 <td class="px12">{{$user->created_at}}</td>
 
                 <td>
                     <a href="{{route('admin.users.edit', ['user'=>$user->id])}}">
                         <img src="/admin/image/edit.png" width="16" height="16" title="修改" alt=""/></a>&nbsp;
-                    <a href="?moduleid=2&file=index&action=delete&userid=2"
-                       onclick="if(!confirm('确定危险！！要删除此会员吗？系统将删除选中用户所有信息，此操作将不可撤销')) return false;"><img
+                    <a href="#"
+                       onclick="del({{$user->id}})"><img
                                 src="/admin/image/delete.png" width="16" height="16" title="删除" alt=""/></a>
                 </td>
             </tr>
@@ -70,5 +70,23 @@
         {{$users->links()}}
     </div>
     <script type="text/javascript">Menuon(1);</script>
+
+    <script>
+        function del(id) {
+            var r=confirm("注意：确定要删除吗?");
+            if (r==true)
+            {
+                $.ajax({
+                    type: "DELETE",
+                    url: "{{ url('admin/users') }}/"+ id,
+                    data: "_token={{ csrf_token() }}",
+                    success: function(msg){
+                        alert( msg.message );
+                        location.reload();
+                    }
+                });
+            }
+        }
+    </script>
 
 @stop

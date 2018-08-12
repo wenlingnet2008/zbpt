@@ -27,7 +27,7 @@ class ImportUserController extends Controller
 
         foreach($chat_members as $member){
             if(!$member->username) continue;
-            $user = [
+            $user_arr = [
                 'name' => $member->username,
                 'email' => null,
                 'password' => bcrypt($member->password),
@@ -35,7 +35,8 @@ class ImportUserController extends Controller
                 'mobile' => $member->phone,
             ];
             if(!User::where('name', $member->username)->first()){
-                User::create($user);
+                $user = User::create($user_arr);
+                $user->syncRoles('普通会员');
             }
 
         }
