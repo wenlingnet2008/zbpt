@@ -90,7 +90,7 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $data['name'] = Purifier::clean($data['name']);
+        $data['name'] = strip_tags($data['name']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
