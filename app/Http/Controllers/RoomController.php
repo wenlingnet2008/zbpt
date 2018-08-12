@@ -41,7 +41,10 @@ class RoomController extends Controller
     public function index(Request $request, $id)
     {
 
-        $room = Room::findOrFail($id);
+        $room = Room::find($id);
+        if(!$room){
+            return redirect('/');
+        }
         $data['room'] = $room;
         if (!$room->hasRole('游客')) {
             $this->authorize('view', $room);
