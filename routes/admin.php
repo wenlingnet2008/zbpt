@@ -23,6 +23,7 @@ Route::prefix('admin')->middleware('auth.admin')->namespace('Admin')->name('admi
     Route::resource('orders', 'OrderController');
     Route::resource('ordertypes', 'OrderTypeController');
 
+    Route::get('users/search', 'UserController@search')->name('users.search');
     Route::resource('users', 'UserController');
 
     Route::get('/firewall', 'FirewallController@index')->name('firewall.index');

@@ -12,12 +12,14 @@
 
 @section('content')
     @include('admin.flash_error_or_success')
-    <form action="" method="get">
+    <form action="{{route('admin.users.search')}}" method="get">
         <table cellspacing="0" class="tb">
             <tr>
                 <td>&nbsp;
                     <select name="fields">
-                        <option value="0">按条件</option>
+                        @foreach($show_fields as $id => $value)
+                            <option value="{{$id}}" @if(request('fields') == $id) selected @endif>{{$value}}</option>
+                        @endforeach
 
                     </select>&nbsp;
                     <input type="text" size="20" name="kw" value="" placeholder="请输入关键词" title="请输入关键词"/>&nbsp;
@@ -34,7 +36,7 @@
         <table cellspacing="0" class="tb ls">
             <tr>
                 <th width="20"><input type="checkbox" onclick="checkall(this.form);"/></th>
-                <th>昵称</th>
+                <th>会员名</th>
                 <th>Email</th>
                 <th>手机</th>
                 <th>所属组</th>
@@ -67,7 +69,7 @@
     </form>
 
     <div >
-        {{$users->links()}}
+        {{$users->appends(['fields' => request()->fields, 'kw' => request()->kw, 'psize' => request()->psize])->links()}}
     </div>
     <script type="text/javascript">Menuon(1);</script>
 

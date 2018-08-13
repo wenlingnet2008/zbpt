@@ -91,12 +91,14 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $data['name'] = strip_tags($data['name']);
+        $data['nick_name'] = e($data['nick_name']);
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt(md5($data['password'])),
             'room_id'  => $data['room_id'],
             'mobile'   => $data['mobile'],
+            'nick_name' => $data['nick_name'],
         ]);
     }
 }

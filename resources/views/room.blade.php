@@ -22,7 +22,7 @@
 <header class="headBox">
     <div class="headmain">
         <div class="fl logoBox">
-            <img src="/imgs/logo.png" alt="">
+            <a href="/"> <img src="/imgs/logo.png" alt=""> </a>
         </div>
         <div class="fr userBox">
             <div class="fl optionBox">

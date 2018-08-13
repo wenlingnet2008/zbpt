@@ -28,6 +28,7 @@ class UserRequest extends FormRequest
             'user.email' => ['required', 'email', Rule::unique('users', 'email')],
             'password' => ['required', 'confirmed'],
             'user.name' => ['required',  'max:30', Rule::unique('users', 'name')],
+            'user.nick_name' => ['required',  'max:30', Rule::unique('users', 'nick_name')],
             'role' => ['required'],
             'user.mobile'   => ['nullable', 'max:30'],
             'user.image'    => ['nullable', 'image', 'max:2048'],
@@ -36,7 +37,7 @@ class UserRequest extends FormRequest
         if($this->method() == 'PUT'){
             $rules = [
                 'user.email' => [],
-                'user.name' => ['required',  'max:30', Rule::unique('users', 'name')->ignore($this->route('user'))],
+                'user.nick_name' => ['required',  'max:30', Rule::unique('users', 'nick_name')->ignore($this->route('user'))],
                 'password' => ['nullable', 'confirmed'],
             ];
         }

@@ -29,7 +29,7 @@ class MainController extends Controller
         $data['site'] = $this->site;
 
         $livelists = LiveList::with(['room'])->where('end_time', '>', date('Y-m-d H:i:s'))
-                    ->get();
+                    ->orderBy('start_time', 'asc')->get();
 
         $data['livelists'] = $livelists;
 

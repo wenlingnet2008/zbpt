@@ -8,6 +8,7 @@ use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Validation\Rule;
 use Intervention\Image\Facades\Image;
 use PragmaRX\Firewall\Vendor\Laravel\Facade as Firewall;
 use Spatie\Permission\Models\Role;
@@ -28,6 +29,11 @@ class UserController extends Controller
      */
     public function index()
     {
+        $data['show_fields'] = [
+            1 => '会员名',
+            2 => 'Email',
+            3 => '手机',
+        ];
 
         $users = User::with('roles', 'room')->when(\request()->user()->isOwner(), function($query){
                         $room = Room::where('owner_id', \request()->user()->id)->first();
@@ -141,10 +147,11 @@ class UserController extends Controller
         if($request->filled('password')){
             $user->password = bcrypt(md5($request->input('password')));
         }
-        $user->name = $request->input('user.name');
+
         $user->mobile = $request->input('user.mobile');
         $user->introduce = $request->input('user.introduce');
         $user->room_id = $request->input('user.room_id');
+        $user->nick_name = $request->input('user.nick_name');
 
         if($request->file('user.image')){
             $image = $request->file('user.image')->store(date('Ymd'), 'uploads');
@@ -177,5 +184,41 @@ class UserController extends Controller
         $user->delete();
 
         return response()->json(['message'=>'删除成功']);
+    }
+
+    public function search(Request $request)
+    {
+        $default_fields = [
+            1 => 'name',
+            2 => 'email',
+            3 => 'mobile',
+        ];
+
+        $this->validate($request, [
+            'fields' => ['required', 'integer', Rule::in(array_keys($default_fields))],
+            'kw' => ['required'],
+            'psize' => ['required', 'integer'],
+        ]);
+
+        $field = $default_fields[$request->input('fields')];
+        $kw = $request->input('kw');
+        $psize = $request->input('psize');
+
+
+        $users = User::with('roles', 'room')->when(\request()->user()->isOwner(), function($query){
+            $room = Room::where('owner_id', \request()->user()->id)->first();
+            return $query->where('room_id', $room->id);
+        })->where($field, 'like', '%'.$kw.'%')->paginate($psize);
+
+
+        $data['show_fields'] = [
+            1 => '会员名',
+            2 => 'Email',
+            3 => '手机',
+        ];
+
+
+        $data['users'] = $users;
+        return view('admin.member.index', $data);
     }
 }

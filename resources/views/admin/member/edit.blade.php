@@ -56,7 +56,7 @@
 
             <tr>
                 <td class="tl"><span class="f_red">*</span> 昵称</td>
-                <td><input type="text" size="20" name="user[name]" id="name" value="{{$user->name}}"/>&nbsp;<span id="dtruename"
+                <td><input type="text" size="20" name="user[nick_name]" id="name" value="{{$user->nick_name}}"/>&nbsp;<span id="dtruename"
                                                                                                                                                   class="f_red"></span>
                 </td>
             </tr>
@@ -115,11 +115,6 @@
     <script type="text/javascript">
 
         function Dcheck() {
-            if (Dd('name').value == '') {
-                Dmsg('请填写昵称', 'name');
-                return false;
-            }
-
             return true;
         }
         Menuon(1);

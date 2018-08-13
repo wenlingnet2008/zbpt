@@ -19,6 +19,12 @@
         {{csrf_field()}}
         <table cellspacing="0" class="tb">
             <tr>
+                <td class="tl"><span class="f_red">*</span> 用户名</td>
+                <td><input type="text" size="20" name="user[name]" id="name" value="@if(old('user.name')){{old('user.name')}}@endif"/>&nbsp;<span id="dtruename"
+                                                                                                                                                  class="f_red"></span>
+                </td>
+            </tr>
+            <tr>
                 <td class="tl"><span class="f_red">*</span> Email</td>
                 <td><input type="text" size="20" name="user[email]" id="username" value="@if(old('user.email')){{old('user.email')}}@endif" />&nbsp;<span
                             id="dusername" class="f_red"></span></td>
@@ -66,7 +72,7 @@
 
             <tr>
                 <td class="tl"><span class="f_red">*</span> 昵称</td>
-                <td><input type="text" size="20" name="user[name]" id="name" value="@if(old('user.name')){{old('user.name')}}@endif"/>&nbsp;<span id="dtruename"
+                <td><input type="text" size="20" name="user[nick_name]" id="nick_name" value="@if(old('user.nick_name')){{old('user.nick_name')}}@endif"/>&nbsp;<span id="dtruename"
                                                                                                   class="f_red"></span>
                 </td>
             </tr>
