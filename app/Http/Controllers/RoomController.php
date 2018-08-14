@@ -60,9 +60,7 @@ class RoomController extends Controller
         $live = LiveList::where([
             ['room_id', $id],
             ['start_time', '<=', date('Y-m-d H:i:s')],
-        ])->orWhere([
-            ['room_id', $id],
-            ['end_time', '<', date('Y-m-d H:i:s')],
+            ['end_time', '>', date('Y-m-d H:i:s')],
         ])->first();
 
 
