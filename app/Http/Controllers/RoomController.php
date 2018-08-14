@@ -59,7 +59,7 @@ class RoomController extends Controller
 
         $live = LiveList::where([
             ['room_id', $id],
-            ['start_time', '<=', date('Y-m-d H:i:s')],
+            ['start_time', '>=', date('Y-m-d H:i:s')],
         ])->orWhere([
             ['room_id', $id],
             ['end_time', '<', date('Y-m-d H:i:s')],
@@ -92,7 +92,7 @@ class RoomController extends Controller
         if (Auth::check()) {
             $user = $request->user();
             $user_id = $user->id;
-            $client_name = $user->nick_name ? $user->nick_name : $user->name;
+            $client_name = $user->name;
             if (!$user->isAdmin() and $room->user_id != $user->id and $room->owner_id != $user->id and $user->room_id != $room->id) {
                 //return view('admin.error_notice')->with(['permission' => '不是该房间的用户，无法访问 ']);
             }
@@ -184,7 +184,7 @@ class RoomController extends Controller
         if (Auth::check()) {
             $user = $request->user();
             $user_id = $user->id;
-            $client_name = $user->nick_name ? $user->nick_name : $user->name;
+            $client_name = $user->name;
 
         } else {
 

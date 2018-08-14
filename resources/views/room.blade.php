@@ -53,7 +53,7 @@
                                 <div class="infor_top">
                                     <div class="infor_exit">退出</div>
                                     <div class="user_infor">
-                                        <img src="../imgs/hdefaultuser.png" alt="" class="bgusers">
+                                        <img src="/imgs/hdefaultuser.png" alt="" class="bgusers">
                                         <div class="user_names">
                                             <span class="user_name">用户</span>
                                             <span class="viplevel">LV 1</span>
@@ -71,12 +71,12 @@
                                         <div class="detail_box baseInfors" style="display: block;">
                                             <ul class="baseInfor">
                                                 <li class="baseli">
-                                                    <span class="fl baseBt">用户名： </span>
-                                                    <span class="fl basetxt user_truename"></span>
+                                                    <span class="fl baseBt">用户姓名： </span>
+                                                    <span class="fl basetxt user_truename">保密 </span>
                                                 </li>
                                                 <li class="baseli">
                                                     <span class="fl baseBt">QQ： </span>
-                                                    <span class="fl basetxt user_qq"></span>
+                                                    <span class="fl basetxt user_qq">85258 </span>
                                                 </li>
                                                 <li class="baseli">
                                                     <span class="fl baseBt">在线时长： </span>
@@ -96,12 +96,6 @@
                                             <form id="editinfors_form" action="" method="post">
                                                 <ul class="baseInfor">
                                                     <li class="baseli">
-                                                        <span class="fl baseBt">用户昵称： </span>
-                                                        <span class="fl basetxt">
-                                <input type="text" name="nick_name" autocomplete="off">
-                              </span>
-                                                    </li>
-                                                    <li class="baseli">
                                                         <span class="fl baseBt">联系QQ： </span>
                                                         <span class="fl basetxt">
                                 <input type="text" name="qq" autocomplete="off">
@@ -118,7 +112,7 @@
                                                         <span class="fl baseBt">用户头像： </span>
                                                         <span class="fl basetxt basehead">
                                 <div class="selectBox">
-                                  <img src="../imgs/hdefaultuser.png" alt="" class="bgusers">
+                                  <img src="/imgs/hdefaultuser.png" alt="" class="bgusers">
                                   <input type="file" value="" class="selectimage" />
                                 </div>
                                 <input type="hidden" value="" class="token" name="_token" />
@@ -460,8 +454,8 @@
             <!-- videoteach -->
             <div class="rmainBox videoteach" style="display: none">
                 <div class="iframemain">
-                    <!--<iframe id="new_kcb" src="http://www.teamyophk.com/apps/kcb.php?rid=1001"
-                            style="border: 0px; width: 100%; height: 100%;"></iframe>-->
+                    <iframe id="new_kcb" src="http://www.teamyophk.com/apps/kcb.php?rid=1001"
+                            style="border: 0px; width: 100%; height: 100%;"></iframe>
                 </div>
             </div>
             <!-- teachersIntroduce -->
@@ -490,7 +484,7 @@
                 <b class="close_box fiexdclose" id="closeFixed"></b>
             </div>
             <div class="form_box">
-                <div class="login_form" style="display: block">
+                <div class="login_form">
                     <form id="login_form" action="" method="post">
                         <div class="input_box">
                 <span>
@@ -517,16 +511,13 @@
                 <div class="register_form" style="display: none">
                     <form id="register_form" action="" method="post">
                         <div class="input_box">
-                            <input type="text" placeholder="请输入账号，4-15位的数字或字母" name="name" />
+                            <input type="text" placeholder="请输入账号" name="name" />
                         </div>
                         <div class="input_box">
                             <input type="text" placeholder="请输入您的邮箱" name="email" />
                         </div>
                         <div class="input_box">
-                            <input type="text" placeholder="请输入昵称" name="nick_name" />
-                        </div>
-                        <div class="input_box">
-                            <input type="password" placeholder="请输入密码，6-16位的数字或字母" name="password" />
+                            <input type="password" placeholder="请输入密码，6-16位的数字或字符" name="password" />
                         </div>
                         <div class="input_box">
                             <input type="password" placeholder="请确认密码" name="password_confirmation" />
@@ -621,10 +612,10 @@
             <div class="fr fiexdclose">&times;</div>
         </div>
         <div class="iframemain">
-            <!--<iframe scrolling="auto" allowtransparency="true" id="layui-layer-iframe6" name="layui-layer-iframe6"
+            <iframe scrolling="auto" allowtransparency="true" id="layui-layer-iframe6" name="layui-layer-iframe6"
                     onload="this.className='';"
                     class="" frameborder="0" src="http://www.teamyophk.com/apps/kefu.php?rid=1001"
-                    style="width:100%;height: 100%;"></iframe>-->
+                    style="width:100%;height: 100%;"></iframe>
         </div>
     </div>
 </div>
