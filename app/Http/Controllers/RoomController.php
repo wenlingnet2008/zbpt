@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\LiveList;
 use App\Message;
 use App\Online;
 use App\Robot;
@@ -53,7 +54,20 @@ class RoomController extends Controller
 
 
         if (!$room->open) {
-            return response('房间关闭');
+            return view('admin.error_notice')->with(['status' => '房间关闭']);
+        }
+
+        $live = LiveList::where([
+            ['room_id', $id],
+            ['start_time', '>=', date('Y-m-d H:i:s')],
+        ])->orWhere([
+            ['room_id', $id],
+            ['end_time', '<', date('Y-m-d H:i:s')],
+        ])->first();
+
+
+        if(!$live){
+            return view('admin.error_notice')->with(['status' => '直播尚未开始或者已经结束']);
         }
 
         //访问密码验证
