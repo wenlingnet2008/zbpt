@@ -86,7 +86,7 @@ class Room extends Model
         $message = [
             'type'=>'say',
             'from_client_id'=>$user->id,
-            'from_client_name' => e($user->name),
+            'from_client_name' => e($user->nick_name ? $user->nick_name : $user->name),
             'to_client_id'=>'all',
             'content'=>$content,
             'roles' => $user->roles()->select('id', 'name')->get(),
@@ -96,7 +96,7 @@ class Room extends Model
 
         Message::create([
             'user_id' => $user->id,
-            'user_name' => $user->name,
+            'user_name' => $user->nick_name ? $user->nick_name : $user->name,
             'to_user_id' => 0,
             'to_user_name' => 'All',
             'room_id' => $this->id,
@@ -113,9 +113,9 @@ class Room extends Model
         $message = [
             'type'=>'say',
             'from_client_id'=>$user->id,
-            'from_client_name' => e($user->name),
+            'from_client_name' => e($user->nick_name ? $user->nick_name : $user->name),
             'to_client_id'=>$to_user->id,
-            'to_client_name'=>$to_user->name,
+            'to_client_name'=> e($user->nick_name ? $user->nick_name : $user->name),
             'content'=>$content,
             'roles' => $user->roles()->select('id', 'name')->get(),
             'time'=>date('Y-m-d H:i:s'),
@@ -125,9 +125,9 @@ class Room extends Model
 
         Message::create([
             'user_id' => $user->id,
-            'user_name' => $user->name,
+            'user_name' => $user->nick_name ? $user->nick_name : $user->name,
             'to_user_id' => $to_user->id,
-            'to_user_name' => $to_user->name,
+            'to_user_name' => $user->nick_name ? $user->nick_name : $user->name,
             'room_id' => $this->id,
             'content' => $content,
             'ip_address' => request()->ip(),
@@ -141,9 +141,9 @@ class Room extends Model
         $message = [
             'type'=>'say_private',
             'from_client_id'=>$user->id,
-            'from_client_name' => e($user->name),
+            'from_client_name' => e($user->nick_name ? $user->nick_name : $user->name),
             'to_client_id'=>$to_user->id,
-            'to_client_name'=>$to_user->name,
+            'to_client_name'=> e($user->nick_name ? $user->nick_name : $user->name),
             'content'=>$content,
             'time'=>date('Y-m-d H:i:s'),
         ];
@@ -154,9 +154,9 @@ class Room extends Model
 
         Message::create([
             'user_id' => $user->id,
-            'user_name' => $user->name,
+            'user_name' => $user->nick_name ? $user->nick_name : $user->name,
             'to_user_id' => $to_user->id,
-            'to_user_name' => $to_user->name,
+            'to_user_name' => $user->nick_name ? $user->nick_name : $user->name,
             'room_id' => $this->id,
             'is_private' => 1,
             'content' => $content,

@@ -51,11 +51,13 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|min:4|max:10|unique:users',
-            'email' => 'nullable|string|email|max:255',
+            'name' => 'required|alpha_dash|min:4|max:15|unique:users',
+            'email' => 'nullable|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
             'room_id'  => 'required|integer',
             'mobile'  => 'required',
+            'qq'    => 'nullable|integer',
+            'nick_name' => 'required|string|min:4|max:10|unique:users',
         ]);
     }
 
@@ -99,6 +101,7 @@ class RegisterController extends Controller
             'room_id'  => $data['room_id'],
             'mobile'   => $data['mobile'],
             'nick_name' => $data['nick_name'],
+            'qq'    => $data['qq'],
         ]);
     }
 }

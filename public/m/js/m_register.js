@@ -6,6 +6,8 @@ $(function(){
 
     var regemail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
         reg=/^\w{6,16}$/;
+    var reg_nam=/^\w{4,15}$/;
+
     var myreg=/^[1][3,4,5,7,8][0-9]{9}$/;
     var regqq=/^[1][0-9]{4,10}$/;
     $(".yourname_box").each(function(){
@@ -14,10 +16,19 @@ $(function(){
         })
     })
 
-
-
     $("#yourname").on("blur",function(){
-        if($("#yourname").val().trim()==""){
+        if($("#yourname").val().trim()=="" || !reg_nam.test($("#yourname").val().trim())){
+            $(this).addClass("error");
+            return false;
+        }else{
+            $(this).removeClass("error");
+            return false;
+        }
+    })
+
+
+    $("#username").on("blur",function(){
+        if($("#username").val().trim()==""){
             $(this).addClass("error");
             return false;
         }else{
@@ -72,44 +83,38 @@ $(function(){
             }
         })
         if(error){
-            $.ajax({
-                type: "POST",
-                data: $("#register_form").serialize(),
-                xhrFields: {
-                    withCredentials: flag
-                },
-                url: api.register,
-                dataType: "json",
-                beforeSend: function () {
-                    error = false;
-                },
-                error: function (data) {
-                    var msg = data.responseJSON,
-                        errors = msg.errors;
-                    if (data.status == 422) {
-                        if (errors.email) {
-                            alert(errors.email[0]);
+            getToken(function(){
+                $.ajax({
+                    type: "POST",
+                    data: $("#register_form").serialize(),
+                    xhrFields: {
+                        withCredentials: flag
+                    },
+                    url: api.register,
+                    dataType: "json",
+                    beforeSend: function () {
+                        error = false;
+                    },
+                    error: function (data) {
+                        var msg = data.responseJSON,
+                            errors = msg.errors;
+                        if (data.status == 422) {
+                            for(var key in errors){
+                                alert(errors[key][0]);
+                            }
+                        } else {
+                            alert(msg.message);
                         }
-                        if (errors.mobile) {
-                            alert(errors.mobile[0]);
-                        }
-                        if (errors.name) {
-                            alert(errors.name[0]);
-                        }
-                        if (errors.password) {
-                            alert(errors.password[0]);
-                        }
-                    } else {
-                        alert(msg.message);
+                        getToken();
+                    },
+                    success: function (data) {
+                        alert(data.message);
+                        window.location.href=success_url;
+                    },
+                    complate: function () {
+                        error = true;
                     }
-                },
-                success: function (data) {
-                    alert(data.message);
-                    window.location.href=success_url;
-                },
-                complate: function () {
-                    error = true;
-                }
+                })
             })
         }
     })
@@ -121,9 +126,14 @@ $(function(){
     $(".backoff span").on("click",function(){
         window.history.back(-1);
     })
-    getToken()
-    function getToken() {
-        var token = '';
+
+
+
+    getToken();
+    var storage = window.sessionStorage;
+    storage.setItem("register", "yes");
+
+    function getToken(cb) {
         $.ajax({
             type: "GET",
             data: {},
@@ -133,13 +143,14 @@ $(function(){
                 withCredentials: flag
             },
             error: function (data) {
-                // getToken();
+                getToken();
             },
             success: function (data) {
                 token = data._token;
                 $(".token").val(token);
-                return token;
+                cb && cb(token)
+                return false;
             }
         })
-    }
+    };
 })

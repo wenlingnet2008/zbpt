@@ -74,10 +74,7 @@ $(function(){
                 },
                 success: function (data) {
                     alert(data.message);
-                    getToken(function () {
-                        loginOut(token)
-                    });
-                    window.location.href=success_url;
+                    window.history.back(-1);
                 },
                 complate: function () {
                     error = true;
@@ -93,22 +90,6 @@ $(function(){
         window.history.back(-1);
     })
 
-    function loginOut(token) {
-        $.ajax({
-            type: "POST",
-            data: { _token: token },
-            url: api.logout,
-            xhrFields: {
-                withCredentials: flag
-            },
-            dataType: "json",
-            success: function (data) {
-                var storage = window.localStorage;
-                storage.removeItem("userid");
-                window.location.href="m_login.html";
-            }
-        })
-    };
 //获取token
     function getToken(cb) {
         $.ajax({

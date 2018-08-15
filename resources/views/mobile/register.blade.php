@@ -45,6 +45,10 @@
             <span>确认密码</span>
             <input type="password" id="twopassword" name="password_confirmation" maxlength="16"/>
         </div>
+        <div class="yourname_box" >
+            <span>昵称</span>
+            <input type="text" id="username"  name="nick_name" />
+        </div>
         <div class="yourname_box">
             <span>手机号</span>
             <input type="text" id="phonenumber" name="mobile" maxlength="16"/>

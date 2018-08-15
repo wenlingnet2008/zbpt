@@ -22,7 +22,8 @@ function getToken(cb) {
 };
 var regemail = /^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$/,
   regtel = /^[1][3,4,5,7,8][0-9]{9}$/,
-  regpwd = /^[a-zA-Z0-9]{6,16}$/;
+  regpwd = /^[a-zA-Z0-9]{6,16}$/,
+  regname = /^[a-zA-Z0-9]{4,15}$/;
 // login/register/edituserinfors
 $(function () {
   $(".roomid").val(room_id);
@@ -72,17 +73,25 @@ $(function () {
   //     $(this).removeClass("error");
   //   }
   // });
-  $(".login_form input[name='email']").blur(function () {
+  $(".login_form input[name='name']").blur(function () {
     var val = $(this).val().trim();
-    if (!regemail) {
+    if (!val) {
       $(this).addClass("error");
     } else {
       $(this).removeClass("error");
     }
   });
-  $(".form_box input[name='name']").blur(function () {
+  $(".form_box input[name='nick_name']").blur(function () {
     var val = $(this).val().trim();
     if (!val) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
+  $(".register_form input[name='name']").blur(function () {
+    var val = $(this).val().trim();
+    if (!regname.test(val)) {
       $(this).addClass("error");
     } else {
       $(this).removeClass("error");
@@ -143,17 +152,8 @@ $(function () {
         var msg = data.responseJSON,
           errors = msg.errors;
         if (data.status == 422) {
-          if (errors.email) {
-            alert(errors.email[0]);
-          }
-          if (errors.mobile) {
-            alert(errors.mobile[0]);
-          }
-          if (errors.name) {
-            alert(errors.name[0]);
-          }
-          if (errors.password) {
-            alert(errors.password[0]);
+          for(var key in errors){
+            alert(errors[key][0]);
           }
         } else {
           alert(msg.message);
@@ -172,10 +172,9 @@ $(function () {
           $(".username").html(msg.name);
         }
         location.reload();
-        $(".loginFixed").fadeOut();
         alert(data.message);
       },
-      complate: function () {
+      complete: function () {
         check = true;
       }
     })
@@ -210,11 +209,8 @@ $(function () {
         var msg = data.responseJSON,
           errors = msg.errors;
         if (data.status == 422) {
-          if (errors.email) {
-            alert(errors.email[0]);
-          }
-          if (errors.password) {
-            alert(errors.password[0]);
+          for(var key in errors){
+            alert(errors[key][0]);
           }
         } else {
           alert(msg.message);
@@ -237,7 +233,7 @@ $(function () {
         $(".loginFixed").fadeOut();
         alert(data.message);
       },
-      complate: function () {
+      complete: function () {
         check = true;
       }
     })
@@ -268,13 +264,16 @@ $(function () {
             } else {
               $(".bgusers").attr('src', '../imgs/hdefaultuser.png');
             }
-            $(".user_truename").html(data.true_name);
-            $(".user_name").html(data.name);
+            $(".user_truename").html(data.name);
+            $(".user_name").html(data.nick_name);
             $('.user_sign').html(data.introduce);
             $(".user_qq").html(data.qq);
             $(".user_onlinetime").html(data.online_total_time);
             $('.user_creattime').html(data.created_at);
             $(".user_team").html(data.roles[0].name);
+            $("#editinfors_form input[name=nick_name]").val(data.nick_name);
+            $("#editinfors_form input[name=qq]").val(data.qq);
+            $("#editinfors_form input[name=mobile]").val(data.mobile);
           }
           $(".loginBox .user_login ").css("display", 'none').eq(1).css("display", 'block');
         } else {
@@ -373,16 +372,22 @@ $(function () {
       success: function (data) {
         alert(data.message);
         $('.logined .usernames .user_infors').toggle();
-        $("#editpwd_form input").val('');
-        $(".logined .savebtn").val('保存');
+        $(".logined .usernames .username").toggleClass('usernamesh');
       },
-      complate: function () {
+      complete: function () {
         check = true;
       }
     })
   }
   // 编辑资料正则
-  
+  $("#editinfors_form input[name='nick_name']").blur(function () {
+    var val = $(this).val().trim();
+    if (!val) {
+      $(this).addClass("error");
+    } else {
+      $(this).removeClass("error");
+    }
+  });
   $("#editinfors_form input[name='qq']").blur(function () {
     var val = $(this).val().trim(),
       regqq = /[1-9][0-9]{4,14}/;
@@ -402,25 +407,25 @@ $(function () {
   });
   // 选择头像
   var objimg = '';
-  $(".basehead img").click(function(){
+  $(".basehead img").click(function () {
     $(this).addClass('imgactive').siblings().removeClass('imgactive');
     var src = $(this).attr('src');
     $('.userimgs').val(src);
   });
-  $(".selectimage").on('change',function(){
-    objimg=$(this)[0].files[0];
-    if(objimg){
-        var reader = new FileReader();
-        var testmsg = objimg.name.substring(objimg.name.lastIndexOf(".") + 1),
-            extension = testmsg === "jpg",
-            extension2 = testmsg === "png",
-            isLt2M = objimg.size / 1024 / 1024 < 10;
-        if ((extension || extension2) && isLt2M) {
-          $(".selectBox img").attr('src',URL.createObjectURL($(this)[0].files[0]));
-        }else{
-            alert("只能上传JPG/PNG格式，图片不能超过10M");
-            return false;
-        }
+  $(".selectimage").on('change', function () {
+    objimg = $(this)[0].files[0];
+    if (objimg) {
+      var reader = new FileReader();
+      var testmsg = objimg.name.substring(objimg.name.lastIndexOf(".") + 1),
+        extension = testmsg === "jpg",
+        extension2 = testmsg === "png",
+        isLt2M = objimg.size / 1024 / 1024 < 10;
+      if ((extension || extension2) && isLt2M) {
+        $(".selectBox img").attr('src', URL.createObjectURL($(this)[0].files[0]));
+      } else {
+        alert("只能上传JPG/PNG格式，图片不能超过10M");
+        return false;
+      }
     }
   })
   // 编辑资料保存
@@ -431,13 +436,16 @@ $(function () {
       check = false;
     }
     var formdatas = new FormData();
-    var data =  $("#editinfors_form").serialize();
-    data = data.split('&');
-    data.forEach(el => {
-      el = el.split('=');
-      formdatas.append(el[0],el[1]);
-    });
-    formdatas.append('image',objimg);
+    var formsinput = $("#editinfors_form input[type !=button]");
+    var len = formsinput.length;
+    for(var i = 0;i<len;i++){
+      var name = $("#editinfors_form input").eq(i).attr('name'),
+      val = $("#editinfors_form input").eq(i).val();
+      if($("#editinfors_form input").eq(i).attr('type') != 'file'){
+        formdatas.append(name, val);
+      }
+    }
+    formdatas.append('image', objimg);
     if (check) {
       getToken(function () {
         editProfile(formdatas)
@@ -448,7 +456,7 @@ $(function () {
   function editProfile(formdatas) {
     $.ajax({
       type: "POST",
-      data:formdatas,
+      data: formdatas,
       url: api.editprofile,
       xhrFields: {
         withCredentials: flag
@@ -466,6 +474,7 @@ $(function () {
       success: function (data) {
         alert(data.message);
         $('.logined .usernames .user_infors').toggle();
+        $(".logined .usernames .username").toggleClass('usernamesh');
         var data = data.data;
         if (data) {
           if (data.image != null) {
@@ -474,10 +483,13 @@ $(function () {
             $(".bgusers").attr('src', '../imgs/hdefaultuser.png');
           }
           $(".user_qq").html(data.qq);
+          $(".user_name").html(data.nick_name);
+          $("#editinfors_form input[name=nick_name]").val(data.nick_name);
+          $("#editinfors_form input[name=qq]").val(data.qq);
+          $("#editinfors_form input[name=mobile]").val(data.mobile);
         }
-        $("#editinfors_form input").val('');
       },
-      complate: function () {
+      complete: function () {
         check = true;
       }
     })

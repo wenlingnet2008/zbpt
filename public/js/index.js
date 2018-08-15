@@ -47,10 +47,10 @@ function connect() {
         //如果已经在线，则不重新连接，解决一个用户多个客户端同时连接问题
         console.log(data.online);
         if (data.online == 1) { // 一个用户多客户端不允许同时在线
-          location.href = 'http://89.208.255.250/online_error';
+          location.href = '/online_error';
           return;
         } else if (data.online == 2) { //ip被限制访问
-          location.href = 'http://89.208.255.250/firewall';
+          location.href = '/firewall';
           return;
         } else {  //网络问题引起的断开，重新连接
           connect();
@@ -1144,9 +1144,13 @@ function getuserInfors(id, type) {
     success: function (data) {
       if (type == 'right') {
         $(".otheruserBox").fadeIn();
-        $(".otheruserBox .bgusers").src = data.image;
-        $(".otheruserBox .user_truename").html(data.true_name);
-        $(".otheruserBox .user_name").html(data.name);
+        if(data.image != null){
+          $(".otheruserBox .bgusers").attr('src',data.image);
+        }else{
+          $(".otheruserBox .bgusers").attr('src','../imgs/hdefaultuser.png');
+        }
+        $(".otheruserBox .user_truename").html(data.name);
+        $(".otheruserBox .user_name").html(data.nick_name);
         $('.otheruserBox .user_sign').html(data.introduce);
         $(".otheruserBox .user_qq").html(data.qq);
         $(".otheruserBox .user_onlinetime").html(data.online_total_time);
@@ -1175,6 +1179,8 @@ function getPrivateList(id, name, cb) {
     error: function (data) {
     },
     success: function (data) {
+      $("#talklist").empty();
+      $("#talkcontent").empty();
       privatelsit = data;
       len = data.length,
         str = '',

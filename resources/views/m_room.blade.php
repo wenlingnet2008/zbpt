@@ -178,8 +178,8 @@
                         height="100%"></iframe>
             </li>
             <li>
-                <iframe id="new_kcb" src="http://www.teamyophk.com/apps/kcb.php?rid=1001"
-                        style="border: 0px; width: 100%; height: 100%;"></iframe>
+                <!--<iframe id="new_kcb" src="http://www.teamyophk.com/apps/kcb.php?rid=1001"
+                        style="border: 0px; width: 100%; height: 100%;"></iframe>-->
             </li>
         </ul>
     </div>

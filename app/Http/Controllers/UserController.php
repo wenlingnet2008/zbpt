@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -36,18 +37,21 @@ class UserController extends Controller
 
     public function updateUserProfile(Request $request)
     {
+        $user = \request()->user();
+
         $this->validate($request, [
             'mobile' => ['required', 'max:11'],
-            'qq'    => ['required', 'max:20'],
+            'qq'    => ['nullable', 'max:20'],
+            'nick_name' => ['required',  'max:30', Rule::unique('users', 'nick_name')->ignore($user->id)],
         ]);
 
-        $user = \request()->user();
+
 
         if($request->file('image')){
             $image = $request->file('image')->store(date('Ymd'), 'uploads');
             $user->image = $image;
         }
-
+        $user->nick_name = e($request->nick_name);
         $user->qq = $request->qq;
         $user->mobile = $request->mobile;
         $user->save();
