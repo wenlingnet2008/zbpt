@@ -42,7 +42,7 @@ class UserController extends Controller
         $this->validate($request, [
             'mobile' => ['required', 'max:11'],
             'qq'    => ['nullable', 'max:20'],
-            'nick_name' => ['required',  'max:30', Rule::unique('users', 'nick_name')->ignore($user->id)],
+            'nick_name' => ['required', 'min:4', 'max:10', Rule::unique('users', 'nick_name')->ignore($user->id)],
         ]);
 
 
