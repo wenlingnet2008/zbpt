@@ -291,7 +291,7 @@
         isLogin: hosturl + 'is_login',//判断用户是否登录
         oldmessage:hosturl+"room_today_message/",
     };
-    var live_times = '2018-08-16 21:38:00';//直播结束时间
+    var live_times = '{{$live->end_time}}';//直播结束时间
     var to_user_id = "all";
     var room_id = '{{$room->id}}';
     //没有登录跳转页面地址
