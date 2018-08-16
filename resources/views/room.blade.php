@@ -277,6 +277,43 @@
             <div class="video">
                 {!! $room->pc_code !!}
             </div>
+            <!-- 视频结束提示模块 -->
+            <div class="liveListBox" style="display: none;">
+                <div class="liveonBt">直播已结束，看看其他精彩直播吧！</div>
+                <ul class="liveul">
+                    <li class="fl liveli">
+                        <a href="#" class="livelist">
+                            <div class="liveimgBox">
+                                <img src="../imgs/big_bgcolor.jpg" alt="" class="livebg">
+                                <div class="tolive">进入直播</div>
+                            </div>
+                            <div class="liveInfors">
+                                <div class="livename">领航财经课堂领航财经课堂领航财经课堂领航财经课堂</div>
+                                <div class="liveabout">
+                                    <div class="fl liveteacher">文芳老师</div>
+                                    <div class="fr livenums">123</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="fl liveli">
+                        <a href="#" class="livelist">
+                            <div class="liveimgBox">
+                                <img src="../imgs/big_bgcolor.jpg" alt="" class="livebg">
+                                <div class="tolive">进入直播</div>
+                            </div>
+                            <div class="liveInfors">
+                                <div class="livename">领航财经课堂领航财经课堂领航财经课堂领航财经课堂</div>
+                                <div class="liveabout">
+                                    <div class="fl liveteacher">文芳老师</div>
+                                    <div class="fr livenums">123</div>
+                                </div>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <a href="#" class="toIndex">&gt;&gt; 返回首页</a>
+            </div>
             <!-- 弹幕容器 -->
             <div class="barrageBox"></div>
             <!-- 弹幕开关 -->
@@ -748,6 +785,7 @@
     var isscroll = true;//聊天界面默认滚动
     var isonBullet = true;//默认弹幕开起
     var other_userid = '', other_name = ''; //右键事件选中的用户id
+    var live_times = '{{$live->end_time}}';//直播结束时间
 </script>
 
 

@@ -95,98 +95,98 @@ header .header_box {
       display: block;
       position: absolute; }
 
-main .nav {
-  background: #FFFFFF; }
-  main .nav ul {
-    width: 100%;
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: flex-start;
-    justify-content: flex-start;
-    padding: 0 1.6vw;
-    border-bottom: 1px solid #f9f9f9; }
-    main .nav ul li {
-      cursor: pointer;
-      flex: 2;
-      height: 9.3333333333vw;
-      text-align: center;
-      font-size: 3.4666666667vw;
-      line-height: 9.0666666667vw;
-      border-bottom: 2px solid  transparent; }
-    main .nav ul li[class="active"] {
-      border-bottom: 2px solid #158de3;
-      color: #158de3; }
-main .main_comment .comment_box > li {
-  display: none; }
-main .main_comment .comment_box > li[class="active"] {
-  display: block; }
-main .main_comment .comment_box li:nth-child(1) .teacher_box:after {
-  content: "";
-  display: block;
-  clear: both; }
-main .main_comment .comment_box li:nth-child(1) .title_box {
-  background: #FFFFFF;
-  width: 100%;
-  position: relative;
-  overflow: hidden;
-  border-top: 2px solid #f3f3f3;
-  min-height: 6.1333333333vw; }
-  main .main_comment .comment_box li:nth-child(1) .title_box > div[class="active"] {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0; }
-    main .main_comment .comment_box li:nth-child(1) .title_box > div[class="active"] ul {
-      overflow: hidden; }
-  main .main_comment .comment_box li:nth-child(1) .title_box > div {
-    transition: 0.5s; }
-  main .main_comment .comment_box li:nth-child(1) .title_box > div[class="not_active"] {
-    max-height: 24.5333333333vw;
-    overflow-y: auto; }
-  main .main_comment .comment_box li:nth-child(1) .title_box ul {
-    padding-right: 4vw; }
-    main .main_comment .comment_box li:nth-child(1) .title_box ul li {
-      line-height: 5.8666666667vw;
+main {
+  position: relative; }
+  main .nav {
+    background: #FFFFFF; }
+    main .nav ul {
+      width: 100%;
+      display: -webkit-flex;
+      display: flex;
+      -webkit-justify-content: flex-start;
+      justify-content: flex-start;
       padding: 0 1.6vw;
-      font-size: 2.6666666667vw;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap; }
-      main .main_comment .comment_box li:nth-child(1) .title_box ul li span {
-        color: #333333; }
-    main .main_comment .comment_box li:nth-child(1) .title_box ul .icon_horn {
-      display: inline-block;
-      vertical-align: middle;
-      margin-right: 1.6vw;
-      width: 2.6666666667vw;
-      height: 2.6666666667vw;
-      background-image: url("../imgs/notifyphone_icn@2x.png");
-      background: -webkit-image-set(url("../imgs/notifyphone_icn@2x.png") 1x, url("../imgs/notifyphone_icn@3x.png") 2x) no-repeat center;
-      background-size: 2.6666666667vw; }
-  main .main_comment .comment_box li:nth-child(1) .title_box .copy_btn {
-    position: absolute;
-    top: 1.0666666667vw;
-    right: 20px;
-    z-index: 2; }
-    main .main_comment .comment_box li:nth-child(1) .title_box .copy_btn span {
-      display: inline-block;
-      width: 3.2vw;
-      height: 3.2vw;
-      background: url("../imgs/m_more2@2x.png") no-repeat center;
-      overflow: hidden;
-      transform: rotateZ(90deg);
-      background-size: 2.1333333333vw; }
-    main .main_comment .comment_box li:nth-child(1) .title_box .copy_btn span[class=active] {
-      transform: rotateZ(270deg); }
-main .main_comment .comment_box li:nth-child(1) .chat_box {
-  background: #f9f9f9;
-  max-height: 77.3333333333vw;
-  padding: 0 1.6vw;
-  overflow-y: auto; }
-  main .main_comment .comment_box li:nth-child(1) .chat_box .message {
-    word-break: break-all; }
-  main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users {
+      border-bottom: 1px solid #f9f9f9; }
+      main .nav ul li {
+        cursor: pointer;
+        flex: 2;
+        height: 9.3333333333vw;
+        text-align: center;
+        font-size: 3.4666666667vw;
+        line-height: 9.0666666667vw;
+        border-bottom: 2px solid  transparent; }
+      main .nav ul li[class="active"] {
+        border-bottom: 2px solid #2093ff;
+        color: #2093ff; }
+  main .main_comment .comment_box > li {
+    display: none; }
+  main .main_comment .comment_box > li[class="active"] {
+    display: block; }
+  main .main_comment .comment_box li:nth-child(1) .teacher_box:after {
+    content: "";
+    display: block;
+    clear: both; }
+  main .main_comment .comment_box li:nth-child(1) .title_box {
+    background: #FFFFFF;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    border-top: 2px solid #f3f3f3;
+    min-height: 6.1333333333vw; }
+    main .main_comment .comment_box li:nth-child(1) .title_box > div[class="active"] {
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0; }
+      main .main_comment .comment_box li:nth-child(1) .title_box > div[class="active"] ul {
+        overflow: hidden; }
+    main .main_comment .comment_box li:nth-child(1) .title_box > div {
+      transition: 0.5s; }
+    main .main_comment .comment_box li:nth-child(1) .title_box > div[class="not_active"] {
+      max-height: 24.5333333333vw;
+      overflow-y: auto; }
+    main .main_comment .comment_box li:nth-child(1) .title_box ul {
+      padding-right: 4vw; }
+      main .main_comment .comment_box li:nth-child(1) .title_box ul li {
+        line-height: 5.8666666667vw;
+        padding: 0 1.6vw;
+        font-size: 2.6666666667vw;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap; }
+        main .main_comment .comment_box li:nth-child(1) .title_box ul li span {
+          color: #333333; }
+      main .main_comment .comment_box li:nth-child(1) .title_box ul .icon_horn {
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 1.6vw;
+        width: 2.6666666667vw;
+        height: 2.6666666667vw;
+        background-image: url("../imgs/notifyphone_icn@2x.png");
+        background: -webkit-image-set(url("../imgs/notifyphone_icn@2x.png") 1x, url("../imgs/notifyphone_icn@3x.png") 2x) no-repeat center;
+        background-size: 2.6666666667vw; }
+    main .main_comment .comment_box li:nth-child(1) .title_box .copy_btn {
+      position: absolute;
+      top: 1.0666666667vw;
+      right: 20px;
+      z-index: 2; }
+      main .main_comment .comment_box li:nth-child(1) .title_box .copy_btn span {
+        display: inline-block;
+        width: 3.2vw;
+        height: 3.2vw;
+        background: url("../imgs/m_more2@2x.png") no-repeat center;
+        overflow: hidden;
+        transform: rotateZ(90deg);
+        background-size: 2.1333333333vw; }
+      main .main_comment .comment_box li:nth-child(1) .title_box .copy_btn span[class=active] {
+        transform: rotateZ(270deg); }
+  main .main_comment .comment_box li:nth-child(1) .chat_box {
+    background: #f9f9f9;
+    max-height: 77.3333333333vw;
+    padding: 0 1.6vw;
     overflow-y: auto; }
+    main .main_comment .comment_box li:nth-child(1) .chat_box .message {
+      word-break: break-all; }
     main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users #historytip {
       font-size: 12px;
       color: #999;
@@ -262,10 +262,10 @@ main .main_comment .comment_box li:nth-child(1) .chat_box {
       background: -webkit-image-set(url("../imgs/m_admin@2x.png") 1x, url("../imgs/m_admin@3x.png") 2x) no-repeat center;
       background-size: 100%; }
     main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users .user .cardindetify[data-type="6"] {
-      background: #158de3; }
+      background: #2093ff; }
     main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users .user .peoplename {
       font-size: 2.6666666667vw;
-      color: #158de3;
+      color: #2093ff;
       vertical-align: top;
       line-height: 3.4666666667vw; }
     main .main_comment .comment_box li:nth-child(1) .chat_box .talksBox .talksmain .users .user .peoplemsg {
@@ -286,151 +286,247 @@ main .main_comment .comment_box li:nth-child(1) .chat_box {
       display: block;
       content: "";
       clear: both; }
-main .main_comment .comment_box li:nth-child(1) .input_ajax {
-  height: 9.3333333333vw;
-  width: 100%;
-  bottom: 0;
-  background: #FFFFFF;
-  padding: 0.9333333333vw 1.8666666667vw; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box > .expression_png, main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box > .ribbon_png {
-    display: inline-block;
-    width: 5.3333333333vw;
-    height: 5.3333333333vw;
-    background-size: 5.3333333333vw; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box .expression_png {
-    background: url("../imgs/mobilephone_icon@2x.png") no-repeat center;
-    background-size: 5.3333333333vw;
-    border: none;
-    outline-style: none; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box .sinaEmotion {
-    bottom: 7.4666666667vw;
-    left: -1.8666666667vw;
-    display: block;
-    width: 53.3333333333vw;
-    z-index: 555; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box #sinaEmotion {
-    z-index: 4; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box #sinaEmotion .face {
-    width: 5.3333333333vw;
-    height: 5.3333333333vw;
-    padding: 0;
-    margin: 0; }
-    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box #sinaEmotion .face img {
-      width: 4.8vw;
-      height: 4.8vw; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box {
-    margin-left: 3.2vw; }
-    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box .ribbon_png {
-      background: url("../imgs/colouredplayphone_icn@2x.png") no-repeat center;
+  main .main_comment .comment_box li:nth-child(1) .input_ajax {
+    height: 9.3333333333vw;
+    width: 100%;
+    bottom: 0;
+    background: #FFFFFF;
+    padding: 0.9333333333vw 1.8666666667vw; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box > .expression_png, main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box > .ribbon_png {
+      display: inline-block;
+      width: 5.3333333333vw;
+      height: 5.3333333333vw;
       background-size: 5.3333333333vw; }
-    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box .ption_a {
-      width: 20vw;
-      line-height: 4vw;
-      font-size: 3.4666666667vw;
-      position: absolute;
-      top: -25.3333333333vw;
-      background: #FFFFFF;
-      padding: 1.3333333333vw;
-      color: #158de3;
-      left: 0.5333333333vw; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .input_box {
-    width: 61.3333333333vw;
-    height: 7.4666666667vw;
-    margin-left: 2.6666666667vw;
-    background: #f9f9f9; }
-    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .input_box .textarea {
-      width: 100%;
-      height: 100%;
-      padding: 1.3333333333vw;
-      line-height: 4.8vw;
-      resize: none;
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box .expression_png {
+      background: url("../imgs/mobilephone_icon@2x.png") no-repeat center;
+      background-size: 5.3333333333vw;
       border: none;
-      background: #f9f9f9;
-      outline-style: none;
-      font-size: 2.6666666667vw; }
-  main .main_comment .comment_box li:nth-child(1) .input_ajax > form .sun_box {
-    margin-left: -0.5333333333vw; }
-    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .sun_box input {
-      background: #158de3;
-      color: #FFFFFF;
-      width: 13.3333333333vw;
-      height: 7.4666666667vw;
-      line-height: 7.4666666667vw;
-      border: none;
-      font-size: 3.7333333333vw;
-      outline-style: none;
-      border-bottom-right-radius: 4px;
-      border-top-right-radius: 4px; }
-main .main_comment .comment_box li:nth-child(1) .teacher_box, main .main_comment .comment_box li:nth-child(2) .teacher_box {
-  padding: 2.6666666667vw 1.6vw;
-  position: relative;
-  height: 14.4vw;
-  background: #FFFFFF; }
-  main .main_comment .comment_box li:nth-child(1) .teacher_box .img_box, main .main_comment .comment_box li:nth-child(2) .teacher_box .img_box {
-    float: left;
-    width: 8.2666666667vw;
-    height: 8.2666666667vw;
-    overflow: hidden;
-    border: 1px solid rgba(209, 236, 241, 0.21);
-    border-radius: 50%; }
-    main .main_comment .comment_box li:nth-child(1) .teacher_box .img_box img, main .main_comment .comment_box li:nth-child(2) .teacher_box .img_box img {
-      width: 100%;
-      height: 100%;
+      outline-style: none; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box .sinaEmotion {
+      bottom: 7.4666666667vw;
+      left: -1.8666666667vw;
       display: block;
+      width: 53.3333333333vw;
+      z-index: 555; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box #sinaEmotion {
+      z-index: 4; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box #sinaEmotion .face {
+      width: 5.3333333333vw;
+      height: 5.3333333333vw;
+      padding: 0;
+      margin: 0; }
+      main .main_comment .comment_box li:nth-child(1) .input_ajax > form .expression_box #sinaEmotion .face img {
+        width: 4.8vw;
+        height: 4.8vw; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box {
+      margin-left: 3.2vw; }
+      main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box .ribbon_png {
+        background: url("../imgs/colouredplayphone_icn@2x.png") no-repeat center;
+        background-size: 5.3333333333vw; }
+      main .main_comment .comment_box li:nth-child(1) .input_ajax > form .ribbon_box .ption_a {
+        width: 20vw;
+        line-height: 4vw;
+        font-size: 3.4666666667vw;
+        position: absolute;
+        top: -25.3333333333vw;
+        background: #FFFFFF;
+        padding: 1.3333333333vw;
+        color: #2093ff;
+        left: 0.5333333333vw; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .input_box {
+      width: 61.3333333333vw;
+      height: 7.4666666667vw;
+      margin-left: 2.6666666667vw;
+      background: #f9f9f9; }
+      main .main_comment .comment_box li:nth-child(1) .input_ajax > form .input_box .textarea {
+        width: 100%;
+        height: 100%;
+        padding: 1.3333333333vw;
+        line-height: 4.8vw;
+        resize: none;
+        border: none;
+        background: #f9f9f9;
+        outline-style: none;
+        font-size: 2.6666666667vw; }
+    main .main_comment .comment_box li:nth-child(1) .input_ajax > form .sun_box {
+      margin-left: -0.5333333333vw; }
+      main .main_comment .comment_box li:nth-child(1) .input_ajax > form .sun_box input {
+        background: #2093ff;
+        color: #FFFFFF;
+        width: 13.3333333333vw;
+        height: 7.4666666667vw;
+        line-height: 7.4666666667vw;
+        border: none;
+        font-size: 3.7333333333vw;
+        outline-style: none;
+        border-bottom-right-radius: 4px;
+        border-top-right-radius: 4px; }
+  main .main_comment .comment_box li:nth-child(1) .teacher_box, main .main_comment .comment_box li:nth-child(2) .teacher_box {
+    padding: 2.6666666667vw 1.6vw;
+    position: relative;
+    height: 14.4vw;
+    background: #FFFFFF; }
+    main .main_comment .comment_box li:nth-child(1) .teacher_box .img_box, main .main_comment .comment_box li:nth-child(2) .teacher_box .img_box {
+      float: left;
+      width: 8.2666666667vw;
+      height: 8.2666666667vw;
       overflow: hidden;
+      border: 1px solid rgba(209, 236, 241, 0.21);
       border-radius: 50%; }
-  main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data {
-    float: left;
-    margin-left: 2.6666666667vw;
-    width: 82.6666666667vw; }
-    main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_name, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_name {
-      font-size: 2.9333333333vw; }
-    main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_god, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_god {
-      margin-left: 2.6666666667vw; }
-      main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_god i:nth-child(1), main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_god i:nth-child(1) {
-        font-size: 2.1333333333vw;
-        color: #888; }
-      main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_god i:nth-child(2), main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_god i:nth-child(2) {
-        font-size: 1.6vw;
-        color: #158de3; }
-    main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data .teacher_comment, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data .teacher_comment {
-      margin-top: 0.5333333333vw;
-      line-height: 3.4666666667vw;
-      font-size: 2.4vw;
-      color: #666666; }
-  main .main_comment .comment_box li:nth-child(1) .teacher_box .barrage_btn, main .main_comment .comment_box li:nth-child(2) .teacher_box .barrage_btn {
-    position: absolute;
-    top: 2.6666666667vw;
-    right: 4.8vw;
-    font-size: 4vw;
-    background: #158de3;
-    color: #ffffff;
-    width: 16vw;
-    height: 6.6666666667vw;
-    border-radius: 6.6666666667vw;
-    line-height: 6.6666666667vw;
-    text-align: right;
-    padding: 0 3.4666666667vw; }
-    main .main_comment .comment_box li:nth-child(1) .teacher_box .barrage_btn span, main .main_comment .comment_box li:nth-child(2) .teacher_box .barrage_btn span {
-      position: relative; }
-    main .main_comment .comment_box li:nth-child(1) .teacher_box .barrage_btn span:after, main .main_comment .comment_box li:nth-child(2) .teacher_box .barrage_btn span:after {
+      main .main_comment .comment_box li:nth-child(1) .teacher_box .img_box img, main .main_comment .comment_box li:nth-child(2) .teacher_box .img_box img {
+        width: 100%;
+        height: 100%;
+        display: block;
+        overflow: hidden;
+        border-radius: 50%; }
+    main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data {
+      float: left;
+      margin-left: 2.6666666667vw;
+      width: 82.6666666667vw; }
+      main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_name, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_name {
+        font-size: 2.9333333333vw; }
+      main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_god, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_god {
+        margin-left: 2.6666666667vw; }
+        main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_god i:nth-child(1), main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_god i:nth-child(1) {
+          font-size: 2.1333333333vw;
+          color: #888; }
+        main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data h3 .teacher_god i:nth-child(2), main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data h3 .teacher_god i:nth-child(2) {
+          font-size: 1.6vw;
+          color: #2093ff; }
+      main .main_comment .comment_box li:nth-child(1) .teacher_box .teacher_data .teacher_comment, main .main_comment .comment_box li:nth-child(2) .teacher_box .teacher_data .teacher_comment {
+        margin-top: 0.5333333333vw;
+        line-height: 3.4666666667vw;
+        font-size: 2.4vw;
+        color: #666666; }
+    main .main_comment .comment_box li:nth-child(1) .teacher_box .barrage_btn, main .main_comment .comment_box li:nth-child(2) .teacher_box .barrage_btn {
+      position: absolute;
+      top: 2.6666666667vw;
+      right: 4.8vw;
+      font-size: 4vw;
+      color: #ffffff;
+      width: 16vw;
+      height: 6.6666666667vw;
+      border-radius: 6.6666666667vw;
+      line-height: 6.6666666667vw;
+      text-align: right;
+      padding: 0 3.4666666667vw;
+      background-image: url("../imgs/dianzan@2x.png");
+      background: -webkit-image-set(url("../imgs/dianzan@2x.png") 1x, url("../imgs/dianzan@3x.png") 2x) no-repeat center;
+      background-size: 16vw; }
+      main .main_comment .comment_box li:nth-child(1) .teacher_box .barrage_btn span, main .main_comment .comment_box li:nth-child(2) .teacher_box .barrage_btn span {
+        position: relative; }
+      main .main_comment .comment_box li:nth-child(1) .teacher_box .barrage_btn span:after, main .main_comment .comment_box li:nth-child(2) .teacher_box .barrage_btn span:after {
+        display: block;
+        content: "";
+        position: absolute;
+        left: -4vw;
+        top: 0vw; }
+  main .main_comment .comment_box li:nth-child(2) .teacher_comment_data {
+    font-size: 3.2vw;
+    line-height: 4.8vw;
+    padding: 0 1.6vw;
+    background: #FFFFFF;
+    text-indent: 2em;
+    padding-bottom: 5.3333333333vw; }
+  main .is_login {
+    display: none;
+    bottom: 26.6666666667vw;
+    right: 4vw;
+    position: fixed;
+    z-index: 999;
+    width: 14.6666666667vw;
+    height: 14.6666666667vw;
+    background-image: url("../imgs/is_login@2x.png");
+    background: -webkit-image-set(url("../imgs/is_login@2x.png") 1x, url("../imgs/is_login@3x.png") 2x) no-repeat center;
+    background-size: 14.6666666667vw; }
+  main .end_live {
+    display: none;
+    width: 80vw;
+    height: 64.2666666667vw;
+    position: fixed;
+    left: 10vw;
+    background: #ffffff;
+    border-radius: 4px;
+    top: 40vw;
+    z-index: 1050;
+    padding: 3.2vw; }
+    main .end_live .end_title {
+      padding-left: 2.4vw;
+      font-size: 4vw;
+      text-align: left; }
+    main .end_live .title_icon {
+      display: inline-block;
+      width: 4.5333333333vw;
+      height: 4.5333333333vw;
+      background-image: url("../imgs/m_peoplenem.svg");
+      background: -webkit-image-set(url("../imgs/end_titlecon3@2x.png") 1x, url("../imgs/end_titlecon3@3x.png") 2x) no-repeat center;
+      background-size: 4.5333333333vw; }
+    main .end_live .new_live {
+      margin-top: 1.3333333333vw; }
+      main .end_live .new_live .live_box {
+        width: 34.6666666667vw;
+        height: 35.7333333333vw;
+        border: 1px solid #999999;
+        border-radius: 4px;
+        position: relative; }
+        main .end_live .new_live .live_box img {
+          width: 100%;
+          height: 25.3333333333vw; }
+        main .end_live .new_live .live_box .comein_live {
+          position: absolute;
+          display: inline-block;
+          left: 7.3333333333vw;
+          top: 9.8666666667vw;
+          width: 20vw;
+          border-radius: 4px;
+          height: 5.3333333333vw;
+          line-height: 5.3333333333vw;
+          text-align: center;
+          background: #2093ff;
+          font-size: 2.4vw;
+          color: #FFFFFF; }
+        main .end_live .new_live .live_box > h1 {
+          font-size: 3.2vw;
+          line-height: 5.3333333333vw; }
+        main .end_live .new_live .live_box .teacher_tet {
+          color: #888888;
+          left: 0;
+          line-height: 2.6666666667vw; }
+          main .end_live .new_live .live_box .teacher_tet .icon_ong {
+            display: inline-block;
+            width: 2.6666666667vw;
+            height: 2.6666666667vw;
+            background: url("../imgs/m_peoplenem.svg") no-repeat center;
+            background-size: 2.6666666667vw;
+            vertical-align: bottom;
+            margin-right: 1.3333333333vw; }
+          main .end_live .new_live .live_box .teacher_tet span:nth-child(1) {
+            float: left;
+            font-size: 2.6666666667vw; }
+          main .end_live .new_live .live_box .teacher_tet span:nth-child(2) {
+            float: right;
+            margin-right: 1.3333333333vw;
+            font-size: 2.1333333333vw;
+            line-height: 2.6666666667vw; }
+      main .end_live .new_live .live_box:nth-child(1) {
+        float: left; }
+      main .end_live .new_live .live_box:nth-child(2) {
+        float: right; }
+    main .end_live .new_live:after {
       display: block;
       content: "";
-      width: 4vw;
-      height: 4vw;
-      background-image: url("../imgs/givegood_icn@2x.png");
-      background: -webkit-image-set(url("../imgs/givegood_icn@2x.png") 1x, url("../imgs/givegood_icn@3x.png") 2x) no-repeat center;
-      background-size: 2.6666666667vw;
-      position: absolute;
-      left: -4vw;
-      top: 0vw; }
-main .main_comment .comment_box li:nth-child(2) .teacher_comment_data {
-  font-size: 3.2vw;
-  line-height: 4.8vw;
-  padding: 0 1.6vw;
-  background: #FFFFFF;
-  text-indent: 2em;
-  padding-bottom: 5.3333333333vw; }
+      clear: both; }
+    main .end_live .new_livefooter > a {
+      display: block;
+      width: 34.6666666667vw;
+      height: 8vw;
+      background: #2093ff;
+      color: #FFFFFF;
+      font-size: 3.2vw;
+      text-align: center;
+      border-radius: 8vw;
+      line-height: 8vw;
+      margin: 3.7333333333vw auto 0; }
 
 .fldd {
   display: inline-block;

@@ -459,6 +459,129 @@
   display: inline-block;
 }
 
+.mains .centerBox .currentVideo .liveListBox {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1;
+  color: #1877d1;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveonBt {
+  font-size: 20px;
+  margin: 150px auto 30px;
+  height: 36px;
+  line-height: 36px;
+  background: url(../imgs/obgtips.png) no-repeat left center;
+  padding: 0 0 0 50px;
+  position: absolute;
+  left: 27%;
+  background-size: 36px 30px;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul {
+  width: 665px;
+  position: absolute;
+  top: 216px;
+  left: 50%;
+  height: 240px;
+  overflow: hidden;
+  margin-left: -332.5px;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli {
+  width: 320px;
+  height: 240px;
+  border-radius: 5px;
+  background: #fff;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveimgBox {
+  width: 100%;
+  position: relative;
+  height: 190px;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveimgBox .livebg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 5px 5px 0 0;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveimgBox .tolive {
+  width: 150px;
+  height: 40px;
+  color: #fff;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 4px;
+  background: #2093ff;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -75px;
+  margin-top: -20px;
+  z-index: 1;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveInfors {
+  width: 100%;
+  padding: 8px;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveInfors .livename {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 14px;
+  color: #414141;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveInfors .liveabout {
+  width: 100%;
+  overflow: hidden;
+  margin: 10px 0 0;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveInfors .liveabout div {
+  color: #828282;
+  font-size: 12px;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli .livelist .liveInfors .liveabout .livenums {
+  background: url(../imgs/rperoples.png) no-repeat left center;
+  background-size: 14px 12px;
+  padding: 0 0 0 20px;
+}
+
+.mains .centerBox .currentVideo .liveListBox .liveul .liveli:nth-child(2n) {
+  float: right;
+}
+
+.mains .centerBox .currentVideo .liveListBox .toIndex {
+  color: #fff;
+  width: 665px;
+  position: absolute;
+  top: 466px;
+  left: 50%;
+  margin-left: -332.5px;
+  text-align: right;
+  font-size: 18px;
+}
+
 .mains .centerBox .platTipsBox {
   width: 100%;
   overflow: hidden;
@@ -701,6 +824,7 @@
   color: #333333;
   font-size: 12px;
   line-height: 20px;
+  word-break: break-all;
 }
 
 .mains .rightBox .rightmainBox .talksBox .talksmain .users .userli .peoplemsg .sina-emotion, .mains .rightBox .rmainBox .talksBox .talksmain .users .userli .peoplemsg .sina-emotion {

@@ -31,6 +31,17 @@ class MainController extends Controller
         $livelists = LiveList::with(['room'])->where('end_time', '>', date('Y-m-d H:i:s'))
                     ->orderBy('start_time', 'asc')->get();
 
+        $livelists->transform(function ($item, $key) {
+            if(\Carbon\Carbon::now()->gte(\Carbon\Carbon::parse($item->start_time))){
+               $item->onlive = true;
+            }else{
+                $item->onlive = false;
+            }
+
+            return $item;
+        });
+
+
         $data['livelists'] = $livelists;
 
         return view('mobile.livelist', $data);

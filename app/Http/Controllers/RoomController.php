@@ -67,6 +67,7 @@ class RoomController extends Controller
         if(!$live){
             return view('admin.error_notice')->with(['status' => '直播尚未开始或者已经结束']);
         }
+        $data['live'] = $live;
 
         //访问密码验证
         if ($request->filled('access_password')) {
@@ -682,6 +683,27 @@ class RoomController extends Controller
 
         return response()->json(['message' => '发言成功']);
 
+    }
+
+
+    public function onLiveRoom()
+    {
+        $livelists = LiveList::with(['room'])
+                ->where([
+                    ['start_time', '<=', date('Y-m-d H:i:s')],
+                    ['end_time', '>', date('Y-m-d H:i:s')],
+                ])
+                ->orderBy('start_time', 'asc')->get();
+
+        $livelists->transform(function ($item, $key){
+            $item->teacher = $item->room ? $item->room->teacher->name : '';
+            $item->image = Storage::disk('uploads')->url($item->image);
+            $item->url = route('room.index', ['id'=>$item->id]);
+            return $item->only(['id','teacher', 'url', 'image', 'start_time', 'end_time']);
+        });
+
+
+        return response()->json($livelists);
     }
 
 }

@@ -71,8 +71,8 @@ function isLogin() {
             if(data.is_login){
                 var html="";
                 var img="";
-                if(data.image){
-                    img=" <img src="+data.image+" alt=''/>";
+                if(data.data.image){
+                    img=" <img src="+data.data.image+" alt=''/>";
                 }else{
                     img=" <img src='../imgs/big_bgcolor.jpg' alt=''/>";
                 }

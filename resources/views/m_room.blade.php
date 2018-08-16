@@ -70,7 +70,6 @@
                         </div>
                     </div>
                     <div class="barrage_btn">
-                        <span>点赞</span>
                     </div>
                 </div>
                 <div class="title_box">
@@ -225,7 +224,45 @@
         </div><!-- /.modal -->
     </div>
 
+    <div class="is_login" id="is_login"></div>
 
+    <div class="end_live">
+        <h1 class="end_title">
+            <span class="title_icon"></span>
+            直播以结束，看看其他直播吧
+        </h1>
+        <div class="new_live">
+            <div class="live_box">
+                <a href="#">
+                    <img src="../imgs/banner_2.png" alt=""/>
+                    <span class="comein_live">进入直播</span>
+                </a>
+                <h1>领航财经课堂</h1>
+                <div class="teacher_tet">
+                            <span>
+                                文山老师
+                            </span>
+                    <span><i class="icon_ong"></i>223</span>
+                </div>
+            </div>
+            <div class="live_box">
+                <a href="#">
+                    <img src="../imgs/banner_2.png" alt=""/>
+                    <span class="comein_live">进入直播</span>
+                </a>
+                <h1>领航财经课堂</h1>
+                <div class="teacher_tet">
+                            <span>
+                                文山老师
+                            </span>
+                    <span><i class="icon_ong"></i>223</span>
+                </div>
+            </div>
+        </div>
+        <div class="new_livefooter">
+            <a href="#">返回直播列表</a>
+        </div>
+    </div>
 </main>
 <footer></footer>
 </body>
@@ -254,6 +291,7 @@
         isLogin: hosturl + 'is_login',//判断用户是否登录
         oldmessage:hosturl+"room_today_message/",
     };
+    var live_times = '2018-08-16 21:38:00';//直播结束时间
     var to_user_id = "all";
     var room_id = '{{$room->id}}';
     //没有登录跳转页面地址

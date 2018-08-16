@@ -1,5 +1,5 @@
 var privatelsit = [],//私聊用户列表
-robot_id = 'norobot';//机器人id,默认未选
+  robot_id = 'norobot';//机器人id,默认未选
 //获取token
 function getToken(cb) {
   $.ajax({
@@ -237,10 +237,10 @@ function say(data, content) {
   content = html_decode(content);
   var arr = content.split('@start');
   var style = '';
-  if(arr[1] != undefined){
+  if (arr[1] != undefined) {
     var arr1 = arr[1].split('@end');
-    if(arr1[1] != undefined){
-      content = arr[0]+arr1[1];
+    if (arr1[1] != undefined) {
+      content = arr[0] + arr1[1];
       style = arr1[0];
     }
   }
@@ -257,14 +257,14 @@ function say(data, content) {
     str += '<div class="fl cardindetify vip3"></div>';
   } else if (rolesname == '客服') {
     str += '<div class="fl cardindetify vip0"></div>';
-  }else{
+  } else {
     str += '<div class="fl cardindetify vip1"></div>';
   }
   str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '：</span>';
   if (to_client_id != 'all' && to_client_id != undefined) {
     str += '<span class="fl peoplenames"> @ ' + to_client_name + '：</span>';
   }
-  str += '<span class="fl peoplemsg" '+style+'>' + content + ' </span>';
+  str += '<span class="fl peoplemsg" ' + style + '>' + content + ' </span>';
   str += '</li>';
   $("#talkusers").append(str).parseEmotion();
   if (isonBullet) {
@@ -276,11 +276,11 @@ function say(data, content) {
 };
 // 聊天记录
 getTodayTalks();
-function getTodayTalks(){
+function getTodayTalks() {
   $.ajax({
     type: "GET",
     data: {},
-    url: api.getTodayTalks+room_id,
+    url: api.getTodayTalks + room_id,
     dataType: "json",
     xhrFields: {
       withCredentials: flag
@@ -290,53 +290,53 @@ function getTodayTalks(){
     },
     success: function (data) {
       var str = '';
-      for(var i in data){
+      for (var i in data) {
         let msg = data[i];
         var content = msg['content'],
-        from_client_name = msg['user_name'],
-        to_client_id = msg['to_user_id'],
-        time = msg['created_at'],
-        user_id = msg['user_id'],
-        roles = msg['user']['roles'][0],
-        to_client_name = '',
-        rolesname = roles.name;
-      if (to_client_id != 0 && to_client_id != undefined) {
-        to_client_name = msg['to_user_name'];
-      }
-      content = html_decode(content);
-      var arr = content.split('@start');
-      var style = '';
-      if(arr[1] != undefined){
-        var arr1 = arr[1].split('@end');
-        if(arr1[1] != undefined){
-          content = arr[0]+arr1[1];
-          style = arr1[0];
+          from_client_name = msg['user_name'],
+          to_client_id = msg['to_user_id'],
+          time = msg['created_at'],
+          user_id = msg['user_id'],
+          roles = msg['user']['roles'][0],
+          to_client_name = '',
+          rolesname = roles.name;
+        if (to_client_id != 0 && to_client_id != undefined) {
+          to_client_name = msg['to_user_name'];
         }
-      }
-      var str = '';
-      str += '    <li class="userli">';
-      str += '<span class="fl times">' + getTime(time) + '</span>';
-      if (rolesname == '管理员') {
-        str += '<div class="fl cardindetify vip4"></div>';
-      } else if (rolesname == '普通会员') {
-        str += '<div class="fl cardindetify vip1"></div>';
-      } else if (rolesname == '白银会员') {
-        str += '<div class="fl cardindetify vip2"></div>';
-      } else if (rolesname == '黄金会员') {
-        str += '<div class="fl cardindetify vip3"></div>';
-      } else if (rolesname == '客服') {
-        str += '<div class="fl cardindetify vip0"></div>';
-      }else{
-        str += '<div class="fl cardindetify vip1"></div>';
-      }
-      str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '：</span>';
-      if (to_client_id != 0 && to_client_id != undefined) {
-        str += '<span class="fl peoplenames"> @ ' + to_client_name + '：</span>';
-      }
-      str += '<span class="fl peoplemsg" '+style+'>' + content + ' </span>';
-      str += '</li>';
-      $("#talkusers").append(str).parseEmotion();
-      $('.talksmain').scrollTop($("#talkusers").height());
+        content = html_decode(content);
+        var arr = content.split('@start');
+        var style = '';
+        if (arr[1] != undefined) {
+          var arr1 = arr[1].split('@end');
+          if (arr1[1] != undefined) {
+            content = arr[0] + arr1[1];
+            style = arr1[0];
+          }
+        }
+        var str = '';
+        str += '    <li class="userli">';
+        str += '<span class="fl times">' + getTime(time) + '</span>';
+        if (rolesname == '管理员') {
+          str += '<div class="fl cardindetify vip4"></div>';
+        } else if (rolesname == '普通会员') {
+          str += '<div class="fl cardindetify vip1"></div>';
+        } else if (rolesname == '白银会员') {
+          str += '<div class="fl cardindetify vip2"></div>';
+        } else if (rolesname == '黄金会员') {
+          str += '<div class="fl cardindetify vip3"></div>';
+        } else if (rolesname == '客服') {
+          str += '<div class="fl cardindetify vip0"></div>';
+        } else {
+          str += '<div class="fl cardindetify vip1"></div>';
+        }
+        str += '<span class="fl peoplename" data-id="' + user_id + '">' + from_client_name + '：</span>';
+        if (to_client_id != 0 && to_client_id != undefined) {
+          str += '<span class="fl peoplenames"> @ ' + to_client_name + '：</span>';
+        }
+        str += '<span class="fl peoplemsg" ' + style + '>' + content + ' </span>';
+        str += '</li>';
+        $("#talkusers").append(str).parseEmotion();
+        $('.talksmain').scrollTop($("#talkusers").height());
       }
       var tipstr = '<li class="userli" id="historytip"><i></i><span>以上是历史消息<span><i></i></li>';
       $("#talkusers").append(tipstr);
@@ -511,14 +511,14 @@ $(function () {
       return false;
     }
     var style = $('#content').attr('style');
-    if(style != undefined){
-       content = content+'@startstyle="'+style+'"@end';
+    if (style != undefined) {
+      content = content + '@startstyle="' + style + '"@end';
     }
-    if(robot_id == 'norobot'){
+    if (robot_id == 'norobot') {
       getToken(function () {
         onSubmit(content, token);
       })
-    }else{
+    } else {
       robotsSay(robot_id, content)
     }
   })
@@ -702,31 +702,31 @@ $(function () {
   };
 });
 // 页面js
-  calMainHeight()
-  function calMainHeight() {
-    var roboth = 0;
-    if($("#robotBox").css('display')=='block'){
-      roboth = 34;
-    }
-    var winHeight = $(window).height(),
-      winWidth = $(window).width(),
-      main = $("#main"),
-      talksBox = $(".talksBox"),
-      peoples = $(".peoples"),
-      mainHeight = winHeight - 59,
-      talksBoxh = mainHeight - 30 - 34 - 168 - roboth,
-      talksmainh = talksBoxh - 40,
-      peoplesh = mainHeight - 497,
-      mainw = winWidth - 340 - 254 - 40,
-      videoh = mainHeight - 104 - 138;
-    centerMax = mainw;
-    main.css("height", mainHeight + 'px');
-    $('.centerBox').css("width", mainw + 'px');
-    talksBox.css("height", talksBoxh + 'px');
-    $('.talksmain').css("height", talksmainh + 'px');
-    peoples.css("height", peoplesh + 'px');
-    $(".currentVideo").css("height", videoh + 'px');
+calMainHeight()
+function calMainHeight() {
+  var roboth = 0;
+  if ($("#robotBox").css('display') == 'block') {
+    roboth = 34;
   }
+  var winHeight = $(window).height(),
+    winWidth = $(window).width(),
+    main = $("#main"),
+    talksBox = $(".talksBox"),
+    peoples = $(".peoples"),
+    mainHeight = winHeight - 59,
+    talksBoxh = mainHeight - 30 - 34 - 168 - roboth,
+    talksmainh = talksBoxh - 40,
+    peoplesh = mainHeight - 497,
+    mainw = winWidth - 340 - 254 - 40,
+    videoh = mainHeight - 104 - 138;
+  centerMax = mainw;
+  main.css("height", mainHeight + 'px');
+  $('.centerBox').css("width", mainw + 'px');
+  talksBox.css("height", talksBoxh + 'px');
+  $('.talksmain').css("height", talksmainh + 'px');
+  peoples.css("height", peoplesh + 'px');
+  $(".currentVideo").css("height", videoh + 'px');
+}
 
 $(function () {
   // 计算内容高度
@@ -987,7 +987,7 @@ $(function () {
       fail: function (res) {
         console.log(res);
       },
-      error:function(res){
+      error: function (res) {
         alert(res.responseJSON.message);
       },
       complete: function (res) {
@@ -1125,9 +1125,10 @@ $(function () {
     }
   })
   getRobots();//获取机器人
-  $("#robots").change(function(){
+  $("#robots").change(function () {
     robot_id = $(this).find("option:selected").val();
-  })
+  });
+  listenIsover();//监听直播是否结束
 });
 // 获取用户信息
 function getuserInfors(id, type) {
@@ -1144,10 +1145,10 @@ function getuserInfors(id, type) {
     success: function (data) {
       if (type == 'right') {
         $(".otheruserBox").fadeIn();
-        if(data.image != null){
-          $(".otheruserBox .bgusers").attr('src',data.image);
-        }else{
-          $(".otheruserBox .bgusers").attr('src','../imgs/hdefaultuser.png');
+        if (data.image != null) {
+          $(".otheruserBox .bgusers").attr('src', data.image);
+        } else {
+          $(".otheruserBox .bgusers").attr('src', '../imgs/hdefaultuser.png');
         }
         $(".otheruserBox .user_truename").html(data.name);
         $(".otheruserBox .user_name").html(data.nick_name);
@@ -1388,26 +1389,26 @@ function getRobots() {
       if (len) {
         var str = '';
         str += '<option value="norobot">选择机器人</option>';
-        $("#robotBox").css('display','block');
+        $("#robotBox").css('display', 'block');
         data.forEach(el => {
           str += '<option value="' + el.user_id + '">' + el.user_name + '</option>';
         })
         robotsBox.append(str);
-      }else{
-        $("#robotBox").css('display','none');
+      } else {
+        $("#robotBox").css('display', 'none');
       }
     },
-    complete:function(res){
+    complete: function (res) {
       var status = res.status;
       if (status == 400) {
-        $("#robotBox").css('display','none');
+        $("#robotBox").css('display', 'none');
       }
       calMainHeight()
     }
   })
 };
 // 机器人发言
-function robotsSay(robot_id, msg){
+function robotsSay(robot_id, msg) {
   var input = $("#content");
   $.ajax({
     type: 'POST',
@@ -1435,4 +1436,22 @@ function robotsSay(robot_id, msg){
     }
   });
   return false;
+};
+
+var timer = null;
+function listenIsover() {
+  var date = new Date(),
+    endtime = new Date(live_times),
+    lefttime = endtime - date;
+  if (lefttime > 0) {
+    timer = setTimeout(function () {
+      listenIsover();
+    }, 3000);
+  } else {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    $(".video").css('display','none');
+    $(".liveListBox").css('display','block');
+  }
 };

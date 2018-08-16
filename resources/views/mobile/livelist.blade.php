@@ -52,15 +52,20 @@
         </div>
         <ul class="comment_ul">
             @foreach($livelists as $livelist)
-            <li>
-                <a href="{{route('room.index', ['id'=>$livelist->room_id])}}">
+            <li @if(!$livelist->onlive)
+                class="not_live"
+                @endif
+            >
+                <a @if($livelist->onlive)
+                   href="{{route('room.index', ['id'=>$livelist->room_id])}}"
+                   @endif>
                     <div class="live_logo">
                         <span></span>
                         <i>
-                            @if(\Carbon\Carbon::now()->gte(\Carbon\Carbon::parse($livelist->start_time)))
+                            @if($livelist->onlive)
                                 直播中
                             @else
-                                直播时间: {{$livelist->start_time}}
+                                直播还未开始
                             @endif
                             </i>
                     </div>
@@ -74,7 +79,9 @@
                         <span><i class="icon_ong"></i></span>
                     </div>
                     <div class="title_text">
-                        {{$livelist->name}}
+                        <h1>{{$livelist->name}}</h1>
+                        <h3>直播时间：<span>{{$livelist->start_time}}</span></h3>
+
                     </div>
                 </a>
             </li>

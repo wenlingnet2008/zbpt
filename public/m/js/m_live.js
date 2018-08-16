@@ -483,11 +483,70 @@ $(function(){
             error: function (data) {
             },
             success: function (data) {
-                $(".img_box img").attr("src",data.image);
+                if(data.image){
+                    $(".img_box img").attr("src",data.image);
+                }
                 $(".teacher_name").html(data.name);
                 $(".teacher_comment_data").html(data.introduce)
             }
         })
     };
+
+//    判断用户是否登录
+    isLogin();
+
+    $("#is_login").on("click",function(){
+        window.location.href=success_url;
+    })
+    function isLogin() {
+        $.ajax({
+            type: "GET",
+            data: {},
+            url: api.isLogin,
+            xhrFields: {
+                withCredentials: flag
+            },
+            dataType: "json",
+            error: function (data) {
+            },
+            success: function (data) {
+                if(data.is_login){
+                    $("#is_login").css("display","none")
+                }else{
+                    $("#is_login").css("display","block");
+                }
+
+            }
+        })
+    };
+
+
+//监听直播是否结束
+
+    listenIsover();
+    var timer = null;
+    function listenIsover() {
+        var date = new Date(),
+            endtime = new Date(live_times),
+            lefttime = endtime - date;
+        if (lefttime > 0) {
+            timer = setTimeout(function () {
+                listenIsover();
+            }, 3000);
+        } else {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            $("body").append("<div class='modal-backdrop fade show'></div>")
+            $(".end_live").css("display","block");
+            window.open('');
+        }
+    };
+
+
+
+
+
+
 
 });
