@@ -102,6 +102,7 @@ class RegisterController extends Controller
             'mobile'   => $data['mobile'],
             'nick_name' => $data['nick_name'],
             'qq'    => $data['qq'],
+            'ip_address' => \request()->getClientIp(),
         ]);
     }
 }

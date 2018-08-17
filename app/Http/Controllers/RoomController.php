@@ -112,6 +112,10 @@ class RoomController extends Controller
 //            $client_name = '游客'.$user_id;
         }
 
+        if($user->hasAnyRole('黑名单')){
+            return view('admin.error_notice')->with(['status' => '禁止访问']);
+        }
+
 
         $login_user = [
             'user_id' => $user_id,
@@ -568,7 +572,13 @@ class RoomController extends Controller
         $user_id = $request->input('user_id');
         $room = Room::findOrFail($room_id);
         $room->closeUser($user_id);
-        Firewall::blacklist($request->getClientIp());
+        $user = User::find($user_id);
+        if($user->ip_address){
+            Firewall::blacklist($user->ip_address);
+        }
+        if($user){
+            $user->syncRoles('黑名单');
+        }
         return response()->json(['message'=>'踢出房间操作成功']);
     }
 

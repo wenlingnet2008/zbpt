@@ -30,6 +30,7 @@ class CreateUsersTable extends Migration
             $table->boolean('forbid_talk')->default(0)->comment('禁止发言');
             $table->boolean('is_admin')->default(0)->comment('1:超级管理员 0:非超级管理员');
             $table->unsignedInteger('room_id')->default(0)->index()->comment('所属房间');
+            $table->string('ip_address', 39)->nullable();
             $table->text('introduce')->nullable();
 
             $table->rememberToken();

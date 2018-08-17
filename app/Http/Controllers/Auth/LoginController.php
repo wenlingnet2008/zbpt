@@ -66,6 +66,9 @@ class LoginController extends Controller
 
         $user = $this->guard()->user();
 
+        $user->ip_address = $request->getClientIp();
+        $user->save();
+
         if($user->image){
             //$user->image = Storage::disk('uploads')->url($user->image);
         }
