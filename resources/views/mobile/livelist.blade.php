@@ -76,7 +76,7 @@
                             <span>
                                 {{$livelist->room->teacher->name ?? ''}}
                             </span>
-                        <span><i class="icon_ong"></i></span>
+                        <span></span>
                     </div>
                     <div class="title_text">
                         <h1>{{$livelist->name}}</h1>

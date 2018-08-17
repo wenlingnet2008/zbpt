@@ -232,32 +232,7 @@
             直播以结束，看看其他直播吧
         </h1>
         <div class="new_live">
-            <div class="live_box">
-                <a href="#">
-                    <img src="../imgs/banner_2.png" alt=""/>
-                    <span class="comein_live">进入直播</span>
-                </a>
-                <h1>领航财经课堂</h1>
-                <div class="teacher_tet">
-                            <span>
-                                文山老师
-                            </span>
-                    <span><i class="icon_ong"></i>223</span>
-                </div>
-            </div>
-            <div class="live_box">
-                <a href="#">
-                    <img src="../imgs/banner_2.png" alt=""/>
-                    <span class="comein_live">进入直播</span>
-                </a>
-                <h1>领航财经课堂</h1>
-                <div class="teacher_tet">
-                            <span>
-                                文山老师
-                            </span>
-                    <span><i class="icon_ong"></i>223</span>
-                </div>
-            </div>
+
         </div>
         <div class="new_livefooter">
             <a href="#">返回直播列表</a>

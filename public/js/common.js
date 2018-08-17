@@ -10,7 +10,6 @@ function getToken(cb) {
       withCredentials: flag
     },
     error: function (data) {
-      getToken();
     },
     success: function (data) {
       token = data._token;
@@ -65,14 +64,6 @@ $(function () {
   }
 
   // 注册验证
-  // $(".register_form input[name='email']").blur(function () {
-  //   var val = $(this).val().trim();
-  //   if (!regemail.test(val)) {
-  //     $(this).addClass("error");
-  //   } else {
-  //     $(this).removeClass("error");
-  //   }
-  // });
   $(".login_form input[name='name']").blur(function () {
     var val = $(this).val().trim();
     if (!val) {
@@ -373,6 +364,8 @@ $(function () {
         alert(data.message);
         $('.logined .usernames .user_infors').toggle();
         $(".logined .usernames .username").toggleClass('usernamesh');
+        $("#editpwd_form input").val('');
+        $("#editpwd_form input[type=button]").val('保存');
       },
       complete: function () {
         check = true;
@@ -468,8 +461,17 @@ $(function () {
         check = false;
       },
       error: function (data) {
-        var msg = data.responseJSON;
-        alert(msg.message);
+        var msg = data.responseJSON,
+        status = data.status;
+        if(status = 422){
+          var error = msg.errors;
+          for(var key in error){
+            alert(error[key]);
+          }
+        }else{
+          alert(msg.message);
+        }
+       
       },
       success: function (data) {
         alert(data.message);

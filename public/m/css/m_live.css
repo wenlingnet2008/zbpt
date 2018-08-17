@@ -442,7 +442,6 @@ main {
   main .end_live {
     display: none;
     width: 80vw;
-    height: 64.2666666667vw;
     position: fixed;
     left: 10vw;
     background: #ffffff;
@@ -462,13 +461,14 @@ main {
       background: -webkit-image-set(url("../imgs/end_titlecon3@2x.png") 1x, url("../imgs/end_titlecon3@3x.png") 2x) no-repeat center;
       background-size: 4.5333333333vw; }
     main .end_live .new_live {
-      margin-top: 1.3333333333vw; }
+      margin-top: 4vw; }
       main .end_live .new_live .live_box {
         width: 34.6666666667vw;
         height: 35.7333333333vw;
         border: 1px solid #999999;
         border-radius: 4px;
-        position: relative; }
+        position: relative;
+        overflow: hidden; }
         main .end_live .new_live .live_box img {
           width: 100%;
           height: 25.3333333333vw; }
@@ -486,10 +486,12 @@ main {
           font-size: 2.4vw;
           color: #FFFFFF; }
         main .end_live .new_live .live_box > h1 {
+          padding-left: 1.3333333333vw;
           font-size: 3.2vw;
           line-height: 5.3333333333vw; }
         main .end_live .new_live .live_box .teacher_tet {
           color: #888888;
+          padding-left: 1.3333333333vw;
           left: 0;
           line-height: 2.6666666667vw; }
           main .end_live .new_live .live_box .teacher_tet .icon_ong {

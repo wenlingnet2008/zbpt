@@ -77,7 +77,7 @@ function connect() {
 // 服务端发来消息时
 function onmessage(e) {
   var data = JSON.parse(e.data);
-  console.log(data);
+  // console.log(data);
   switch (data['type']) {
     // 服务端ping客户端
     case 'ping':
@@ -93,13 +93,10 @@ function onmessage(e) {
           room_id: room_id,
         },
         success: function (data) {
-          console.log(data);
         },
         fail: function (res) {
-          console.log(res);
         },
         complete: function (res) {
-          console.log(res);
           var status = res.status;
           if (status == 401) {
             alert(res.responseJSON.message);
@@ -548,10 +545,9 @@ $(function () {
         input.focus();
       },
       fail: function (res) {
-        console.log(res);
+
       },
       complete: function (res) {
-        console.log(res);
         var status = res.status;
         if (status == 401) {
           $(".loginFixed").css("display", 'block');
@@ -1451,7 +1447,48 @@ function listenIsover() {
     if (timer) {
       clearTimeout(timer);
     }
+    onLives();
     $(".video").css('display','none');
     $(".liveListBox").css('display','block');
   }
 };
+//正在直播列表
+function onLives(){
+  $.ajax({
+    type: "GET",
+    data: {},
+    url: api.roomLives,
+    dataType: "json",
+    xhrFields: {
+      withCredentials: flag
+    },
+    error: function (data) {
+    },
+    success: function (data) {
+      var liveulBox = $(".liveul");
+      liveulBox.empty(),
+        len = data.length;
+      var str = '';
+      if (len) {
+        data.forEach(el => {
+         str += ' <li class="fl liveli">';
+         str += '<a href="'+el.url+'" class="livelist">';
+         str += '<div class="liveimgBox">';
+         str += '<img src="'+el.image+'" alt="" class="livebg">';
+         str += ' <div class="tolive">进入直播</div>';
+         str += '</div>';
+         str += '<div class="liveInfors">';
+         str += '<div class="livename">'+el.name+'</div>';
+         str += '<div class="liveabout">';
+         str += '<div class="fl liveteacher">'+el.teacher+'</div>';
+         str += '<div class="fr liveteacher">'+el.start_time+'</div>';
+         str += '</div>';
+         str += '</div>';
+         str += '</a>';
+         str += '</li>';
+        })
+        liveulBox.append(str);
+      }
+    }
+  })
+}

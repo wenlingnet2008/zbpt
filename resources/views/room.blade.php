@@ -280,39 +280,8 @@
             <!-- 视频结束提示模块 -->
             <div class="liveListBox" style="display: none;">
                 <div class="liveonBt">直播已结束，看看其他精彩直播吧！</div>
-                <ul class="liveul">
-                    <li class="fl liveli">
-                        <a href="#" class="livelist">
-                            <div class="liveimgBox">
-                                <img src="../imgs/big_bgcolor.jpg" alt="" class="livebg">
-                                <div class="tolive">进入直播</div>
-                            </div>
-                            <div class="liveInfors">
-                                <div class="livename">领航财经课堂领航财经课堂领航财经课堂领航财经课堂</div>
-                                <div class="liveabout">
-                                    <div class="fl liveteacher">文芳老师</div>
-                                    <div class="fr livenums">123</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li class="fl liveli">
-                        <a href="#" class="livelist">
-                            <div class="liveimgBox">
-                                <img src="../imgs/big_bgcolor.jpg" alt="" class="livebg">
-                                <div class="tolive">进入直播</div>
-                            </div>
-                            <div class="liveInfors">
-                                <div class="livename">领航财经课堂领航财经课堂领航财经课堂领航财经课堂</div>
-                                <div class="liveabout">
-                                    <div class="fl liveteacher">文芳老师</div>
-                                    <div class="fr livenums">123</div>
-                                </div>
-                            </div>
-                        </a>
-                    </li>
-                </ul>
-                <a href="#" class="toIndex">&gt;&gt; 返回首页</a>
+                <ul class="liveul"></ul>
+                <a href="/" class="toIndex">&gt;&gt; 返回首页</a>
             </div>
             <!-- 弹幕容器 -->
             <div class="barrageBox"></div>
@@ -777,6 +746,7 @@
             editpassword: hosturl + 'update_user_password',//修改密码
             editprofile: hosturl + 'update_user_profile',//编辑资料
             getTodayTalks: hosturl + 'room_today_message/',//获取房间当天聊天记录
+            roomLives: hosturl + 'room_onlive',//正在直播列表
         };
     var flag = true;//是否携带cookie
     var room_id = '{{$room->id}}';//房间id

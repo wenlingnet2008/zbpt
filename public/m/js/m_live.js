@@ -155,7 +155,6 @@ function onmessage(e) {
         case 'say':
             //say(data['from_client_id'], data['from_client_name'], data['content'], data['time']);
             say(data,data['content'])
-
             break;
         // 用户退出 更新用户列表
         case 'logout':
@@ -537,16 +536,50 @@ $(function(){
             if (timer) {
                 clearTimeout(timer);
             }
-            $("body").append("<div class='modal-backdrop fade show'></div>")
+            $.ajax({
+                type: "GET",
+                data: {},
+                url: api.Recommend,
+                xhrFields: {
+                    withCredentials: flag
+                },
+                dataType: "json",
+                error: function (data) {
+                },
+                success: function (data) {
+                    var html="";
+                    var for_num;
+                    data.length>2?for_num=2:for_num=data.length;
+                    for(var i=0;i<for_num;i++){
+                        html+="<div class='live_box'>"+
+                            "<a href='"+data[i].url+"'>";
+                                if(data[i].image){
+                                    html+=  "<img src='"+data[i].image+"' alt=''>";
+                                }else{
+                                    html+=  "<img src='../imgs/banner_2.png' alt=''>";
+                                }
+
+                        html+=  "<span class='comein_live'>进入直播</span>"+
+                            "</a>";
+                        if(data[i].name){
+                            html+=    "<h1>"+data[i].name+"</h1>";
+                        }else{
+                            html+=    "<h1>领航财经课堂</h1>";
+                        }
+                        html+=  "<div class='teacher_tet'>"+
+                            "<span>"+
+                            data[i].teacher+
+                            "</span>"+
+                            "</div>"+
+                            "</div>"
+                    }
+                    $(".new_livefooter a").attr("href","/");
+                    $(".new_live").html(html);
+                }
+            })
+            $("body").append("<div class='modal-backdrop fade show'></div>");
+            $(".video_box").css("display","none");
             $(".end_live").css("display","block");
-            window.open('');
         }
     };
-
-
-
-
-
-
-
 });

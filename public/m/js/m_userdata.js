@@ -2,8 +2,6 @@
  * Created by Administrator on 2018/8/3 0003.
  */
     //没有登录跳转页面地址
-
-
 isLogin();
 // 分享
 $("body").on("click",".headpng ",function(){
@@ -89,8 +87,7 @@ function isLogin() {
                 //    datahtml += "<li><h1>个性签名</h1><input type='text' value=''  name='autograph'/> <input class='token' type='hidden' value=''  name='_token'/><div class='toleft'><span></span></div></li>";
                 //}
                 $(".comment_ul").html(datahtml);
-                $(".comment_box").append("<input type='hidden' class='token' id='token' value=''  name='token'/>");
-                getToken();
+                $(".comment_box").append("<input type='hidden' class='token' value=''  name='token'/>");
             }else{
                 window.location.href="/m/login";
             }
@@ -100,6 +97,8 @@ function isLogin() {
 var token="";
 var flag=true;
 var check=true;
+//获取token
+getToken();
 // 退出登录
 $(".loginout").click(function () {
     getToken(function () {
@@ -136,57 +135,42 @@ $(".backoff span").on("click",function(){
     window.history.back(-1);
 })
 
-
-
 $("#ajax").on("click",function(){
     var formdata = new FormData();
     formdata.append("mobile",$("#datamobile").val().trim());
     formdata.append("qq",$("#dataqq").val().trim());
-    formdata.append("_token",$("#token").val().trim());
-    formdata.append("nick_name",$("input[name='nick_name']").val().trim());
+    formdata.append("_token",$(".token").val().trim());
+
     if(yesuserpng){
       var   FileObj = document.getElementById( "image" ).files[0];
             formdata.append("image",FileObj);
     }
     if(check){
-        getToken(function(){
-            $.ajax({
-                type: "POST",
-                data: formdata,
-                url: api.upuserdata,
-                xhrFields: {
-                    withCredentials:flag
-                },
-                dataType: "json",
-                cache: false,
-                processData: false,
-                contentType: false,
-                beforeSend: function () {
-                    check = false;
-                },
-                error: function (data) {
-                    var msg = data.responseJSON,
-                        errors = msg.errors;
-                    if (data.status == 422) {
-                        for(var key in errors){
-                            alert(errors[key][0]);
-                        }
-                    } else {
-                        alert(msg.message);
-                    }
-                    check = true
-                },
-                success: function (data) {
-                    alert(data.message);
-                    //window.location.href=success_url;
-                    //window.location.reload();
-                },
-                complete: function () {
-                    check = true;
-                }
-            })
+        $.ajax({
+            type: "POST",
+            data: formdata,
+            url: api.upuserdata,
+            xhrFields: {
+                withCredentials:flag
+            },
+            dataType: "json",
+            cache: false,
+            processData: false,
+            contentType: false,
+            beforeSend: function () {
+                check = false;
+            },
+            error: function (data) {
+                check = true
+            },
+            success: function (data) {
+                //window.location.href=success_url;
+                window.location.reload();
+            },
+            complate: function () {
+                check = true
+            }
         })
-
     }
 })
 
@@ -213,7 +197,7 @@ function loginOut(token) {
     })
 };
 //获取token
-
+getToken();
 function getToken(cb) {
     $.ajax({
         type: "GET",
@@ -228,8 +212,9 @@ function getToken(cb) {
         },
         success: function (data) {
             token = data._token;
-            $("#token").val(token);
+            $(".token").val(token);
             cb && cb(token);
+            return false;
         }
     })
 };
