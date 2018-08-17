@@ -708,7 +708,7 @@ class RoomController extends Controller
         $livelists->transform(function ($item, $key){
             $item->teacher = $item->room ? $item->room->teacher->name : '';
             $item->image = Storage::disk('uploads')->url($item->image);
-            $item->url = route('room.index', ['id'=>$item->id]);
+            $item->url = route('room.index', ['id'=>$item->room_id]);
             return $item->only(['id','teacher', 'url', 'image', 'start_time', 'end_time', 'name']);
         });
 
