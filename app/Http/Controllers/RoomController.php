@@ -573,11 +573,12 @@ class RoomController extends Controller
         $room = Room::findOrFail($room_id);
         $room->closeUser($user_id);
         $user = User::find($user_id);
-        if($user->ip_address){
-            Firewall::blacklist($user->ip_address);
-        }
+
         if($user){
             $user->syncRoles('黑名单');
+            if($user->ip_address){
+                Firewall::blacklist($user->ip_address);
+            }
         }
         return response()->json(['message'=>'踢出房间操作成功']);
     }
