@@ -52,7 +52,7 @@ $(function(){
                 },
                 success: function (data) {
                         //window.location.href=success_url;
-                    window.history.back(-1);
+                    location.href=document.referrer;
                 },
                 complate: function () {
                     check = true

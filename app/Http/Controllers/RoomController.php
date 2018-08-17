@@ -398,7 +398,15 @@ class RoomController extends Controller
         $private_user_ids = array_unique($user_ids->merge($to_user_ids)->toArray());
 
 
-        $users = User::select('id', 'name')->whereIn('id', $private_user_ids)->get();
+        $users = User::select('id', 'name', 'nick_name')->whereIn('id', $private_user_ids)->get();
+
+        $users->transform(function ($item){
+            if($item->nick_name){
+                $item->name = $item->nick_name;
+            }
+
+            return $item->only(['id', 'name']);
+        });
 
 
         return response()->json($users);

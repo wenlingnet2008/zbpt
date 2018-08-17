@@ -845,6 +845,10 @@ $(function () {
   //我的私聊
   getPrivateList('', '');
   $('#openmyChat').click(function () {
+    var len = $('#talklist li').length;
+    if(!len){
+      other_userid = '';
+    }
     $('.mytalkBox').fadeIn();
     $("#openmyChat .redcircle").css('display', 'none');
   })
@@ -996,7 +1000,8 @@ $(function () {
     var that = $(this);
     if (button == 2) {
       other_userid = that.attr('data-id');
-      other_name = that.text();
+      other_name = that.text().trim();
+      other_name = other_name.replace('：','');
       rightMenu(other_userid, function () {
         var str = creatRightBox(permission);
         that.parent().append(str);

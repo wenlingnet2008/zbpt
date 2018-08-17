@@ -208,11 +208,8 @@ $(function () {
         }
       },
       success: function (data) {
-        var msg = data.data,
-          storage = window.localStorage;
+        var msg = data.data;
         if (msg) {
-          var id = msg.id;
-          storage.setItem("userid", id);
           $(".loginBox .user_login ").css("display", 'none').eq(1).css("display", 'block');
           if (msg.image != null) {
             $(".bguser").attr('src', msg.image);
@@ -250,6 +247,9 @@ $(function () {
         if (is_login) {
           var data = data.data;
           if (data) {
+            var storage = window.localStorage,
+            id = data.id;
+            storage.setItem("userid", id);
             if (data.image != null) {
               $(".bgusers").attr('src', data.image);
             } else {
