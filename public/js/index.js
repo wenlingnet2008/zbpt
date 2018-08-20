@@ -1459,7 +1459,7 @@ function robotsSay(robot_id, msg) {
 var timer = null;
 function listenIsover() {
   var date = new Date(),
-    endtime = new Date(live_times),
+    endtime = new Date(live_times.replace(/-/g, "/")),
     lefttime = endtime - date;
   if (lefttime > 0) {
     timer = setTimeout(function () {
