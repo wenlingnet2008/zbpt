@@ -98,6 +98,11 @@ class PermissionsTableSeeder extends Seeder
                 'desc' => '前台机器人手动发言',
                 'guard_name' => 'web',
             ],
+            [
+                'name' => 'manage_lives',
+                'desc' => '直播列表管理',
+                'guard_name' => 'web',
+            ],
 
         ]);
     }
