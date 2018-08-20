@@ -172,9 +172,8 @@
                     资料
                 </div>
             </li>
-            <li>
-                <iframe src="http://rili-d.jin10.com/open.php" scrolling="yes" frameborder="0" width="100%"
-                        height="100%"></iframe>
+            <li id="jin10">
+
             </li>
             <li>
                 <!--<iframe id="new_kcb" src="http://www.teamyophk.com/apps/kcb.php?rid=1001"
@@ -229,13 +228,13 @@
     <div class="end_live">
         <h1 class="end_title">
             <span class="title_icon"></span>
-            直播以结束，看看其他直播吧
+            直播结束，看看其他直播吧
         </h1>
         <div class="new_live">
 
         </div>
         <div class="new_livefooter">
-            <a href="#">返回直播列表</a>
+            <a href="/">返回首页</a>
         </div>
     </div>
 </main>

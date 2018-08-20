@@ -2,7 +2,7 @@
  * Created by Administrator on 2018/8/3 0003.
  */
     //没有登录跳转页面地址
-isLogin();
+
 // 分享
 $("body").on("click",".headpng ",function(){
     $("#myModal").modal();
@@ -10,6 +10,11 @@ $("body").on("click",".headpng ",function(){
 $("body").on("click",".headpng ",function(){
     $("#myModal").modal();
 });
+var token="";
+getToken();
+isLogin();
+
+
 
 function isLogin() {
     $.ajax({
@@ -46,7 +51,7 @@ function isLogin() {
                     top += "<img src='../imgs/hdefaultuser.png' alt='头像'/><input name='image' id='image' type='file' accept='image/gif, image/jpeg, image/png' />";
                 }
                 top += "</div>" + "<div class='username'>";
-                if (data.name) {
+                if (data.nick_name) {
                     top += "<h1><input type='text' disabled value='" + data.nick_name + "' name='name'/></h1>";
                 } else {
                     top += "<h1><input type='text' value='' name='name'/></h1>";
@@ -57,9 +62,9 @@ function isLogin() {
                 $(".top").html(top);
                 var datahtml = "";
                 if (data.nick_name) {
-                    datahtml += "<li><h1>昵称</h1><input type='text' name='nick_name' value='" + data.nick_name + " '/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>昵称</h1><input type='text' id='nick_name' name='nick_name' value='" + data.nick_name + " '/><div class='toleft'><span></span></div></li>";
                 } else {
-                    datahtml += "<li><h1>昵称</h1><input type='text' name='nick_name' value=''/><div class='toleft'><span></span></div></li>";
+                    datahtml += "<li><h1>昵称</h1><input type='text' id='nick_name' name='nick_name' value=''/><div class='toleft'><span></span></div></li>";
                 }
                 if (data.mobile) {
                     datahtml += "<li><h1>联系手机</h1><input type='text' id='datamobile' value='" + data.mobile + "'  name='mobile'/><div class='toleft'><span></span></div></li>";
@@ -87,18 +92,16 @@ function isLogin() {
                 //    datahtml += "<li><h1>个性签名</h1><input type='text' value=''  name='autograph'/> <input class='token' type='hidden' value=''  name='_token'/><div class='toleft'><span></span></div></li>";
                 //}
                 $(".comment_ul").html(datahtml);
-                $(".comment_box").append("<input type='hidden' class='token' value=''  name='token'/>");
+                $(".comment_box").append("<input type='hidden' class='token' value='"+token+"'  name='token'/>");
             }else{
                 window.location.href="/m/login";
             }
         }
     })
 };
-var token="";
+
 var flag=true;
 var check=true;
-//获取token
-getToken();
 // 退出登录
 $(".loginout").click(function () {
     getToken(function () {
@@ -136,10 +139,12 @@ $(".backoff span").on("click",function(){
 })
 
 $("#ajax").on("click",function(){
+
     var formdata = new FormData();
     formdata.append("mobile",$("#datamobile").val().trim());
     formdata.append("qq",$("#dataqq").val().trim());
     formdata.append("_token",$(".token").val().trim());
+    formdata.append("nick_name",$("#nick_name").val().trim());
 
     if(yesuserpng){
       var   FileObj = document.getElementById( "image" ).files[0];
@@ -161,14 +166,30 @@ $("#ajax").on("click",function(){
                 check = false;
             },
             error: function (data) {
-                check = true
+                check = true;
+                var msg = data.responseJSON,
+                    errors = msg.errors;
+                if (data.status == 422) {
+                    if (errors.qq) {
+                        alert(errors.qq[0]);
+                    }
+                    if (errors.nick_name) {
+                        alert(errors.nick_name[0]);
+                    }
+                    if (errors.mobile) {
+                        alert(errors.mobile[0]);
+                    }
+                } else {
+                    alert(msg.message);
+                }
             },
             success: function (data) {
                 //window.location.href=success_url;
                 window.location.reload();
             },
-            complate: function () {
-                check = true
+            complete: function () {
+                check = true;
+                getToken();
             }
         })
     }
@@ -192,12 +213,11 @@ function loginOut(token) {
         success: function (data) {
             var storage = window.localStorage;
             storage.removeItem("userid");
-            window.location.href="/";
+            window.location.href="/m/login";
         }
     })
 };
 //获取token
-getToken();
 function getToken(cb) {
     $.ajax({
         type: "GET",
@@ -214,7 +234,7 @@ function getToken(cb) {
             token = data._token;
             $(".token").val(token);
             cb && cb(token);
-            return false;
+            return token;
         }
     })
 };

@@ -1,7 +1,6 @@
 /**
  * Created by Administrator on 2018/7/27 0027.
  */
-
 if (typeof console == "undefined") { this.console = { log: function (msg) { } }; }
 // 如果浏览器不支持websocket，会使用这个flash自动模拟websocket协议，此过程对开发者透明
 WEB_SOCKET_SWF_LOCATION = "/swf/WebSocketMain.swf";
@@ -307,6 +306,8 @@ $(function(){
     });
 
 
+
+    $(".barrage_btn").html(" ");
 //公告
     $("#copy_btn").on("click",function(){
         if($(this).find("span").hasClass("active")){
@@ -342,6 +343,8 @@ $(function(){
         },1500)
     }
 
+
+
     $(".nav>ul").find("li").each(function(){
         $(this).on("click",function(){
             $(this).parent().children().attr("class","");
@@ -349,13 +352,31 @@ $(function(){
             $(".main_comment>ul>li").attr("class","");
             $(".main_comment>ul>li").eq($(this).index()).attr("class","active");
             var tttthg=$(".header_box").height()+$(".nav").height();
-            $("iframe").css({
-                "height":$(window).height()-tttthg,
-                "max-height":$(window).height()-tttthg,
-            })
+            if($(this).index()==2){
+                if($("#jin10 iframe").length>0){
+                    return false;
+                }else{
+                    $("#jin10").html("<iframe src='https://rili-d.jin10.com/open.php'  scrolling='yes' frameborder='0' width='100%' height='100%'></iframe>")
+                }
+            }
+            if($("iframe").length>0){
+                $("iframe").css({
+                    "height":$(window).height()-tttthg,
+                    "max-height":$(window).height()-tttthg,
+                })
+            }
+
         })
     })
 
+        if($("#face").length>0){
+            $("#face").css({
+                "overflow":"hidden",
+                "border-radius":"50%",
+                /* overflow: hidden; */
+                /* border-radius: 50%; */
+            })
+        }
 
 })
 
@@ -526,7 +547,7 @@ $(function(){
     var timer = null;
     function listenIsover() {
         var date = new Date(),
-            endtime = new Date(live_times),
+            endtime = new Date(live_times.replace(/-/g, "/")),
             lefttime = endtime - date;
         if (lefttime > 0) {
             timer = setTimeout(function () {

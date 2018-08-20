@@ -54,8 +54,9 @@ $(function(){
                         //window.location.href=success_url;
                     location.href=document.referrer;
                 },
-                complate: function () {
-                    check = true
+                complete: function () {
+                    check = true;
+                    getToken();
                 }
             })
         }
