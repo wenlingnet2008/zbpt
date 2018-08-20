@@ -40,6 +40,7 @@
                 <th>Email</th>
                 <th>手机</th>
                 <th>所属组</th>
+                <th>登录ip</th>
                 <th>所属房间</th>
                 <th>注册时间</th>
                 <th width="100">操作</th>
@@ -51,6 +52,7 @@
                 <td class="px12">{{$user->email}}</td>
                 <td>{{$user->mobile}}</td>
                 <td>{{$user->roles->first()->name ?? ''}}</td>
+                <td>{{$user->ip_address}}</td>
                 <td>@if($user->room){{$user->room->name}} @endif</td>
                 <td class="px12">{{$user->created_at}}</td>
 

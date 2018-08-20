@@ -33,7 +33,6 @@ function connect() {
   // 创建websocket
   ws = new WebSocket("ws://"+document.domain+":7272");
 
-
   // 当有消息时根据消息类型显示不同信息
   ws.onmessage = onmessage;
   ws.onclose = function (e) {
@@ -793,10 +792,26 @@ $(function () {
       $objBox = $(".rightmainBox .rmainBox");
     $(this).addClass("active").siblings().removeClass("active");
     $objBox.eq(index).css("display", "block").siblings().css("display", "none");
+    if(index == 1){
+      var obj = $('.moneydataiframe');
+      addIframe(obj);
+    }
     if (index == 3) {
       getRoomTeacher();
     }
-  })
+  });
+
+
+  function addIframe(obj){
+    var striframe = '';
+    striframe += '<iframe scrolling="auto" allowtransparency="true" id="layui-layer-iframe2"';
+    striframe += 'name="layui-layer-iframe2" frameborder="0" src="http://rili-d.jin10.com/open.php"';
+    striframe += 'style="width:100%;height: 100%;"></iframe>';
+    var has = obj.find('iframe');
+    if(!has.length){
+      obj.append(striframe);
+    }
+  }
 
   getRoomTeacher();
   // 获取房间老师
@@ -831,6 +846,8 @@ $(function () {
     var index = $(this).index();
     if (index == 0) {
       $('.moneyDatafixed').fadeIn();
+      var obj = $('.moneydataiframe');
+      addIframe(obj);
     } else if (index == 1) {
       getOrderes('now', 1);
       $('.ordersFixed').fadeIn();

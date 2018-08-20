@@ -456,12 +456,7 @@
             </div>
             <!-- moneydata -->
             <div class="rmainBox moneydata" style="display: none">
-                <div class="iframemain">
-                    <iframe scrolling="auto" allowtransparency="true" id="layui-layer-iframe2"
-                            name="layui-layer-iframe2" onload="this.className='';"
-                            class="" frameborder="0" src="http://rili-d.jin10.com/open.php"
-                            style="width:100%;height: 100%;"></iframe>
-                </div>
+                <div class="iframemain moneydataiframe"></div>
             </div>
             <!-- videoteach -->
             <div class="rmainBox videoteach" style="display: none">
@@ -610,12 +605,7 @@
             <div class="fl orderbt">财经数据</div>
             <div class="fr fiexdclose">&times;</div>
         </div>
-        <div class="iframemain">
-            <iframe scrolling="auto" allowtransparency="true" id="layui-layer-iframe2" name="layui-layer-iframe2"
-                    onload="this.className='';"
-                    class="" frameborder="0" src="http://rili-d.jin10.com/open.php"
-                    style="width:100%;height: 100%;"></iframe>
-        </div>
+        <div class="iframemain moneydataiframe"></div>
     </div>
 </div>
 
