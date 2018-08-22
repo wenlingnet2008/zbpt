@@ -125,5 +125,6 @@
     //关于获取token  字段
 </script>
 <script src="{{asset('m/js/m_livelist.js')}}"></script>
+{!! $site['copyright'] !!}
 </body>
 </html>

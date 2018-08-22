@@ -758,6 +758,8 @@
 <script type="text/javascript" src="{{asset('js/jquery.bigcolorpicker.min.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/common.js')}}"></script>
 <script type="text/javascript" src="{{asset('js/index.js')}}"></script>
+
+{!! $site_configs['copyright'] !!}
 </body>
 
 </html>

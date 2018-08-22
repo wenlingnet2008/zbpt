@@ -170,3 +170,5 @@
         })
     })
 </script>
+
+{!! $site['copyright'] !!}

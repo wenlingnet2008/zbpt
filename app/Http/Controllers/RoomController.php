@@ -12,6 +12,7 @@ use Carbon\Carbon;
 use GatewayClient\Gateway;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Validation\Rule;
 use Jenssegers\Agent\Facades\Agent;
@@ -41,6 +42,10 @@ class RoomController extends Controller
 
     public function index(Request $request, $id)
     {
+
+        $site_configs = DB::table('site_configs')->get();
+        $site_configs = $site_configs->pluck('value', 'name');
+        $data['site_configs'] = $site_configs;
 
         $room = Room::find($id);
         if(!$room){
