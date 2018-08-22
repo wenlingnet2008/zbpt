@@ -485,7 +485,11 @@ class RoomController extends Controller
     {
         $room = Room::findOrFail($id);
 
-        $teacher = $room->teacher->only(['id', 'name', 'image', 'introduce']);
+        $teacher = $room->teacher->only(['id', 'name', 'nick_name', 'image', 'introduce']);
+
+        if($teacher['nick_name']){
+            $teacher['name'] = $teacher['nick_name'];
+        }
         if($teacher['image']){
             //$teacher['image'] = Storage::disk('uploads')->url($teacher['image']);
         }
