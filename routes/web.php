@@ -60,6 +60,7 @@ Route::get('/', 'MainController@index')->name('main.index');
 Route::get('/roomlist', 'MainController@roomList')->name('main.roomlist');
 Route::get('/m/login', 'MainController@login')->name('main.login');
 Route::get('/m/register', 'MainController@register')->name('main.register');
+Route::get('/livelist', 'MainController@livelist')->name('main.livelist');
 
 
 Route::post('/update_user_profile', 'UserController@updateUserProfile')->name('user.updateprofile');
