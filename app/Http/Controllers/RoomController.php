@@ -734,4 +734,16 @@ class RoomController extends Controller
         return response()->json($livelists);
     }
 
+
+    public function video(Request $request)
+    {
+        $this->validate($request,[
+            'room_id' => ['required'],
+        ]);
+
+        $room = Room::findOrFail($request->room_id);
+
+        return response()->json(['moblie_code'=>$room->mobile_code]);
+    }
+
 }

@@ -53,6 +53,7 @@ Route::get('/room_robots/{id}', 'RoomController@robots')->name('room.robots');
 Route::post('/room/robot_say', 'RoomController@robotSay')->name('room.robot_say');
 Route::get('/room_today_message/{id}', 'RoomController@getTodayMessage')->name('room.todaymessage');
 Route::get('/room_onlive', 'RoomController@onLiveRoom')->name('room.onlive');
+Route::post('/room/live_code', 'RoomController@video')->name('room.video');
 
 
 
