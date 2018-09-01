@@ -13,7 +13,7 @@
 <header>
     <div class="logo_box">
         <a href="{{route('main.index')}}">
-            <img src="/m/imgs/logo@2x.png" alt="logo"/>
+            <img src="/m/imgs/newlogo.png" alt="logo"/>
         </a>
     </div>
     <div class="input_box">
@@ -125,6 +125,7 @@
     //关于获取token  字段
 </script>
 <script src="{{asset('m/js/m_livelist.js')}}"></script>
+<script src="{{asset('m/js/varjs.js')}}"></script>
 {!! $site['copyright'] !!}
 </body>
 </html>

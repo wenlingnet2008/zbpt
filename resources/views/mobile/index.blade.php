@@ -170,5 +170,5 @@
         })
     })
 </script>
-
+<script src="{{asset('m/js/varjs.js')}}"></script>
 {!! $site['copyright'] !!}

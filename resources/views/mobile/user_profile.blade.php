@@ -75,5 +75,6 @@
     //关于获取token  字段
 </script>
 <script src="/m/js/m_userdata.js"></script>
+<script src="{{asset('m/js/varjs.js')}}"></script>
 </body>
 </html>

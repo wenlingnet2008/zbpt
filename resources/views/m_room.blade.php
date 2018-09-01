@@ -272,5 +272,6 @@
     //关于获取token  字段
 </script>
 <script src="{{asset('m/js/m_live.js')}}"></script>
+<script src="{{asset('m/js/varjs.js')}}"></script>
 {!! $site_configs['copyright'] !!}
 </html>

@@ -82,7 +82,7 @@ main {
       height: 8vw;
       line-height: 8vw;
       font-size: 3.2vw;
-      text-align: right;
+      text-align: left;
       margin-right: 2.6666666667vw; }
     main .yourname_box input {
       width: 66.6666666667vw;
@@ -90,7 +90,8 @@ main {
       padding-left: 1.3333333333vw;
       font-size: 2.9333333333vw;
       border-radius: 4px;
-      border: 1px solid #c2c2c8; }
+      border: 1px solid #c2c2c8;
+      margin-left: 1.8666666667vw; }
     main .yourname_box input::-webkit-input-placeholder {
       color: #c2c2c8; }
     main .yourname_box input::-moz-placeholder {
@@ -103,15 +104,14 @@ main {
       /* Internet Explorer 10-11 */
       color: #c2c2c8; }
   main .ajax_btn {
-    width: 80vw;
-    margin: 5.3333333333vw auto 0;
-    padding-left: 1.3333333333vw; }
+    width: 85.3333333333vw;
+    margin: 5.3333333333vw auto 0; }
     main .ajax_btn input {
       background: #2093ff;
       color: #FFFFFF;
       font-size: 3.7333333333vw;
       text-align: center;
-      width: 80vw;
+      width: 85.3333333333vw;
       height: 10.6666666667vw;
       border: none;
       outline-style: none;
@@ -119,11 +119,9 @@ main {
     main .ajax_btn p:nth-child(2) {
       margin-top: 2.6666666667vw;
       text-align: right; }
-      main .ajax_btn p:nth-child(2) .userprotocol {
-        margin-right: -1.3333333333vw; }
-        main .ajax_btn p:nth-child(2) .userprotocol a {
-          color: #2093ff;
-          font-size: 3.2vw; }
+      main .ajax_btn p:nth-child(2) .userprotocol a {
+        color: #2093ff;
+        font-size: 3.2vw; }
 
 main .yourname_box input[class="error"] {
   border: 1px solid red; }

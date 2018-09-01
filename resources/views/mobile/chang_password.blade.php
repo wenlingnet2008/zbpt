@@ -58,5 +58,6 @@
     };
 </script>
 <script src="/m/js/m_changepwd.js"></script>
+<script src="{{asset('m/js/varjs.js')}}"></script>
 </body>
 </html>

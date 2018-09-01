@@ -30,11 +30,11 @@
     <form id="login_form" action="">
         <div class="comment_box user_name">
             <span><i></i></span>
-            <input type="text" id="user_name" name="name" />
+            <input type="text" id="user_name" name="name" placeholder="请输入账号"/>
         </div>
         <div class="comment_box user_password">
             <span><i></i></span>
-            <input type="password" maxlength="16" id="user_password" name="password"/>
+            <input type="password" maxlength="16" id="user_password" name="password" placeholder="请输入密码"/>
         </div>
         <div class="comment_box ajax_btn">
             <span></span>
@@ -69,5 +69,6 @@
     //关于获取token  字段
 </script>
 <script src="{{asset('m/js/m_login.js')}}"></script>
+<script src="{{asset('m/js/varjs.js')}}"></script>
 </body>
 </html>

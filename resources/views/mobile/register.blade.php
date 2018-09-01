@@ -30,32 +30,32 @@
 <main>
     <form action="" id="register_form">
         <div class="yourname_box">
-            <span>账号</span>
-            <input id="yourname" type="text" name="name" maxlength="16" />
+            <span>账&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;号</span>
+            <input id="yourname" placeholder="请输入账号，4-15位的数字或字母" type="text" name="name" maxlength="16" />
         </div>
         <div class="yourname_box" >
-            <span>邮箱</span>
+            <span>昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</span>
+            <input type="text" placeholder="请输入昵称" id="username"  name="nick_name" />
+        </div>
+        <div class="yourname_box" >
+            <span>邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</span>
             <input type="text" id="yournumber"  name="email"  placeholder="请输入你的邮箱"/>
         </div>
         <div class="yourname_box">
-            <span>密码</span>
-            <input type="password" id="password" name="password" maxlength="16"/>
+            <span>密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</span>
+            <input type="password" id="password" placeholder="请输入密码，6-16位的数字或字母" name="password" maxlength="16"/>
         </div>
         <div class="yourname_box">
             <span>确认密码</span>
-            <input type="password" id="twopassword" name="password_confirmation" maxlength="16"/>
-        </div>
-        <div class="yourname_box" >
-            <span>昵称</span>
-            <input type="text" id="username"  name="nick_name" />
+            <input type="password" id="twopassword" placeholder="请确认密码" name="password_confirmation" maxlength="16"/>
         </div>
         <div class="yourname_box">
-            <span>手机号</span>
-            <input type="text" id="phonenumber" name="mobile" maxlength="16"/>
+            <span>手&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;机</span>
+            <input type="text" id="phonenumber" placeholder="请输入手机号码" name="mobile" maxlength="16"/>
         </div>
         <div class="yourname_box">
             <span>QQ</span>
-            <input type="text" id="qqnumber" name="qq"   maxlength="15"/>
+            <input type="text" id="qqnumber" name="qq" placeholder="请输入QQ号码"   maxlength="15"/>
         </div>
         <input type="hidden" value="" class="token" name="_token" />
         <input type="hidden" value="1" name="room_id" />
@@ -89,6 +89,7 @@
     //关于获取token  字段
 </script>
 <script src="{{asset('m/js/m_register.js')}}"></script>
+<script src="{{asset('m/js/varjs.js')}}"></script>
 </body>
 
 </html>
