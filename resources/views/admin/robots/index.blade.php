@@ -35,7 +35,7 @@
             <tr>
                 <th width="20"><input type="checkbox" onclick="checkall(this.form);"/></th>
                 <th>昵称</th>
-                <th>所属房间</th>
+
                 <th>上线时间</th>
                 <th>下线时间</th>
                 <th width="100">操作</th>
@@ -44,7 +44,7 @@
                 <tr align="center">
                     <td><input type="checkbox" name="robot_ids[]" value="{{$robot->id}}"/></td>
                     <td align="left">&nbsp;{{$robot->user_name}}</td>
-                    <td>{{$robot->room->name}}</td>
+
                     <td class="px12">{{$robot->up_time}}</td>
                     <td class="px12">{{$robot->end_time}}</td>
                     <td>

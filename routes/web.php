@@ -72,6 +72,7 @@ Route::get('/change_password', 'UserController@changePassword')->name('user.chan
 
 Route::get('/import_user/update_password', 'ImportUserController@updateUserPassword')->name('import.update_user_password');
 Route::get('/import_user', 'ImportUserController@index')->name('import.index');
+Route::get('/update_robot_rooms', 'ImportUserController@updateRobotRooms')->name('import.update_robot_rooms');
 
 
 

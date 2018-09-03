@@ -56,27 +56,32 @@ class WebSocketClient extends Command
         $worker->count = 1;
         $worker->onWorkerStart = function($worker){
             Timer::add(10, function(){
-                $robots = Robot::with(['room'])->get();
-               foreach ($robots as $robot){
-                   if($robot->room->robot_open) {
-                       if (!Gateway::isUidOnline($robot['user_id'])) {
-                           if (Carbon::now()->gte(Carbon::parse()->setTimeFromTimeString($robot['up_time']))
-                               and Carbon::now()->lt(Carbon::parse()->setTimeFromTimeString($robot['end_time']))
-                           ) {
-                               //echo "机器人{$robot['user_name']}在线\n";
-                               $con = new RobotConnection($robot);
-                               $con->connect();
-                           } else {
-                               //echo "机器人{$robot['user_name']}没有到上线时间\n";
-                           }
-                       } else {
-                           //echo "机器人{$robot['user_name']}已经上线\n";
-                       }
+                $robots = Robot::with(['rooms'])->get();
+                foreach ($robots as $robot){
+                    foreach($robot->rooms as $room){
+                        $new_robot = $robot->toArray();
+                        if($room->robot_open) {
+                            $new_robot['room_id'] = $room->id;
+                            $new_robot['user_id'] = $new_robot['user_id'] . '_' . $room->id;
+                            if (!Gateway::isUidOnline($new_robot['user_id'])) {
+                                if (Carbon::now()->gte(Carbon::parse()->setTimeFromTimeString($new_robot['up_time']))
+                                    and Carbon::now()->lt(Carbon::parse()->setTimeFromTimeString($new_robot['end_time']))
+                                ) {
+                                    echo "机器人{$new_robot['user_name']}上线\n";
+                                    $con = new RobotConnection($new_robot);
+                                    $con->connect();
+                                } else {
+                                    echo "机器人{$new_robot['user_name']}没有到上线时间\n";
+                                }
+                            } else {
+                                echo "机器人{$new_robot['user_name']}已经上线\n";
+                            }
 
-                   }else{
-                       //echo $robot->room->name."房间没有开启机器人\n";
-                   }
-               }
+                        }else{
+                            echo $robot->room->name."房间没有开启机器人\n";
+                        }
+                    }
+                }
             });
 
 

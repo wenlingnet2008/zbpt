@@ -25,7 +25,7 @@ class RobotController extends Controller
      */
     public function index()
     {
-        $robots = Robot::with('room')->paginate(20);
+        $robots = Robot::paginate(20);
         $data['robots'] = $robots;
 
         return view('admin.robots.index', $data);
@@ -53,7 +53,7 @@ class RobotController extends Controller
     {
         $this->validate($request, [
             'robot.user_name' => ['required', 'max:30', 'unique:robots,user_name'],
-            'robot.room_id' => ['required'],
+            'rooms' => ['required'],
             'robot.up_time' => ['required'],
             'robot.end_time' => ['required'],
         ]);
@@ -66,7 +66,11 @@ class RobotController extends Controller
 
         $robot_arr['user_id'] = uniqid('robot_');
 
-        Robot::create($robot_arr);
+        $robot = Robot::create($robot_arr);
+
+        $rooms = Room::find($request->rooms);
+        $robot->rooms()->saveMany($rooms);
+
 
         return back()->with(['status'=>'添加成功']);
 
@@ -94,7 +98,7 @@ class RobotController extends Controller
 
         $rooms = Room::get();
         $data['rooms'] = $rooms;
-        $robot = Robot::findOrFail($id);
+        $robot = Robot::with('rooms')->findOrFail($id);
         //$robot->image = Storage::disk('uploads')->url($robot->image);
         $data['robot'] = $robot;
 
@@ -112,7 +116,7 @@ class RobotController extends Controller
     {
         $this->validate($request, [
             'robot.user_name' => ['required', 'max:30', Rule::unique('robots', 'user_name')->ignore($id)],
-            'robot.room_id' => ['required'],
+            'rooms' => ['required'],
             'robot.up_time' => ['required'],
             'robot.end_time' => ['required'],
         ]);
@@ -126,6 +130,10 @@ class RobotController extends Controller
 
         $robot->fill($robot_arr);
         $robot->save();
+
+        $robot->rooms()->detach();
+        $rooms = Room::find($request->rooms);
+        $robot->rooms()->saveMany($rooms);
 
         return back()->with(['status'=>'更新成功']);
 

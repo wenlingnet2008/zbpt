@@ -31,12 +31,15 @@
 
             <tr>
                 <td class="tl"><span class="f_red">*</span> 所属房间</td>
-                <td><select name="robot[room_id]" >
-                        <option value="">选择房间</option>
-                        @foreach($rooms as $room)
-                            <option value="{{$room->id}}">{{$room->name}}</option>
+                <td>
+                    <span id="room_list">
+                    @foreach($rooms as $k => $room)
+                            <input type="checkbox" name="rooms[]" value="{{$room->id}}"  id="menu_c_{{$k}}"><label for="menu_c_{{$k}}"> {{ $room->name }}</label>
                         @endforeach
-                    </select></td>
+                    </span>
+                    <a href="javascript:check_box('room_list', true);" class="t">全选</a> / <a href="javascript:check_box('room_list', false);" class="t">全不选</a>
+
+                </td>
             </tr>
 
 

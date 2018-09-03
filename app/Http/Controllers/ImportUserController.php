@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Robot;
+use App\Room;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -41,5 +43,17 @@ class ImportUserController extends Controller
 
         }
         return response()->json(['message'=>'导入老数据成功']);
+    }
+
+
+    public function updateRobotRooms()
+    {
+        $robots = Robot::get();
+        $robots->each(function ($item){
+            $room = Room::find($item->room_id);
+            $item->rooms()->save($room);
+        });
+
+        return response()->json(['message'=>'对应一个房间更改为对应多个房间']);
     }
 }
