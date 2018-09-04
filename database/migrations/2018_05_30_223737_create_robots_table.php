@@ -17,7 +17,8 @@ class CreateRobotsTable extends Migration
             $table->increments('id');
             $table->uuid('user_id');
             $table->string('user_name', 30);
-            $table->unsignedInteger('room_id');
+            //删除room_id, 改为对多关系，model_has_rooms表
+            //$table->unsignedInteger('room_id');
             $table->string('image')->nullable()->comment('用户头像');
             $table->time('up_time');
             $table->time('end_time');
